@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div className="space-y-8">
+			<p>
+				Pensemos en la construcción de una casa: HTML es la base y la estructura
+				de esa casa. Define el significado y la estructura del contenido,
+				mientras que CSS, que veremos más adelante, es la decoración. Hoy nos
+				centraremos en construir ese esqueleto sólido y semántico. A lo largo de
+				estas dos horas, cubriremos los elementos esenciales que componen
+				cualquier página web.
+			</p>
+
+			<section>
+				<h3 className="text-2xl font-semibold mb-3">
+					1. Anatomía de un documento HTML: &lt;!DOCTYPE&gt;, &lt;html&gt;,
+					&lt;head&gt; y &lt;body&gt;
+				</h3>
+				<p className="mb-4">
+					Todo documento HTML sigue una estructura fundamental que debemos
+					respetar. Esta estructura es como el esqueleto de nuestra página y se
+					compone de cuatro partes principales.
+				</p>
+				<ul className="list-disc list-inside space-y-2 pl-4 mb-4">
+					<li>
+						<strong>&lt;!DOCTYPE html&gt;</strong>: Esta es la primera línea que
+						siempre debe aparecer en su archivo. No es una etiqueta HTML, sino
+						una instrucción especial que le dice al navegador que está
+						utilizando una versión moderna de HTML (específicamente HTML5).
+					</li>
+					<li>
+						<strong>&lt;html&gt;</strong>: Esta es la etiqueta raíz que envuelve
+						todo el contenido de la página. Dentro de ella, anidamos dos
+						elementos principales: <code>&lt;head&gt;</code> y
+						<code>&lt;body&gt;</code>.
+					</li>
+					<li>
+						<strong>&lt;head&gt;</strong>: La sección
+						<code>&lt;head&gt;</code> (o cabecera) contiene metadatos, es decir,
+						información sobre el documento que no es visible directamente en la
+						página (como el título, enlaces a CSS, etc.).
+					</li>
+					<li>
+						<strong>&lt;body&gt;</strong>: La sección
+						<code>&lt;body&gt;</code> (o cuerpo) contiene todo el contenido
+						visible de la página web: textos, imágenes, enlaces, etc.
+					</li>
+				</ul>
+				<p className="mb-4">Un esqueleto básico se vería así:</p>
+
+				<p className="mt-4">
+					Es fundamental mantener una correcta anidación y sangría (indentación)
+					en el código para que sea legible y fácil de mantener.
+				</p>
+			</section>
+
+			<section>
+				<h3 className="text-2xl font-semibold mb-3">
+					2. Metaetiquetas Esenciales y el Atributo `lang`
+				</h3>
+				<p className="mb-4">
+					Dentro de la etiqueta <code>&lt;head&gt;</code>, definimos información
+					crucial tanto para el navegador como para los motores de búsqueda
+					(como Google). Estas son las metaetiquetas más importantes:
+				</p>
+				<ul className="list-disc list-inside space-y-2 pl-4 mb-4">
+					<li>
+						<strong>&lt;meta charset="utf-8"&gt;</strong>: Declara la
+						codificación de caracteres. Usar UTF-8 es el estándar recomendado,
+						ya que permite representar correctamente casi cualquier carácter de
+						cualquier idioma (como la "ñ" o las tildes).
+					</li>
+					<li>
+						<strong
+							>&lt;meta name="viewport" content="width=device-width,
+							initial-scale=1.0"&gt;</strong
+						>: Clave para el diseño responsivo, le indica al navegador que el
+						ancho de la página debe ajustarse al del dispositivo y establece el
+						zoom inicial al 100%.
+					</li>
+					<li>
+						<strong>&lt;title&gt;</strong>: Define el título del documento que
+						aparece en la pestaña del navegador. Es extremadamente importante
+						para el SEO.
+					</li>
+					<li>
+						<strong>&lt;meta name="description" content="..."&gt;</strong>:
+						Proporciona una descripción breve del contenido de la página, usada
+						por los motores de búsqueda en los resultados.
+					</li>
+					<li>
+						<strong>Atributo `lang`</strong>: Se coloca en la etiqueta
+						<code>&lt;html&gt;</code> (ej: <code>&lt;html lang="es"&gt;</code>)
+						y especifica el idioma principal del documento, lo cual es crucial
+						para la accesibilidad y el SEO.
+					</li>
+				</ul>
+				<h4 className="text-xl font-semibold mt-6 mb-2">
+					Ejemplo de una sección &lt;head&gt; completa:
+				</h4>
+			</section>
+
+			<section>
+				<h3 className="text-2xl font-semibold mb-3">
+					3. Encabezados &lt;h1&gt; a &lt;h6&gt;: Jerarquía y SEO
+				</h3>
+				<p className="mb-4">
+					Los encabezados se utilizan para estructurar el contenido de forma
+					jerárquica. HTML nos ofrece seis niveles, desde
+					<code>&lt;h1&gt;</code> (el más importante) hasta
+					<code>&lt;h6&gt;</code> (el menos importante). Usarlos correctamente
+					crea una estructura lógica que ayuda a los usuarios y a los motores de
+					búsqueda a entender la organización del contenido.
+				</p>
+				<div
+					className="p-4 bg-yellow-50 dark:bg-gray-800 border-l-4 border-yellow-500 rounded-r-lg my-4"
+				>
+					<p className="font-semibold text-yellow-800 dark:text-yellow-300">
+						Regla de Oro para el SEO:
+					</p>
+					<p className="text-yellow-700 dark:text-gray-300">
+						Usa una única etiqueta <code>&lt;h1&gt;</code> por página. Los
+						buscadores identifican el <code>&lt;h1&gt;</code> como el título
+						principal del contenido de esa página.
+					</p>
+				</div>
+			</section>
+
+			<section>
+				<h3 className="text-2xl font-semibold mb-3">
+					4. Párrafos &lt;p&gt;, Saltos de Línea &lt;br&gt;, y Reglas
+					Horizontales &lt;hr&gt;
+				</h3>
+				<p className="mb-4">
+					Estos son los elementos básicos para formatear el flujo de texto:
+				</p>
+				<ul className="list-disc list-inside space-y-2 pl-4 mb-4">
+					<li>
+						<strong>&lt;p&gt;</strong>: Define un párrafo de texto. Es un
+						elemento de bloque, lo que significa que ocupa todo el ancho
+						disponible y comienza en una nueva línea.
+					</li>
+					<li>
+						<strong>&lt;br&gt;</strong>: Inserta un salto de línea simple. Es
+						útil cuando necesitas que el texto continúe en la línea siguiente
+						sin crear un nuevo párrafo (por ejemplo, en direcciones o poemas).
+						Es una etiqueta "vacía" (no tiene cierre).
+					</li>
+					<li>
+						<strong>&lt;hr&gt;</strong>: Crea una "regla horizontal" (una
+						línea). Semánticamente, representa una ruptura temática entre
+						secciones.
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3 className="text-2xl font-semibold mb-3">
+					5. Preformateo de texto con &lt;pre&gt;
+				</h3>
+				<p className="mb-4">
+					A veces, necesitamos que el navegador respete los espacios en blanco,
+					tabulaciones y saltos de línea tal como los escribimos en nuestro
+					código. Para eso, usamos la etiqueta <code>&lt;pre&gt;</code>.
+				</p>
+				<p className="mb-4">
+					El texto dentro de un elemento <code>&lt;pre&gt;</code> se muestra en
+					una fuente de ancho fijo (monoespaciada) y conserva tanto los espacios
+					como los saltos de línea. Es ideal para mostrar fragmentos de código,
+					poesía o arte ASCII.
+				</p>
+			</section>
+		</div>
+	</body>
+</html>
