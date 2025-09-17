@@ -31,10 +31,10 @@ export default function App() {
 	const { t } = useI18n();
 
 	return (
-		<div className='relative flex min-h-screen text-gray-800 dark:text-gray-200'>
+		<div className='relative flex min-h-screen  text-gray-800 dark:text-gray-200'>
 			<Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
 
-			<main className='flex-1 lg:pl-72 transition-all duration-300 ease-in-out'>
+			<main className='flex-1 overflow-x-hidden  overflow-y-auto lg:pl-72 transition-all duration-300 ease-in-out'>
 				<div className='sticky top-0 z-10 flex items-center justify-between lg:justify-end px-4 sm:px-6 lg:px-8 h-16 bg-gray-50/75 dark:bg-gray-900/75 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800'>
 					<button
 						onClick={() => setSidebarOpen(true)}
@@ -49,7 +49,7 @@ export default function App() {
 					</div>
 				</div>
 
-				<div className='p-4 sm:p-6 lg:p-8'>
+				<div className='w-full max-w-full p-4 sm:p-6 lg:p-8'>
 					<Routes>
 						<Route path='/' element={<HomePage />} />
 						<Route path='/conferencia/:id' element={<LecturePage />} />

@@ -38,7 +38,7 @@ export default function LecturePage() {
 
 	return (
 		<>
-			<article className='max-w-4xl mx-auto prose prose-lg dark:prose-invert prose-blue'>
+			<article className='max-w-4xl mx-auto w-full prose prose-lg dark:prose-invert prose-blue'>
 				<div className='mb-8'>
 					<p className='text-blue-600 dark:text-blue-400 font-semibold'>
 						{t("module")} {module.module}: {module.title[language]}
