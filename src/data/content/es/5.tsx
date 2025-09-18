@@ -22,80 +22,114 @@ const Lecture5Es = () => (
 				<strong>exclusivamente para presentar datos tabulares</strong>, como
 				hojas de cálculo, estadísticas o calendarios. En el pasado, se usaban
 				incorrectamente para la maquetación de páginas, una práctica que hoy
-				está obsoleta gracias a CSS.
+				está obsoleta y se resuelve con CSS. Para que una tabla sea responsiva
+				en pantallas pequeñas, la envolvemos en un contenedor que permita el
+				desplazamiento horizontal.
 			</p>
-			<p className='mb-4'>La estructura de una tabla se compone de:</p>
-			<ul className='list-disc list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>&lt;table&gt;:</strong> La etiqueta que envuelve toda la
-					tabla.
-				</li>
-				<li>
-					<strong>&lt;tr&gt; (Table Row):</strong> Define una fila horizontal.
-				</li>
-				<li>
-					<strong>&lt;td&gt; (Table Data):</strong> Define una celda de datos
-					estándar dentro de una fila.
-				</li>
-				<li>
-					<strong>&lt;th&gt; (Table Header):</strong> Define una celda de
-					encabezado. Los navegadores la muestran en negrita y centrada por
-					defecto.
-				</li>
-			</ul>
 
 			<h4 className='text-xl font-semibold mt-6 mb-2'>
-				Estructura Semántica de Tabla
+				Estructura Semántica y Estilizada de una Tabla
 			</h4>
 			<p className='mb-4'>
-				Para tablas más complejas y semánticamente correctas, usamos agrupadores
-				de filas que mejoran la organización y la accesibilidad:
+				Para tablas complejas y semánticamente correctas, usamos agrupadores de
+				filas que mejoran la organización y la accesibilidad:{" "}
+				<code>&lt;thead&gt;</code> para el encabezado,{" "}
+				<code>&lt;tbody&gt;</code> para el cuerpo principal y{" "}
+				<code>&lt;tfoot&gt;</code> para el pie de tabla. En lugar de usar el
+				atributo obsoleto <code>border="1"</code> o estilos en línea, aplicamos
+				clases de CSS (en este caso, de Tailwind) para el diseño, lo que las
+				hace adaptables y fáciles de mantener.
 			</p>
-			<ul className='list-disc list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>&lt;thead&gt;:</strong> Agrupa el contenido del encabezado de
-					la tabla (la fila con los <code>&lt;th&gt;</code>).
-				</li>
-				<li>
-					<strong>&lt;tbody&gt;:</strong> Agrupa el contenido principal o el
-					cuerpo de la tabla.
-				</li>
-				<li>
-					<strong>&lt;tfoot&gt;:</strong> Agrupa el contenido del pie de la
-					tabla, como resúmenes o totales.
-				</li>
-			</ul>
 			<CodeBlock
 				language='html'
-				codeString={`<table border="1" style="width:100%; border-collapse: collapse;">
-  <thead>
-    <tr>
-      <th>Producto</th>
-      <th>Cantidad</th>
-      <th>Precio Unitario</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Manzanas</td>
-      <td>10</td>
-      <td>$0.50</td>
-    </tr>
-    <tr>
-      <td>Naranjas</td>
-      <td>15</td>
-      <td>$0.40</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>Total</td>
-      <td>25</td>
-      <td>$13.50</td>
-    </tr>
-  </tfoot>
-</table>`}
+				codeString={`
+<div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+  <table class="min-w-full divide-y-2 divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900 text-sm">
+    <thead class="text-left">
+      <tr>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Producto</th>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Cantidad</th>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Precio Unitario</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+      <tr>
+        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Manzanas</td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">10</td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">$0.50</td>
+      </tr>
+      <tr>
+        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Naranjas</td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">15</td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">$0.40</td>
+      </tr>
+    </tbody>
+    <tfoot class="bg-gray-50 dark:bg-gray-800">
+      <tr>
+        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Total</td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">25</td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">$13.50</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+`}
 			/>
+			<h5 className='text-lg font-semibold mt-6 mb-2'>Resultado:</h5>
+			<div className='overflow-x-auto my-6 rounded-lg border border-gray-200 dark:border-gray-700'>
+				<table className='min-w-full divide-y-2 divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900 text-sm'>
+					<thead className='text-left'>
+						<tr>
+							<th className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
+								Producto
+							</th>
+							<th className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
+								Cantidad
+							</th>
+							<th className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
+								Precio Unitario
+							</th>
+						</tr>
+					</thead>
+					<tbody className='divide-y divide-gray-200 dark:divide-gray-700'>
+						<tr>
+							<td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
+								Manzanas
+							</td>
+							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+								10
+							</td>
+							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+								$0.50
+							</td>
+						</tr>
+						<tr>
+							<td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
+								Naranjas
+							</td>
+							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+								15
+							</td>
+							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+								$0.40
+							</td>
+						</tr>
+					</tbody>
+					<tfoot className='bg-gray-50 dark:bg-gray-800'>
+						<tr>
+							<td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
+								Total
+							</td>
+							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+								25
+							</td>
+							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+								$13.50
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
 		</section>
 
 		<section>
@@ -118,30 +152,85 @@ const Lecture5Es = () => (
 			</ul>
 			<CodeBlock
 				language='html'
-				codeString={`<table border="1" style="width:100%; text-align:center; border-collapse: collapse;">
-  <thead>
-    <tr>
-      <th rowspan="2">Día</th>
-      <th colspan="2">Horario</th>
-    </tr>
-    <tr>
-      <th>Mañana</th>
-      <th>Tarde</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Lunes</th>
-      <td>Clase A</td>
-      <td>Clase B</td>
-    </tr>
-    <tr>
-      <th>Martes</th>
-      <td colspan="2">Libre</td>
-    </tr>
-  </tbody>
-</table>`}
+				codeString={`<div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+  <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+    <thead class="bg-gray-50 dark:bg-gray-800">
+      <tr>
+        <th rowspan="2" class="px-4 py-2 text-left font-medium text-gray-900 dark:text-white">Día</th>
+        <th colspan="2" class="px-4 py-2 text-center font-medium text-gray-900 dark:text-white">Horario</th>
+      </tr>
+      <tr>
+        <th class="px-4 py-2 text-left font-medium text-gray-900 dark:text-white">Mañana</th>
+        <th class="px-4 py-2 text-left font-medium text-gray-900 dark:text-white">Tarde</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+      <tr>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-left text-gray-900 dark:text-white">Lunes</th>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">Clase A</td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">Clase B</td>
+      </tr>
+      <tr>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-left text-gray-900 dark:text-white">Martes</th>
+        <td colspan="2" class="whitespace-nowrap px-4 py-2 text-center text-gray-700 dark:text-gray-300">Libre</td>
+      </tr>
+    </tbody>
+  </table>
+</div>`}
 			/>
+			<h5 className='text-lg font-semibold mt-6 mb-2'>Resultado:</h5>
+			<div className='overflow-x-auto my-6 rounded-lg border border-gray-200 dark:border-gray-700'>
+				<table className='min-w-full divide-y-2 divide-gray-200 dark:divide-gray-700 text-sm'>
+					<thead className='bg-gray-50 dark:bg-gray-800'>
+						<tr>
+							<th
+								rowSpan={2}
+								className='px-4 py-2 text-left font-medium text-gray-900 dark:text-white align-middle'
+							>
+								Día
+							</th>
+							<th
+								colSpan={2}
+								className='px-4 py-2 text-center font-medium text-gray-900 dark:text-white'
+							>
+								Horario
+							</th>
+						</tr>
+						<tr>
+							<th className='px-4 py-2 text-left font-medium text-gray-900 dark:text-white'>
+								Mañana
+							</th>
+							<th className='px-4 py-2 text-left font-medium text-gray-900 dark:text-white'>
+								Tarde
+							</th>
+						</tr>
+					</thead>
+					<tbody className='divide-y divide-gray-200 dark:divide-gray-700'>
+						<tr>
+							<th className='whitespace-nowrap px-4 py-2 font-medium text-left text-gray-900 dark:text-white'>
+								Lunes
+							</th>
+							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+								Clase A
+							</td>
+							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+								Clase B
+							</td>
+						</tr>
+						<tr>
+							<th className='whitespace-nowrap px-4 py-2 font-medium text-left text-gray-900 dark:text-white'>
+								Martes
+							</th>
+							<td
+								colSpan={2}
+								className='whitespace-nowrap px-4 py-2 text-center text-gray-700 dark:text-gray-300'
+							>
+								Libre
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</section>
 
 		<section>
@@ -199,11 +288,11 @@ const Lecture5Es = () => (
 
   <!-- El contenido principal de la página iría aquí,
      usando etiquetas como <main>, <section>, <article>
-     que veremos más adelante. -->
+     que veremos en la próxima lección. -->
 
   <div class="contenedor-principal">
     <p>Este es el contenido principal de la página.
-       Aquí hay una <span style="color:red;">palabra</span> importante.
+       Aquí hay una <span class="text-red-600">palabra</span> importante.
     </p>
   </div>
 
@@ -241,6 +330,11 @@ const Lecture5Es = () => (
 						<li>
 							Usa <code>&lt;tbody&gt;</code> para las filas que representan las
 							horas y las clases.
+						</li>
+						<li>
+							Asegúrate de que la tabla sea responsiva, envolviéndola en un{" "}
+							<code>div</code> con <code>overflow-x-auto</code> y estilízala con
+							clases de Tailwind.
 						</li>
 						<li>
 							<strong>Reto:</strong> Si tienes una clase que dura dos horas, usa{" "}

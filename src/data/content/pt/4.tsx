@@ -256,7 +256,10 @@ const Lecture4Pt = () => (
 				Um <code>&lt;iframe&gt;</code> (inline frame) permite-nos incorporar um
 				documento HTML completo dentro de outro. É como ter uma "janela" para
 				outro site. É muito útil para inserir conteúdo de terceiros como vídeos
-				do YouTube, mapas do Google Maps ou documentos PDF.
+				do YouTube, mapas do Google Maps ou documentos PDF. Para garantir que
+				ele seja exibido corretamente em todos os dispositivos, em vez de usar
+				atributos de largura e altura fixos, usamos CSS para torná-lo
+				responsivo.
 			</p>
 			<div className='p-4 bg-yellow-50 dark:bg-gray-800 border-l-4 border-yellow-500 rounded-r-lg my-4'>
 				<p className='font-semibold text-yellow-800 dark:text-yellow-300'>
@@ -270,21 +273,52 @@ const Lecture4Pt = () => (
 			</div>
 			<CodeBlock
 				language='html'
-				codeString={`<!-- Vídeo do YouTube -->
-<iframe width="560" height="315"
-  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-  title="Vídeo do YouTube" frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
+				codeString={`<!-- Vídeo do YouTube Responsivo -->
+<div class="aspect-ratio-16-9">
+  <iframe
+    class="w-full h-full"
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    title="Vídeo do YouTube"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
 
-<!-- Mapa do Google Maps -->
-<iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.906155556202!2d-0.1277583844621535!3d51.50735097963595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604ce393081e7%3A0x2863a34a17a78363!2sPal%C3%A1cio%20de%20Westminster!5e0!3m2!1spt-PT!2spt!4v1678886591325!5m2!1spt-PT!2spt"
-  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>`}
+<!-- Mapa do Google Maps Responsivo -->
+<div class="aspect-ratio-4-3">
+  <iframe
+    class="w-full h-full"
+    src="https://www.google.com/maps/embed?pb=..."
+    allowfullscreen="" loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>`}
 			/>
+
+			<h5 className='text-lg font-semibold mt-6 mb-2'>Resultado:</h5>
+			<p className='mb-4'>Vídeo do YouTube:</p>
+			<div className='my-6 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700'>
+				<iframe
+					className='w-full border-0'
+					style={{ aspectRatio: "16/9" }}
+					src='https://www.youtube.com/embed/dQw4w9WgXcQ'
+					title='Vídeo do YouTube'
+					allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+					allowFullScreen
+				></iframe>
+			</div>
+
+			<p className='mb-4'>Mapa do Google Maps:</p>
+			<div className='my-6 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700'>
+				<iframe
+					src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.906155556202!2d-0.1277583844621535!3d51.50735097963595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604ce393081e7%3A0x2863a34a17a78363!2sPal%C3%A1cio%20de%20Westminster!5e0!3m2!1spt-PT!2spt!4v1678886591325!5m2!1spt-PT!2spt'
+					className='w-full border-0'
+					style={{ aspectRatio: "4/3" }}
+					allowFullScreen
+					loading='lazy'
+					referrerPolicy='no-referrer-when-downgrade'
+				></iframe>
+			</div>
 		</section>
 
 		<section>
@@ -341,12 +375,11 @@ const Lecture4Pt = () => (
 					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
 						<li>
 							Crie um <code>&lt;h2&gt;</code> para "Meu Vídeo Musical Favorito"
-							e incorpore um vídeo do YouTube usando um{" "}
-							<code>&lt;iframe&gt;</code>.
+							e incorpore um vídeo do YouTube de forma responsiva.
 						</li>
 						<li>
 							Crie outro <code>&lt;h2&gt;</code> para "Localização do Meu Lugar
-							Favorito" e incorpore um mapa do Google Maps.
+							Favorito" e incorpore um mapa do Google Maps de forma responsiva.
 						</li>
 					</ul>
 				</li>

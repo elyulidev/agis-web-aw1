@@ -1,6 +1,7 @@
 import { courseContent } from "@/data/course-content";
 import { useI18n } from "@/hooks/use-I18n";
 import type { Module } from "@/types";
+import { LibraryIcon } from "lucide-react";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -55,25 +56,6 @@ const CloseIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 	>
 		<line x1='18' y1='6' x2='6' y2='18' />
 		<line x1='6' y1='6' x2='18' y2='18' />
-	</svg>
-);
-
-const DownloadIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-	<svg
-		{...props}
-		xmlns='http://www.w3.org/2000/svg'
-		width='24'
-		height='24'
-		viewBox='0 0 24 24'
-		fill='none'
-		stroke='currentColor'
-		strokeWidth='2'
-		strokeLinecap='round'
-		strokeLinejoin='round'
-	>
-		<path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4' />
-		<polyline points='7 10 12 15 17 10' />
-		<line x1='12' y1='15' x2='12' y2='3' />
 	</svg>
 );
 
@@ -167,12 +149,12 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 				}`}
 			>
 				<div className='flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800'>
-					<div className='flex items-center space-x-3'>
+					<NavLink to='/' className='flex items-center space-x-3'>
 						<BookOpenIcon className='w-8 h-8 text-blue-600 dark:text-blue-400' />
 						<span className='text-xl font-bold text-gray-800 dark:text-white'>
 							{t("courseWeb")}
 						</span>
-					</div>
+					</NavLink>
 					<button
 						onClick={() => setIsOpen(false)}
 						className='lg:hidden text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
@@ -196,14 +178,20 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 				</div>
 
 				<div className='p-4 border-t border-gray-200 dark:border-gray-800'>
-					<a
-						href='/bibliografia.pdf'
-						download
-						className='flex items-center justify-center w-full px-4 py-2 text-sm font-medium rounded-md transition-colors text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-900'
+					<NavLink
+						to='/bibliografia'
+						onClick={handleLinkClick}
+						className={({ isActive }) =>
+							`flex items-center justify-center w-full px-4 py-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-900 ${
+								isActive
+									? "bg-blue-700 dark:bg-blue-600 text-white"
+									: "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
+							}`
+						}
 					>
-						<DownloadIcon className='w-5 h-5 mr-2' />
-						<span>{t("sidebar.downloadBibliography")}</span>
-					</a>
+						<LibraryIcon className='w-5 h-5 mr-2' />
+						<span>{t("sidebar.bibliography")}</span>
+					</NavLink>
 				</div>
 			</aside>
 		</>

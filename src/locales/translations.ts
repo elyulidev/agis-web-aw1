@@ -39,7 +39,11 @@ export const translations = {
 
 		// Sidebar
 		"sidebar.open": "Abrir barra lateral",
-		"sidebar.downloadBibliography": "Descargar Bibliografía",
+		"sidebar.bibliography": "Bibliografía",
+
+		// BibliographyPage
+		"bibliography.title": "Bibliografía del Curso",
+		"bibliography.downloadButton": "Descargar",
 	},
 	pt: {
 		// General
@@ -81,7 +85,11 @@ export const translations = {
 
 		// Sidebar
 		"sidebar.open": "Abrir barra lateral",
-		"sidebar.downloadBibliography": "Baixar Bibliografia",
+		"sidebar.bibliography": "Bibliografia",
+
+		// BibliographyPage
+		"bibliography.title": "Bibliografia do Curso",
+		"bibliography.downloadButton": "Baixar",
 	},
 };
 

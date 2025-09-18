@@ -68,10 +68,6 @@ export default function ThemeToggle() {
 	const menuRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		console.log("theme", theme);
-	}, [theme]);
-
-	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
 				setIsMenuOpen(false);

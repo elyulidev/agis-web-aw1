@@ -1,5 +1,6 @@
 import { useI18n } from "@/hooks/use-I18n";
 import { useTheme } from "@/hooks/use-theme";
+import { CheckIcon, CopyIcon } from "lucide-react";
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
@@ -7,7 +8,7 @@ import {
 	oneDark,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const CopyIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+/* const CopyIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 	<svg
 		{...props}
 		xmlns='http://www.w3.org/2000/svg'
@@ -40,7 +41,7 @@ const CheckIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 	>
 		<path d='M20 6 9 17l-5-5' />
 	</svg>
-);
+); */
 
 interface CodeBlockProps {
 	codeString: string;
