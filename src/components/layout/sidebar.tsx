@@ -1,7 +1,7 @@
 import { courseContent } from "@/data/course-content";
 import { useI18n } from "@/hooks/use-I18n";
 import type { Module } from "@/types";
-import { LibraryIcon } from "lucide-react";
+import { LibraryIcon, NotebookPenIcon } from "lucide-react";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -177,7 +177,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 					</nav>
 				</div>
 
-				<div className='p-4 border-t border-gray-200 dark:border-gray-800'>
+				<div className='flex flex-col gap-2 p-4 border-t border-gray-200 dark:border-gray-800'>
 					<NavLink
 						to='/bibliografia'
 						onClick={handleLinkClick}
@@ -185,12 +185,26 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 							`flex items-center justify-center w-full px-4 py-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-900 ${
 								isActive
 									? "bg-blue-700 dark:bg-blue-600 text-white"
-									: "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
+									: "bg-blue-400 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
 							}`
 						}
 					>
 						<LibraryIcon className='w-5 h-5 mr-2' />
 						<span>{t("sidebar.bibliography")}</span>
+					</NavLink>
+					<NavLink
+						to='/evaluacion'
+						onClick={handleLinkClick}
+						className={({ isActive }) =>
+							`flex items-center justify-center w-full px-4 py-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-900 ${
+								isActive
+									? "bg-blue-700 dark:bg-blue-600 text-white"
+									: "bg-blue-400 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
+							}`
+						}
+					>
+						<NotebookPenIcon className='w-5 h-5 mr-2' />
+						<span>{t("sidebar.evaluation")}</span>
 					</NavLink>
 				</div>
 			</aside>

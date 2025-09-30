@@ -7,6 +7,7 @@ import LanguageToggle from "./components/layout/language-toggle";
 import { useI18n } from "./hooks/use-I18n";
 import Sidebar from "./components/layout/sidebar";
 import BibliographyPage from "./pages/bibliography-page";
+import EvaluationPage from "./pages/evaluation-page";
 
 const MenuIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 	<svg
@@ -55,6 +56,7 @@ export default function App() {
 						<Route path='/' element={<HomePage />} />
 						<Route path='/conferencia/:id' element={<LecturePage />} />
 						<Route path='/bibliografia' element={<BibliographyPage />} />
+						<Route path='/evaluacion' element={<EvaluationPage />} />
 						<Route path='*' element={<Navigate to='/' />} />
 					</Routes>
 				</div>

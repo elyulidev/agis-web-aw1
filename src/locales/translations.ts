@@ -40,10 +40,15 @@ export const translations = {
 		// Sidebar
 		"sidebar.open": "Abrir barra lateral",
 		"sidebar.bibliography": "Bibliografía",
+		"sidebar.evaluation": "Evaluación",
 
 		// BibliographyPage
 		"bibliography.title": "Bibliografía del Curso",
 		"bibliography.downloadButton": "Descargar",
+
+		//Evaluation Page
+		"evaluation.title": "Descarga de Material de Evaluación",
+		"evaluation.downloadButton": "Descargar",
 	},
 	pt: {
 		// General
@@ -86,10 +91,15 @@ export const translations = {
 		// Sidebar
 		"sidebar.open": "Abrir barra lateral",
 		"sidebar.bibliography": "Bibliografia",
+		"sidebar.evaluation": "Avaliação",
 
 		// BibliographyPage
-		"bibliography.title": "Bibliografia do Curso",
+		"bibliography.title": "Bibliografía del Curso",
 		"bibliography.downloadButton": "Baixar",
+
+		//Evaluation Page
+		"evaluation.title": "Baixar material de avaliação",
+		"evaluation.downloadButton": "Baixar",
 	},
 };
 
