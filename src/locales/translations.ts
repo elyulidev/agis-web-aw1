@@ -2,7 +2,7 @@ export const translations = {
 	es: {
 		// General
 		module: "Módulo",
-		courseWeb: "Curso Web",
+		courseWeb: "AWI",
 
 		// ThemeToggle
 		toggleTheme: "Cambiar tema",
@@ -21,7 +21,7 @@ export const translations = {
 		"home.header": "Plataforma Educativa de Vanguardia",
 		"home.title": "Domina el Desarrollo Web Moderno",
 		"home.subtitle":
-			"Bienvenido al curso completo de HTML, CSS y JavaScript. Desde los fundamentos hasta las técnicas avanzadas, esta plataforma te guiará en tu viaje para convertirte en un desarrollador front-end experto.",
+			"Bienvenido a la asihnatura Apliciones Web I. Un tour completo sobre HTML, CSS y JavaScript. Desde los fundamentos hasta las técnicas avanzadas, esta plataforma te guiará en tu viaje para convertirte en un desarrollador front-end experto.",
 		"home.button": "Comenzar a Aprender",
 
 		// LecturePage
@@ -53,7 +53,7 @@ export const translations = {
 	pt: {
 		// General
 		module: "Módulo",
-		courseWeb: "Curso de Web",
+		courseWeb: "AWI",
 
 		// ThemeToggle
 		toggleTheme: "Alternar tema",
@@ -72,7 +72,7 @@ export const translations = {
 		"home.header": "Plataforma Educacional de Vanguarda",
 		"home.title": "Domine o Desenvolvimento Web Moderno",
 		"home.subtitle":
-			"Bem-vindo ao curso completo de HTML, CSS e JavaScript. Dos fundamentos às técnicas avançadas, esta plataforma irá guiá-lo em sua jornada para se tornar um desenvolvedor front-end experiente.",
+			"Bem-vindo á Disciplina Aplicações Web I. Um tour completo sobre HTML, CSS e JavaScript. Dos fundamentos às técnicas avançadas, esta plataforma irá guiá-lo em sua jornada para se tornar um desenvolvedor front-end experiente.",
 		"home.button": "Começar a Aprender",
 
 		// LecturePage
