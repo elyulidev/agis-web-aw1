@@ -8,7 +8,6 @@ import { useI18n } from "./hooks/use-I18n";
 import Sidebar from "./components/layout/sidebar";
 import BibliographyPage from "./pages/bibliography-page";
 import EvaluationPage from "./pages/evaluation-page";
-import AIAssistant from "./components/ai-assistant";
 import { MenuIcon } from "lucide-react";
 
 export default function App() {
@@ -44,7 +43,6 @@ export default function App() {
 					</Routes>
 				</div>
 			</main>
-			<AIAssistant />
 		</div>
 	);
 }

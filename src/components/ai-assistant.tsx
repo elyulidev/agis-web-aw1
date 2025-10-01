@@ -95,7 +95,7 @@ const AIAssistant = () => {
 			</div>
 
 			{isOpen && (
-				<div className='fixed bottom-24 right-6 w-96 h-[32rem] bg-slate-800/80 backdrop-blur-md border border-slate-700 rounded-xl shadow-2xl flex flex-col z-40 animate-fade-in-up'>
+				<div className='fixed bottom-24 right-6 w-[340px] lg:w-96 h-[32rem] bg-slate-800/80 backdrop-blur-md border border-slate-700 rounded-xl shadow-2xl flex flex-col z-40 animate-fade-in-up'>
 					<div className='p-4 border-b border-slate-700'>
 						<h3 className='font-bold text-lg text-sky-400'>{t.title}</h3>
 						<p className='text-sm text-slate-400'>

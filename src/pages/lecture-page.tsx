@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { findLectureById } from "../data/course-content";
 import { useI18n } from "@/hooks/use-I18n";
 import LectureFooter from "@/components/layout/lecture-footer";
+import AIAssistant from "@/components/ai-assistant";
 
 export default function LecturePage() {
 	const { id } = useParams<{ id: string }>();
@@ -66,6 +67,7 @@ export default function LecturePage() {
 					<LectureFooter currentLectureId={lectureId} />
 				</div>
 			)}
+			<AIAssistant />
 		</>
 	);
 }
