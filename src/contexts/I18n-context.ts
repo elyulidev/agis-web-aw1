@@ -8,6 +8,8 @@ export interface I18nProviderState {
 		key: TranslationKey,
 		replacements?: Record<string, string | number>
 	) => string;
+	lectureTitle: string;
+	setLectureTitle: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const I18nContext = createContext<I18nProviderState | undefined>(

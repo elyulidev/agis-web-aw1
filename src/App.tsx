@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./pages/home-page";
 import LecturePage from "./pages/lecture-page";
@@ -8,25 +8,8 @@ import { useI18n } from "./hooks/use-I18n";
 import Sidebar from "./components/layout/sidebar";
 import BibliographyPage from "./pages/bibliography-page";
 import EvaluationPage from "./pages/evaluation-page";
-
-const MenuIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-	<svg
-		{...props}
-		xmlns='http://www.w3.org/2000/svg'
-		width='24'
-		height='24'
-		viewBox='0 0 24'
-		fill='none'
-		stroke='currentColor'
-		strokeWidth='2'
-		strokeLinecap='round'
-		strokeLinejoin='round'
-	>
-		<line x1='4' x2='20' y1='12' y2='12' />
-		<line x1='4' x2='20' y1='6' y2='6' />
-		<line x1='4' x2='20' y1='18' y2='18' />
-	</svg>
-);
+import AIAssistant from "./components/ai-assistant";
+import { MenuIcon } from "lucide-react";
 
 export default function App() {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -61,6 +44,7 @@ export default function App() {
 					</Routes>
 				</div>
 			</main>
+			<AIAssistant />
 		</div>
 	);
 }

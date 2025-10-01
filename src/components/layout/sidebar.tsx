@@ -63,7 +63,7 @@ interface AccordionItemProps {
 	module: Module;
 	isOpen: boolean;
 	onToggle: () => void;
-	onLinkClick: () => void;
+	onLinkClick: (title?: string) => void;
 }
 
 const AccordionItem: React.FC<AccordionItemProps> = ({
@@ -95,7 +95,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 							<li key={lecture.id}>
 								<NavLink
 									to={`/conferencia/${lecture.id}`}
-									onClick={onLinkClick}
+									onClick={() => onLinkClick(lecture.title[language])}
 									className={({ isActive }) =>
 										`block w-full text-left pl-8 pr-4 py-2 text-sm transition-colors duration-150 ${
 											isActive
@@ -122,16 +122,17 @@ interface SidebarProps {
 
 export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 	const [openModule, setOpenModule] = useState<number | null>(1);
-	const { t } = useI18n();
+	const { t, setLectureTitle } = useI18n();
 
 	const handleToggle = (moduleNumber: number) => {
 		setOpenModule(openModule === moduleNumber ? null : moduleNumber);
 	};
 
-	const handleLinkClick = () => {
+	const handleLinkClick = (title?: string) => {
 		if (window.innerWidth < 1024) {
 			setIsOpen(false);
 		}
+		if (title) setLectureTitle(title);
 	};
 
 	return (
@@ -180,7 +181,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 				<div className='flex flex-col gap-2 p-4 border-t border-gray-200 dark:border-gray-800'>
 					<NavLink
 						to='/bibliografia'
-						onClick={handleLinkClick}
+						onClick={() => handleLinkClick()}
 						className={({ isActive }) =>
 							`flex items-center justify-center w-full px-4 py-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-900 ${
 								isActive
@@ -194,7 +195,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 					</NavLink>
 					<NavLink
 						to='/evaluacion'
-						onClick={handleLinkClick}
+						onClick={() => handleLinkClick()}
 						className={({ isActive }) =>
 							`flex items-center justify-center w-full px-4 py-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-900 ${
 								isActive

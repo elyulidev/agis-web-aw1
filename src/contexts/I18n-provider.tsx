@@ -17,6 +17,7 @@ const getInitialLanguage = (): Language => {
 
 export function I18nProvider({ children }: { children: ReactNode }) {
 	const [language, setLanguage] = useState<Language>(getInitialLanguage);
+	const [lectureTitle, setLectureTitle] = useState<string>("");
 
 	useEffect(() => {
 		document.documentElement.lang = language;
@@ -47,6 +48,8 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 		language,
 		setLanguage: handleSetLanguage,
 		t,
+		lectureTitle,
+		setLectureTitle,
 	};
 
 	return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
