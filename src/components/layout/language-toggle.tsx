@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { type Language } from "../../locales/translations";
 import { useI18n } from "@/hooks/use-I18n";
 import { GlobeIcon } from "lucide-react";
