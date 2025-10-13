@@ -1,5 +1,80 @@
 import CodeBlock from "@/components/ui/code-block";
 
+const ArrowRightCircleIcon = () => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		className='h-7 w-7 mr-3 text-blue-500 shrink-0'
+		fill='none'
+		viewBox='0 0 24 24'
+		stroke='currentColor'
+		strokeWidth={2}
+	>
+		<path
+			strokeLinecap='round'
+			strokeLinejoin='round'
+			d='M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z'
+		/>
+	</svg>
+);
+
+const ServerIcon = () => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		className='h-7 w-7 mr-3 text-green-500 shrink-0'
+		fill='none'
+		viewBox='0 0 24 24'
+		stroke='currentColor'
+		strokeWidth={2}
+	>
+		<path
+			strokeLinecap='round'
+			strokeLinejoin='round'
+			d='M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01'
+		/>
+	</svg>
+);
+
+const ArrowLeftCircleIcon = () => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		className='h-7 w-7 mr-3 text-purple-500 shrink-0'
+		fill='none'
+		viewBox='0 0 24 24'
+		stroke='currentColor'
+		strokeWidth={2}
+	>
+		<path
+			strokeLinecap='round'
+			strokeLinejoin='round'
+			d='M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z'
+		/>
+	</svg>
+);
+
+const DesktopComputerIcon = () => (
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		className='h-7 w-7 mr-3 text-yellow-500 shrink-0'
+		fill='none'
+		viewBox='0 0 24 24'
+		stroke='currentColor'
+		strokeWidth={2}
+	>
+		<path
+			strokeLinecap='round'
+			strokeLinejoin='round'
+			d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+		/>
+	</svg>
+);
+
+// FIX: Explicitly typed the children prop to resolve type inference errors.
+const Code = ({ children }: { children: React.ReactNode }) => (
+	<code className='bg-gray-200 dark:bg-gray-700 rounded-md px-1.5 py-1 font-mono text-sm text-pink-600 dark:text-pink-400'>
+		{children}
+	</code>
+);
+
 const Lecture1Es = () => (
 	<div className='space-y-8'>
 		<section>
@@ -234,7 +309,7 @@ const Lecture1Es = () => (
 
 		<section>
 			<h3 className='text-2xl font-semibold mb-3'>
-				6. Servidores Web y funcionamiento de la extensión Live Server
+				6. Servidores Web y la extensión Live Server
 			</h3>
 			<p className='mb-4'>
 				Cuando abres un archivo HTML directamente en tu navegador desde tu disco
@@ -251,137 +326,7 @@ const Lecture1Es = () => (
 				vuelta al navegador como una respuesta HTTP. El navegador entonces
 				renderiza estos archivos para mostrar la página web.
 			</p>
-			<div className='my-6 p-4 border rounded-lg bg-gray-50 dark:bg-gray-800/50'>
-				<h4 className='font-semibold text-center mb-2'>
-					Ciclo de Petición-Respuesta
-				</h4>
-				<svg
-					viewBox='0 0 400 150'
-					className='w-full'
-					aria-labelledby='server-title'
-				>
-					<title id='server-title'>
-						Diagrama del funcionamiento de un servidor web
-					</title>
-					{/* Client */}
-					<rect
-						x='20'
-						y='45'
-						width='100'
-						height='60'
-						rx='5'
-						fill='none'
-						stroke='currentColor'
-						strokeWidth='1.5'
-					/>
-					<text
-						x='70'
-						y='75'
-						textAnchor='middle'
-						fill='currentColor'
-						className='text-sm font-sans'
-					>
-						Navegador
-					</text>
-					<text
-						x='70'
-						y='90'
-						textAnchor='middle'
-						fill='currentColor'
-						className='text-sm font-sans'
-					>
-						(Cliente)
-					</text>
-
-					{/* Server */}
-					<rect
-						x='280'
-						y='45'
-						width='100'
-						height='60'
-						rx='5'
-						fill='none'
-						stroke='currentColor'
-						strokeWidth='1.5'
-					/>
-					<text
-						x='330'
-						y='75'
-						textAnchor='middle'
-						fill='currentColor'
-						className='text-sm font-sans'
-					>
-						Servidor Web
-					</text>
-					<text
-						x='330'
-						y='90'
-						textAnchor='middle'
-						fill='currentColor'
-						className='text-sm font-sans'
-					>
-						(Live Server)
-					</text>
-
-					{/* Request Arrow */}
-					<path
-						d='M125 65 h150'
-						stroke='currentColor'
-						strokeWidth='1.5'
-						markerEnd='url(#arrowhead)'
-					/>
-					<text
-						x='200'
-						y='58'
-						textAnchor='middle'
-						fill='currentColor'
-						className='text-xs font-sans'
-					>
-						1. Petición HTTP (ej: "dame index.html")
-					</text>
-
-					{/* Response Arrow */}
-					<path
-						d='M275 95 h-150'
-						stroke='currentColor'
-						strokeWidth='1.5'
-						markerStart='url(#arrowhead-rev)'
-					/>
-					<text
-						x='200'
-						y='115'
-						textAnchor='middle'
-						fill='currentColor'
-						className='text-xs font-sans'
-					>
-						2. Respuesta (archivos HTML, CSS, JS)
-					</text>
-
-					<defs>
-						<marker
-							id='arrowhead'
-							markerWidth='7'
-							markerHeight='5'
-							refX='7'
-							refY='2.5'
-							orient='auto'
-						>
-							<polygon points='0 0, 7 2.5, 0 5' fill='currentColor' />
-						</marker>
-						<marker
-							id='arrowhead-rev'
-							markerWidth='7'
-							markerHeight='5'
-							refX='0'
-							refY='2.5'
-							orient='auto'
-						>
-							<polygon points='7 0, 0 2.5, 7 5' fill='currentColor' />
-						</marker>
-					</defs>
-				</svg>
-			</div>
-			<p>
+			<p className='mb-4'>
 				La extensión <strong>Live Server</strong> para VS Code crea este
 				servidor de desarrollo local por ti. Cuando la usas, abre tu página en
 				el navegador a través de una dirección local (como{" "}
@@ -389,6 +334,261 @@ const Lecture1Es = () => (
 				archivos y recarga automáticamente el navegador cada vez que guardas un
 				cambio, agilizando enormemente el desarrollo.
 			</p>
+
+			<div className='mt-12 border-t-2 border-blue-500/30 pt-8'>
+				<h4 className='text-3xl font-bold mb-4 text-blue-600 dark:text-blue-400'>
+					Análisis Profundo: El Ciclo Petición-Respuesta HTTP
+				</h4>
+				<p className='mb-8 text-lg text-gray-600 dark:text-gray-400'>
+					Esta visión general desglosa la estructura de una Petición y Respuesta
+					HTTP, ofreciendo una vista detallada de los componentes internos en
+					una configuración de servidor típica.
+				</p>
+
+				<div className='mb-8'>
+					<img
+						src={
+							process.env.NODE_ENV === "production"
+								? "https://1rqzd6uwpqe1a157.public.blob.vercel-storage.com/conf1/cliente-servidor.webp"
+								: "/conf1/cliente-servidor.webp"
+						}
+						alt='Arquitetura Cliente-Servidor'
+						className='h-96 bg-cover bg-no-repeat mx-auto'
+						style={{ aspectRatio: "1/1" }}
+					/>
+				</div>
+
+				<div className='space-y-10'>
+					{/* 1. HTTP Request */}
+					<div className='p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm'>
+						<h5 className='text-2xl font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200'>
+							<ArrowRightCircleIcon /> 1. Petición HTTP (Desde el Cliente)
+						</h5>
+						<p className='mb-4'>
+							Cuando un cliente (navegador, app móvil, etc.) necesita
+							interactuar con un servidor, construye una Petición HTTP. Es un
+							mensaje de texto formateado para pedirle al servidor una acción o
+							un recurso específico.
+						</p>
+						<div className='mt-6 pl-4 border-l-4 border-blue-500 space-y-6'>
+							<div>
+								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
+									Línea de Inicio
+								</h6>
+								<p className='mt-1'>
+									Define la acción fundamental y consta de tres partes:
+								</p>
+								<ul className='mt-3 space-y-3 text-gray-600 dark:text-gray-400'>
+									<li>
+										<strong>Método HTTP:</strong> La acción deseada.
+										<div className='grid grid-cols-2 md:grid-cols-3 gap-2 mt-2 text-center'>
+											<Code>GET</Code>
+											<Code>POST</Code>
+											<Code>PUT</Code>
+											<Code>DELETE</Code>
+											<Code>PATCH</Code>
+											<Code>OPTIONS</Code>
+										</div>
+									</li>
+									<li>
+										<strong>Recurso (URI):</strong> La "dirección" del recurso
+										en el servidor. Ej: <Code>/usuarios/perfil</Code>.
+									</li>
+									<li>
+										<strong>Versión HTTP:</strong> La versión del protocolo. Ej:{" "}
+										<Code>HTTP/1.1</Code>.
+									</li>
+								</ul>
+							</div>
+							<div>
+								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
+									Cabeceras (Headers)
+								</h6>
+								<p className='mt-1'>
+									Pares clave-valor con metadatos sobre la petición. Ejemplos:
+								</p>
+								<ul className='mt-3 space-y-2 text-sm'>
+									<li>
+										<Code>Host: www.ejemplo.com</Code> - Dominio del servidor.
+									</li>
+									<li>
+										<Code>User-Agent: Mozilla/5.0...</Code> - Identifica al
+										cliente.
+									</li>
+									<li>
+										<Code>Accept: text/html</Code> - Tipos de contenido que el
+										cliente entiende.
+									</li>
+									<li>
+										<Code>Authorization: Bearer &lt;token&gt;</Code> -
+										Credenciales de autenticación.
+									</li>
+								</ul>
+							</div>
+							<div>
+								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
+									Cuerpo (Body)
+								</h6>
+								<p className='mt-1'>
+									Contiene los datos enviados al servidor (con <Code>POST</Code>
+									, <Code>PUT</Code>, <Code>PATCH</Code>). Puede ser data de
+									formulario, un objeto JSON, archivos, etc.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					{/* 2. Server Operation */}
+					<div className='p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm'>
+						<h5 className='text-2xl font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200'>
+							<ServerIcon /> 2. Operación Interna del Servidor
+						</h5>
+						<p className='mb-4'>
+							Al recibir la petición, el servidor la procesa a través de varios
+							componentes:
+						</p>
+						<div className='mt-6 pl-4 border-l-4 border-green-500 space-y-6'>
+							<div>
+								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
+									Servidor Web (Nginx, Apache)
+								</h6>
+								<p className='mt-1'>
+									Es el primer punto de contacto. Parsea la petición, sirve
+									archivos estáticos (HTML, CSS, imágenes) directamente, y
+									redirige las peticiones dinámicas al servidor de aplicaciones.
+								</p>
+							</div>
+							<div>
+								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
+									Servidor de Aplicaciones (Node.js, Python, Java)
+								</h6>
+								<p className='mt-1'>
+									Aquí reside la lógica de negocio. Procesa los datos de la
+									petición, interactúa con la base de datos y genera el
+									contenido dinámico de la respuesta (HTML, JSON, etc.).
+								</p>
+							</div>
+							<div>
+								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
+									Base de Datos (PostgreSQL, MongoDB)
+								</h6>
+								<p className='mt-1'>
+									Almacena y gestiona los datos de la aplicación. Ejecuta las
+									consultas enviadas por el servidor de aplicaciones y devuelve
+									los resultados.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					{/* 3. HTTP Response */}
+					<div className='p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm'>
+						<h5 className='text-2xl font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200'>
+							<ArrowLeftCircleIcon /> 3. Respuesta HTTP (Desde el Servidor)
+						</h5>
+						<p className='mb-4'>
+							Una vez procesada la petición, el servidor construye una Respuesta
+							HTTP para enviarla de vuelta al cliente.
+						</p>
+						<div className='mt-6 pl-4 border-l-4 border-purple-500 space-y-6'>
+							<div>
+								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
+									Línea de Inicio
+								</h6>
+								<p className='mt-1'>
+									Indica el resultado de la petición. Consta de:
+								</p>
+								<ul className='mt-3 space-y-3 text-gray-600 dark:text-gray-400'>
+									<li>
+										<strong>Versión HTTP:</strong> Ej: <Code>HTTP/1.1</Code>.
+									</li>
+									<li>
+										<strong>Código de Estado:</strong> Un número de 3 dígitos
+										que indica el resultado.
+										<ul className='text-sm mt-2 space-y-1'>
+											<li>
+												<Code>2xx (Éxito)</Code> - 200 OK, 201 Created.
+											</li>
+											<li>
+												<Code>3xx (Redirección)</Code> - 301 Moved Permanently.
+											</li>
+											<li>
+												<Code>4xx (Error del Cliente)</Code> - 404 Not Found,
+												401 Unauthorized.
+											</li>
+											<li>
+												<Code>5xx (Error del Servidor)</Code> - 500 Internal
+												Server Error.
+											</li>
+										</ul>
+									</li>
+									<li>
+										<strong>Frase de Razón:</strong> Una descripción textual del
+										estado (ej: "Not Found").
+									</li>
+								</ul>
+							</div>
+							<div>
+								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
+									Cabeceras (Headers)
+								</h6>
+								<p className='mt-1'>Metadatos sobre la respuesta. Ejemplos:</p>
+								<ul className='mt-3 space-y-2 text-sm'>
+									<li>
+										<Code>Content-Type: text/html</Code> - Formato del cuerpo de
+										la respuesta.
+									</li>
+									<li>
+										<Code>Content-Length: 1024</Code> - Tamaño del cuerpo en
+										bytes.
+									</li>
+									<li>
+										<Code>Set-Cookie: ...</Code> - Instruye al cliente para que
+										guarde una cookie.
+									</li>
+								</ul>
+							</div>
+							<div>
+								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
+									Cuerpo (Body)
+								</h6>
+								<p className='mt-1'>
+									El contenido real enviado al cliente: un documento HTML, datos
+									JSON, una imagen, etc.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					{/* 4. Client Processing */}
+					<div className='p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm'>
+						<h5 className='text-2xl font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200'>
+							<DesktopComputerIcon /> 4. Procesamiento en el Cliente
+						</h5>
+						<p className='mb-4'>
+							El cliente recibe la respuesta y actúa en consecuencia:
+						</p>
+						<ul className='mt-3 space-y-3 text-gray-600 dark:text-gray-400 list-disc list-inside'>
+							<li>
+								<strong>Verifica el Código de Estado:</strong> Para saber si la
+								petición tuvo éxito, fue redirigida o falló.
+							</li>
+							<li>
+								<strong>Lee las Cabeceras:</strong> Para entender cómo
+								interpretar el cuerpo (`Content-Type`), gestionar cookies
+								(`Set-Cookie`), etc.
+							</li>
+							<li>
+								<strong>Renderiza el Cuerpo:</strong> Si es un navegador
+								recibiendo HTML, lo parsea y renderiza la página, haciendo
+								nuevas peticiones para CSS, JS e imágenes. Si es un cliente de
+								API recibiendo JSON, lo parsea para usar los datos en la
+								aplicación.
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</section>
 
 		<section>
