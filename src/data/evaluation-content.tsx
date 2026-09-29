@@ -17,7 +17,7 @@ export const evaluationContent: EvaluationItem[] = [
 			pt: "Este documento contém o relatório detalhado das avaliações parcial e final do curso em português.",
 		},
 		file: {
-			es: "https://1rqzd6uwpqe1a157.public.blob.vercel-storage.com/Aplicaciones%20Web%20I.pdf",
+			es: "https://1rqzd6uwpqe1a157.public.blob.vercel-storage.com/Aplicaciones%20Web%20I%20-%20PT.pdf",
 			pt: "https://1rqzd6uwpqe1a157.public.blob.vercel-storage.com/Aplicaciones%20Web%20I%20-%20PT.pdf",
 		},
 	},
