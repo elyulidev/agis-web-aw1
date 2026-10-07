@@ -1,10 +1,5 @@
+import { CheckCircle2, Info, Lightbulb, TriangleAlert } from "lucide-react";
 import type { ReactNode } from "react";
-import {
-	CheckCircle2,
-	Info,
-	Lightbulb,
-	TriangleAlert,
-} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type CalloutVariant = "info" | "tip" | "warning" | "success";
@@ -42,11 +37,11 @@ export function Callout({
 				calloutStyles[variant],
 			)}
 		>
-			<p className='flex items-center gap-2 font-semibold'>
-				<Icon className='h-5 w-5 shrink-0' aria-hidden />
+			<p className="flex items-center gap-2 font-semibold">
+				<Icon className="h-5 w-5 shrink-0" aria-hidden />
 				{title}
 			</p>
-			<div className='mt-1 text-sm leading-relaxed opacity-90'>{children}</div>
+			<div className="mt-1 text-sm leading-relaxed opacity-90">{children}</div>
 		</div>
 	);
 }
@@ -63,8 +58,8 @@ export function ConceptCard({
 	iconClassName?: string;
 }) {
 	return (
-		<div className='rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-800/60'>
-			<div className='flex items-center gap-3'>
+		<div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-800/60">
+			<div className="flex items-center gap-3">
 				<span
 					className={cn(
 						"flex h-10 w-10 items-center justify-center rounded-xl",
@@ -74,11 +69,11 @@ export function ConceptCard({
 				>
 					{icon}
 				</span>
-				<h4 className='text-base font-bold text-gray-900 dark:text-white'>
+				<h4 className="text-base font-bold text-gray-900 dark:text-white">
 					{title}
 				</h4>
 			</div>
-			<div className='mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300'>
+			<div className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
 				{children}
 			</div>
 		</div>
@@ -95,13 +90,13 @@ export function Step({
 	children: ReactNode;
 }) {
 	return (
-		<li className='flex gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800/60'>
-			<span className='flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white dark:bg-blue-500'>
+		<li className="flex gap-4 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800/60">
+			<span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white dark:bg-blue-500">
 				{number}
 			</span>
 			<div>
-				<p className='font-semibold text-gray-900 dark:text-white'>{title}</p>
-				<div className='mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300'>
+				<p className="font-semibold text-gray-900 dark:text-white">{title}</p>
+				<div className="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
 					{children}
 				</div>
 			</div>
@@ -119,16 +114,38 @@ export function Figure({
 	caption: string;
 }) {
 	return (
-		<figure className='my-6 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800/60'>
+		<figure className="my-6 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800/60">
 			<img
 				src={src}
 				alt={alt}
-				className='mx-auto max-h-80 w-full max-w-xl object-contain p-4'
-				loading='lazy'
+				className="mx-auto max-h-80 w-full max-w-xl object-contain p-4"
+				loading="lazy"
 			/>
-			<figcaption className='border-t border-gray-100 px-4 py-3 text-center text-xs text-gray-500 dark:border-gray-700 dark:text-gray-400'>
+			<figcaption className="border-t border-gray-100 px-4 py-3 text-center text-xs text-gray-500 dark:border-gray-700 dark:text-gray-400">
 				{caption}
 			</figcaption>
 		</figure>
+	);
+}
+
+export function SectionTitle({
+	index,
+	children,
+}: {
+	index: number;
+	children: ReactNode;
+}) {
+	return (
+		<div className="mb-4 flex items-center gap-3">
+			<span
+				aria-hidden
+				className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-blue-600 text-lg font-extrabold text-white shadow-sm dark:bg-blue-500"
+			>
+				{index}
+			</span>
+			<h3 className="text-balance text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+				{children}
+			</h3>
+		</div>
 	);
 }

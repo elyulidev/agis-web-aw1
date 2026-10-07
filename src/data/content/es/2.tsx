@@ -1,53 +1,101 @@
+import {
+	Braces,
+	Check,
+	FileCode2,
+	Globe,
+	Heading1,
+	Languages,
+	Minus,
+	MonitorSmartphone,
+	Pilcrow,
+	Search,
+	SeparatorHorizontal,
+	Sparkles,
+	Type,
+} from "lucide-react";
+import {
+	Callout,
+	ConceptCard,
+	SectionTitle,
+	Step,
+} from "@/components/lecture/lecture-blocks";
 import CodeBlock from "@/components/ui/code-block";
 
+const Code = ({ children }: { children: React.ReactNode }) => (
+	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
+		{children}
+	</code>
+);
+
+const CheckItem = ({ children }: { children: React.ReactNode }) => (
+	<li className="flex items-start gap-2">
+		<Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500" aria-hidden />
+		<span>{children}</span>
+	</li>
+);
+
 const Lecture2Es = () => (
-	<div className='space-y-8'>
-		<p>
-			Pensemos en la construcción de una casa: HTML es la base y la estructura
-			de esa casa. Define el significado y la estructura del contenido, mientras
-			que CSS, que veremos más adelante, es la decoración. Hoy nos centraremos
-			en construir ese esqueleto sólido y semántico. A lo largo de estas dos
-			horas, cubriremos los elementos esenciales que componen cualquier página
-			web.
-		</p>
+	<div className="space-y-12">
+		<section>
+			<p className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
+				<Sparkles className="h-3.5 w-3.5" aria-hidden />2 horas · Esqueleto
+				sólido y semántico
+			</p>
+			<p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+				Pensemos en la construcción de una casa: HTML es la base y la estructura
+				de esa casa. Define el significado y la estructura del contenido,
+				mientras que CSS, que veremos más adelante, es la decoración. Hoy nos
+				centraremos en construir ese esqueleto sólido y semántico. A lo largo de
+				estas dos horas, cubriremos los elementos esenciales que componen
+				cualquier página web.
+			</p>
+		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				1. Anatomía de un documento HTML: &lt;!DOCTYPE&gt;, &lt;html&gt;,
+			<SectionTitle index={1}>
+				Anatomía de un documento HTML: &lt;!DOCTYPE&gt;, &lt;html&gt;,
 				&lt;head&gt; y &lt;body&gt;
-			</h3>
-			<p className='mb-4'>
+			</SectionTitle>
+			<p className="mb-4">
 				Todo documento HTML sigue una estructura fundamental que debemos
 				respetar. Esta estructura es como el esqueleto de nuestra página y se
 				compone de cuatro partes principales.
 			</p>
-			<ul className='list-disc list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>&lt;!DOCTYPE html&gt;</strong>: Esta es la primera línea que
-					siempre debe aparecer en su archivo. No es una etiqueta HTML, sino una
-					instrucción especial que le dice al navegador que está utilizando una
-					versión moderna de HTML (específicamente HTML5).
-				</li>
-				<li>
-					<strong>&lt;html&gt;</strong>: Esta es la etiqueta raíz que envuelve
-					todo el contenido de la página. Dentro de ella, anidamos dos elementos
-					principales: <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code>.
-				</li>
-				<li>
-					<strong>&lt;head&gt;</strong>: La sección <code>&lt;head&gt;</code> (o
-					cabecera) contiene metadatos, es decir, información sobre el documento
-					que no es visible directamente en la página (como el título, enlaces a
-					CSS, etc.).
-				</li>
-				<li>
-					<strong>&lt;body&gt;</strong>: La sección <code>&lt;body&gt;</code> (o
-					cuerpo) contiene todo el contenido visible de la página web: textos,
-					imágenes, enlaces, etc.
-				</li>
-			</ul>
-			<p className='mb-4'>Un esqueleto básico se vería así:</p>
+			<div className="grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<FileCode2 className="h-5 w-5" aria-hidden />}
+					title="<!DOCTYPE html>"
+					iconClassName="bg-orange-100 text-orange-600 dark:bg-orange-950 dark:text-orange-300"
+				>
+					La primera línea, siempre. No es una etiqueta HTML: es una instrucción
+					que le dice al navegador que usás HTML5 moderno.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Braces className="h-5 w-5" aria-hidden />}
+					title="<html>"
+					iconClassName="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
+				>
+					La etiqueta raíz que envuelve todo. Dentro anidamos{" "}
+					<Code>&lt;head&gt;</Code> y <Code>&lt;body&gt;</Code>.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Globe className="h-5 w-5" aria-hidden />}
+					title="<head>"
+					iconClassName="bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300"
+				>
+					La cabecera: metadatos no visibles (título, enlaces a CSS, etc.).
+				</ConceptCard>
+				<ConceptCard
+					icon={<MonitorSmartphone className="h-5 w-5" aria-hidden />}
+					title="<body>"
+					iconClassName="bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
+				>
+					El cuerpo: todo el contenido visible (textos, imágenes, enlaces).
+				</ConceptCard>
+			</div>
+			<p className="mt-6 mb-2 font-medium">Un esqueleto básico se vería así:</p>
 			<CodeBlock
-				language='html'
+				language="html"
 				codeString={`<!DOCTYPE html>
 <html>
   <head>
@@ -58,59 +106,100 @@ const Lecture2Es = () => (
   </body>
 </html>`}
 			/>
-			<p className='mt-4'>
+			<Callout variant="tip" title="Legibilidad ante todo">
 				Es fundamental mantener una correcta anidación y sangría (indentación)
 				en el código para que sea legible y fácil de mantener.
-			</p>
+			</Callout>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				2. Metaetiquetas Esenciales y el Atributo `lang`
-			</h3>
-			<p className='mb-4'>
-				Dentro de la etiqueta <code>&lt;head&gt;</code>, definimos información
+			<SectionTitle index={2}>
+				Metaetiquetas Esenciales y el Atributo `lang`
+			</SectionTitle>
+			<p className="mb-4">
+				Dentro de la etiqueta <Code>&lt;head&gt;</Code>, definimos información
 				crucial tanto para el navegador como para los motores de búsqueda (como
 				Google). Estas son las metaetiquetas más importantes:
 			</p>
-			<ul className='list-disc list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>&lt;meta charset="utf-8"&gt;</strong>: Declara la codificación
-					de caracteres. Usar UTF-8 es el estándar recomendado, ya que permite
-					representar correctamente casi cualquier carácter de cualquier idioma
-					(como la "ñ" o las tildes).
-				</li>
-				<li>
-					<strong>
-						&lt;meta name="viewport" content="width=device-width,
-						initial-scale=1.0"&gt;
-					</strong>
-					: Clave para el diseño responsivo, le indica al navegador que el ancho
-					de la página debe ajustarse al del dispositivo y establece el zoom
-					inicial al 100%.
-				</li>
-				<li>
-					<strong>&lt;title&gt;</strong>: Define el título del documento que
-					aparece en la pestaña del navegador. Es extremadamente importante para
-					el SEO.
-				</li>
-				<li>
-					<strong>&lt;meta name="description" content="..."&gt;</strong>:
-					Proporciona una descripción breve del contenido de la página, usada
-					por los motores de búsqueda en los resultados.
-				</li>
-				<li>
-					<strong>Atributo `lang`</strong>: Se coloca en la etiqueta{" "}
-					<code>&lt;html&gt;</code> (ej: <code>&lt;html lang="es"&gt;</code>) y
-					especifica el idioma principal del documento, lo cual es crucial para
-					la accesibilidad y el SEO.
-				</li>
-			</ul>
-			<h4 className='text-xl font-semibold mt-6 mb-2'>
+			<div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white shadow-sm dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800/60">
+				<div className="flex gap-3 p-4">
+					<Languages className="h-5 w-5 shrink-0 text-blue-500" aria-hidden />
+					<div className="text-sm">
+						<Code>&lt;meta charset="utf-8"&gt;</Code>
+						<p className="mt-1 text-gray-600 dark:text-gray-300">
+							Declara la codificación. UTF-8 es el estándar: representa casi
+							cualquier carácter de cualquier idioma (la “ñ”, las tildes).
+						</p>
+					</div>
+				</div>
+				<div className="flex gap-3 p-4">
+					<MonitorSmartphone
+						className="h-5 w-5 shrink-0 text-green-500"
+						aria-hidden
+					/>
+					<div className="text-sm">
+						<Code>
+							&lt;meta name="viewport" content="width=device-width,
+							initial-scale=1.0"&gt;
+						</Code>
+						<p className="mt-1 text-gray-600 dark:text-gray-300">
+							Clave para el diseño responsivo: el ancho se ajusta al dispositivo
+							y el zoom inicial queda al 100%.
+						</p>
+					</div>
+				</div>
+				<div className="flex gap-3 p-4">
+					<Type className="h-5 w-5 shrink-0 text-purple-500" aria-hidden />
+					<div className="text-sm">
+						<Code>&lt;title&gt;</Code>
+						<p className="mt-1 text-gray-600 dark:text-gray-300">
+							El título en la pestaña del navegador. Extremadamente importante
+							para el SEO.
+						</p>
+					</div>
+				</div>
+				<div className="flex gap-3 p-4">
+					<Search className="h-5 w-5 shrink-0 text-amber-500" aria-hidden />
+					<div className="text-sm">
+						<Code>&lt;meta name="description" content="..."&gt;</Code>
+						<p className="mt-1 text-gray-600 dark:text-gray-300">
+							Descripción breve que los buscadores muestran en los resultados.
+						</p>
+					</div>
+				</div>
+				<div className="flex gap-3 p-4">
+					<Globe className="h-5 w-5 shrink-0 text-sky-500" aria-hidden />
+					<div className="text-sm">
+						<Code>lang</Code> en <Code>&lt;html lang="es"&gt;</Code>
+						<p className="mt-1 text-gray-600 dark:text-gray-300">
+							Especifica el idioma principal del documento: crucial para
+							accesibilidad y SEO.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div className="mt-6 overflow-hidden rounded-2xl border border-gray-200 shadow-sm dark:border-gray-700">
+				<div className="flex items-end gap-1 bg-gray-100 px-3 pt-2 dark:bg-gray-800">
+					<div className="flex items-center gap-2 rounded-t-lg bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm dark:bg-gray-900 dark:text-gray-200">
+						<span className="flex gap-1" aria-hidden>
+							<span className="h-2 w-2 rounded-full bg-red-400" />
+							<span className="h-2 w-2 rounded-full bg-yellow-400" />
+							<span className="h-2 w-2 rounded-full bg-green-400" />
+						</span>
+						Lección 2: Estructura HTML - Mi Curso Web
+					</div>
+				</div>
+				<p className="bg-white px-4 py-3 text-center text-xs text-gray-500 dark:bg-gray-900 dark:text-gray-400">
+					Así se ve el <Code>&lt;title&gt;</Code> en la pestaña del navegador
+				</p>
+			</div>
+
+			<h4 className="text-xl font-semibold mt-6 mb-2">
 				Ejemplo de una sección &lt;head&gt; completa:
 			</h4>
 			<CodeBlock
-				language='html'
+				language="html"
 				codeString={`<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,72 +210,122 @@ const Lecture2Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				3. Encabezados &lt;h1&gt; a &lt;h6&gt;: Jerarquía y SEO
-			</h3>
-			<p className='mb-4'>
+			<SectionTitle index={3}>
+				Encabezados &lt;h1&gt; a &lt;h6&gt;: Jerarquía y SEO
+			</SectionTitle>
+			<p className="mb-4">
 				Los encabezados se utilizan para estructurar el contenido de forma
-				jerárquica. HTML nos ofrece seis niveles, desde <code>&lt;h1&gt;</code>{" "}
-				(el más importante) hasta <code>&lt;h6&gt;</code> (el menos importante).
+				jerárquica. HTML nos ofrece seis niveles, desde <Code>&lt;h1&gt;</Code>{" "}
+				(el más importante) hasta <Code>&lt;h6&gt;</Code> (el menos importante).
 				Usarlos correctamente crea una estructura lógica que ayuda a los
 				usuarios y a los motores de búsqueda a entender la organización del
 				contenido.
 			</p>
-			<div className='p-4 bg-yellow-50 dark:bg-gray-800 border-l-4 border-yellow-500 rounded-r-lg my-4'>
-				<p className='font-semibold text-yellow-800 dark:text-yellow-300'>
-					Regla de Oro para el SEO:
+			<div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800/60">
+				<p className="mb-3 flex items-center gap-2 text-sm font-semibold text-gray-500 dark:text-gray-400">
+					<Heading1 className="h-4 w-4" aria-hidden />
+					Vista previa · los seis niveles en escala
 				</p>
-				<p className='text-yellow-700 dark:text-gray-300'>
-					Usa una única etiqueta <code>&lt;h1&gt;</code> por página. Los
-					buscadores identifican el <code>&lt;h1&gt;</code> como el título
-					principal del contenido de esa página.
-				</p>
+				<div className="space-y-1 border-l-4 border-blue-500 pl-4">
+					<p className="text-3xl font-extrabold text-gray-900 dark:text-white">
+						Título h1{" "}
+						<span className="text-sm font-normal text-gray-400">
+							· una vez por página
+						</span>
+					</p>
+					<p className="text-2xl font-bold text-gray-900 dark:text-white">
+						Subtítulo h2
+					</p>
+					<p className="text-xl font-bold text-gray-800 dark:text-gray-100">
+						Sección h3
+					</p>
+					<p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+						Subsección h4
+					</p>
+					<p className="text-base font-semibold text-gray-600 dark:text-gray-300">
+						Detalle h5
+					</p>
+					<p className="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+						Nota menor h6
+					</p>
+				</div>
 			</div>
+			<Callout variant="warning" title="Regla de Oro para el SEO:">
+				Usa una única etiqueta <Code>&lt;h1&gt;</Code> por página. Los
+				buscadores identifican el <Code>&lt;h1&gt;</Code> como el título
+				principal del contenido de esa página.
+			</Callout>
 			<CodeBlock
-				language='html'
+				language="html"
 				codeString={`<body>
   <h1>Anatomía de un Documento HTML</h1>
   <p>El documento se divide en dos partes principales...</p>
 
-  <h2>La Cabecera (&lt;head&gt;)</h2>
+  <h2>La Cabecera (<head>)</h2>
   <p>Aquí definimos los metadatos...</p>
 
   <h3>Metaetiquetas Comunes</h3>
   <p>Las metaetiquetas más importantes son...</p>
 
-  <h2>El Cuerpo (&lt;body&gt;)</h2>
+  <h2>El Cuerpo (<body>)</h2>
   <p>Aquí va todo el contenido visible...</p>
 </body>`}
 			/>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				4. Párrafos &lt;p&gt;, Saltos de Línea &lt;br&gt;, y Reglas Horizontales
+			<SectionTitle index={4}>
+				Párrafos &lt;p&gt;, Saltos de Línea &lt;br&gt;, y Reglas Horizontales
 				&lt;hr&gt;
-			</h3>
-			<p className='mb-4'>
+			</SectionTitle>
+			<p className="mb-4">
 				Estos son los elementos básicos para formatear el flujo de texto:
 			</p>
-			<ul className='list-disc list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>&lt;p&gt;</strong>: Define un párrafo de texto. Es un elemento
-					de bloque, lo que significa que ocupa todo el ancho disponible y
-					comienza en una nueva línea.
-				</li>
-				<li>
-					<strong>&lt;br&gt;</strong>: Inserta un salto de línea simple. Es útil
-					cuando necesitas que el texto continúe en la línea siguiente sin crear
-					un nuevo párrafo (por ejemplo, en direcciones o poemas). Es una
-					etiqueta "vacía" (no tiene cierre).
-				</li>
-				<li>
-					<strong>&lt;hr&gt;</strong>: Crea una "regla horizontal" (una línea).
-					Semánticamente, representa una ruptura temática entre secciones.
-				</li>
-			</ul>
+			<div className="grid gap-4 sm:grid-cols-3">
+				<ConceptCard
+					icon={<Pilcrow className="h-5 w-5" aria-hidden />}
+					title="<p> · Párrafo"
+					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+				>
+					Elemento de bloque: ocupa todo el ancho y empieza en una línea nueva.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Minus className="h-5 w-5" aria-hidden />}
+					title="<br> · Salto"
+					iconClassName="bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
+				>
+					Salto simple sin crear párrafo (direcciones, poemas). Etiqueta vacía,
+					sin cierre.
+				</ConceptCard>
+				<ConceptCard
+					icon={<SeparatorHorizontal className="h-5 w-5" aria-hidden />}
+					title="<hr> · Ruptura"
+					iconClassName="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
+				>
+					Regla horizontal: ruptura temática entre secciones.
+				</ConceptCard>
+			</div>
+			<div className="mt-4 rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-5 dark:border-gray-600 dark:bg-gray-800/40">
+				<p className="mb-1 text-xs font-semibold uppercase tracking-wide text-gray-400">
+					Vista previa · así lo renderiza el navegador
+				</p>
+				<p className="text-gray-800 dark:text-gray-200">
+					Este es el primer párrafo. Habla sobre un tema específico.
+				</p>
+				<hr className="my-3 border-gray-300 dark:border-gray-600" />
+				<p className="text-gray-800 dark:text-gray-200">
+					Este es el segundo párrafo, tras la ruptura temática.
+				</p>
+				<p className="mt-3 text-sm text-gray-600 dark:text-gray-300">
+					Ministerio de Educación
+					<br />
+					Calle Falsa 123
+					<br />
+					Ciudad Capital
+				</p>
+			</div>
 			<CodeBlock
-				language='html'
+				language="html"
 				codeString={`<p>Este es el primer párrafo. Habla sobre un tema específico.</p>
 <hr>
 <p>Este es el segundo párrafo, que trata un tema diferente después de la ruptura temática.</p>
@@ -199,22 +338,21 @@ const Lecture2Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				5. Preformateo de texto con &lt;pre&gt;
-			</h3>
-			<p className='mb-4'>
+			<SectionTitle index={5}>
+				Preformateo de texto con &lt;pre&gt;
+			</SectionTitle>
+			<p className="mb-4">
 				A veces, necesitamos que el navegador respete los espacios en blanco,
 				tabulaciones y saltos de línea tal como los escribimos en nuestro
-				código. Para eso, usamos la etiqueta <code>&lt;pre&gt;</code>.
+				código. Para eso, usamos la etiqueta <Code>&lt;pre&gt;</Code>.
 			</p>
-			<p className='mb-4'>
-				El texto dentro de un elemento <code>&lt;pre&gt;</code> se muestra en
-				una fuente de ancho fijo (monoespaciada) y conserva tanto los espacios
-				como los saltos de línea. Es ideal para mostrar fragmentos de código,
+			<Callout variant="info" title="Monoespaciada y literal">
+				El texto dentro de <Code>&lt;pre&gt;</Code> se muestra en fuente de
+				ancho fijo y conserva espacios y saltos de línea. Ideal para código,
 				poesía o arte ASCII.
-			</p>
+			</Callout>
 			<CodeBlock
-				language='html'
+				language="html"
 				codeString={`<pre>
   function saludar(nombre) {
     console.log("Hola, " + nombre);
@@ -233,86 +371,69 @@ const Lecture2Es = () => (
 			/>
 		</section>
 
-		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+		<section className="rounded-3xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-6 dark:border-gray-700 dark:from-gray-800/60 dark:to-gray-900 sm:p-8">
+			<h3 className="text-2xl font-semibold mb-2">
 				📝 Tarea: Estructurando tu Biografía
 			</h3>
-			<p className='mb-4'>
+			<p className="mb-6 text-gray-600 dark:text-gray-300">
 				En esta tarea, aplicarás lo aprendido sobre la estructura de un
 				documento HTML, metadatos y etiquetas de texto para crear una página de
 				biografía simple.
 			</p>
-			<ol className='list-decimal list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>Crea el Archivo:</strong> En la carpeta de tu proyecto, crea
-					un nuevo archivo llamado <code>biografia.html</code>.
-				</li>
-				<li>
-					<strong>Estructura Base:</strong> Usa Emmet (<code>!</code>) para
-					generar la estructura inicial del documento.
-				</li>
-				<li>
-					<strong>
-						Configura la Cabecera (<code>&lt;head&gt;</code>):
-					</strong>
-					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
-						<li>
-							Asegúrate de que la codificación sea <code>UTF-8</code>.
-						</li>
-						<li>
-							Incluye la metaetiqueta <code>viewport</code> para el diseño
-							responsivo.
-						</li>
-						<li>
-							Cambia el <code>&lt;title&gt;</code> a "Mi Biografía - [Tu
-							Nombre]".
-						</li>
-						<li>
-							Añade una <code>&lt;meta name="description"&gt;</code> que
-							describa brevemente la página.
-						</li>
-						<li>
-							No olvides el atributo <code>lang="es"</code> en la etiqueta{" "}
-							<code>&lt;html&gt;</code>.
-						</li>
+			<ol className="space-y-3">
+				<Step number={1} title="Crea el Archivo">
+					En la carpeta de tu proyecto, crea <Code>biografia.html</Code>.
+				</Step>
+				<Step number={2} title="Estructura Base">
+					Usa Emmet (<Code>!</Code>) para generar la estructura inicial.
+				</Step>
+				<Step number={3} title="Configura la Cabecera (<head>)">
+					<ul className="mt-2 space-y-1.5">
+						<CheckItem>
+							Codificación <Code>UTF-8</Code>.
+						</CheckItem>
+						<CheckItem>
+							Metaetiqueta <Code>viewport</Code> para diseño responsivo.
+						</CheckItem>
+						<CheckItem>
+							<Code>&lt;title&gt;</Code> → “Mi Biografía - [Tu Nombre]”.
+						</CheckItem>
+						<CheckItem>
+							<Code>&lt;meta name="description"&gt;</Code> breve.
+						</CheckItem>
+						<CheckItem>
+							<Code>lang="es"</Code> en <Code>&lt;html&gt;</Code>.
+						</CheckItem>
 					</ul>
-				</li>
-				<li>
-					<strong>
-						Construye el Cuerpo (<code>&lt;body&gt;</code>):
-					</strong>
-					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
-						<li>
-							Usa una etiqueta <code>&lt;h1&gt;</code> para tu nombre completo.
-						</li>
-						<li>
-							Crea una sección con un <code>&lt;h2&gt;</code> que diga "Sobre
-							Mí" y escribe uno o dos párrafos (<code>&lt;p&gt;</code>) sobre
-							ti.
-						</li>
-						<li>
-							Añade una regla horizontal (<code>&lt;hr&gt;</code>) para separar
-							visualmente las secciones.
-						</li>
-						<li>
-							Crea otra sección con un <code>&lt;h2&gt;</code> para "Mis
-							Hobbies" y describe tus pasatiempos en un párrafo.
-						</li>
-						<li>
-							Usa la etiqueta <code>&lt;br&gt;</code> para añadir un salto de
-							línea en medio de una dirección o un poema corto si lo deseas.
-						</li>
+				</Step>
+				<Step number={4} title="Construye el Cuerpo (<body>)">
+					<ul className="mt-2 space-y-1.5">
+						<CheckItem>
+							Un <Code>&lt;h1&gt;</Code> con tu nombre completo.
+						</CheckItem>
+						<CheckItem>
+							Sección <Code>&lt;h2&gt;</Code> “Sobre Mí” + uno o dos{" "}
+							<Code>&lt;p&gt;</Code>.
+						</CheckItem>
+						<CheckItem>
+							Un <Code>&lt;hr&gt;</Code> separando secciones.
+						</CheckItem>
+						<CheckItem>
+							Sección <Code>&lt;h2&gt;</Code> “Mis Hobbies” + un párrafo.
+						</CheckItem>
+						<CheckItem>
+							Un <Code>&lt;br&gt;</Code> en una dirección o poema corto.
+						</CheckItem>
 					</ul>
-				</li>
-				<li>
-					<strong>Visualiza tu Trabajo:</strong> Abre{" "}
-					<code>biografia.html</code> con Live Server para ver el resultado.
-				</li>
+				</Step>
+				<Step number={5} title="Visualiza tu Trabajo">
+					Abre <Code>biografia.html</Code> con Live Server.
+				</Step>
 			</ol>
-			<p>
+			<Callout variant="success" title="Cierre">
 				Esta práctica te ayudará a solidificar tu comprensión de la jerarquía de
 				encabezados y la estructura semántica básica de una página web.
-			</p>
+			</Callout>
 		</section>
 	</div>
 );

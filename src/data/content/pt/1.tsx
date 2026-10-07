@@ -17,6 +17,7 @@ import {
 	Callout,
 	ConceptCard,
 	Figure,
+	SectionTitle,
 	Step,
 } from "@/components/lecture/lecture-blocks";
 import CodeBlock from "@/components/ui/code-block";
@@ -44,9 +45,9 @@ const Lecture1Pt = () => (
 				<Sparkles className="h-3.5 w-3.5" aria-hidden />
 				Começamos do zero
 			</p>
-			<h3 className="text-2xl font-semibold mb-3">
-				1. Boas-vindas ao mundo do design e desenvolvimento web
-			</h3>
+			<SectionTitle index={1}>
+				Boas-vindas ao mundo do design e desenvolvimento web
+			</SectionTitle>
 			<p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
 				Olá e bem-vindos a este curso! Dou-lhes as mais cordiais boas-vindas a
 				este maravilhoso mundo do design e desenvolvimento web. Este curso foi
@@ -90,9 +91,9 @@ const Lecture1Pt = () => (
 		</section>
 
 		<section>
-			<h3 className="text-2xl font-semibold mb-3">
-				2. O que é HTML e sua história?
-			</h3>
+			<SectionTitle index={2}>
+				O que é HTML e sua história?
+			</SectionTitle>
 			<div className="grid gap-6 md:grid-cols-[1fr_200px] md:items-start">
 				<div>
 					<p className="mb-4">
@@ -184,9 +185,9 @@ const Lecture1Pt = () => (
 		</section>
 
 		<section>
-			<h3 className="text-2xl font-semibold mb-3">
-				3. Configuração do ambiente de desenvolvimento: Visual Studio Code
-			</h3>
+			<SectionTitle index={3}>
+				Configuração do ambiente de desenvolvimento: Visual Studio Code
+			</SectionTitle>
 			<p className="mb-4">
 				Para começar, precisamos apenas de duas ferramentas de software:
 			</p>
@@ -242,9 +243,9 @@ const Lecture1Pt = () => (
 		</section>
 
 		<section>
-			<h3 className="text-2xl font-semibold mb-3">
-				4. Uso do Emmet para escrita ágil de código
-			</h3>
+			<SectionTitle index={4}>
+				Uso do Emmet para escrita ágil de código
+			</SectionTitle>
 			<p className="mb-4">
 				O Visual Studio Code integra uma ferramenta extremamente útil chamada
 				Emmet, que nos permite escrever código HTML e CSS de maneira muito
@@ -275,9 +276,9 @@ const Lecture1Pt = () => (
 		</section>
 
 		<section>
-			<h3 className="text-2xl font-semibold mb-3">
-				5. Organização do código: indentação e o plugin Prettier
-			</h3>
+			<SectionTitle index={5}>
+				Organização do código: indentação e o plugin Prettier
+			</SectionTitle>
 			<div className="grid gap-4 sm:grid-cols-2">
 				<ConceptCard
 					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
@@ -311,9 +312,9 @@ const Lecture1Pt = () => (
 		</section>
 
 		<section>
-			<h3 className="text-2xl font-semibold mb-3">
-				6. Servidores Web e funcionamento da extensão Live Server
-			</h3>
+			<SectionTitle index={6}>
+				Servidores Web e funcionamento da extensão Live Server
+			</SectionTitle>
 			<div className="grid gap-4 sm:grid-cols-2">
 				<div className="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
 					<p className="flex items-center gap-2 font-semibold text-gray-700 dark:text-gray-200">
@@ -537,9 +538,9 @@ const Lecture1Pt = () => (
 		</section>
 
 		<section>
-			<h3 className="text-2xl font-semibold mb-3">
-				7. Conceitos básicos: separação de formato e conteúdo
-			</h3>
+			<SectionTitle index={7}>
+				Conceitos básicos: separação de formato e conteúdo
+			</SectionTitle>
 			<p className="mb-4">
 				O princípio fundamental do desenvolvimento web moderno é a separação de
 				responsabilidades (ou "separation of concerns" em inglês): o conteúdo e
