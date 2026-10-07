@@ -1,170 +1,176 @@
+import {
+	ArrowLeftRight,
+	Brush,
+	Code2,
+	Download,
+	FileWarning,
+	Globe,
+	History,
+	LayoutTemplate,
+	Monitor,
+	Server,
+	Sparkles,
+	Wrench,
+	Zap,
+} from "lucide-react";
+import {
+	Callout,
+	ConceptCard,
+	Figure,
+	Step,
+} from "@/components/lecture/lecture-blocks";
 import CodeBlock from "@/components/ui/code-block";
 
-const ArrowRightCircleIcon = () => (
-	<svg
-		xmlns='http://www.w3.org/2000/svg'
-		className='h-7 w-7 mr-3 text-blue-500 shrink-0'
-		fill='none'
-		viewBox='0 0 24 24'
-		stroke='currentColor'
-		strokeWidth={2}
-	>
-		<path
-			strokeLinecap='round'
-			strokeLinejoin='round'
-			d='M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z'
-		/>
-	</svg>
-);
-
-const ServerIcon = () => (
-	<svg
-		xmlns='http://www.w3.org/2000/svg'
-		className='h-7 w-7 mr-3 text-green-500 shrink-0'
-		fill='none'
-		viewBox='0 0 24 24'
-		stroke='currentColor'
-		strokeWidth={2}
-	>
-		<path
-			strokeLinecap='round'
-			strokeLinejoin='round'
-			d='M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01'
-		/>
-	</svg>
-);
-
-const ArrowLeftCircleIcon = () => (
-	<svg
-		xmlns='http://www.w3.org/2000/svg'
-		className='h-7 w-7 mr-3 text-purple-500 shrink-0'
-		fill='none'
-		viewBox='0 0 24 24'
-		stroke='currentColor'
-		strokeWidth={2}
-	>
-		<path
-			strokeLinecap='round'
-			strokeLinejoin='round'
-			d='M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z'
-		/>
-	</svg>
-);
-
-const DesktopComputerIcon = () => (
-	<svg
-		xmlns='http://www.w3.org/2000/svg'
-		className='h-7 w-7 mr-3 text-yellow-500 shrink-0'
-		fill='none'
-		viewBox='0 0 24 24'
-		stroke='currentColor'
-		strokeWidth={2}
-	>
-		<path
-			strokeLinecap='round'
-			strokeLinejoin='round'
-			d='M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
-		/>
-	</svg>
-);
-
-// FIX: Explicitly typed the children prop to resolve type inference errors.
 const Code = ({ children }: { children: React.ReactNode }) => (
-	<code className='bg-gray-200 dark:bg-gray-700 rounded-md px-1.5 py-1 font-mono text-sm text-pink-600 dark:text-pink-400'>
+	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
 		{children}
 	</code>
 );
 
+const clientServerImg =
+	typeof globalThis !== "undefined" &&
+	(
+		globalThis as {
+			process?: { env?: { NODE_ENV?: string } };
+		}
+	).process?.env?.NODE_ENV === "production"
+		? "https://1rqzd6uwpqe1a157.public.blob.vercel-storage.com/conf1/cliente-servidor.webp"
+		: "/conf1/cliente-servidor.webp";
+
 const Lecture1Es = () => (
-	<div className='space-y-8'>
+	<div className="space-y-12">
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<p className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
+				<Sparkles className="h-3.5 w-3.5" aria-hidden />
+				Empezamos desde cero
+			</p>
+			<h3 className="text-2xl font-semibold mb-3">
 				1. Bienvenida al mundo del diseño y desarrollo web
 			</h3>
-			<p className='mb-4'>
+			<p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
 				¡Hola y bienvenidos a este curso! Les doy la más cordial bienvenida a
 				este maravilloso mundo del diseño y el desarrollo web. Este curso está
 				diseñado para empezar desde cero, así que no se preocupen si nunca han
 				tenido contacto con la programación o el código.
 			</p>
-			<p className='mb-4'>
-				Para entender la base de lo que haremos, pensemos en la construcción de
-				una casa. <strong>HTML (HyperText Markup Language)</strong> es la base y
-				la estructura de esa casa. Define el significado y la estructura del
-				contenido web, como los párrafos, las imágenes y los enlaces. Por otro
-				lado, <strong>CSS (Cascading Style Sheets)</strong> es la decoración: la
-				pintura, las alfombras, el papel tapiz. Es el lenguaje de estilos que
-				usamos para describir la presentación de los documentos, haciendo que se
-				vean bien. Finalmente, <strong>JavaScript</strong> es el lenguaje de
-				programación que añade dinamismo e interactividad, como cambiar de un
-				tema claro a uno oscuro.
-			</p>
-			<p>
+
+			<div className="grid gap-4 md:grid-cols-3">
+				<ConceptCard
+					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
+					title="HTML · Estructura"
+					iconClassName="bg-orange-100 text-orange-600 dark:bg-orange-950 dark:text-orange-300"
+				>
+					<strong>HTML (HyperText Markup Language)</strong> es la base y la
+					estructura de la casa. Define párrafos, imágenes y enlaces.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Brush className="h-5 w-5" aria-hidden />}
+					title="CSS · Decoración"
+					iconClassName="bg-blue-100 text-blue-600 dark:bg-blue-950 dark:text-blue-300"
+				>
+					<strong>CSS (Cascading Style Sheets)</strong> es la pintura, las
+					alfombras y el papel tapiz. Describe la presentación para que todo se
+					vea bien.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Zap className="h-5 w-5" aria-hidden />}
+					title="JavaScript · Interactividad"
+					iconClassName="bg-yellow-100 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300"
+				>
+					<strong>JavaScript</strong> añade dinamismo e interactividad, como
+					cambiar de un tema claro a uno oscuro.
+				</ConceptCard>
+			</div>
+
+			<Callout variant="info" title="Solo necesitas el navegador y un editor">
 				En conjunto, HTML, CSS y JavaScript son las tecnologías fundamentales
 				que cualquier navegador web entiende de forma nativa, por lo que no
 				necesitan instalar nada más que las herramientas que veremos a
 				continuación.
-			</p>
+			</Callout>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<h3 className="text-2xl font-semibold mb-3">
 				2. ¿Qué es HTML y su historia?
 			</h3>
-			<div className='float-right ml-6 mb-4 w-24 h-24'>
-				<svg
-					xmlns='http://www.w3.org/2000/svg'
-					viewBox='0 0 512 512'
-					aria-label='Logo de HTML5'
-				>
-					<path fill='#E34F26' d='M71 460L30 0h451l-41 460-195 52z'></path>
-					<path fill='#EF652A' d='M256 472l159-44L454 41H256z'></path>
-					<path
-						fill='#EBEBEB'
-						d='M256 208h-75l-5-58h80V94H94l13 150h149v-58zm0 184l-84-23-6-60h-56l11 127 135 37v-57z'
-					></path>
-					<path
-						fill='#FFF'
-						d='M256 208v58h70l-7 74-84 23v57l135-37 14-159h-56l-6 60H256zm86-114l-5 56h80l4-42h-79z'
-					></path>
-				</svg>
+			<div className="grid gap-6 md:grid-cols-[1fr_200px] md:items-start">
+				<div>
+					<p className="mb-4">
+						HTML significa Lenguaje de Marcas de Hipertexto (HyperText Markup
+						Language).
+					</p>
+					<div className="grid gap-4 sm:grid-cols-2">
+						<ConceptCard
+							icon={<ArrowLeftRight className="h-5 w-5" aria-hidden />}
+							title="Hipertexto"
+							iconClassName="bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+						>
+							Los enlaces que conectan las páginas web entre sí, permitiéndonos
+							navegar por la red.
+						</ConceptCard>
+						<ConceptCard
+							icon={<Code2 className="h-5 w-5" aria-hidden />}
+							title="Marcado"
+							iconClassName="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
+						>
+							Usamos “marcas” o “etiquetas” (
+							<span className="italic">tags</span>) para decirle al navegador
+							“esto es un encabezado” o “esto es un párrafo”. HTML no es
+							programación: define el contenido.
+						</ConceptCard>
+					</div>
+				</div>
+				<figure className="mx-auto w-40 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800/60">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 512 512"
+						aria-label="Logo de HTML5"
+						className="h-auto w-full"
+					>
+						<path fill="#E34F26" d="M71 460L30 0h451l-41 460-195 52z"></path>
+						<path fill="#EF652A" d="M256 472l159-44L454 41H256z"></path>
+						<path
+							fill="#EBEBEB"
+							d="M256 208h-75l-5-58h80V94H94l13 150h149v-58zm0 184l-84-23-6-60h-56l11 127 135 37v-57z"
+						></path>
+						<path
+							fill="#FFF"
+							d="M256 208v58h70l-7 74-84 23v57l135-37 14-159h-56l-6 60H256zm86-114l-5 56h80l4-42h-79z"
+						></path>
+					</svg>
+					<figcaption className="mt-2 text-center text-xs text-gray-500 dark:text-gray-400">
+						HTML5 · lenguaje de marcado
+					</figcaption>
+				</figure>
 			</div>
-			<p className='mb-4'>
-				HTML significa Lenguaje de Marcas de Hipertexto (HyperText Markup
-				Language).
-			</p>
-			<ul className='list-disc list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>Hipertexto</strong> se refiere a los enlaces que conectan las
-					páginas web entre sí, permitiéndonos navegar por la red.
-				</li>
-				<li>
-					<strong>Marcado</strong> se refiere a que usamos "marcas" o
-					"etiquetas" (en inglés, <span className='italic'>tags</span>) para
-					estructurar el contenido. Por ejemplo, le decimos al navegador "esto
-					es un encabezado" o "esto es un párrafo". Es importante destacar que
-					HTML no es un lenguaje de programación, sino un lenguaje de marcado
-					que define el contenido.
-				</li>
-			</ul>
-			<p className='mb-4'>
-				La historia de la web está ligada a HTML. Las hojas de estilo como CSS
-				se desarrollaron para proveer estilos a la web, ya que HTML comenzó a
-				incluir demasiadas capacidades de diseño, volviéndose más complejo. La
-				separación del contenido (HTML) y la presentación (CSS) se convirtió en
-				una necesidad. CSS fue propuesto por primera vez por Håkon Wium Lie el
-				10 de octubre de 1994, mientras trabajaba en el CERN con Tim
-				Berners-Lee, el creador de la web.
-			</p>
-			<p className='mb-4'>
-				La especificación de HTML es mantenida por el World Wide Web Consortium
-				(W3C), el organismo que se encarga de definir los estándares de la web.
-			</p>
-			<h4 className='text-xl font-semibold mt-6 mb-2'>
+
+			<div className="mt-4 grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<History className="h-5 w-5" aria-hidden />}
+					title="1994 · Nace CSS"
+					iconClassName="bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300"
+				>
+					HTML empezó a cargar con demasiado diseño. La separación contenido
+					(HTML) / presentación (CSS) se volvió una necesidad. CSS fue propuesto
+					por Håkon Wium Lie el 10 de octubre de 1994 en el CERN junto a Tim
+					Berners-Lee.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Globe className="h-5 w-5" aria-hidden />}
+					title="W3C · Estándares"
+					iconClassName="bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300"
+				>
+					La especificación de HTML es mantenida por el World Wide Web
+					Consortium (W3C), el organismo que define los estándares de la web.
+				</ConceptCard>
+			</div>
+
+			<h4 className="text-xl font-semibold mt-6 mb-2">
 				Ejemplo de código HTML:
 			</h4>
 			<CodeBlock
-				language='html'
+				language="html"
 				codeString={`<!DOCTYPE html>
 <html>
 <head>
@@ -179,88 +185,81 @@ const Lecture1Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<h3 className="text-2xl font-semibold mb-3">
 				3. Configuración del entorno de desarrollo: Visual Studio Code
 			</h3>
-			<p className='mb-4'>
+			<p className="mb-4">
 				Para empezar, solo necesitamos dos herramientas de software:
 			</p>
-			<ol className='list-decimal list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>Un navegador web:</strong> Recomiendo usar Google Chrome o
-					Mozilla Firefox, ya que ambos incluyen excelentes herramientas para
-					desarrolladores que nos serán muy útiles.
-				</li>
-				<li>
-					<strong>Un editor de código:</strong> Este es el programa donde
-					escribiremos nuestro código. Aunque hay muchas opciones como Sublime
-					Text o Atom, la herramienta que usaremos en este curso es Visual
-					Studio Code (VS Code). Es gratuito, desarrollado por Microsoft y está
-					disponible para Windows, Mac y Linux.
-				</li>
-			</ol>
-			<a
-				href='https://code.visualstudio.com/download'
-				target='_blank'
-				rel='noopener noreferrer'
-				className='inline-flex items-center justify-center px-6 py-3 my-4 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
-			>
-				Descargar Visual Studio Code
-				<svg
-					xmlns='http://www.w3.org/2000/svg'
-					className='h-5 w-5 ml-2'
-					fill='none'
-					viewBox='0 0 24 24'
-					stroke='currentColor'
+			<div className="grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<Globe className="h-5 w-5" aria-hidden />}
+					title="1 · Un navegador web"
+					iconClassName="bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
 				>
-					<path
-						strokeLinecap='round'
-						strokeLinejoin='round'
-						strokeWidth='2'
-						d='M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4'
-					/>
-				</svg>
-			</a>
-			<p className='my-4'>
+					Recomiendo Google Chrome o Mozilla Firefox: ambos incluyen excelentes
+					herramientas para desarrolladores que nos serán muy útiles.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Code2 className="h-5 w-5" aria-hidden />}
+					title="2 · Un editor de código"
+					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+				>
+					Aquí escribiremos nuestro código. Usaremos Visual Studio Code (VS
+					Code): gratuito, de Microsoft, disponible para Windows, Mac y Linux.
+				</ConceptCard>
+			</div>
+
+			<div className="mt-4 rounded-2xl border border-gray-200 bg-white p-5 text-center shadow-sm dark:border-gray-700 dark:bg-gray-800/60">
+				<a
+					href="https://code.visualstudio.com/download"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+				>
+					Descargar Visual Studio Code
+					<Download className="h-5 w-5 ml-2" aria-hidden />
+				</a>
+				<p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+					Gratis · Windows, Mac y Linux
+				</p>
+			</div>
+
+			<p className="my-4">
 				Para organizar nuestro proyecto, es fundamental crear una carpeta en
 				nuestra computadora donde guardaremos todos los archivos. Una vez
 				creada, la abriremos en VS Code.
 			</p>
-			<div className='p-4 bg-blue-50 dark:bg-gray-800 border-l-4 border-blue-500 rounded-r-lg my-4'>
-				<p className='font-semibold text-blue-800 dark:text-blue-300'>
-					Práctica recomendada:
-				</p>
-				<p className='text-blue-700 dark:text-gray-300'>
-					Siempre abran la carpeta completa del proyecto en VS Code, no archivos
-					individuales. Esto ayuda a mantener todo organizado y a que el editor
-					entienda la estructura de nuestro proyecto.
-				</p>
-			</div>
-			<p className='mt-4'>
+			<Callout variant="info" title="Práctica recomendada:">
+				Siempre abran la carpeta completa del proyecto en VS Code, no archivos
+				individuales. Esto ayuda a mantener todo organizado y a que el editor
+				entienda la estructura de nuestro proyecto.
+			</Callout>
+			<p className="mt-4">
 				Dentro de VS Code, crearemos nuestro primer archivo, al que llamaremos{" "}
-				<code>index.html</code>. Este es el nombre estándar para la página
+				<Code>index.html</Code>. Este es el nombre estándar para la página
 				principal de un sitio web.
 			</p>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<h3 className="text-2xl font-semibold mb-3">
 				4. Uso de Emmet para escritura ágil de código
 			</h3>
-			<p className='mb-4'>
+			<p className="mb-4">
 				Visual Studio Code integra una herramienta extremadamente útil llamada
 				Emmet, que nos permite escribir código HTML y CSS de manera muy rápida
 				usando atajos. Por ejemplo, para crear la estructura básica de un
 				documento HTML, en lugar de escribir todo manualmente, simplemente
-				escribimos un signo de exclamación (<code>!</code>) y presionamos la
+				escribimos un signo de exclamación (<Code>!</Code>) y presionamos la
 				tecla Enter o Tab.
 			</p>
-			<p>
-				Inmediatamente, Emmet generará todo el esqueleto necesario para empezar
-				a trabajar:
-			</p>
+			<Callout variant="tip" title="Probalo en 2 segundos">
+				Creá un archivo <Code>index.html</Code> vacío, escribí <Code>!</Code> y
+				apretá <Code>Enter</Code>. Emmet genera todo el esqueleto por vos.
+			</Callout>
 			<CodeBlock
-				language='html'
+				language="html"
 				codeString={`<!-- Si escribes "!" y presionas Enter... -->
 <!DOCTYPE html>
 <html lang="en">
@@ -277,27 +276,33 @@ const Lecture1Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<h3 className="text-2xl font-semibold mb-3">
 				5. Organización del código: sangría y el plugin Prettier
 			</h3>
-			<p className='mb-4'>
-				Un código bien organizado es más fácil de leer y mantener. La sangría (o
-				indentación) es crucial para visualizar la jerarquía y anidación de los
-				elementos HTML. La convención más común es usar dos espacios para cada
-				nivel de anidación.
-			</p>
-			<p className='mb-4'>
-				Para mantener nuestro código formateado de manera consistente y
-				automática, recomiendo instalar la extensión <strong>Prettier</strong>{" "}
-				en VS Code. Este plugin formatea automáticamente el código cada vez que
-				guardamos el archivo.
-			</p>
-			<p>
+			<div className="grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
+					title="Sangría = jerarquía"
+				>
+					Un código bien organizado es más fácil de leer y mantener. La sangría
+					(o indentación) muestra la anidación. La convención más común: dos
+					espacios por nivel.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Sparkles className="h-5 w-5" aria-hidden />}
+					title="Prettier lo hace por vos"
+					iconClassName="bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-300"
+				>
+					Instalá la extensión <strong>Prettier</strong> en VS Code. Formatea
+					automáticamente el código cada vez que guardás el archivo.
+				</ConceptCard>
+			</div>
+			<p className="mt-4">
 				Puedes configurar Prettier para que se ejecute al guardar con esta
-				configuración en el archivo <code>settings.json</code> de VS Code:
+				configuración en el archivo <Code>settings.json</Code> de VS Code:
 			</p>
 			<CodeBlock
-				language='json'
+				language="json"
 				codeString={`{
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -308,282 +313,226 @@ const Lecture1Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<h3 className="text-2xl font-semibold mb-3">
 				6. Servidores Web y la extensión Live Server
 			</h3>
-			<p className='mb-4'>
-				Cuando abres un archivo HTML directamente en tu navegador desde tu disco
-				duro (usando una URL <code>file:///...</code>), el navegador lo trata
-				como un archivo local aislado. Esto no simula cómo funcionará un sitio
-				web real en internet, donde los archivos son "servidos" por un servidor
-				web.
-			</p>
-			<p className='mb-4'>
-				Un <strong>servidor web</strong> es un software que espera peticiones de
-				los navegadores (clientes). Cuando un usuario quiere ver una página, su
-				navegador envía una petición HTTP al servidor. El servidor encuentra los
-				archivos solicitados (HTML, CSS, JavaScript, imágenes) y los envía de
-				vuelta al navegador como una respuesta HTTP. El navegador entonces
-				renderiza estos archivos para mostrar la página web.
-			</p>
-			<p className='mb-4'>
-				La extensión <strong>Live Server</strong> para VS Code crea este
-				servidor de desarrollo local por ti. Cuando la usas, abre tu página en
-				el navegador a través de una dirección local (como{" "}
-				<code>http://127.0.0.1:5500</code>). Lo más importante es que vigila tus
-				archivos y recarga automáticamente el navegador cada vez que guardas un
-				cambio, agilizando enormemente el desarrollo.
-			</p>
+			<div className="grid gap-4 sm:grid-cols-2">
+				<div className="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/60">
+					<p className="flex items-center gap-2 font-semibold text-gray-700 dark:text-gray-200">
+						<FileWarning className="h-5 w-5 text-gray-400" aria-hidden />
+						Abrir con <Code>file:///...</Code>
+					</p>
+					<p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+						Cuando abres un archivo HTML directamente desde tu disco, el
+						navegador lo trata como un archivo local aislado. No simula un sitio
+						real en internet.
+					</p>
+				</div>
+				<div className="rounded-2xl border border-green-200 bg-green-50 p-4 dark:border-green-900 dark:bg-green-950/30">
+					<p className="flex items-center gap-2 font-semibold text-green-800 dark:text-green-200">
+						<Server className="h-5 w-5" aria-hidden />
+						Servir con <Code>http://127.0.0.1:5500</Code>
+					</p>
+					<p className="mt-2 text-sm text-green-900/80 dark:text-green-100/80">
+						Un <strong>servidor web</strong> espera peticiones del navegador,
+						encuentra los archivos y los devuelve como respuesta HTTP para
+						renderizar la página.
+					</p>
+				</div>
+			</div>
 
-			<div className='mt-12 border-t-2 border-blue-500/30 pt-8'>
-				<h4 className='text-3xl font-bold mb-4 text-blue-600 dark:text-blue-400'>
+			<Callout variant="success" title="Live Server te ahorra horas">
+				La extensión <strong>Live Server</strong> crea ese servidor local por
+				ti, abre tu página en una dirección local y recarga automáticamente el
+				navegador cada vez que guardás un cambio.
+			</Callout>
+
+			<div className="mt-10 border-t-2 border-blue-500/30 pt-8">
+				<h4 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400">
 					Análisis Profundo: El Ciclo Petición-Respuesta HTTP
 				</h4>
-				<p className='mb-8 text-lg text-gray-600 dark:text-gray-400'>
+				<p className="mb-6 text-gray-600 dark:text-gray-400">
 					Esta visión general desglosa la estructura de una Petición y Respuesta
 					HTTP, ofreciendo una vista detallada de los componentes internos en
 					una configuración de servidor típica.
 				</p>
 
-				<div className='mb-8'>
-					<img
-						src={
-							process.env.NODE_ENV === "production"
-								? "https://1rqzd6uwpqe1a157.public.blob.vercel-storage.com/conf1/cliente-servidor.webp"
-								: "/conf1/cliente-servidor.webp"
-						}
-						alt='Arquitetura Cliente-Servidor'
-						className='h-96 bg-cover bg-no-repeat mx-auto'
-						style={{ aspectRatio: "1/1" }}
-					/>
+				<Figure
+					src={clientServerImg}
+					alt="Arquitectura Cliente-Servidor"
+					caption="Figura 1 · El navegador (cliente) pide y el servidor responde. Todo viaje web sigue este ciclo."
+				/>
+
+				<div className="mb-6 grid gap-3 sm:grid-cols-4">
+					<div className="flex items-center gap-2 rounded-xl bg-blue-50 p-3 text-sm font-medium text-blue-800 dark:bg-blue-950/40 dark:text-blue-200">
+						<Monitor className="h-4 w-4 shrink-0" aria-hidden /> 1 · Cliente
+						pide
+					</div>
+					<div className="flex items-center gap-2 rounded-xl bg-green-50 p-3 text-sm font-medium text-green-800 dark:bg-green-950/40 dark:text-green-200">
+						<Server className="h-4 w-4 shrink-0" aria-hidden /> 2 · Servidor
+						procesa
+					</div>
+					<div className="flex items-center gap-2 rounded-xl bg-purple-50 p-3 text-sm font-medium text-purple-800 dark:bg-purple-950/40 dark:text-purple-200">
+						<Wrench className="h-4 w-4 shrink-0" aria-hidden /> 3 · Servidor
+						responde
+					</div>
+					<div className="flex items-center gap-2 rounded-xl bg-yellow-50 p-3 text-sm font-medium text-yellow-800 dark:bg-yellow-950/40 dark:text-yellow-200">
+						<Zap className="h-4 w-4 shrink-0" aria-hidden /> 4 · Cliente
+						renderiza
+					</div>
 				</div>
 
-				<div className='space-y-10'>
-					{/* 1. HTTP Request */}
-					<div className='p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm'>
-						<h5 className='text-2xl font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200'>
-							<ArrowRightCircleIcon /> 1. Petición HTTP (Desde el Cliente)
+				<div className="space-y-8">
+					<div className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
+						<h5 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
+							1. Petición HTTP (Desde el Cliente)
 						</h5>
-						<p className='mb-4'>
+						<p className="mb-4 text-sm leading-relaxed">
 							Cuando un cliente (navegador, app móvil, etc.) necesita
-							interactuar con un servidor, construye una Petición HTTP. Es un
-							mensaje de texto formateado para pedirle al servidor una acción o
-							un recurso específico.
+							interactuar con un servidor, construye una Petición HTTP: un
+							mensaje de texto formateado para pedir una acción o un recurso.
 						</p>
-						<div className='mt-6 pl-4 border-l-4 border-blue-500 space-y-6'>
-							<div>
-								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
-									Línea de Inicio
-								</h6>
-								<p className='mt-1'>
-									Define la acción fundamental y consta de tres partes:
+						<div className="grid gap-4 md:grid-cols-3">
+							<div className="rounded-xl border-l-4 border-blue-500 bg-white p-4 dark:bg-gray-900">
+								<h6 className="font-bold">Línea de inicio</h6>
+								<p className="mt-1 text-sm">Método + recurso + versión.</p>
+								<div className="mt-2 flex flex-wrap gap-1.5">
+									{["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"].map(
+										(m) => (
+											<Code key={m}>{m}</Code>
+										),
+									)}
+								</div>
+								<p className="mt-2 text-xs text-gray-500">
+									Ej: <Code>/usuarios/perfil</Code> · <Code>HTTP/1.1</Code>
 								</p>
-								<ul className='mt-3 space-y-3 text-gray-600 dark:text-gray-400'>
+							</div>
+							<div className="rounded-xl border-l-4 border-blue-500 bg-white p-4 dark:bg-gray-900">
+								<h6 className="font-bold">Cabeceras</h6>
+								<p className="mt-1 text-sm">Metadatos clave-valor.</p>
+								<ul className="mt-2 space-y-1.5 text-xs">
 									<li>
-										<strong>Método HTTP:</strong> La acción deseada.
-										<div className='grid grid-cols-2 md:grid-cols-3 gap-2 mt-2 text-center'>
-											<Code>GET</Code>
-											<Code>POST</Code>
-											<Code>PUT</Code>
-											<Code>DELETE</Code>
-											<Code>PATCH</Code>
-											<Code>OPTIONS</Code>
-										</div>
+										<Code>Host: www.ejemplo.com</Code>
 									</li>
 									<li>
-										<strong>Recurso (URI):</strong> La "dirección" del recurso
-										en el servidor. Ej: <Code>/usuarios/perfil</Code>.
+										<Code>User-Agent: Mozilla/5.0...</Code>
 									</li>
 									<li>
-										<strong>Versión HTTP:</strong> La versión del protocolo. Ej:{" "}
-										<Code>HTTP/1.1</Code>.
+										<Code>Accept: text/html</Code>
+									</li>
+									<li>
+										<Code>Authorization: Bearer &lt;token&gt;</Code>
 									</li>
 								</ul>
 							</div>
-							<div>
-								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
-									Cabeceras (Headers)
-								</h6>
-								<p className='mt-1'>
-									Pares clave-valor con metadatos sobre la petición. Ejemplos:
-								</p>
-								<ul className='mt-3 space-y-2 text-sm'>
-									<li>
-										<Code>Host: www.ejemplo.com</Code> - Dominio del servidor.
-									</li>
-									<li>
-										<Code>User-Agent: Mozilla/5.0...</Code> - Identifica al
-										cliente.
-									</li>
-									<li>
-										<Code>Accept: text/html</Code> - Tipos de contenido que el
-										cliente entiende.
-									</li>
-									<li>
-										<Code>Authorization: Bearer &lt;token&gt;</Code> -
-										Credenciales de autenticación.
-									</li>
-								</ul>
-							</div>
-							<div>
-								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
-									Cuerpo (Body)
-								</h6>
-								<p className='mt-1'>
-									Contiene los datos enviados al servidor (con <Code>POST</Code>
-									, <Code>PUT</Code>, <Code>PATCH</Code>). Puede ser data de
-									formulario, un objeto JSON, archivos, etc.
+							<div className="rounded-xl border-l-4 border-blue-500 bg-white p-4 dark:bg-gray-900">
+								<h6 className="font-bold">Cuerpo</h6>
+								<p className="mt-1 text-sm">
+									Datos con <Code>POST</Code>, <Code>PUT</Code>,{" "}
+									<Code>PATCH</Code>: formularios, JSON, archivos.
 								</p>
 							</div>
 						</div>
 					</div>
 
-					{/* 2. Server Operation */}
-					<div className='p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm'>
-						<h5 className='text-2xl font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200'>
-							<ServerIcon /> 2. Operación Interna del Servidor
+					<div className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
+						<h5 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
+							2. Operación Interna del Servidor
 						</h5>
-						<p className='mb-4'>
-							Al recibir la petición, el servidor la procesa a través de varios
-							componentes:
-						</p>
-						<div className='mt-6 pl-4 border-l-4 border-green-500 space-y-6'>
-							<div>
-								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
-									Servidor Web (Nginx, Apache)
-								</h6>
-								<p className='mt-1'>
-									Es el primer punto de contacto. Parsea la petición, sirve
-									archivos estáticos (HTML, CSS, imágenes) directamente, y
-									redirige las peticiones dinámicas al servidor de aplicaciones.
+						<div className="grid gap-4 md:grid-cols-3">
+							<div className="rounded-xl border-l-4 border-green-500 bg-white p-4 dark:bg-gray-900">
+								<h6 className="font-bold">Servidor Web</h6>
+								<p className="mt-1 text-sm">
+									Nginx, Apache. Es el primer punto de contacto. Analiza la
+									petición, sirve los archivos estáticos (HTML, CSS, imágenes)
+									directamente, y redirige las solicitudes dinámicas al servidor
+									de aplicaciones.
 								</p>
 							</div>
-							<div>
-								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
-									Servidor de Aplicaciones (Node.js, Python, Java)
-								</h6>
-								<p className='mt-1'>
-									Aquí reside la lógica de negocio. Procesa los datos de la
-									petición, interactúa con la base de datos y genera el
-									contenido dinámico de la respuesta (HTML, JSON, etc.).
+							<div className="rounded-xl border-l-4 border-green-500 bg-white p-4 dark:bg-gray-900">
+								<h6 className="font-bold">Servidor de Aplicaciones</h6>
+								<p className="mt-1 text-sm">
+									Node.js, Python, Java. Aquí reside la lógica de negocio.
+									Procesa los datos de la solicitud, interactúa con la base de
+									datos y genera el contenido dinámico de la respuesta (HTML,
+									JSON, etc.).
 								</p>
 							</div>
-							<div>
-								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
-									Base de Datos (PostgreSQL, MongoDB)
-								</h6>
-								<p className='mt-1'>
-									Almacena y gestiona los datos de la aplicación. Ejecuta las
-									consultas enviadas por el servidor de aplicaciones y devuelve
-									los resultados.
+							<div className="rounded-xl border-l-4 border-green-500 bg-white p-4 dark:bg-gray-900">
+								<h6 className="font-bold">Base de Datos</h6>
+								<p className="mt-1 text-sm">
+									PostgreSQL, MongoDB. Almacena y gestiona los datos de la
+									aplicación. Ejecuta las consultas enviadas por el servidor de
+									aplicaciones y devuelve los resultados.
 								</p>
 							</div>
 						</div>
 					</div>
 
-					{/* 3. HTTP Response */}
-					<div className='p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm'>
-						<h5 className='text-2xl font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200'>
-							<ArrowLeftCircleIcon /> 3. Respuesta HTTP (Desde el Servidor)
+					<div className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
+						<h5 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
+							3. Respuesta HTTP (Desde el Servidor)
 						</h5>
-						<p className='mb-4'>
-							Una vez procesada la petición, el servidor construye una Respuesta
-							HTTP para enviarla de vuelta al cliente.
-						</p>
-						<div className='mt-6 pl-4 border-l-4 border-purple-500 space-y-6'>
-							<div>
-								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
-									Línea de Inicio
-								</h6>
-								<p className='mt-1'>
-									Indica el resultado de la petición. Consta de:
-								</p>
-								<ul className='mt-3 space-y-3 text-gray-600 dark:text-gray-400'>
+						<div className="grid gap-4 md:grid-cols-3">
+							<div className="rounded-xl border-l-4 border-purple-500 bg-white p-4 dark:bg-gray-900">
+								<h6 className="font-bold">Línea de inicio</h6>
+								<ul className="mt-2 space-y-1.5 text-xs">
 									<li>
-										<strong>Versión HTTP:</strong> Ej: <Code>HTTP/1.1</Code>.
+										<Code>HTTP/1.1</Code>
 									</li>
 									<li>
-										<strong>Código de Estado:</strong> Un número de 3 dígitos
-										que indica el resultado.
-										<ul className='text-sm mt-2 space-y-1'>
-											<li>
-												<Code>2xx (Éxito)</Code> - 200 OK, 201 Created.
-											</li>
-											<li>
-												<Code>3xx (Redirección)</Code> - 301 Moved Permanently.
-											</li>
-											<li>
-												<Code>4xx (Error del Cliente)</Code> - 404 Not Found,
-												401 Unauthorized.
-											</li>
-											<li>
-												<Code>5xx (Error del Servidor)</Code> - 500 Internal
-												Server Error.
-											</li>
-										</ul>
+										<Code>2xx Éxito</Code> — 200 OK, 201 Created
 									</li>
 									<li>
-										<strong>Frase de Razón:</strong> Una descripción textual del
-										estado (ej: "Not Found").
+										<Code>3xx Redirección</Code> — 301 Moved Permanently
+									</li>
+									<li>
+										<Code>4xx Error cliente</Code> — 404, 401
+									</li>
+									<li>
+										<Code>5xx Error servidor</Code> — 500 Internal Error
 									</li>
 								</ul>
 							</div>
-							<div>
-								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
-									Cabeceras (Headers)
-								</h6>
-								<p className='mt-1'>Metadatos sobre la respuesta. Ejemplos:</p>
-								<ul className='mt-3 space-y-2 text-sm'>
+							<div className="rounded-xl border-l-4 border-purple-500 bg-white p-4 dark:bg-gray-900">
+								<h6 className="font-bold">Cabeceras</h6>
+								<ul className="mt-2 space-y-1.5 text-xs">
 									<li>
-										<Code>Content-Type: text/html</Code> - Formato del cuerpo de
-										la respuesta.
+										<Code>Content-Type: text/html</Code>
 									</li>
 									<li>
-										<Code>Content-Length: 1024</Code> - Tamaño del cuerpo en
-										bytes.
+										<Code>Content-Length: 1024</Code>
 									</li>
 									<li>
-										<Code>Set-Cookie: ...</Code> - Instruye al cliente para que
-										guarde una cookie.
+										<Code>Set-Cookie: ...</Code>
 									</li>
 								</ul>
 							</div>
-							<div>
-								<h6 className='font-bold text-lg text-gray-700 dark:text-gray-300'>
-									Cuerpo (Body)
-								</h6>
-								<p className='mt-1'>
-									El contenido real enviado al cliente: un documento HTML, datos
-									JSON, una imagen, etc.
+							<div className="rounded-xl border-l-4 border-purple-500 bg-white p-4 dark:bg-gray-900">
+								<h6 className="font-bold">Cuerpo</h6>
+								<p className="mt-1 text-sm">
+									HTML, JSON, imagen, etc. El contenido real para el cliente.
 								</p>
 							</div>
 						</div>
 					</div>
 
-					{/* 4. Client Processing */}
-					<div className='p-6 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm'>
-						<h5 className='text-2xl font-semibold mb-4 flex items-center text-gray-800 dark:text-gray-200'>
-							<DesktopComputerIcon /> 4. Procesamiento en el Cliente
+					<div className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
+						<h5 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
+							4. Procesamiento en el Cliente
 						</h5>
-						<p className='mb-4'>
-							El cliente recibe la respuesta y actúa en consecuencia:
-						</p>
-						<ul className='mt-3 space-y-3 text-gray-600 dark:text-gray-400 list-disc list-inside'>
-							<li>
-								<strong>Verifica el Código de Estado:</strong> Para saber si la
-								petición tuvo éxito, fue redirigida o falló.
+						<ul className="grid gap-3 text-sm md:grid-cols-3">
+							<li className="rounded-xl bg-white p-3 dark:bg-gray-900">
+								<strong>Verifica el estado:</strong> ¿éxito, redirección o
+								fallo?
 							</li>
-							<li>
-								<strong>Lee las Cabeceras:</strong> Para entender cómo
-								interpretar el cuerpo (`Content-Type`), gestionar cookies
-								(`Set-Cookie`), etc.
+							<li className="rounded-xl bg-white p-3 dark:bg-gray-900">
+								<strong>Lee cabeceras:</strong> cómo interpretar el cuerpo y
+								cookies.
 							</li>
-							<li>
-								<strong>Renderiza el Cuerpo:</strong> Si es un navegador
-								recibiendo HTML, lo parsea y renderiza la página, haciendo
-								nuevas peticiones para CSS, JS e imágenes. Si es un cliente de
-								API recibiendo JSON, lo parsea para usar los datos en la
-								aplicación.
+							<li className="rounded-xl bg-white p-3 dark:bg-gray-900">
+								<strong>Renderiza:</strong> HTML → página (+ CSS/JS); JSON →
+								datos de la app.
 							</li>
 						</ul>
 					</div>
@@ -592,112 +541,101 @@ const Lecture1Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<h3 className="text-2xl font-semibold mb-3">
 				7. Conceptos básicos: separación de formato y contenido
 			</h3>
-			<p className='mb-4'>
+			<p className="mb-4">
 				El principio fundamental del desarrollo web moderno es la separación de
-				responsabilidades (o "separation of concerns" en inglés). Esto significa
-				que el contenido y la estructura de un documento deben estar separados
-				de su presentación visual.
+				responsabilidades (o "separation of concerns" en inglés): el contenido y
+				la estructura deben estar separados de su presentación visual.
 			</p>
-			<ul className='list-disc list-inside space-y-2 pl-4'>
-				<li>
-					<strong>HTML</strong> se encarga exclusivamente del contenido y la
-					estructura semántica (<code>index.html</code>).
-				</li>
-				<li>
-					<strong>CSS</strong> se encarga de la presentación, el formato y el
-					diseño visual (<code>style.css</code>).
-				</li>
-				<li>
-					<strong>JavaScript</strong> se encarga de la interactividad y el
-					comportamiento dinámico (<code>script.js</code>).
-				</li>
-			</ul>
-			<p className='mt-4 mb-4'>
-				Esta separación mejora la accesibilidad, ofrece mayor flexibilidad y
-				control sobre el diseño, y simplifica el mantenimiento del proyecto. Una
-				representación visual de esta estructura de archivos sería:
-			</p>
-			<div className='bg-gray-100 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 font-mono text-sm max-w-sm'>
-				<div className='flex items-center'>
-					<span role='img' aria-label='Folder icon'>
+			<div className="grid gap-4 sm:grid-cols-3">
+				<div className="rounded-2xl border-t-4 border-orange-500 bg-white p-4 shadow-sm dark:bg-gray-800/60 dark:border-orange-400">
+					<p className="font-bold">HTML</p>
+					<p className="text-sm text-gray-600 dark:text-gray-300">
+						Contenido y estructura semántica (<Code>index.html</Code>).
+					</p>
+				</div>
+				<div className="rounded-2xl border-t-4 border-blue-500 bg-white p-4 shadow-sm dark:bg-gray-800/60 dark:border-blue-400">
+					<p className="font-bold">CSS</p>
+					<p className="text-sm text-gray-600 dark:text-gray-300">
+						Presentación y diseño visual (<Code>style.css</Code>).
+					</p>
+				</div>
+				<div className="rounded-2xl border-t-4 border-yellow-500 bg-white p-4 shadow-sm dark:bg-gray-800/60 dark:border-yellow-400">
+					<p className="font-bold">JavaScript</p>
+					<p className="text-sm text-gray-600 dark:text-gray-300">
+						Interactividad dinámica (<Code>script.js</Code>).
+					</p>
+				</div>
+			</div>
+			<div className="mt-4 bg-gray-100 dark:bg-gray-800 p-4 rounded-2xl border border-gray-200 dark:border-gray-700 font-mono text-sm max-w-sm">
+				<div className="flex items-center">
+					<span role="img" aria-label="Folder icon">
 						📁
 					</span>{" "}
-					<span className='ml-2 font-bold'>mi-proyecto/</span>
+					<span className="ml-2 font-bold">mi-proyecto/</span>
 				</div>
-				<div className='pl-6 border-l-2 border-gray-300 dark:border-gray-600 ml-2'>
-					<div className='flex items-center mt-2'>
-						<span className='text-orange-500'>📄</span>{" "}
-						<span className='ml-2'>index.html</span>
+				<div className="pl-6 border-l-2 border-gray-300 dark:border-gray-600 ml-2">
+					<div className="flex items-center mt-2">
+						<span className="text-orange-500">📄</span>{" "}
+						<span className="ml-2">index.html</span>
 					</div>
-					<div className='flex items-center mt-2'>
-						<span className='text-blue-500'>🎨</span>{" "}
-						<span className='ml-2'>style.css</span>
+					<div className="flex items-center mt-2">
+						<span className="text-blue-500">🎨</span>{" "}
+						<span className="ml-2">style.css</span>
 					</div>
-					<div className='flex items-center mt-2'>
-						<span className='text-yellow-500'>📜</span>{" "}
-						<span className='ml-2'>script.js</span>
+					<div className="flex items-center mt-2">
+						<span className="text-yellow-500">📜</span>{" "}
+						<span className="ml-2">script.js</span>
 					</div>
 				</div>
 			</div>
-			<p className='mt-4'>
-				Gracias a esto, un mismo documento HTML puede tener diferentes
-				apariencias para distintos medios, como una pantalla, una versión para
-				imprimir o un lector de pantalla para personas con discapacidad visual.
-			</p>
+			<Callout variant="success" title="Un HTML, muchas apariencias">
+				Gracias a esto, un mismo documento HTML puede verse distinto en
+				pantalla, en impresión o en un lector de pantalla para personas con
+				discapacidad visual.
+			</Callout>
 		</section>
 
-		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+		<section className="rounded-3xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-6 dark:border-gray-700 dark:from-gray-800/60 dark:to-gray-900 sm:p-8">
+			<h3 className="text-2xl font-semibold mb-2">
 				📝 Tarea: Tu Primera Página Web
 			</h3>
-			<p className='mb-4'>
-				Ahora que tienes las herramientas, ¡es hora de construir! El objetivo de
-				esta tarea es familiarizarte con el entorno de desarrollo y crear tu
-				primera página HTML.
+			<p className="mb-6 text-gray-600 dark:text-gray-300">
+				Ahora que tienes las herramientas, ¡es hora de construir! El objetivo es
+				familiarizarte con el entorno y crear tu primera página HTML.
 			</p>
-			<ol className='list-decimal list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>Instala las Herramientas:</strong> Asegúrate de tener Visual
-					Studio Code instalado en tu computadora.
-				</li>
-				<li>
-					<strong>Instala las Extensiones:</strong> Dentro de VS Code, ve al
-					panel de extensiones (el icono de los cuadrados en la barra lateral) y
-					busca e instala "Live Server" y "Prettier - Code formatter".
-				</li>
-				<li>
-					<strong>Crea tu Proyecto:</strong> Crea una nueva carpeta en tu
-					escritorio llamada <code>mi-primera-web</code> y ábrela con VS Code.
-				</li>
-				<li>
-					<strong>Crea el Archivo:</strong> Dentro de VS Code, crea un nuevo
-					archivo llamado <code>index.html</code>.
-				</li>
-				<li>
-					<strong>Escribe el Código:</strong> En el archivo{" "}
-					<code>index.html</code>, escribe <code>!</code> y presiona Enter para
-					generar la estructura HTML básica con Emmet.
-				</li>
-				<li>
-					<strong>Añade Contenido:</strong> Dentro de la etiqueta{" "}
-					<code>&lt;body&gt;</code>, añade un encabezado <code>&lt;h1&gt;</code>{" "}
-					que diga "¡Hola, Mundo!" y un párrafo <code>&lt;p&gt;</code> con una
-					breve presentación tuya.
-				</li>
-				<li>
-					<strong>Lánzalo al Mundo (Local):</strong> Haz clic derecho en el
-					archivo <code>index.html</code> y selecciona "Open with Live Server".
-					Tu navegador se abrirá mostrando tu primera página web.
-				</li>
+			<ol className="space-y-3">
+				<Step number={1} title="Instala las Herramientas">
+					Asegúrate de tener Visual Studio Code instalado en tu computadora.
+				</Step>
+				<Step number={2} title="Instala las Extensiones">
+					En el panel de extensiones buscá e instalá "Live Server" y "Prettier -
+					Code formatter".
+				</Step>
+				<Step number={3} title="Crea tu Proyecto">
+					Crea una carpeta <Code>mi-primera-web</Code> en tu escritorio y abrila
+					con VS Code.
+				</Step>
+				<Step number={4} title="Crea el Archivo">
+					Crea <Code>index.html</Code> dentro de VS Code.
+				</Step>
+				<Step number={5} title="Escribe el Código">
+					Escribí <Code>!</Code> y apretá Enter para generar la base con Emmet.
+				</Step>
+				<Step number={6} title="Añade Contenido">
+					Dentro de <Code>&lt;body&gt;</Code> añadí un <Code>&lt;h1&gt;</Code>{" "}
+					“Hola, Mundo!” y un <Code>&lt;p&gt;</Code> con tu presentación.
+				</Step>
+				<Step number={7} title="Lánzalo al Mundo (Local)">
+					Clic derecho en <Code>index.html</Code> → "Open with Live Server".
+				</Step>
 			</ol>
-			<p>
-				¡Felicidades! Acabas de crear y servir tu primera página web.
-				Experimenta cambiando el texto y guardando los cambios para ver cómo
-				Live Server actualiza el navegador al instante.
-			</p>
+			<Callout variant="success" title="¡Felicidades!">
+				Acabas de crear y servir tu primera página web. Cambiá el texto, guardá
+				y mirá cómo Live Server actualiza el navegador al instante.
+			</Callout>
 		</section>
 	</div>
 );
