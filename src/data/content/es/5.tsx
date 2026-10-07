@@ -1,9 +1,53 @@
+import {
+	Ban,
+	Check,
+	LayoutTemplate,
+	Menu,
+	MoveHorizontal,
+	MoveVertical,
+	Sparkles,
+	Table,
+} from "lucide-react";
+import {
+	Callout,
+	ConceptCard,
+	SectionTitle,
+	Step,
+} from "@/components/lecture/lecture-blocks";
 import CodeBlock from "@/components/ui/code-block";
 
+const Code = ({ children }: { children: React.ReactNode }) => (
+	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
+		{children}
+	</code>
+);
+
+const CheckItem = ({ children }: { children: React.ReactNode }) => (
+	<li className="flex items-start gap-2">
+		<Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500" aria-hidden />
+		<span>{children}</span>
+	</li>
+);
+
+const Subhead = ({ children }: { children: React.ReactNode }) => (
+	<p className="mt-8 mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+		<span className="h-2 w-2 rounded-full bg-blue-500" aria-hidden />
+		<span>{children}</span>
+	</p>
+);
+
+const tableCell = "whitespace-nowrap px-4 py-2";
+const tableHead =
+	"px-4 py-2 text-left font-medium text-gray-900 dark:text-white";
+
 const Lecture5Es = () => (
-	<div className='space-y-8'>
+	<div className="space-y-12">
 		<section>
-			<p>
+			<p className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
+				<Sparkles className="h-3.5 w-3.5" aria-hidden />
+				Tablas y semántica estructural
+			</p>
+			<p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
 				¡Bienvenidos a la quinta conferencia! Hoy vamos a estructurar dos tipos
 				de contenido. Primero, aprenderemos a manejar datos tabulares de una
 				manera semántica y accesible usando tablas. Luego, daremos un gran paso
@@ -14,36 +58,54 @@ const Lecture5Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				1. Tablas (&lt;table&gt;): Estructura y Semántica
-			</h3>
-			<p className='mb-4'>
-				Las tablas se utilizan{" "}
-				<strong>exclusivamente para presentar datos tabulares</strong>, como
-				hojas de cálculo, estadísticas o calendarios. En el pasado, se usaban
-				incorrectamente para la maquetación de páginas, una práctica que hoy
-				está obsoleta y se resuelve con CSS. Para que una tabla sea responsiva
-				en pantallas pequeñas, la envolvemos en un contenedor que permita el
-				desplazamiento horizontal.
-			</p>
+			<SectionTitle index={1}>
+				Tablas (&lt;table&gt;): Estructura y Semántica
+			</SectionTitle>
+			<Callout variant="warning" title="Solo datos tabulares">
+				Las tablas se usan <strong>exclusivamente para datos tabulares</strong>{" "}
+				(hojas de cálculo, estadísticas, calendarios). Maquetar páginas con
+				tablas es una práctica obsoleta: eso se resuelve con CSS.
+			</Callout>
 
-			<h4 className='text-xl font-semibold mt-6 mb-2'>
-				Estructura Semántica y Estilizada de una Tabla
-			</h4>
-			<p className='mb-4'>
-				Para tablas complejas y semánticamente correctas, usamos agrupadores de
-				filas que mejoran la organización y la accesibilidad:{" "}
-				<code>&lt;thead&gt;</code> para el encabezado,{" "}
-				<code>&lt;tbody&gt;</code> para el cuerpo principal y{" "}
-				<code>&lt;tfoot&gt;</code> para el pie de tabla. En lugar de usar el
-				atributo obsoleto <code>border="1"</code> o estilos en línea, aplicamos
-				clases de CSS (en este caso, de Tailwind) para el diseño, lo que las
-				hace adaptables y fáciles de mantener.
+			<Subhead>Estructura Semántica: thead, tbody y tfoot</Subhead>
+			<p className="mb-4">
+				Para tablas correctas usamos agrupadores de filas que mejoran la
+				organización y la accesibilidad. Y en lugar del obsoleto{" "}
+				<Code>border="1"</Code> o estilos en línea, aplicamos clases de CSS
+				(aquí Tailwind): adaptables y fáciles de mantener.
 			</p>
+			<div className="grid gap-4 sm:grid-cols-3">
+				<ConceptCard
+					icon={<Table className="h-5 w-5" aria-hidden />}
+					title="<thead>"
+					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+				>
+					El encabezado: la fila de títulos de cada columna.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Table className="h-5 w-5" aria-hidden />}
+					title="<tbody>"
+					iconClassName="bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
+				>
+					El cuerpo principal con los datos.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Table className="h-5 w-5" aria-hidden />}
+					title="<tfoot>"
+					iconClassName="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
+				>
+					El pie: totales o resúmenes de la tabla.
+				</ConceptCard>
+			</div>
+			<div className="mt-4">
+				<Callout variant="tip" title="Responsiva en móvil">
+					Envolvé la tabla en un contenedor con <Code>overflow-x-auto</Code>{" "}
+					para permitir desplazamiento horizontal en pantallas pequeñas.
+				</Callout>
+			</div>
 			<CodeBlock
-				language='html'
-				codeString={`
-<div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+				language="html"
+				codeString={`<div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
   <table class="min-w-full divide-y-2 divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900 text-sm">
     <thead class="text-left">
       <tr>
@@ -72,58 +134,61 @@ const Lecture5Es = () => (
       </tr>
     </tfoot>
   </table>
-</div>
-`}
+</div>`}
 			/>
-			<h5 className='text-lg font-semibold mt-6 mb-2'>Resultado:</h5>
-			<div className='overflow-x-auto my-6 rounded-lg border border-gray-200 dark:border-gray-700'>
-				<table className='min-w-full divide-y-2 divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900 text-sm'>
-					<thead className='text-left'>
+			<p className="mt-6 mb-2 font-medium">
+				Resultado · tabla real renderizada:
+			</p>
+			<div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700">
+				<table className="min-w-full divide-y-2 divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900 text-sm">
+					<thead className="text-left">
 						<tr>
-							<th className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
-								Producto
-							</th>
-							<th className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
-								Cantidad
-							</th>
-							<th className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
+							<th className={`${tableHead} whitespace-nowrap`}>Producto</th>
+							<th className={`${tableHead} whitespace-nowrap`}>Cantidad</th>
+							<th className={`${tableHead} whitespace-nowrap`}>
 								Precio Unitario
 							</th>
 						</tr>
 					</thead>
-					<tbody className='divide-y divide-gray-200 dark:divide-gray-700'>
+					<tbody className="divide-y divide-gray-200 dark:divide-gray-700">
 						<tr>
-							<td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
+							<td
+								className={`${tableCell} font-medium text-gray-900 dark:text-white`}
+							>
 								Manzanas
 							</td>
-							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+							<td className={`${tableCell} text-gray-700 dark:text-gray-300`}>
 								10
 							</td>
-							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+							<td className={`${tableCell} text-gray-700 dark:text-gray-300`}>
 								$0.50
 							</td>
 						</tr>
 						<tr>
-							<td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
+							<td
+								className={`${tableCell} font-medium text-gray-900 dark:text-white`}
+							>
 								Naranjas
 							</td>
-							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+							<td className={`${tableCell} text-gray-700 dark:text-gray-300`}>
 								15
 							</td>
-							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+							<td className={`${tableCell} text-gray-700 dark:text-gray-300`}>
 								$0.40
 							</td>
 						</tr>
 					</tbody>
-					<tfoot className='bg-gray-50 dark:bg-gray-800'>
+					<tfoot className="bg-gray-50 dark:bg-gray-800">
 						<tr>
-							<td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white'>
+							<td
+								className={`${tableCell} font-medium text-gray-900 dark:text-white`}
+							>
 								Total
 							</td>
-							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+							<td className={`${tableCell} text-gray-700 dark:text-gray-300`}>
 								25
 							</td>
-							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+							<td className={`${tableCell} text-gray-700 dark:text-gray-300`}>
 								$13.50
 							</td>
 						</tr>
@@ -133,25 +198,33 @@ const Lecture5Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				2. Combinación de Celdas: colspan y rowspan
-			</h3>
-			<p className='mb-4'>
+			<SectionTitle index={2}>
+				Combinación de Celdas: colspan y rowspan
+			</SectionTitle>
+			<p className="mb-4">
 				A veces, una celda necesita ocupar el espacio de varias columnas o
-				filas. Para esto usamos dos atributos clave:
+				filas. Dos atributos clave:
 			</p>
-			<ul className='list-disc list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>colspan:</strong> Permite que una celda se extienda
-					horizontalmente a lo largo de múltiples <strong>columnas</strong>.
-				</li>
-				<li>
-					<strong>rowspan:</strong> Permite que una celda se extienda
-					verticalmente a lo largo de múltiples <strong>filas</strong>.
-				</li>
-			</ul>
+			<div className="grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<MoveHorizontal className="h-5 w-5" aria-hidden />}
+					title="colspan · columnas"
+					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+				>
+					Extiende la celda <strong>horizontalmente</strong> a lo largo de
+					múltiples columnas.
+				</ConceptCard>
+				<ConceptCard
+					icon={<MoveVertical className="h-5 w-5" aria-hidden />}
+					title="rowspan · filas"
+					iconClassName="bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
+				>
+					Extiende la celda <strong>verticalmente</strong> a lo largo de
+					múltiples filas.
+				</ConceptCard>
+			</div>
 			<CodeBlock
-				language='html'
+				language="html"
 				codeString={`<div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
   <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
     <thead class="bg-gray-50 dark:bg-gray-800">
@@ -178,52 +251,49 @@ const Lecture5Es = () => (
   </table>
 </div>`}
 			/>
-			<h5 className='text-lg font-semibold mt-6 mb-2'>Resultado:</h5>
-			<div className='overflow-x-auto my-6 rounded-lg border border-gray-200 dark:border-gray-700'>
-				<table className='min-w-full divide-y-2 divide-gray-200 dark:divide-gray-700 text-sm'>
-					<thead className='bg-gray-50 dark:bg-gray-800'>
+			<p className="mt-6 mb-2 font-medium">
+				Resultado · mirá cómo “Día” baja dos filas y “Libre” abarca dos
+				columnas:
+			</p>
+			<div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700">
+				<table className="min-w-full divide-y-2 divide-gray-200 dark:divide-gray-700 text-sm">
+					<thead className="bg-gray-50 dark:bg-gray-800">
 						<tr>
-							<th
-								rowSpan={2}
-								className='px-4 py-2 text-left font-medium text-gray-900 dark:text-white align-middle'
-							>
+							<th rowSpan={2} className={`${tableHead} align-middle`}>
 								Día
 							</th>
-							<th
-								colSpan={2}
-								className='px-4 py-2 text-center font-medium text-gray-900 dark:text-white'
-							>
+							<th colSpan={2} className={`${tableHead} text-center`}>
 								Horario
 							</th>
 						</tr>
 						<tr>
-							<th className='px-4 py-2 text-left font-medium text-gray-900 dark:text-white'>
-								Mañana
-							</th>
-							<th className='px-4 py-2 text-left font-medium text-gray-900 dark:text-white'>
-								Tarde
-							</th>
+							<th className={tableHead}>Mañana</th>
+							<th className={tableHead}>Tarde</th>
 						</tr>
 					</thead>
-					<tbody className='divide-y divide-gray-200 dark:divide-gray-700'>
+					<tbody className="divide-y divide-gray-200 dark:divide-gray-700">
 						<tr>
-							<th className='whitespace-nowrap px-4 py-2 font-medium text-left text-gray-900 dark:text-white'>
+							<th
+								className={`${tableCell} text-left font-medium text-gray-900 dark:text-white`}
+							>
 								Lunes
 							</th>
-							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+							<td className={`${tableCell} text-gray-700 dark:text-gray-300`}>
 								Clase A
 							</td>
-							<td className='whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300'>
+							<td className={`${tableCell} text-gray-700 dark:text-gray-300`}>
 								Clase B
 							</td>
 						</tr>
 						<tr>
-							<th className='whitespace-nowrap px-4 py-2 font-medium text-left text-gray-900 dark:text-white'>
+							<th
+								className={`${tableCell} text-left font-medium text-gray-900 dark:text-white`}
+							>
 								Martes
 							</th>
 							<td
 								colSpan={2}
-								className='whitespace-nowrap px-4 py-2 text-center text-gray-700 dark:text-gray-300'
+								className={`${tableCell} text-center text-gray-700 dark:text-gray-300`}
 							>
 								Libre
 							</td>
@@ -234,46 +304,101 @@ const Lecture5Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				3. Introducción a las Etiquetas Semánticas Estructurales
-			</h3>
-			<p className='mb-4'>
-				Antes de HTML5, la estructura de una página se construía casi
-				exclusivamente con <code>&lt;div&gt;</code>. Un <code>&lt;div&gt;</code>{" "}
-				no tiene ningún significado; es solo una caja genérica. HTML5 introdujo
-				etiquetas que describen el <strong>propósito</strong> de cada sección,
-				lo cual es vital para el SEO y la accesibilidad.
+			<SectionTitle index={3}>
+				Introducción a las Etiquetas Semánticas Estructurales
+			</SectionTitle>
+			<p className="mb-4">
+				Antes de HTML5, todo se construía con <Code>&lt;div&gt;</Code>: una caja
+				genérica <strong>sin ningún significado</strong>. HTML5 trajo etiquetas
+				que describen el <strong>propósito</strong> de cada sección — vital para
+				SEO y accesibilidad.
 			</p>
-			<ul className='list-disc list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>&lt;header&gt;:</strong> Representa el encabezado de una
-					página o sección. Generalmente contiene el logo, el título principal (
-					<code>&lt;h1&gt;</code>) y el menú de navegación.
-				</li>
-				<li>
-					<strong>&lt;nav&gt;:</strong> Se usa para agrupar los enlaces de
-					navegación principales del sitio.
-				</li>
-				<li>
-					<strong>&lt;footer&gt;:</strong> Representa el pie de página. Suele
-					contener información de copyright, enlaces a políticas de privacidad,
-					datos de contacto, etc.
-				</li>
-				<li>
-					<strong>&lt;div&gt; (Division):</strong> Sigue siendo fundamental.
-					Úsalo cuando ninguna otra etiqueta semántica sea apropiada. Es un
-					contenedor genérico perfecto para agrupar elementos con fines de
-					estilo.
-				</li>
-				<li>
-					<strong>&lt;span&gt;:</strong> Es el equivalente en línea del{" "}
-					<code>&lt;div&gt;</code>. Se usa para agrupar contenido dentro de un
-					bloque (como una palabra en un párrafo) para aplicarle un estilo
-					específico.
-				</li>
-			</ul>
+			<div className="grid gap-4 sm:grid-cols-2">
+				<div className="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/40">
+					<p className="flex items-center gap-2 font-semibold text-gray-500 dark:text-gray-400">
+						<Ban className="h-5 w-5" aria-hidden />
+						Antes · solo &lt;div&gt;
+					</p>
+					<div className="mt-3 space-y-2" aria-hidden>
+						<div className="rounded bg-gray-200 px-3 py-2 font-mono text-xs text-gray-500 dark:bg-gray-700 dark:text-gray-400">
+							&lt;div&gt;
+						</div>
+						<div className="rounded bg-gray-200 px-3 py-2 font-mono text-xs text-gray-500 dark:bg-gray-700 dark:text-gray-400">
+							&lt;div&gt;
+						</div>
+						<div className="rounded bg-gray-200 px-3 py-2 font-mono text-xs text-gray-500 dark:bg-gray-700 dark:text-gray-400">
+							&lt;div&gt;
+						</div>
+					</div>
+					<p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+						Tres cajas idénticas: el navegador no sabe qué es qué.
+					</p>
+				</div>
+				<div className="rounded-2xl border border-green-200 bg-green-50 p-4 dark:border-green-900 dark:bg-green-950/30">
+					<p className="flex items-center gap-2 font-semibold text-green-800 dark:text-green-200">
+						<LayoutTemplate className="h-5 w-5" aria-hidden />
+						Ahora · semántica
+					</p>
+					<div className="mt-3 space-y-2 font-mono text-xs" aria-hidden>
+						<div className="rounded bg-blue-200 px-3 py-2 text-blue-900 dark:bg-blue-900 dark:text-blue-100">
+							&lt;header&gt;
+						</div>
+						<div className="rounded bg-emerald-200 px-3 py-2 text-emerald-900 dark:bg-emerald-900 dark:text-emerald-100">
+							&lt;nav&gt; + contenido
+						</div>
+						<div className="rounded bg-purple-200 px-3 py-2 text-purple-900 dark:bg-purple-900 dark:text-purple-100">
+							&lt;footer&gt;
+						</div>
+					</div>
+					<p className="mt-2 text-xs text-green-900/70 dark:text-green-100/70">
+						Cada parte declara su propósito.
+					</p>
+				</div>
+			</div>
+
+			<Subhead>Las cinco etiquetas</Subhead>
+			<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+				<ConceptCard
+					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
+					title="<header>"
+					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+				>
+					Encabezado de página o sección: logo, <Code>&lt;h1&gt;</Code> y menú
+					de navegación.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Menu className="h-5 w-5" aria-hidden />}
+					title="<nav>"
+					iconClassName="bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+				>
+					Agrupa los enlaces de navegación principales del sitio.
+				</ConceptCard>
+				<ConceptCard
+					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
+					title="<footer>"
+					iconClassName="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
+				>
+					Pie de página: copyright, privacidad, contacto.
+				</ConceptCard>
+				<ConceptCard
+					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
+					title="<div>"
+					iconClassName="bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300"
+				>
+					Sigue siendo fundamental cuando ninguna etiqueta semántica aplica:
+					contenedor genérico para estilo.
+				</ConceptCard>
+				<ConceptCard
+					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
+					title="<span>"
+					iconClassName="bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
+				>
+					El <Code>&lt;div&gt;</Code> en línea: agrupa palabras dentro de un
+					bloque para darles estilo.
+				</ConceptCard>
+			</div>
 			<CodeBlock
-				language='html'
+				language="html"
 				codeString={`<body>
   <header>
     <h1>Mi Sitio Web</h1>
@@ -303,77 +428,62 @@ const Lecture5Es = () => (
 			/>
 		</section>
 
-		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				📝 Tarea: Mi Horario de Clases
+		<section className="rounded-3xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-6 dark:border-gray-700 dark:from-gray-800/60 dark:to-gray-900 sm:p-8">
+			<h3 className="text-2xl font-semibold mb-2 flex items-center gap-2">
+				<Table className="h-6 w-6 text-blue-500" aria-hidden />📝 Tarea: Mi
+				Horario de Clases
 			</h3>
-			<p className='mb-4'>
-				En esta tarea, organizarás tu horario semanal usando una tabla y luego
-				estructurarás una página simple con las etiquetas semánticas que hemos
-				aprendido.
+			<p className="mb-6 text-gray-600 dark:text-gray-300">
+				Organizarás tu horario semanal con una tabla y estructurarás la página
+				con las etiquetas semánticas aprendidas.
 			</p>
-			<ol className='list-decimal list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					<strong>Crea el Archivo:</strong> Crea un nuevo archivo llamado{" "}
-					<code>horario.html</code>.
-				</li>
-				<li>
-					<strong>Parte 1: La Tabla del Horario</strong>
-					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
-						<li>
-							Crea una tabla para tu horario de clases de lunes a viernes.
-						</li>
-						<li>
-							Usa <code>&lt;thead&gt;</code> para los encabezados de los días de
-							la semana (Lunes, Martes, etc.).
-						</li>
-						<li>
-							Usa <code>&lt;tbody&gt;</code> para las filas que representan las
-							horas y las clases.
-						</li>
-						<li>
-							Asegúrate de que la tabla sea responsiva, envolviéndola en un{" "}
-							<code>div</code> con <code>overflow-x-auto</code> y estilízala con
-							clases de Tailwind.
-						</li>
-						<li>
-							<strong>Reto:</strong> Si tienes una clase que dura dos horas, usa{" "}
-							<code>rowspan="2"</code> para que la celda de la clase ocupe dos
-							filas. Si un día tienes la tarde libre, usa <code>colspan</code>{" "}
-							en una celda que diga "Libre".
-						</li>
+			<ol className="space-y-3">
+				<Step number={1} title="Crea el Archivo">
+					Crea <Code>horario.html</Code>.
+				</Step>
+				<Step number={2} title="Parte 1: La Tabla del Horario">
+					<ul className="mt-2 space-y-1.5">
+						<CheckItem>Tabla de lunes a viernes.</CheckItem>
+						<CheckItem>
+							<Code>&lt;thead&gt;</Code> con los días;{" "}
+							<Code>&lt;tbody&gt;</Code> con horas y clases.
+						</CheckItem>
+						<CheckItem>
+							Responsiva: <Code>div</Code> con <Code>overflow-x-auto</Code> +
+							clases Tailwind.
+						</CheckItem>
+						<CheckItem>
+							<strong>Reto:</strong> <Code>rowspan="2"</Code> para la clase de
+							dos horas; <Code>colspan</Code> con “Libre” en la tarde libre.
+						</CheckItem>
 					</ul>
-				</li>
-				<li>
-					<strong>Parte 2: Estructura Semántica de la Página</strong>
-					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
-						<li>
-							Envuelve toda tu página en las etiquetas semánticas básicas.
-						</li>
-						<li>
-							Crea un <code>&lt;header&gt;</code> que contenga un{" "}
-							<code>&lt;h1&gt;</code> con el título "Mi Horario Semanal".
-						</li>
-						<li>
-							Dentro del header, añade un <code>&lt;nav&gt;</code> con un enlace
-							simple a tu página <code>index.html</code>.
-						</li>
-						<li>
-							Coloca la tabla que creaste en la Parte 1 dentro de la sección
-							principal del cuerpo de la página. Puedes envolverla en un{" "}
-							<code>&lt;div&gt;</code> si quieres.
-						</li>
-						<li>
-							Crea un <code>&lt;footer&gt;</code> al final de la página con tu
-							nombre y el año.
-						</li>
+				</Step>
+				<Step number={3} title="Parte 2: Estructura Semántica">
+					<ul className="mt-2 space-y-1.5">
+						<CheckItem>
+							<Code>&lt;header&gt;</Code> con <Code>&lt;h1&gt;</Code> “Mi
+							Horario Semanal”.
+						</CheckItem>
+						<CheckItem>
+							<Code>&lt;nav&gt;</Code> con enlace a <Code>index.html</Code>.
+						</CheckItem>
+						<CheckItem>
+							La tabla dentro del cuerpo (en un <Code>&lt;div&gt;</Code> si
+							querés).
+						</CheckItem>
+						<CheckItem>
+							<Code>&lt;footer&gt;</Code> con tu nombre y el año.
+						</CheckItem>
 					</ul>
-				</li>
-				<li>
-					<strong>Visualiza:</strong> Abre <code>horario.html</code> con Live
-					Server para ver tu tabla y la estructura de la página.
-				</li>
+				</Step>
+				<Step number={4} title="Visualiza">
+					Abre <Code>horario.html</Code> con Live Server.
+				</Step>
 			</ol>
+			<Callout variant="success" title="Cierre">
+				Tabla semántica + estructura semántica: la base de cualquier diseño web
+				moderno.
+			</Callout>
 		</section>
 	</div>
 );
