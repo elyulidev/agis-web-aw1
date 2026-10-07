@@ -41,6 +41,7 @@ export const translations = {
 		"sidebar.open": "Abrir barra lateral",
 		"sidebar.bibliography": "Bibliografía",
 		"sidebar.evaluation": "Evaluación",
+		"sidebar.laboratory": "Laboratorio M1",
 
 		// BibliographyPage
 		"bibliography.title": "Bibliografía del Curso",
@@ -49,6 +50,19 @@ export const translations = {
 		//Evaluation Page
 		"evaluation.title": "Descarga de Material de Evaluación",
 		"evaluation.downloadButton": "Descargar",
+
+		// LaboratorioPage
+		"lab.badge": "Módulo 1 · Fundamentos de HTML",
+		"lab.title": "Laboratorio Módulo 1",
+		"lab.subtitle":
+			"Siete ejercicios para hacer en tu PC con VS Code y Live Server: uno por conferencia, más un integrador final.",
+		"lab.requirementsTitle": "Antes de empezar",
+		"lab.requirementsBody":
+			"Necesitas Visual Studio Code con las extensiones Live Server y Prettier. Cada ejercicio se hace en tu computadora: crea los archivos, ábrelos con Live Server y verifica el resultado con la lista de control.",
+		"lab.objective": "Objetivo",
+		"lab.instructions": "Consigna",
+		"lab.verify": "¿Cómo sé que está bien?",
+		"lab.review": "Repasar conferencia {lectureId}",
 	},
 	pt: {
 		// General
@@ -92,6 +106,7 @@ export const translations = {
 		"sidebar.open": "Abrir barra lateral",
 		"sidebar.bibliography": "Bibliografia",
 		"sidebar.evaluation": "Avaliação",
+		"sidebar.laboratory": "Laboratório M1",
 
 		// BibliographyPage
 		"bibliography.title": "Bibliografía del Curso",
@@ -100,6 +115,19 @@ export const translations = {
 		//Evaluation Page
 		"evaluation.title": "Baixar material de avaliação",
 		"evaluation.downloadButton": "Baixar",
+
+		// LaboratorioPage
+		"lab.badge": "Módulo 1 · Fundamentos de HTML",
+		"lab.title": "Laboratório Módulo 1",
+		"lab.subtitle":
+			"Sete exercícios para fazer no teu PC com VS Code e Live Server: um por aula, mais um integrador final.",
+		"lab.requirementsTitle": "Antes de começar",
+		"lab.requirementsBody":
+			"Precisas do Visual Studio Code com as extensões Live Server e Prettier. Cada exercício faz-se no teu computador: cria os ficheiros, abre-os com o Live Server e verifica o resultado com a lista de controlo.",
+		"lab.objective": "Objetivo",
+		"lab.instructions": "Enunciado",
+		"lab.verify": "Como sei que está bem?",
+		"lab.review": "Rever aula {lectureId}",
 	},
 };
 
