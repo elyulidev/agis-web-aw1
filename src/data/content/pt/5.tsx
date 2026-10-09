@@ -66,12 +66,64 @@ const Lecture5Pt = () => (
 				é obsoleto: isso resolve-se com CSS.
 			</Callout>
 
+			<Subhead>As peças básicas: table, tr, th e td</Subhead>
+			<p className="mb-4">
+				Toda a tabela nasce de quatro tags. <Code>&lt;table&gt;</Code> é o
+				contentor, <Code>&lt;tr&gt;</Code> é uma linha (<em>table row</em>),{" "}
+				<Code>&lt;th&gt;</Code> é uma célula de cabeçalho (<em>table header</em>
+				) e <Code>&lt;td&gt;</Code> é uma célula de dados (<em>table data</em>
+				). Os cabeçalhos levam <Code>scope="col"</Code> ou{" "}
+				<Code>scope="row"</Code> para dizer ao leitor de ecrã que células
+				descrevem.
+			</p>
+			<div className="grid gap-4 sm:grid-cols-3">
+				<ConceptCard
+					icon={<Table className="h-5 w-5" aria-hidden />}
+					title="<tr>"
+					iconClassName="bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
+				>
+					Uma linha. Contém sempre <Code>&lt;th&gt;</Code> ou{" "}
+					<Code>&lt;td&gt;</Code>, nunca texto solto.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Table className="h-5 w-5" aria-hidden />}
+					title="<th>"
+					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+				>
+					Cabeçalho em negrito e centrado por defeito. Usa{" "}
+					<Code>scope="col"</Code> nas colunas e <Code>scope="row"</Code> nas
+					linhas.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Table className="h-5 w-5" aria-hidden />}
+					title="<td>"
+					iconClassName="bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
+				>
+					Dado normal. Vai dentro de <Code>&lt;tr&gt;</Code> no corpo ou no
+					rodapé da tabela.
+				</ConceptCard>
+			</div>
+			<CodeBlock
+				language="html"
+				codeString={`<table>
+  <tr>
+    <th scope="col">Produto</th>
+    <th scope="col">Quantidade</th>
+  </tr>
+  <tr>
+    <td>Maçãs</td>
+    <td>10</td>
+  </tr>
+</table>`}
+			/>
+
 			<Subhead>Estrutura Semântica: thead, tbody e tfoot</Subhead>
 			<p className="mb-4">
-				Para tabelas corretas usamos agrupadores de linhas que melhoram a
-				organização e a acessibilidade. E em vez do obsoleto{" "}
-				<Code>border="1"</Code> ou estilos em linha, aplicamos classes de CSS
-				(aqui Tailwind): adaptáveis e fáceis de manter.
+				Para tabelas corretas agrupamos as linhas com{" "}
+				<Code>&lt;thead&gt;</Code>, <Code>&lt;tbody&gt;</Code> e{" "}
+				<Code>&lt;tfoot&gt;</Code>: melhoram a organização e a acessibilidade.
+				O estilo visual vais ver no Módulo 2 com CSS; por agora foca-te na
+				estrutura.
 			</p>
 			<div className="grid gap-4 sm:grid-cols-3">
 				<ConceptCard
@@ -97,43 +149,44 @@ const Lecture5Pt = () => (
 				</ConceptCard>
 			</div>
 			<div className="mt-4">
-				<Callout variant="tip" title="Responsiva no móvil">
-					Envolve a tabela num contentor com <Code>overflow-x-auto</Code> para
-					rolagem horizontal em ecrãs pequenos.
+				<Callout variant="tip" title="Lê a tabela por partes">
+					Primeiro as linhas de <Code>&lt;thead&gt;</Code> (os{" "}
+					<Code>&lt;th scope="col"&gt;</Code>), depois cada{" "}
+					<Code>&lt;tr&gt;</Code> de <Code>&lt;tbody&gt;</Code> com os seus{" "}
+					<Code>&lt;td&gt;</Code>, e no fim o resumo em{" "}
+					<Code>&lt;tfoot&gt;</Code>.
 				</Callout>
 			</div>
 			<CodeBlock
 				language="html"
-				codeString={`<div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
-  <table class="min-w-full divide-y-2 divide-gray-200 dark:divide-gray-700 bg-white dark:bg-gray-900 text-sm">
-    <thead class="text-left">
-      <tr>
-        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Produto</th>
-        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Quantidade</th>
-        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Preço Unitário</th>
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-      <tr>
-        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Maçãs</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">10</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">R$2.50</td>
-      </tr>
-      <tr>
-        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Laranjas</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">15</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">R$2.00</td>
-      </tr>
-    </tbody>
-    <tfoot class="bg-gray-50 dark:bg-gray-800">
-      <tr>
-        <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Total</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">25</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">R$55.00</td>
-      </tr>
-    </tfoot>
-  </table>
-</div>`}
+				codeString={`<table>
+  <thead>
+    <tr>
+      <th scope="col">Produto</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Preço Unitário</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Maçãs</th>
+      <td>10</td>
+      <td>R$2.50</td>
+    </tr>
+    <tr>
+      <th scope="row">Laranjas</th>
+      <td>15</td>
+      <td>R$2.00</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row">Total</th>
+      <td>25</td>
+      <td>R$55.00</td>
+    </tr>
+  </tfoot>
+</table>`}
 			/>
 			<p className="mt-6 mb-2 font-medium">
 				Resultado · tabela real renderizada:
@@ -223,31 +276,29 @@ const Lecture5Pt = () => (
 			</div>
 			<CodeBlock
 				language="html"
-				codeString={`<div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
-  <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
-    <thead class="bg-gray-50 dark:bg-gray-800">
-      <tr>
-        <th rowspan="2" class="px-4 py-2 text-left font-medium text-gray-900 dark:text-white">Dia</th>
-        <th colspan="2" class="px-4 py-2 text-center font-medium text-gray-900 dark:text-white">Horário</th>
-      </tr>
-      <tr>
-        <th class="px-4 py-2 text-left font-medium text-gray-900 dark:text-white">Manhã</th>
-        <th class="px-4 py-2 text-left font-medium text-gray-900 dark:text-white">Tarde</th>
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-      <tr>
-        <th class="whitespace-nowrap px-4 py-2 font-medium text-left text-gray-900 dark:text-white">Segunda</th>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">Aula A</td>
-        <td class="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-300">Aula B</td>
-      </tr>
-      <tr>
-        <th class="whitespace-nowrap px-4 py-2 font-medium text-left text-gray-900 dark:text-white">Terça</th>
-        <td colspan="2" class="whitespace-nowrap px-4 py-2 text-center text-gray-700 dark:text-gray-300">Livre</td>
-      </tr>
-    </tbody>
-  </table>
-</div>`}
+				codeString={`<table>
+  <thead>
+    <tr>
+      <th scope="col" rowspan="2">Dia</th>
+      <th scope="col" colspan="2">Horário</th>
+    </tr>
+    <tr>
+      <th scope="col">Manhã</th>
+      <th scope="col">Tarde</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Segunda</th>
+      <td>Aula A</td>
+      <td>Aula B</td>
+    </tr>
+    <tr>
+      <th scope="row">Terça</th>
+      <td colspan="2">Livre</td>
+    </tr>
+  </tbody>
+</table>`}
 			/>
 			<p className="mt-6 mb-2 font-medium">
 				Resultado · vê como “Dia” desce duas linhas e “Livre” abrange duas
@@ -339,10 +390,13 @@ const Lecture5Pt = () => (
 					</p>
 					<div className="mt-3 space-y-2 font-mono text-xs" aria-hidden>
 						<div className="rounded bg-blue-200 px-3 py-2 text-blue-900 dark:bg-blue-900 dark:text-blue-100">
-							&lt;header&gt;
+							&lt;header&gt; + &lt;nav&gt;
 						</div>
 						<div className="rounded bg-emerald-200 px-3 py-2 text-emerald-900 dark:bg-emerald-900 dark:text-emerald-100">
-							&lt;nav&gt; + conteúdo
+							&lt;main&gt; + &lt;section&gt;
+						</div>
+						<div className="rounded bg-amber-200 px-3 py-2 text-amber-900 dark:bg-amber-900 dark:text-amber-100">
+							&lt;article&gt; + &lt;aside&gt;
 						</div>
 						<div className="rounded bg-purple-200 px-3 py-2 text-purple-900 dark:bg-purple-900 dark:text-purple-100">
 							&lt;footer&gt;
@@ -354,47 +408,78 @@ const Lecture5Pt = () => (
 				</div>
 			</div>
 
-			<Subhead>As cinco tags</Subhead>
+			<Subhead>As sete tags estruturais</Subhead>
+			<p className="mb-4">
+				São estas que dão esqueleto à página. Decora-as como um mapa:{" "}
+				<Code>&lt;header&gt;</Code> em cima, <Code>&lt;nav&gt;</Code> para te
+				moveres, <Code>&lt;main&gt;</Code> com o conteúdo único,{" "}
+				<Code>&lt;section&gt;</Code> e <Code>&lt;article&gt;</Code> para o
+				agrupar, <Code>&lt;aside&gt;</Code> para o secundário e{" "}
+				<Code>&lt;footer&gt;</Code> para fechar.
+			</p>
 			<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 				<ConceptCard
 					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
 					title="<header>"
 					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
 				>
-					Cabeçalho de página ou seção: logotipo, <Code>&lt;h1&gt;</Code> e menu
-					de navegação.
+					Cabeçalho de página ou seção: logotipo, <Code>&lt;h1&gt;</Code> e
+					às vezes o <Code>&lt;nav&gt;</Code>.
 				</ConceptCard>
 				<ConceptCard
 					icon={<Menu className="h-5 w-5" aria-hidden />}
 					title="<nav>"
 					iconClassName="bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
 				>
-					Agrupa os links de navegação principais do site.
+					Só navegação principal: o menu do site, não qualquer lista de
+					links.
+				</ConceptCard>
+				<ConceptCard
+					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
+					title="<main>"
+					iconClassName="bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300"
+				>
+					O conteúdo único da página. Um só por página, sem repetir noutras.
+				</ConceptCard>
+				<ConceptCard
+					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
+					title="<section>"
+					iconClassName="bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300"
+				>
+					Bloco temático dentro de <Code>&lt;main&gt;</Code>: um capítulo com
+					o seu próprio cabeçalho.
+				</ConceptCard>
+				<ConceptCard
+					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
+					title="<article>"
+					iconClassName="bg-orange-100 text-orange-700 dark:bg-orange-950 dark:text-orange-300"
+				>
+					Peça autocontida que se percebe sozinha: uma notícia, um post, um
+					cartão.
+				</ConceptCard>
+				<ConceptCard
+					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
+					title="<aside>"
+					iconClassName="bg-teal-100 text-teal-700 dark:bg-teal-950 dark:text-teal-300"
+				>
+					O secundário: barra lateral, avisos ou links relacionados com o{" "}
+					<Code>&lt;main&gt;</Code>.
 				</ConceptCard>
 				<ConceptCard
 					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
 					title="<footer>"
 					iconClassName="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
 				>
-					Rodapé: copyright, privacidade, contato.
-				</ConceptCard>
-				<ConceptCard
-					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
-					title="<div>"
-					iconClassName="bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300"
-				>
-					Continua fundamental quando nenhuma tag semântica se aplica: contentor
-					genérico para estilo.
-				</ConceptCard>
-				<ConceptCard
-					icon={<LayoutTemplate className="h-5 w-5" aria-hidden />}
-					title="<span>"
-					iconClassName="bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
-				>
-					O <Code>&lt;div&gt;</Code> em linha: agrupa palavras dentro de um
-					bloco para lhes dar estilo.
+					Fecho de página ou seção: autoria, copyright, contato.
 				</ConceptCard>
 			</div>
+
+			<Subhead>E &lt;div&gt; e &lt;span&gt;?</Subhead>
+			<Callout variant="warning" title="Não são semânticas">
+				<Code>&lt;div&gt;</Code> (bloco) e <Code>&lt;span&gt;</Code> (em linha){" "}
+				<strong>não descrevem nada</strong>. Usa-as só quando nenhuma das sete
+				acima se aplica.
+			</Callout>
 			<CodeBlock
 				language="html"
 				codeString={`<body>
@@ -409,15 +494,19 @@ const Lecture5Pt = () => (
     </nav>
   </header>
 
-  <!-- O conteúdo principal da página iria aqui,
-     usando tags como <main>, <section>, <article>
-     que veremos na próxima aula. -->
-
-  <div class="container-principal">
-    <p>Este é o conteúdo principal da página.
-       Aqui está uma <span class="text-red-600">palavra</span> importante.
-    </p>
-  </div>
+  <main>
+    <section>
+      <h2>Notícias</h2>
+      <article>
+        <h3>Meu primeiro artigo</h3>
+        <p>Este conteúdo percebe-se sozinho.</p>
+      </article>
+    </section>
+    <aside>
+      <h2>Links relacionados</h2>
+      <p>Conteúdo secundário.</p>
+    </aside>
+  </main>
 
   <footer>
     <p>&copy; 2024 - Todos os direitos reservados.</p>
@@ -447,8 +536,9 @@ const Lecture5Pt = () => (
 							com horas e aulas.
 						</CheckItem>
 						<CheckItem>
-							Responsiva: <Code>div</Code> com <Code>overflow-x-auto</Code> +
-							classes Tailwind.
+							Estrutura pura: <Code>&lt;table&gt;</Code>,{" "}
+							<Code>&lt;tr&gt;</Code>, <Code>&lt;th scope&gt;</Code> e{" "}
+							<Code>&lt;td&gt;</Code>, sem classes nem estilos.
 						</CheckItem>
 						<CheckItem>
 							<strong>Desafio:</strong> <Code>rowspan="2"</Code> para a aula de
