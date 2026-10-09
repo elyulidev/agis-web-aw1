@@ -105,7 +105,7 @@ const Lecture5Pt = () => (
 			</div>
 			<CodeBlock
 				language="html"
-				codeString={`<table>
+				codeString={`<table border="1">
   <tr>
     <th scope="col">Produto</th>
     <th scope="col">Quantidade</th>
@@ -122,8 +122,8 @@ const Lecture5Pt = () => (
 				Para tabelas corretas agrupamos as linhas com{" "}
 				<Code>&lt;thead&gt;</Code>, <Code>&lt;tbody&gt;</Code> e{" "}
 				<Code>&lt;tfoot&gt;</Code>: melhoram a organização e a acessibilidade.
-				O estilo visual vais ver no Módulo 2 com CSS; por agora foca-te na
-				estrutura.
+				Nos exemplos usamos <Code>&lt;table border="1"&gt;</Code> só para ver
+				as bordas sem CSS; no Módulo 2 vais substituí-lo por estilo com CSS.
 			</p>
 			<div className="grid gap-4 sm:grid-cols-3">
 				<ConceptCard
@@ -159,7 +159,7 @@ const Lecture5Pt = () => (
 			</div>
 			<CodeBlock
 				language="html"
-				codeString={`<table>
+				codeString={`<table border="1">
   <thead>
     <tr>
       <th scope="col">Produto</th>
@@ -276,7 +276,7 @@ const Lecture5Pt = () => (
 			</div>
 			<CodeBlock
 				language="html"
-				codeString={`<table>
+				codeString={`<table border="1">
   <thead>
     <tr>
       <th scope="col" rowspan="2">Dia</th>
