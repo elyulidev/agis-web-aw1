@@ -203,8 +203,8 @@ export const labModulo1: LabExercise[] = [
 				pt: "Cria horario.html com tabela de segunda a sexta: thead com os dias, tbody com horas e aulas.",
 			},
 			{
-				es: "Envuelve la tabla en un div con overflow-x-auto y estilízala con Tailwind.",
-				pt: "Envolve a tabela numa div com overflow-x-auto e estiliza com Tailwind.",
+				es: "Usa <table border=\"1\"> solo para ver los bordes sin CSS; el estilo con CSS lo verás en el Módulo 2.",
+				pt: "Usa <table border=\"1\"> só para ver as bordas sem CSS; o estilo com CSS vais ver no Módulo 2.",
 			},
 			{
 				es: "Reto: rowspan='2' para la clase de dos horas y colspan con “Libre” en la tarde libre.",
@@ -217,8 +217,8 @@ export const labModulo1: LabExercise[] = [
 		],
 		verify: [
 			{
-				es: "La tabla no se rompe en pantallas angostas (scroll horizontal).",
-				pt: "A tabela não quebra em ecrãs estreitos (rolagem horizontal).",
+				es: "La tabla se entiende sin estilos: tr, th con scope y td bien usados, con bordes visibles.",
+				pt: "A tabela percebe-se sem estilos: tr, th com scope e td bem usados, com bordas visíveis.",
 			},
 			{
 				es: "No hay tablas usadas para maquetar: solo datos.",
