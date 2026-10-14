@@ -1,50 +1,134 @@
+import {
+	Braces,
+	Eraser,
+	FileText,
+	Globe,
+	KeyRound,
+	Link2,
+	Palette,
+	Send,
+	Sparkles,
+	Star,
+	Tag,
+	Type,
+	Zap,
+} from "lucide-react";
+import {
+	Callout,
+	ConceptCard,
+	SectionTitle,
+	Step,
+} from "@/components/lecture/lecture-blocks";
 import CodeBlock from "@/components/ui/code-block";
 
-const Lecture8Pt = () => (
-	<div className='space-y-8'>
-		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				1. Três Caminhos para o Estilo: Formas de Incluir CSS
-			</h3>
-			<p className='mb-4'>
-				Existem três maneiras de aplicar CSS a um documento HTML. Entender as
-				suas diferenças é fundamental para escrever código organizado e
-				eficiente.
-			</p>
+const Code = ({ children }: { children: React.ReactNode }) => (
+	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
+		{children}
+	</code>
+);
 
-			<h4 className='text-xl font-semibold mt-6 mb-2'>
-				a) Estilos em Linha (Inline Styles)
-			</h4>
-			<p className='mb-4'>
-				Aplicam-se diretamente a um elemento HTML usando o atributo{" "}
-				<code>style</code>.
+const Subhead = ({ children }: { children: React.ReactNode }) => (
+	<p className="mt-8 mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+		<span className="h-2 w-2 rounded-full bg-blue-500" aria-hidden />
+		<span>{children}</span>
+	</p>
+);
+
+const Preview = ({
+	label,
+	children,
+}: {
+	label: string;
+	children: React.ReactNode;
+}) => (
+	<div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-5 dark:border-gray-600 dark:bg-gray-800/40">
+		<p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
+			{label}
+		</p>
+		<div className="text-gray-800 dark:text-gray-200">{children}</div>
+	</div>
+);
+
+const Lecture8Pt = () => (
+	<div className="space-y-12">
+		<section>
+			<p className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
+				<Sparkles className="h-3.5 w-3.5" aria-hidden />
+				CSS · onde vive, de que base parte e a quem aponta
 			</p>
-			<CodeBlock
-				language='html'
-				codeString={`<p style="color: red; font-size: 16px;">Este parágrafo é vermelho.</p>`}
-			/>
-			<div className='p-4 bg-yellow-50 dark:bg-gray-800 border-l-4 border-yellow-500 rounded-r-lg my-4'>
-				<p className='font-semibold text-yellow-800 dark:text-yellow-300'>
-					Evite se possível!
-				</p>
-				<p className='text-yellow-700 dark:text-gray-300'>
-					Este método vai contra a "separação de responsabilidades". Mistura a
-					estrutura (HTML) com a apresentação (CSS), o que torna o código muito
-					difícil de manter. O seu uso reserva-se para casos muito específicos,
-					como aplicar estilos dinâmicos com JavaScript.
-				</p>
+			<p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+				Na lição 7 conhecemos a ideia: CSS apresenta, HTML estrutura. Hoje
+				respondemos a três perguntas práticas:{" "}
+				<strong>onde escrevo o CSS?</strong>,{" "}
+				<strong>de que base parto se o navegador já põe estilos?</strong> e{" "}
+				<strong>como escolho a que elementos se aplica?</strong>
+			</p>
+		</section>
+
+		<section>
+			<SectionTitle index={1}>
+				Três caminhos para o estilo: formas de incluir CSS
+			</SectionTitle>
+			<p className="mb-4">
+				Há três maneiras de aplicar CSS. O resultado no ecrã pode parecer igual:
+				o que muda é <strong>onde vive o código</strong> e quão fácil é fazer a
+				manutenção.
+			</p>
+			<div className="grid gap-4 sm:grid-cols-3">
+				<ConceptCard
+					icon={<Zap className="h-5 w-5" aria-hidden />}
+					title="a) Em linha (inline)"
+					iconClassName="bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
+				>
+					Atributo <Code>style</Code> direto no elemento. Rápido, mas mistura
+					estrutura com apresentação.
+				</ConceptCard>
+				<ConceptCard
+					icon={<FileText className="h-5 w-5" aria-hidden />}
+					title="b) Interna"
+					iconClassName="bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
+				>
+					Tag <Code>&lt;style&gt;</Code> no <Code>&lt;head&gt;</Code>. Vale para
+					uma só página.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Link2 className="h-5 w-5" aria-hidden />}
+					title="c) Externa ⭐"
+					iconClassName="bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+				>
+					Ficheiro <Code>.css</Code> à parte, ligado com{" "}
+					<Code>&lt;link&gt;</Code>. A prática recomendada.
+				</ConceptCard>
 			</div>
 
-			<h4 className='text-xl font-semibold mt-6 mb-2'>
-				b) Folha de Estilos Interna (Internal Stylesheet)
-			</h4>
-			<p className='mb-4'>
-				Definem-se as regras de CSS dentro de uma tag <code>&lt;style&gt;</code>{" "}
-				na secção <code>&lt;head&gt;</code> do documento HTML.
-			</p>
-			<CodeBlock
-				language='html'
-				codeString={`<head>
+			<Subhead>O mesmo resultado, código diferente</Subhead>
+			<div className="grid gap-4 sm:grid-cols-3">
+				<Preview label="a) Inline · style no elemento">
+					<p style={{ color: "red", fontSize: "16px" }}>
+						Este parágrafo é vermelho.
+					</p>
+				</Preview>
+				<Preview label="b) Interna · <style> no head">
+					<p style={{ color: "green" }}>Este parágrafo é verde.</p>
+				</Preview>
+				<Preview label="c) Externa · styles.css + <link>">
+					<p style={{ color: "blue" }}>Este parágrafo é azul.</p>
+				</Preview>
+			</div>
+
+			<Callout variant="warning" title="Evite se possível">
+				O estilo em linha vai contra a separação de responsabilidades: mistura
+				HTML com CSS e o código torna-se muito difícil de manter. Reserve-o para
+				casos pontuais, como estilos dinâmicos com JavaScript.
+			</Callout>
+			<div className="space-y-4">
+				<CodeBlock
+					language="html"
+					codeString={`<p style="color: red; font-size: 16px;">Este parágrafo é vermelho.</p>`}
+				/>
+				<CodeBlock
+					language="html"
+					codeString={`<head>
   <style>
     p {
       color: green;
@@ -54,183 +138,434 @@ const Lecture8Pt = () => (
 <body>
   <p>Este parágrafo é verde.</p>
 </body>`}
-			/>
-			<p className='mt-4'>
-				É melhor que os estilos em linha, mas os estilos aplicam-se apenas a
-				essa página. Se tiver várias páginas, teria de repetir o código CSS em
-				cada uma.
-			</p>
-
-			<h4 className='text-xl font-semibold mt-6 mb-2'>
-				c) Folha de Estilos Externa (External Stylesheet)
-			</h4>
-			<p className='mb-4'>
-				Esta é a <strong>prática recomendada e padrão da indústria</strong>.
-				Cria-se um ficheiro separado com a extensão <code>.css</code> (ex.{" "}
-				<code>styles.css</code>) e liga-se a partir do HTML usando a tag{" "}
-				<code>&lt;link&gt;</code> no <code>&lt;head&gt;</code>.
-			</p>
-			<CodeBlock
-				language='css'
-				codeString={`/* Dentro de styles.css */
+				/>
+				<p className="text-sm text-gray-600 dark:text-gray-400">
+					A interna já é melhor, mas só vale para essa página: com várias
+					páginas repetiria o CSS em cada uma.
+				</p>
+				<CodeBlock
+					language="css"
+					codeString={`/* Dentro de styles.css */
 p {
   color: blue;
 }`}
-			/>
-			<CodeBlock
-				language='html'
-				codeString={`<head>
+				/>
+				<CodeBlock
+					language="html"
+					codeString={`<head>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <p>Este parágrafo é azul.</p>
 </body>`}
-			/>
-			<div className='p-4 bg-blue-50 dark:bg-gray-800 border-l-4 border-blue-500 rounded-r-lg my-4'>
-				<p className='font-semibold text-blue-800 dark:text-blue-300'>
-					Vantagens das Folhas Externas:
-				</p>
-				<p className='text-blue-700 dark:text-gray-300'>
-					Mantêm o código limpo e separado. Permitem que várias páginas HTML
-					usem a mesma folha de estilos, facilitando a consistência e a
-					manutenção. Além disso, o navegador pode guardar o ficheiro{" "}
-					<code>.css</code> em cache, acelerando o carregamento das páginas.
-				</p>
+				/>
+			</div>
+			<Callout variant="success" title="Vantagens da folha externa">
+				Código limpo e separado, uma só folha para muitas páginas
+				(consistência), e o navegador guarda o <Code>.css</Code> em cache: as
+				páginas carregam mais rápido. Por isso é o padrão da indústria.
+			</Callout>
+			<div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
+				<div className="flex-1 rounded-xl bg-orange-50 p-3 text-center text-sm font-semibold text-orange-800 dark:bg-orange-950/40 dark:text-orange-200">
+					<FileText className="mx-auto mb-1 h-5 w-5" aria-hidden />
+					biografia.html
+				</div>
+				<div className="text-center font-bold text-gray-400" aria-hidden>
+					→
+				</div>
+				<div className="flex-1 rounded-xl bg-blue-50 p-3 text-center text-sm font-semibold text-blue-800 dark:bg-blue-950/40 dark:text-blue-200">
+					<Link2 className="mx-auto mb-1 h-5 w-5" aria-hidden />
+					&lt;link&gt; para estilos-biografia.css
+				</div>
+				<div className="text-center font-bold text-gray-400" aria-hidden>
+					→
+				</div>
+				<div className="flex-1 rounded-xl bg-green-50 p-3 text-center text-sm font-semibold text-green-800 dark:bg-green-950/40 dark:text-green-200">
+					<Palette className="mx-auto mb-1 h-5 w-5" aria-hidden />
+					Página toda com estilo
+				</div>
 			</div>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				2. Seletores Básicos: Apontando para o Nosso Alvo
-			</h3>
-			<p className='mb-4'>
-				Os seletores são o coração do CSS. São os padrões que usamos para dizer
-				ao navegador a que elementos queremos aplicar os nossos estilos.
+			<SectionTitle index={2}>
+				O teu CSS não parte do zero: o navegador, os resets e o box-sizing
+			</SectionTitle>
+			<p className="mb-4">
+				Antes de escrever a tua primeira regra tens de saber algo: o navegador{" "}
+				<strong>já aplica os seus próprios estilos</strong> a cada página, mesmo
+				sem uma única linha de CSS teu. Essa base chama-se{" "}
+				<em>user agent stylesheet</em> (folha de estilos do navegador).
 			</p>
-			<ul className='list-disc list-inside space-y-4 pl-4 mb-4'>
-				<li>
-					<strong>Seletor Universal (`*`)</strong>: Seleciona{" "}
-					<strong>todos</strong> os elementos da página. É útil para aplicar
-					estilos base ou reinicializações.
-					<CodeBlock
-						language='css'
-						codeString={`* {
-  box-sizing: border-box; /* Uma reinicialização comum */
+			<div className="grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<Globe className="h-5 w-5" aria-hidden />}
+					title="O que o navegador põe sozinho"
+					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+				>
+					<Code>body</Code> com uma margem de uns 8px à volta de tudo,{" "}
+					<Code>h1</Code>–<Code>h6</Code> grandes e a negrito com margens,{" "}
+					<Code>p</Code> com margem em cima e em baixo, <Code>ul</Code> com
+					marcas e preenchimento à esquerda, <Code>a</Code> azul e sublinhado.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Eraser className="h-5 w-5" aria-hidden />}
+					title="Porque te deve importar"
+					iconClassName="bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
+				>
+					Esses estilos <strong>variam entre navegadores</strong> e quase nunca
+					são os do teu design. O teu CSS não pinta sobre uma tela em branco:{" "}
+					<strong>compete com essa base</strong>. Por isso os projetos sérios
+					começam por fazer reset.
+				</ConceptCard>
+			</div>
+			<div className="mt-4">
+				<Preview label="Simulação · assim pinta o navegador um h1 e um p SEM o teu CSS">
+					<div>
+						<p
+							style={{
+								fontSize: "2em",
+								fontWeight: "bold",
+								margin: "0.67em 0",
+							}}
+						>
+							Título sem estilos meus
+						</p>
+						<p style={{ margin: "1em 0" }}>
+							Parágrafo sem estilos meus, com as margens que põe o navegador.
+						</p>
+					</div>
+				</Preview>
+			</div>
+			<p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+				Atenção: esta plataforma já normaliza as margens por dentro, por isso em
+				cima simulámo-las com estilo em linha para veres o que faria um
+				navegador normal.
+			</p>
+
+			<Subhead>Os resets mais comuns</Subhead>
+			<p className="mb-4">
+				Fazer reset é devolver os elementos a um ponto de partida neutro e
+				previsível. Estes são os três resets que vais ver em quase todos os
+				projetos:
+			</p>
+			<div className="space-y-4">
+				<CodeBlock
+					language="css"
+					codeString={`/* 1. Reset universal: o ponto de partida mais comum */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }`}
-					/>
-				</li>
-				<li>
-					<strong>Seletor de Tipo/Tag</strong>: Seleciona todos os elementos de
-					um tipo de tag específico.
-					<CodeBlock
-						language='css'
-						codeString={`/* Torna todos os h2 de cor cinza escuro */
-h2 {
-  color: #333;
+				/>
+				<p className="text-sm text-gray-600 dark:text-gray-400">
+					Linha a linha: <Code>margin: 0</Code> tira as margens do navegador (
+					<Code>body</Code>, <Code>h1</Code>, <Code>p</Code>);{" "}
+					<Code>padding: 0</Code> tira os preenchimentos (as listas); e{" "}
+					<Code>box-sizing</Code> vê-se em detalhe aqui em baixo: é o que torna
+					as larguras previsíveis.
+				</p>
+				<CodeBlock
+					language="css"
+					codeString={`/* 2. Reset do body: o navegador deixa ~8px à volta de tudo */
+body {
+  margin: 0;
+}
+
+/* 3. Reset de listas: tira marcas e o preenchimento lateral */
+ul.sem-marcas {
+  list-style: none;
+  padding: 0;
 }`}
-					/>
-				</li>
-				<li>
-					<strong>Seletor de Classe (`.`)</strong>: Seleciona todos os elementos
-					que têm um atributo <code>class</code> específico. É o seletor mais
-					versátil e reutilizável. Um mesmo elemento pode ter várias classes.
-					<CodeBlock
-						language='css'
-						codeString={`.alerta {
-  color: red;
-  font-weight: bold;
+				/>
+			</div>
+			<Callout variant="tip" title="Faz reset à mão, pelo menos no início">
+				Existem folhas prontas como <Code>normalize.css</Code> que igualam os
+				navegadores, mas neste curso fazemos reset à mão: se perceberes o que
+				tira cada linha, depois qualquer biblioteca parece-te óbvia. E lembra
+				que <Code>*</Code> afeta <strong>tudo</strong>: usa-o para a base, não
+				para estilos de design.
+			</Callout>
+
+			<Subhead>O problema do box-sizing, com números</Subhead>
+			<p className="mb-4">
+				Por defeito o navegador usa <Code>content-box</Code>: <Code>width</Code>{" "}
+				mede <strong>só o conteúdo</strong>, e o preenchimento (
+				<Code>padding</Code>) e a borda (<Code>border</Code>){" "}
+				<strong>somam-se por fora</strong>. Vê a conta com uma caixa de{" "}
+				<Code>width: 200px</Code>, <Code>padding: 20px</Code> e{" "}
+				<Code>border: 5px</Code>:
+			</p>
+			<p className="mb-4 text-center font-mono text-sm font-semibold text-gray-700 dark:text-gray-200">
+				200 + (2 × 20) + (2 × 5) = 250px de largura real
+			</p>
+			<p className="mb-4">
+				Pediste 200 e ocupas 250. Duas caixas assim já não cabem lado a lado em
+				400px e o layout parte-se sem perceberes porquê. Com{" "}
+				<Code>border-box</Code>, pelo contrário, esses 200px são o{" "}
+				<strong>total final</strong>: o conteúdo encolhe sozinho para 150px (200
+				− 40 − 10) e a caixa ocupa exatamente o pedido.
+			</p>
+			<div className="mb-4">
+				<Preview label="Em direto · mesma width: 200px, box-sizing diferente">
+					<div className="space-y-4">
+						<div>
+							<p className="mb-1 block text-xs font-semibold text-gray-600 dark:text-gray-300">
+								content-box (por defeito) → ocupa 250px, transborda
+							</p>
+							<div
+								style={{
+									width: "200px",
+									padding: "20px",
+									border: "5px solid #ef4444",
+									boxSizing: "content-box",
+									backgroundColor: "#fee2e2",
+									color: "#7f1d1d",
+								}}
+							>
+								200 de conteúdo + 40 de preenchimento + 10 de borda ={" "}
+								<strong>250px</strong> no ecrã.
+							</div>
+						</div>
+						<div>
+							<p className="mb-1 block text-xs font-semibold text-gray-600 dark:text-gray-300">
+								border-box → ocupa 200px exatos, previsível
+							</p>
+							<div
+								style={{
+									width: "200px",
+									padding: "20px",
+									border: "5px solid #16a34a",
+									boxSizing: "border-box",
+									backgroundColor: "#dcfce7",
+									color: "#14532d",
+								}}
+							>
+								Tudo cabe em <strong>200px</strong>: o conteúdo encolhe sozinho.
+							</div>
+						</div>
+					</div>
+				</Preview>
+			</div>
+			<div className="space-y-4">
+				<CodeBlock
+					language="css"
+					codeString={`/* content-box: a largura estica-se por fora */
+.caixa-default {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid red;
+  box-sizing: content-box; /* valor por defeito: 250px reais */
+}
+
+/* border-box: a largura é o total final */
+.caixa-ordenada {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid green;
+  box-sizing: border-box; /* 200px reais, sempre */
 }`}
-					/>
-					<CodeBlock
-						language='html'
-						codeString={`<p class="alerta">Cuidado, isto é importante.</p>`}
-					/>
-				</li>
-				<li>
-					<strong>Seletor de ID (`#`)</strong>: Seleciona o{" "}
-					<strong>único</strong> elemento que tem um atributo <code>id</code>{" "}
-					específico. Os IDs devem ser únicos por página. Usa-se para elementos
-					estruturais importantes que не se repetem.
-					<CodeBlock
-						language='css'
-						codeString={`#cabecalho-principal {
-  background-color: #f0f0f0;
-}`}
-					/>
-					<CodeBlock
-						language='html'
-						codeString={`<header id="cabecalho-principal">...</header>`}
-					/>
-				</li>
-				<li>
-					<strong>Agrupamento de Seletores (`,`)</strong>: Permite aplicar o
-					mesmo bloco de estilos a múltiplos seletores, separando-os por
-					vírgulas.
-					<CodeBlock
-						language='css'
-						codeString={`h1, h2, h3 {
-  font-family: 'Georgia', serif;
-  color: navy;
-}`}
-					/>
-				</li>
-			</ul>
+				/>
+			</div>
+			<Callout variant="success" title="Por isso vai no reset universal">
+				Ao pôr <Code>box-sizing: border-box</Code> dentro do <Code>*</Code>,{" "}
+				<strong>todas</strong> as caixas da tua página medem o que pedes. É o
+				primeiro que fazem quase todos os projetos modernos, e agora já sabes
+				exatamente porquê.
+			</Callout>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				📝 Tarefa: Estilizando a sua Biografia
-			</h3>
-			<p className='mb-4'>
-				É hora de dar um pouco de cor e forma à página de biografia que criou no
-				Módulo 1.
+			<SectionTitle index={3}>
+				Seletores básicos: apontando para o nosso alvo
+			</SectionTitle>
+			<p className="mb-4">
+				Os seletores são o coração do CSS: o padrão que diz ao navegador{" "}
+				<strong>a que elementos</strong> aplicar cada regra.
 			</p>
-			<ol className='list-decimal list-inside space-y-2 pl-4 mb-4'>
-				<li>
-					Crie um novo ficheiro chamado <code>estilos-biografia.css</code> na
-					mesma pasta que o seu ficheiro <code>biografia.html</code>.
-				</li>
-				<li>
-					Ligue esta nova folha de estilos na secção <code>&lt;head&gt;</code>{" "}
-					do seu <code>biografia.html</code>.
-				</li>
-				<li>
-					No seu ficheiro HTML, adicione algumas classes e IDs. Por exemplo, dê
-					um ID ao seu <code>&lt;h1&gt;</code> principal (ex.{" "}
-					<code>id="nome-titulo"</code>) e uma classe a todas as secções de
-					conteúdo (ex. <code>class="seccao"</code>).
-				</li>
-				<li>
-					Agora, em <code>estilos-biografia.css</code>, escreva as seguintes
-					regras:
-					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
-						<li>
-							Use o <strong>seletor de tipo</strong> para dar a todo o{" "}
-							<code>body</code> uma cor de fundo (<code>background-color</code>)
-							e uma fonte (<code>font-family</code>) à sua escolha.
-						</li>
-						<li>
-							Use o <strong>seletor de ID</strong> para estilizar o seu{" "}
-							<code>&lt;h1&gt;</code> (ex. mudar a sua cor e centrar o texto com{" "}
-							<code>text-align: center;</code>).
-						</li>
-						<li>
-							Use o <strong>seletor de classe</strong> para dar a cada{" "}
-							<code>.seccao</code> uma borda (<code>border</code>) e um pouco de
-							espaço interior (<code>padding</code>).
-						</li>
-						<li>
-							Use o <strong>agrupamento de seletores</strong> para que todos os
-							cabeçalhos (<code>h1</code>, <code>h2</code>) tenham uma cor
-							específica.
-						</li>
-					</ul>
-				</li>
-				<li>
-					Abra a sua página no navegador. Deverá ver os seus primeiros estilos
-					aplicados!
-				</li>
+			<div className="grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<Star className="h-5 w-5" aria-hidden />}
+					title="Universal (*)"
+					iconClassName="bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-200"
+				>
+					Seleciona <strong>todos</strong> os elementos. Útil para estilos base
+					ou reinicializações.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Type className="h-5 w-5" aria-hidden />}
+					title="De tipo / tag"
+					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+				>
+					Seleciona todos os elementos de uma tag, por exemplo todos os{" "}
+					<Code>h2</Code>.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Tag className="h-5 w-5" aria-hidden />}
+					title="De classe (.)"
+					iconClassName="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
+				>
+					O mais versátil e reutilizável: todos os elementos com essa{" "}
+					<Code>class</Code>. Um elemento pode ter várias classes.
+				</ConceptCard>
+				<ConceptCard
+					icon={<KeyRound className="h-5 w-5" aria-hidden />}
+					title="De ID (#)"
+					iconClassName="bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
+				>
+					O <strong>único</strong> elemento com esse <Code>id</Code>. Os ID
+					devem ser únicos por página.
+				</ConceptCard>
+			</div>
+
+			<Callout variant="tip" title="Classe vs ID: a diferença essencial">
+				A <Code>class</Code> <strong>repete-se</strong> (vários avisos com{" "}
+				<Code>.alerta</Code>). O <Code>id</Code> é <strong>único</strong> (um só{" "}
+				<Code>#cabecalho-principal</Code> por página, para blocos estruturais
+				que não se repetem).
+			</Callout>
+
+			<Subhead>Universal e tipo · código</Subhead>
+			<div className="space-y-4">
+				<CodeBlock
+					language="css"
+					codeString={`* {
+  box-sizing: border-box; /* Uma reinicialização comum */
+}`}
+				/>
+				<p className="text-sm text-gray-600 dark:text-gray-400">
+					O porquê do <Code>box-sizing</Code> (<Code>content-box</Code> vs{" "}
+					<Code>border-box</Code>) acabámos de ver na secção 2: com esta
+					reinicialização todas as larguras ficam previsíveis.
+				</p>
+				<CodeBlock
+					language="css"
+					codeString={`/* Torna todos os h2 de cor cinza escuro */
+h2 {
+  color: #333;
+}`}
+				/>
+			</div>
+
+			<Subhead>Classe · repete-se (experimente em direto)</Subhead>
+			<div className="mb-4">
+				<Preview label="Vista prévia · dois parágrafos, mesma classe .alerta">
+					<div className="space-y-2">
+						<p style={{ color: "red", fontWeight: "bold" }}>
+							Cuidado, isto é importante.
+						</p>
+						<p style={{ color: "red", fontWeight: "bold" }}>
+							Outro aviso com a mesma classe.
+						</p>
+					</div>
+				</Preview>
+			</div>
+			<div className="space-y-4">
+				<CodeBlock
+					language="css"
+					codeString={`.alerta {
+  color: red;
+  font-weight: bold;
+}`}
+				/>
+				<CodeBlock
+					language="html"
+					codeString={`<p class="alerta">Cuidado, isto é importante.</p>`}
+				/>
+			</div>
+
+			<Subhead>ID · único por página</Subhead>
+			<div className="mb-4">
+				<Preview label="Vista prévia · um só cabeçalho com ID">
+					<header style={{ backgroundColor: "#f0f0f0", padding: "12px" }}>
+						Cabeçalho principal da página
+					</header>
+				</Preview>
+			</div>
+			<div className="space-y-4">
+				<CodeBlock
+					language="css"
+					codeString={`#cabecalho-principal {
+  background-color: #f0f0f0;
+}`}
+				/>
+				<CodeBlock
+					language="html"
+					codeString={`<header id="cabecalho-principal">...</header>`}
+				/>
+			</div>
+
+			<Subhead>Agrupamento (,) · uma regra, vários seletores</Subhead>
+			<div className="mb-4">
+				<Preview label="Vista prévia · h1, h2 e h3 com a mesma regra">
+					<div className="space-y-1">
+						<h1 style={{ fontFamily: "Georgia, serif", color: "navy" }}>
+							Título 1
+						</h1>
+						<h2 style={{ fontFamily: "Georgia, serif", color: "navy" }}>
+							Título 2
+						</h2>
+						<h3 style={{ fontFamily: "Georgia, serif", color: "navy" }}>
+							Título 3
+						</h3>
+					</div>
+				</Preview>
+			</div>
+			<CodeBlock
+				language="css"
+				codeString={`h1, h2, h3 {
+  font-family: 'Georgia', serif;
+  color: navy;
+}`}
+			/>
+			<div className="mt-4 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+				<Braces className="h-4 w-4" aria-hidden />A vírgula evita repetir o
+				mesmo bloco três vezes.
+			</div>
+		</section>
+
+		<section className="rounded-3xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-6 dark:border-gray-700 dark:from-gray-800/60 dark:to-gray-900 sm:p-8">
+			<h3 className="text-2xl font-semibold mb-2 flex items-center gap-2">
+				<Send className="h-6 w-6 text-blue-500" aria-hidden />📝 Tarefa:
+				estilizando a sua biografia
+			</h3>
+			<p className="mb-6 text-gray-600 dark:text-gray-300">
+				Hora de dar cor e forma à biografia do Módulo 1, tudo com folha externa.
+			</p>
+			<ol className="space-y-3">
+				<Step number={1} title="Crie a folha externa">
+					Crie <Code>estilos-biografia.css</Code> na mesma pasta que{" "}
+					<Code>biografia.html</Code>.
+				</Step>
+				<Step number={2} title="Ligue-a">
+					No <Code>&lt;head&gt;</Code> do <Code>biografia.html</Code> adicione{" "}
+					<Code>
+						&lt;link rel="stylesheet" href="estilos-biografia.css"&gt;
+					</Code>
+					.
+				</Step>
+				<Step number={3} title="Marque com classes e ID">
+					Dê um ID ao seu <Code>&lt;h1&gt;</Code> (por exemplo{" "}
+					<Code>id="nome-titulo"</Code>) e uma classe a cada secção (por exemplo{" "}
+					<Code>class="seccao"</Code>).
+				</Step>
+				<Step number={4} title="Escreva as quatro regras">
+					Em <Code>estilos-biografia.css</Code>: tipo para <Code>body</Code> (
+					<Code>background-color</Code> + <Code>font-family</Code>), ID para o{" "}
+					<Code>h1</Code> (cor + <Code>text-align: center;</Code>), classe{" "}
+					<Code>.seccao</Code> (<Code>border</Code> + <Code>padding</Code>) e
+					agrupamento para <Code>h1, h2</Code>.
+				</Step>
+				<Step number={5} title="Veja o resultado">
+					Abra a página no navegador: os seus primeiros estilos aplicados.
+				</Step>
 			</ol>
+			<Callout variant="success" title="Fecho">
+				Já sabe onde vive o CSS, de que base parte (e como lhe fazer reset) e
+				como apontar com seletores. Na lição 9 subimos de nível: seletores
+				avançados e pseudo-classes.
+			</Callout>
 		</section>
 	</div>
 );
