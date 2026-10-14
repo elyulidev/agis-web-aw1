@@ -203,8 +203,8 @@ export const labModulo1: LabExercise[] = [
 				pt: "Cria horario.html com tabela de segunda a sexta: thead com os dias, tbody com horas e aulas.",
 			},
 			{
-				es: "Usa <table border=\"1\"> solo para ver los bordes sin CSS; el estilo con CSS lo verás en el Módulo 2.",
-				pt: "Usa <table border=\"1\"> só para ver as bordas sem CSS; o estilo com CSS vais ver no Módulo 2.",
+				es: 'Usa <table border="1"> solo para ver los bordes sin CSS; el estilo con CSS lo verás en el Módulo 2.',
+				pt: 'Usa <table border="1"> só para ver as bordas sem CSS; o estilo com CSS vais ver no Módulo 2.',
 			},
 			{
 				es: "Reto: rowspan='2' para la clase de dos horas y colspan con “Libre” en la tarde libre.",
@@ -303,6 +303,261 @@ export const labModulo1: LabExercise[] = [
 			{
 				es: "Cada página tiene un único h1 y title propio en la pestaña.",
 				pt: "Cada página tem um único h1 e title próprio na aba.",
+			},
+		],
+	},
+];
+
+export const labModulo2: LabExercise[] = [
+	{
+		id: 8,
+		lectureId: 7,
+		title: {
+			es: "Formulario robusto sin JavaScript",
+			pt: "Formulário robusto sem JavaScript",
+		},
+		objective: {
+			es: "Dar inteligencia al formulario del Módulo 1 con validación nativa del navegador.",
+			pt: "Dar inteligência ao formulário do Módulo 1 com validação nativa do navegador.",
+		},
+		steps: [
+			{
+				es: "Abre el contacto.html que creaste en el ejercicio 6.",
+				pt: "Abre o contato.html que criaste no exercício 6.",
+			},
+			{
+				es: "Añade required a los campos de nombre y email.",
+				pt: "Adiciona required aos campos de nome e e-mail.",
+			},
+			{
+				es: "En el textarea del mensaje añade minlength='10'.",
+				pt: "No textarea da mensagem adiciona minlength='10'.",
+			},
+			{
+				es: "Añade un campo type='tel' con pattern='[0-9]{9}' y un title que explique el formato (9 dígitos).",
+				pt: "Adiciona um campo type='tel' com pattern='[0-9]{9}' e um title a explicar o formato (9 dígitos).",
+			},
+			{
+				es: "Intenta enviar el formulario vacío y con datos incorrectos.",
+				pt: "Tenta enviar o formulário vazio e com dados incorretos.",
+			},
+		],
+		verify: [
+			{
+				es: "El navegador frena el envío y muestra errores sin una línea de JavaScript.",
+				pt: "O navegador trava o envio e mostra erros sem uma linha de JavaScript.",
+			},
+			{
+				es: "El title del teléfono explica el formato esperado.",
+				pt: "O title do telefone explica o formato esperado.",
+			},
+		],
+	},
+	{
+		id: 9,
+		lectureId: 8,
+		title: {
+			es: "Mi primera hoja externa y el reset",
+			pt: "Minha primeira folha externa e o reset",
+		},
+		objective: {
+			es: "Sacar el CSS a un archivo externo y partir de una base neutra con el reset universal.",
+			pt: "Tirar o CSS para um ficheiro externo e partir de uma base neutra com o reset universal.",
+		},
+		steps: [
+			{
+				es: "Crea estilos-biografia.css en la misma carpeta que biografia.html.",
+				pt: "Cria estilos-biografia.css na mesma pasta que biografia.html.",
+			},
+			{
+				es: "Escribe el reset universal: * con margin 0, padding 0 y box-sizing border-box.",
+				pt: "Escreve o reset universal: * com margin 0, padding 0 e box-sizing border-box.",
+			},
+			{
+				es: "Enlaza la hoja en el head de biografia.html con link rel='stylesheet'.",
+				pt: "Liga a folha no head de biografia.html com link rel='stylesheet'.",
+			},
+			{
+				es: "Recarga con y sin el enlace (comenta la línea del link) y compara los márgenes del body.",
+				pt: "Recarrega com e sem a ligação (comenta a linha do link) e compara as margens do body.",
+			},
+		],
+		verify: [
+			{
+				es: "Sin el enlace se ven los ~8px del navegador; con el enlace, el contenido pega a los bordes.",
+				pt: "Sem a ligação veem-se os ~8px do navegador; com a ligação, o conteúdo cola às bordas.",
+			},
+			{
+				es: "Todo el CSS vive en el .css: el HTML no tiene atributos style.",
+				pt: "Todo o CSS vive no .css: o HTML não tem atributos style.",
+			},
+		],
+	},
+	{
+		id: 10,
+		lectureId: 8,
+		title: {
+			es: "Selectores básicos en la biografía",
+			pt: "Seletores básicos na biografia",
+		},
+		objective: {
+			es: "Apuntar con selectores de tipo, ID, clase y agrupación sobre tu propia página.",
+			pt: "Apontar com seletores de tipo, ID, classe e agrupamento na tua própria página.",
+		},
+		steps: [
+			{
+				es: "Dale id='nombre-titulo' a tu h1 y class='seccion' a cada sección de contenido.",
+				pt: "Dá id='nome-titulo' ao teu h1 e class='seccao' a cada secção de conteúdo.",
+			},
+			{
+				es: "Con el selector de tipo, dale al body un background-color y un font-family a tu elección.",
+				pt: "Com o seletor de tipo, dá ao body um background-color e um font-family à tua escolha.",
+			},
+			{
+				es: "Con el selector de ID, dale color a tu h1 y céntralo con text-align: center.",
+				pt: "Com o seletor de ID, dá cor ao teu h1 e centra-o com text-align: center.",
+			},
+			{
+				es: "Con el selector de clase, dale a .seccion un border y un padding.",
+				pt: "Com o seletor de classe, dá a .seccao um border e um padding.",
+			},
+			{
+				es: "Con agrupación (h1, h2), dales a todos los encabezados un mismo color.",
+				pt: "Com agrupamento (h1, h2), dá a todos os cabeçalhos uma mesma cor.",
+			},
+		],
+		verify: [
+			{
+				es: "Cambiar .seccion afecta a todas las secciones a la vez; cambiar el ID solo al h1.",
+				pt: "Mudar .seccao afeta todas as secções de uma vez; mudar o ID só o h1.",
+			},
+			{
+				es: "Cada regla usa el selector pedido: inspecciónalo en DevTools.",
+				pt: "Cada regra usa o seletor pedido: inspeciona-o nas DevTools.",
+			},
+		],
+	},
+	{
+		id: 11,
+		lectureId: 9,
+		title: {
+			es: "Menú interactivo y lista cebra",
+			pt: "Menu interativo e lista zebra",
+		},
+		objective: {
+			es: "Seleccionar por relación, estado y posición en un menú y una lista reales.",
+			pt: "Selecionar por relação, estado e posição num menu e numa lista reais.",
+		},
+		steps: [
+			{
+				es: "Crea menu.html con un nav > ul con tres enlaces y un ol con cinco ítems.",
+				pt: "Cria menu.html com um nav > ul com três links e um ol com cinco itens.",
+			},
+			{
+				es: "Con el descendiente nav a, dale estilo base a los enlaces del menú.",
+				pt: "Com o descendente nav a, dá estilo base aos links do menu.",
+			},
+			{
+				es: "Con a:hover, haz que cambien de color o se subrayen con el cursor encima.",
+				pt: "Com a:hover, faz com que mudem de cor ou sejam sublinhados com o cursor em cima.",
+			},
+			{
+				es: "En la lista: :nth-child(odd) con fondo, :first-child en negrita y :last-child con borde inferior.",
+				pt: "Na lista: :nth-child(odd) com fundo, :first-child a negrito e :last-child com borda inferior.",
+			},
+			{
+				es: "Pasa el cursor por el menú y revisa la cebra; si el hover “no funciona”, revisa el orden LoVe-HA.",
+				pt: "Passa o cursor pelo menu e revê a zebra; se o hover “não funciona”, revê a ordem LoVe-HA.",
+			},
+		],
+		verify: [
+			{
+				es: "El menú reacciona al cursor y la lista alterna el fondo con primero y último destacados.",
+				pt: "O menu reage ao cursor e a lista alterna o fundo com primeiro e último destacados.",
+			},
+			{
+				es: "Todo se logró con selectores: sin clases extra ni JavaScript.",
+				pt: "Tudo feito com seletores: sem classes extra nem JavaScript.",
+			},
+		],
+	},
+	{
+		id: 12,
+		lectureId: 10,
+		title: {
+			es: "Cita con estilo y duelo de especificidad",
+			pt: "Citação com estilo e duelo de especificidade",
+		},
+		objective: {
+			es: "Generar contenido con pseudo-elementos y predecir el ganador de una pelea de selectores.",
+			pt: "Gerar conteúdo com pseudo-elementos e prever o vencedor de uma luta de seletores.",
+		},
+		steps: [
+			{
+				es: "Crea cita.html con un blockquote y un button con id='btn-principal' y class='btn-accion'.",
+				pt: "Cria citacao.html com um blockquote e um button com id='btn-principal' e class='btn-acao'.",
+			},
+			{
+				es: "Con ::before y ::after (no olvides content), añade comillas gigantes al blockquote.",
+				pt: "Com ::before e ::after (não esqueças o content), adiciona aspas gigantes ao blockquote.",
+			},
+			{
+				es: "Tres reglas para el background del botón, cada una de un color: button, .btn-accion y #btn-principal.",
+				pt: "Três regras para o background do botão, cada uma de uma cor: button, .btn-acao e #btn-principal.",
+			},
+			{
+				es: "Antes de abrir el navegador, anota de qué color crees que será el botón y por qué paso del algoritmo.",
+				pt: "Antes de abrir o navegador, anota de que cor achas que será o botão e por que passo do algoritmo.",
+			},
+		],
+		verify: [
+			{
+				es: "Si quitas content, las comillas desaparecen: el pseudo-elemento no se renderiza.",
+				pt: "Se tirares o content, as aspas desaparecem: o pseudo-elemento não se renderiza.",
+			},
+			{
+				es: "Tu predicción fue correcta: gana el ID por especificidad.",
+				pt: "A tua previsão estava correta: ganha o ID por especificidade.",
+			},
+		],
+	},
+	{
+		id: 13,
+		lectureId: 10,
+		title: {
+			es: "Integrador: mi sitio con estilos",
+			pt: "Integrador: meu site com estilos",
+		},
+		objective: {
+			es: "Vestir el sitio del Módulo 1 con una hoja compartida usando todo el módulo.",
+			pt: "Vestir o site do Módulo 1 com uma folha partilhada usando todo o módulo.",
+		},
+		steps: [
+			{
+				es: "Crea estilos.css con el reset universal y enlázalo en tus tres páginas del Módulo 1.",
+				pt: "Cria estilos.css com o reset universal e liga-o nas tuas três páginas do Módulo 1.",
+			},
+			{
+				es: "Dale estilo base al nav de todo el sitio con nav a y feedback con a:hover.",
+				pt: "Dá estilo base ao nav de todo o site com nav a e feedback com a:hover.",
+			},
+			{
+				es: "Viste la tabla del horario: cebra con tbody tr:nth-child(even) y encabezados con h1, h2 agrupados.",
+				pt: "Veste a tabela do horário: zebra com tbody tr:nth-child(even) e cabeçalhos com h1, h2 agrupados.",
+			},
+			{
+				es: "Reutiliza tu formulario validado del ejercicio 8 y añade una cita con ::before/::after en la portada.",
+				pt: "Reutiliza o teu formulário validado do exercício 8 e adiciona uma citação com ::before/::after na capa.",
+			},
+		],
+		verify: [
+			{
+				es: "Un compañero navega las tres páginas: menú con hover, tabla cebra, formulario que valida y cita con comillas.",
+				pt: "Um colega navega as três páginas: menu com hover, tabela zebra, formulário que valida e citação com aspas.",
+			},
+			{
+				es: "Cero atributos style en el HTML: la presentación vive solo en el CSS.",
+				pt: "Zero atributos style no HTML: a apresentação vive só no CSS.",
 			},
 		],
 	},

@@ -110,9 +110,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 							</li>
 						))}
 					</ul>
-					{module.module === 1 && (
+					{(module.module === 1 || module.module === 2) && (
 						<NavLink
-							to='/laboratorio/modulo-1'
+							to={`/laboratorio/modulo-${module.module}`}
 							onClick={() => onLinkClick()}
 							className={({ isActive }) =>
 								`flex items-center w-full pl-8 pr-4 py-2 text-sm transition-colors duration-150 ${
@@ -122,7 +122,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 								}`
 							}
 						>
-							<FlaskConicalIcon className='w-4 h-4 mr-2 shrink-0' />
+							<FlaskConicalIcon className="w-4 h-4 mr-2 shrink-0" />
 							{t("sidebar.laboratory")}
 						</NavLink>
 					)}

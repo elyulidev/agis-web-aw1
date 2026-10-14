@@ -40,7 +40,14 @@ export default function App() {
 						<Route path="/conferencia/:id" element={<LecturePage />} />
 						<Route path="/bibliografia" element={<BibliographyPage />} />
 						<Route path="/evaluacion" element={<EvaluationPage />} />
-						<Route path="/laboratorio/modulo-1" element={<LaboratorioPage />} />
+						<Route
+							path="/laboratorio/modulo-1"
+							element={<LaboratorioPage module={1} />}
+						/>
+						<Route
+							path="/laboratorio/modulo-2"
+							element={<LaboratorioPage module={2} />}
+						/>
 						<Route path="*" element={<Navigate to="/" />} />
 					</Routes>
 				</div>
