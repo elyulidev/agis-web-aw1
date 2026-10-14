@@ -239,20 +239,20 @@ export const labModulo1: LabExercise[] = [
 		},
 		steps: [
 			{
-				es: "Crea contacto.html con un form: Nombre (text), Correo (email), Motivo (select), Mensaje (textarea).",
-				pt: "Cria contato.html com um form: Nome (text), E-mail (email), Motivo (select), Mensagem (textarea).",
+				es: "Crea contacto.html con un form: Nombre (text), Correo (email), Motivo (select con tres opciones: Consulta General, Soporte Técnico, Sugerencias) y Mensaje (textarea).",
+				pt: "Cria contato.html com um form: Nome (text), E-mail (email), Motivo (select com três opções: Consulta Geral, Suporte Técnico, Sugestões) e Mensagem (textarea).",
 			},
 			{
 				es: "Cada campo con su label asociada (for + id idénticos).",
 				pt: "Cada campo com a sua label associada (for + id idênticos).",
 			},
 			{
-				es: "name único en cada campo y placeholder como ayuda.",
-				pt: "name único em cada campo e placeholder como ajuda.",
+				es: "Dale a cada campo un name descriptivo (nombre, email, motivo, mensaje) y un placeholder de ayuda.",
+				pt: "Dá a cada campo um name descritivo (nome, email, motivo, mensagem) e um placeholder de ajuda.",
 			},
 			{
-				es: "Botones submit (“Enviar”) y reset (“Limpiar”).",
-				pt: "Botões submit (“Enviar”) e reset (“Limpar”).",
+				es: "Botones con type='submit' (“Enviar”) y type='reset' (“Limpiar”).",
+				pt: "Botões com type='submit' (“Enviar”) e type='reset' (“Limpar”).",
 			},
 		],
 		verify: [
@@ -261,8 +261,8 @@ export const labModulo1: LabExercise[] = [
 				pt: "Clicar em cada rótulo foca o seu campo.",
 			},
 			{
-				es: "Escribir un email inválido muestra el aviso del navegador.",
-				pt: "Escrever um e-mail inválido mostra o aviso do navegador.",
+				es: "Escribe un email sin @ e intenta enviar: el navegador muestra el aviso.",
+				pt: "Escreve um e-mail sem @ e tenta enviar: o navegador mostra o aviso.",
 			},
 		],
 	},
@@ -279,26 +279,30 @@ export const labModulo1: LabExercise[] = [
 		},
 		steps: [
 			{
-				es: "index.html: presentación con h1, dos secciones con h2, un párrafo con strong y em, y nav a las otras páginas.",
-				pt: "index.html: apresentação com h1, duas seções com h2, um parágrafo com strong e em, e nav para as outras páginas.",
+				es: "Tu sitio tendrá 3 páginas enlazadas entre sí: index.html (portada), horario.html y contacto.html. Cada una lleva un nav a las otras dos.",
+				pt: "O teu site terá 3 páginas ligadas entre si: index.html (capa), horario.html e contato.html. Cada uma leva um nav para as outras duas.",
 			},
 			{
-				es: "Reutiliza tu tabla del ejercicio 5 en una página “Horario” envuelta en header/main/footer.",
-				pt: "Reutiliza a tua tabela do exercício 5 numa página “Horário” envolvida em header/main/footer.",
+				es: "index.html: h1 con tu nombre, dos secciones con h2, un párrafo con strong y em, más el nav.",
+				pt: "index.html: h1 com o teu nome, duas seções com h2, um parágrafo com strong e em, mais o nav.",
 			},
 			{
-				es: "Reutiliza tu formulario del ejercicio 6 en una página “Contacto” con validación de email funcionando.",
-				pt: "Reutiliza o teu formulário do exercício 6 numa página “Contato” com validação de e-mail a funcionar.",
+				es: "horario.html: reutiliza la tabla del ejercicio 5, envuelta en header (h1 + nav), main y footer (tu nombre y año).",
+				pt: "horario.html: reutiliza a tabela do exercício 5, envolvida em header (h1 + nav), main e footer (o teu nome e ano).",
 			},
 			{
-				es: "Todas las imágenes con alt, un iframe responsivo y enlaces que funcionan en ambas direcciones.",
-				pt: "Todas as imagens com alt, um iframe responsivo e links a funcionar nas duas direções.",
+				es: "contacto.html: reutiliza el formulario del ejercicio 6 con su validación de email funcionando.",
+				pt: "contato.html: reutiliza o formulário do exercício 6 com a sua validação de e-mail a funcionar.",
+			},
+			{
+				es: "En la portada, muestra una imagen con alt y el video o el mapa del ejercicio 4 con su iframe responsivo.",
+				pt: "Na capa, mostra uma imagem com alt e o vídeo ou o mapa do exercício 4 com o seu iframe responsivo.",
 			},
 		],
 		verify: [
 			{
-				es: "Un compañero puede navegar todo el sitio sin ayuda y sin errores en consola.",
-				pt: "Um colega consegue navegar todo o site sem ajuda e sem erros na consola.",
+				es: "Se puede ir de cualquier página a cualquier otra solo con clics, sin errores en consola (F12).",
+				pt: "Dá para ir de qualquer página para qualquer outra só com cliques, sem erros na consola (F12).",
 			},
 			{
 				es: "Cada página tiene un único h1 y title propio en la pestaña.",
@@ -322,8 +326,8 @@ export const labModulo2: LabExercise[] = [
 		},
 		steps: [
 			{
-				es: "Abre el contacto.html que creaste en el ejercicio 6.",
-				pt: "Abre o contato.html que criaste no exercício 6.",
+				es: "Abre el contacto.html del Laboratorio del Módulo 1 (ejercicio 6 de ese laboratorio).",
+				pt: "Abre o contato.html do Laboratório do Módulo 1 (exercício 6 desse laboratório).",
 			},
 			{
 				es: "Añade required a los campos de nombre y email.",
@@ -334,18 +338,18 @@ export const labModulo2: LabExercise[] = [
 				pt: "No textarea da mensagem adiciona minlength='10'.",
 			},
 			{
-				es: "Añade un campo type='tel' con pattern='[0-9]{9}' y un title que explique el formato (9 dígitos).",
-				pt: "Adiciona um campo type='tel' com pattern='[0-9]{9}' e um title a explicar o formato (9 dígitos).",
+				es: "Añade el campo Teléfono completo: label (“Teléfono”), input con id, name, type='tel', pattern='[0-9]{9}', placeholder y title que explique el formato (9 dígitos).",
+				pt: "Adiciona o campo Telefone completo: label (“Telefone”), input com id, name, type='tel', pattern='[0-9]{9}', placeholder e title a explicar o formato (9 dígitos).",
 			},
 			{
-				es: "Intenta enviar el formulario vacío y con datos incorrectos.",
-				pt: "Tenta enviar o formulário vazio e com dados incorretos.",
+				es: "Pulsa Enviar con el formulario vacío y luego con datos incorrectos (mensaje de 3 letras, teléfono con letras). Si todo es válido, la página simplemente se recarga: aún no hay servidor que reciba los datos.",
+				pt: "Prime Enviar com o formulário vazio e depois com dados incorretos (mensagem de 3 letras, telefone com letras). Se tudo for válido, a página apenas recarrega: ainda não há servidor para receber os dados.",
 			},
 		],
 		verify: [
 			{
-				es: "El navegador frena el envío y muestra errores sin una línea de JavaScript.",
-				pt: "O navegador trava o envio e mostra erros sem uma linha de JavaScript.",
+				es: "Vacío: el navegador marca nombre y email; mensaje corto o teléfono con letras: también frena. Todo sin JavaScript.",
+				pt: "Vazio: o navegador marca nome e e-mail; mensagem curta ou telefone com letras: também trava. Tudo sem JavaScript.",
 			},
 			{
 				es: "El title del teléfono explica el formato esperado.",
@@ -534,26 +538,26 @@ export const labModulo2: LabExercise[] = [
 		},
 		steps: [
 			{
-				es: "Crea estilos.css con el reset universal y enlázalo en tus tres páginas del Módulo 1.",
-				pt: "Cria estilos.css com o reset universal e liga-o nas tuas três páginas do Módulo 1.",
+				es: "Crea estilos.css con el reset universal y enlázalo en las tres páginas del integrador del Módulo 1: index.html, horario.html y contacto.html.",
+				pt: "Cria estilos.css com o reset universal e liga-o nas três páginas do integrador do Módulo 1: index.html, horario.html e contato.html.",
 			},
 			{
 				es: "Dale estilo base al nav de todo el sitio con nav a y feedback con a:hover.",
 				pt: "Dá estilo base ao nav de todo o site com nav a e feedback com a:hover.",
 			},
 			{
-				es: "Viste la tabla del horario: cebra con tbody tr:nth-child(even) y encabezados con h1, h2 agrupados.",
-				pt: "Veste a tabela do horário: zebra com tbody tr:nth-child(even) e cabeçalhos com h1, h2 agrupados.",
+				es: "En horario.html, viste la tabla con cebra (tbody tr:nth-child(even)); en la hoja compartida, agrupa h1, h2 con un mismo color.",
+				pt: "Em horario.html, veste a tabela com zebra (tbody tr:nth-child(even)); na folha partilhada, agrupa h1, h2 com uma mesma cor.",
 			},
 			{
-				es: "Reutiliza tu formulario validado del ejercicio 8 y añade una cita con ::before/::after en la portada.",
-				pt: "Reutiliza o teu formulário validado do exercício 8 e adiciona uma citação com ::before/::after na capa.",
+				es: "En contacto.html reutiliza el formulario validado del ejercicio 8 de este laboratorio; en index.html añade una cita (blockquote) con comillas vía ::before/::after (con content).",
+				pt: "Em contato.html reutiliza o formulário validado do exercício 8 deste laboratório; em index.html adiciona uma citação (blockquote) com aspas via ::before/::after (com content).",
 			},
 		],
 		verify: [
 			{
-				es: "Un compañero navega las tres páginas: menú con hover, tabla cebra, formulario que valida y cita con comillas.",
-				pt: "Um colega navega as três páginas: menu com hover, tabela zebra, formulário que valida e citação com aspas.",
+				es: "Un compañero recorre las 3 páginas: nav con hover, tabla cebra, formulario que valida y cita con comillas en la portada.",
+				pt: "Um colega percorre as 3 páginas: nav com hover, tabela zebra, formulário que valida e citação com aspas na capa.",
 			},
 			{
 				es: "Cero atributos style en el HTML: la presentación vive solo en el CSS.",
