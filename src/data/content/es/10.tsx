@@ -18,7 +18,7 @@ import {
 	SectionTitle,
 	Step,
 } from "@/components/lecture/lecture-blocks";
-import CodeBlock from "@/components/ui/code-block";
+import CodeTabs from "@/components/ui/code-tabs";
 
 const Code = ({ children }: { children: React.ReactNode }) => (
 	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
@@ -138,10 +138,13 @@ const Lecture10Es = () => (
 				posicionamiento llega en el módulo 3). El ejemplo completo de la
 				lección, con comillas gigantes absolutas, es este:
 			</p>
-			<div className="space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`blockquote {
+			<CodeTabs
+				html={`<blockquote>El diseño es la inteligencia hecha visible.</blockquote>
+
+<p>Érase una vez un párrafo abierto por una letra gigante.</p>
+
+<p>Solo esta primera línea va en gris: si achicás la ventana, la segunda vuelve al color normal.</p>`}
+				css={`blockquote {
   font-style: italic;
   position: relative; /* Necesario para posicionar los pseudo-elementos */
 }
@@ -153,23 +156,18 @@ blockquote::before {
   position: absolute;
   left: -0.5em;
   top: -0.2em;
-}`}
-				/>
-				<CodeBlock
-					language="css"
-					codeString={`p::first-letter {
+}
+
+p::first-letter {
   font-size: 200%;
   font-weight: bold;
   color: #2980b9;
-}`}
-				/>
-				<CodeBlock
-					language="css"
-					codeString={`p::first-line {
+}
+
+p::first-line {
   color: #7f8c8d;
 }`}
-				/>
-			</div>
+			/>
 		</section>
 
 		<section>
@@ -258,18 +256,12 @@ blockquote::before {
 					</div>
 				</Preview>
 			</div>
-			<div className="space-y-4">
-				<CodeBlock
-					language="html"
-					codeString={`<p id="parrafo-importante" class="texto-azul">Hola Mundo</p>`}
-				/>
-				<CodeBlock
-					language="css"
-					codeString={`#parrafo-importante { color: red; }   /* GANA (1 ID) */
+			<CodeTabs
+				html={`<p id="parrafo-importante" class="texto-azul">Hola Mundo</p>`}
+				css={`#parrafo-importante { color: red; }   /* GANA (1 ID) */
 .texto-azul { color: blue; }     /* Pierde (1 Clase) */
 p { color: green; }               /* Pierde (1 Etiqueta) */`}
-				/>
-			</div>
+			/>
 
 			<Subhead>Paso 2 · Cascada: a igual peso, gana la última</Subhead>
 			<p className="mb-4">
@@ -286,9 +278,9 @@ p { color: green; }               /* Pierde (1 Etiqueta) */`}
 					</div>
 				</Preview>
 			</div>
-			<CodeBlock
-				language="css"
-				codeString={`p { color: blue; }
+			<CodeTabs
+				html={`<p>Este párrafo es rojo: ganó la última regla.</p>`}
+				css={`p { color: blue; }
 p { color: red; } /* Este gana, el párrafo será rojo */`}
 			/>
 
@@ -315,9 +307,8 @@ p { color: red; } /* Este gana, el párrafo será rojo */`}
 					</div>
 				</Preview>
 			</div>
-			<CodeBlock
-				language="html"
-				codeString={`<div style="color: green;">
+			<CodeTabs
+				html={`<div style="color: green;">
   <p>Este texto es verde porque hereda el color del div.</p>
 </div>`}
 			/>

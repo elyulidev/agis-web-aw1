@@ -20,7 +20,7 @@ import {
 	SectionTitle,
 	Step,
 } from "@/components/lecture/lecture-blocks";
-import CodeBlock from "@/components/ui/code-block";
+import CodeTabs from "@/components/ui/code-tabs";
 
 const Code = ({ children }: { children: React.ReactNode }) => (
 	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
@@ -131,7 +131,7 @@ const Lecture9Pt = () => (
 			<div className="mb-4">
 				<Preview label="Vista prévia · repara no que se pinta e no que não">
 					<style>{`.d9-arbol a { color: teal; }
-.d9-arbol > ul > li { font-weight: bold; list-style-type: square; }`}</style>
+.d9-arbol > ul > li > a { font-weight: bold; }`}</style>
 					<nav className="d9-arbol">
 						<ul>
 							<li>
@@ -150,26 +150,35 @@ const Lecture9Pt = () => (
 				</Preview>
 			</div>
 			<p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-				Os três links estão em teal (<Code>nav a</Code> chega a todos), mas só o
-				primeiro nível está a negrito com marca quadrada (<Code>&gt;</Code>{" "}
-				trava nos filhos diretos). O subnível encaixado denuncia-o.
+				Os três links estão em teal (<Code>nav a</Code> chega a todos), mas só
+				os de primeiro nível estão a negrito (<Code>&gt;</Code> trava nos filhos
+				diretos porque o <Code>a</Code> encaixado não pende do <Code>a</Code> de
+				cima, mas de outro <Code>li</Code>). O subnível encaixado denuncia-o: se
+				pintasses o <Code>li</Code> em vez do <Code>a</Code>, o de dentro
+				herdaria o negrito mesmo que o seletor não o aponte.
 			</p>
-			<div className="space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`/* Seleciona TODOS os <a> dentro de um <nav> */
+			<CodeTabs
+				html={`<nav>
+  <ul>
+    <li>
+      <a href="#inicio">Início</a>
+      <ul>
+        <li><a href="#sub">Subnível encaixado</a></li>
+      </ul>
+    </li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>`}
+				css={`/* Seleciona TODOS os <a> dentro de um <nav> */
 nav a {
   color: teal;
+}
+
+/* Só os links de primeiro nível */
+nav > ul > li > a {
+  font-weight: bold;
 }`}
-				/>
-				<CodeBlock
-					language="css"
-					codeString={`/* Só os <li> filhos diretos do <ul> */
-ul > li {
-  list-style-type: square;
-}`}
-				/>
-			</div>
+			/>
 
 			<Subhead>Irmãos: + e ~ · em direto</Subhead>
 			<div className="mb-4">
@@ -183,23 +192,21 @@ ul > li {
 					</div>
 				</Preview>
 			</div>
-			<div className="space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`/* Só o <p> logo após o <h1> */
-h1 + p {
+			<CodeTabs
+				html={`<h2>Subtítulo de exemplo</h2>
+<p>Primeiro parágrafo: itálico e avanço (pegam ambas as regras).</p>
+<p>Segundo parágrafo: só avanço (só pega a de ~).</p>`}
+				css={`/* Só o <p> logo após o <h2> */
+h2 + p {
   margin-top: 0;
   font-style: italic;
-}`}
-				/>
-				<CodeBlock
-					language="css"
-					codeString={`/* Todos os <p> irmãos posteriores ao <h2> */
+}
+
+/* Todos os <p> irmãos posteriores ao <h2> */
 h2 ~ p {
   text-indent: 2em;
 }`}
-				/>
-			</div>
+			/>
 		</section>
 
 		<section>
@@ -281,11 +288,28 @@ h2 ~ p {
 					</div>
 				</Preview>
 			</div>
-			<CodeBlock
-				language="css"
-				codeString={`/* Estiliza todos os links que abrem num novo separador */
+			<CodeTabs
+				html={`<a href="https://exemplo.com" target="_blank">Link externo</a>
+<a href="/contato">Link interno</a>
+<a href="guia.pdf">Guia em PDF</a>
+
+<input type="submit" value="Botão por atributo">
+<input type="text" placeholder="Campo normal">`}
+				css={`/* Estiliza todos os links que abrem num novo separador */
 a[target="_blank"] {
   background-color: yellow;
+}
+
+/* Botão por tipo de input, sem classes */
+input[type="submit"] {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Links para PDF */
+a[href$=".pdf"] {
+  color: red;
+  font-weight: bold;
 }`}
 			/>
 			<div className="mt-4 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
@@ -360,9 +384,12 @@ a[target="_blank"] {
 					</div>
 				</Preview>
 			</div>
-			<CodeBlock
-				language="css"
-				codeString={`button {
+			<CodeTabs
+				html={`<button>Passa o cursor e clica-me</button>
+
+<label for="foco">Campo com :focus</label>
+<input id="foco" type="text" placeholder="Olha a borda">`}
+				css={`button {
   background-color: #3498db;
   color: white;
   transition: background-color 0.3s;
@@ -377,6 +404,176 @@ input:focus {
   border-color: #3498db;
 }`}
 			/>
+
+			<Subhead>Links e formulários: mais estados · em direto</Subhead>
+			<p className="mb-4">
+				Não há só <Code>:hover</Code>. Os links têm história (<Code>:link</Code>{" "}
+				nunca visitado, <Code>:visited</Code> já visitado) e os formulários têm
+				estado (<Code>:checked</Code>, <Code>:disabled</Code>). São os que mais
+				vais usar depois do trio acima.
+			</p>
+			<div className="grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<MousePointerClick className="h-5 w-5" aria-hidden />}
+					title=":link e :visited"
+					iconClassName="bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300"
+				>
+					<Code>:link</Code> é o link ainda não visitado, <Code>:visited</Code>{" "}
+					o que já abriste. Por isso a ordem LoVe-HA: link → visited → hover →
+					active.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Check className="h-5 w-5" aria-hidden />}
+					title=":checked e :disabled"
+					iconClassName="bg-lime-100 text-lime-700 dark:bg-lime-950 dark:text-lime-300"
+				>
+					<Code>:checked</Code> marca checkbox e radio selecionados;{" "}
+					<Code>:disabled</Code> desliga campos indisponíveis. Essencial em
+					formulários (volta à 7 se for preciso).
+				</ConceptCard>
+			</div>
+			<div className="mb-4 mt-4">
+				<Preview label="Vista prévia · visitados, selecionados e desligados">
+					<style>{`.d9-link:link { color: #2563eb; }
+.d9-link:visited { color: #7c3aed; }
+.d9-check:checked { outline: 2px solid #16a34a; }
+.d9-dis:disabled { background-color: #e5e7eb; color: #9ca3af; cursor: not-allowed; }`}</style>
+					<div className="space-y-3">
+						<p className="space-x-4">
+							<a href="https://exemplo.com/nunca-visitado" className="d9-link">
+								Link :link (azul)
+							</a>
+							<a href="#d9-visitado" className="d9-link">
+								Link :visited (violeta se já abriste)
+							</a>
+						</p>
+						<p className="flex items-center gap-2">
+							<input
+								type="checkbox"
+								defaultChecked
+								className="d9-check"
+								id="d9-check1"
+							/>
+							<label htmlFor="d9-check1">
+								Selecionado (:checked com borda)
+							</label>
+						</p>
+						<p className="flex flex-wrap gap-2">
+							<input type="text" placeholder="Ativo" className={inputClass} />
+							<input
+								type="text"
+								placeholder="Desligado"
+								disabled
+								className={`d9-dis ${inputClass}`}
+							/>
+						</p>
+					</div>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<a href="https://exemplo.com">Link :link</a>
+<a href="#visitado">Link :visited</a>
+
+<input type="checkbox" checked> Selecionado
+<input type="text" placeholder="Ativo">
+<input type="text" placeholder="Desligado" disabled>`}
+				css={`a:link {
+  color: #2563eb;
+}
+
+a:visited {
+  color: #7c3aed;
+}
+
+input:checked {
+  outline: 2px solid #16a34a;
+}
+
+input:disabled {
+  background-color: #e5e7eb;
+  cursor: not-allowed;
+}`}
+			/>
+
+			<Subhead>Que estado pega a que elemento?</Subhead>
+			<div className="overflow-x-auto rounded-2xl border border-gray-200 dark:border-gray-700">
+				<table className="w-full text-left text-sm">
+					<thead>
+						<tr className="bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-200">
+							<th className="px-4 py-2">Estado</th>
+							<th className="px-4 py-2">A quem pega?</th>
+							<th className="px-4 py-2">Como se ativa?</th>
+							<th className="px-4 py-2">Armadilha</th>
+						</tr>
+					</thead>
+					<tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+						<tr>
+							<td className="px-4 py-2 font-mono">:link</td>
+							<td className="px-4 py-2">
+								<Code>a</Code> com <Code>href</Code>
+							</td>
+							<td className="px-4 py-2">nunca visitado</td>
+							<td className="px-4 py-2">—</td>
+						</tr>
+						<tr>
+							<td className="px-4 py-2 font-mono">:visited</td>
+							<td className="px-4 py-2">
+								<Code>a</Code> com <Code>href</Code>
+							</td>
+							<td className="px-4 py-2">já abriste</td>
+							<td className="px-4 py-2">por privacidade quase só muda a cor</td>
+						</tr>
+						<tr>
+							<td className="px-4 py-2 font-mono">:hover</td>
+							<td className="px-4 py-2">qualquer um visível</td>
+							<td className="px-4 py-2">cursor em cima</td>
+							<td className="px-4 py-2">no tátil quase não existe</td>
+						</tr>
+						<tr>
+							<td className="px-4 py-2 font-mono">:active</td>
+							<td className="px-4 py-2">
+								<Code>button</Code>, <Code>a</Code>, qualquer clicável
+							</td>
+							<td className="px-4 py-2">instante do pressionado</td>
+							<td className="px-4 py-2">dura milissegundos</td>
+						</tr>
+						<tr>
+							<td className="px-4 py-2 font-mono">:focus</td>
+							<td className="px-4 py-2">
+								tudo o que é focável: <Code>a</Code>, <Code>button</Code>,{" "}
+								<Code>input</Code>, <Code>select</Code>
+							</td>
+							<td className="px-4 py-2">
+								<Code>Tab</Code>, clique ou <Code>.focus()</Code>
+							</td>
+							<td className="px-4 py-2">
+								o botão com rato às vezes não mostra aro, com <Code>Tab</Code>{" "}
+								sim
+							</td>
+						</tr>
+						<tr>
+							<td className="px-4 py-2 font-mono">:checked</td>
+							<td className="px-4 py-2">
+								<Code>checkbox</Code>, <Code>radio</Code>
+							</td>
+							<td className="px-4 py-2">selecionado</td>
+							<td className="px-4 py-2">—</td>
+						</tr>
+						<tr>
+							<td className="px-4 py-2 font-mono">:disabled</td>
+							<td className="px-4 py-2">
+								<Code>input</Code>, <Code>button</Code>, <Code>select</Code>
+							</td>
+							<td className="px-4 py-2">
+								atributo <Code>disabled</Code>
+							</td>
+							<td className="px-4 py-2">
+								não recebe clique nem foco, cinza + <Code>not-allowed</Code>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
 			<Subhead>Estruturais: posição no DOM · em direto</Subhead>
 			<div className="grid gap-4 sm:grid-cols-3">
@@ -417,20 +614,29 @@ input:focus {
 					</ol>
 				</Preview>
 			</div>
-			<div className="space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`/* Sem borda superior no primeiro item */
+			<CodeTabs
+				html={`<ol>
+  <li>Primeiro item (negrito)</li>
+  <li>Segundo item (fundo cinza)</li>
+  <li>Terceiro item</li>
+  <li>Quarto item (fundo cinza)</li>
+  <li>Último item (borda azul)</li>
+</ol>`}
+				css={`/* O primeiro a negrito */
 li:first-child {
-  border-top: none;
+  font-weight: bold;
 }
 
-/* Estilo "zebra" para as linhas de uma tabela */
-tbody tr:nth-child(even) {
+/* Zebra: fundo nos pares */
+li:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+/* O último com borda especial */
+li:last-child {
+  border-bottom: 3px solid #3498db;
 }`}
-				/>
-			</div>
+			/>
 		</section>
 
 		<section className="rounded-3xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-6 dark:border-gray-700 dark:from-gray-800/60 dark:to-gray-900 sm:p-8">

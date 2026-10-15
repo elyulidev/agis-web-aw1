@@ -17,7 +17,7 @@ import {
 	SectionTitle,
 	Step,
 } from "@/components/lecture/lecture-blocks";
-import CodeBlock from "@/components/ui/code-block";
+import CodeTabs from "@/components/ui/code-tabs";
 
 const Code = ({ children }: { children: React.ReactNode }) => (
 	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
@@ -186,14 +186,11 @@ const Lecture7Es = () => (
 				</table>
 			</div>
 			<div className="mt-4 space-y-4">
-				<CodeBlock
-					language="html"
-					codeString={`<label for="email">Correo:</label>
-<input type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email">`}
-				/>
-				<CodeBlock
-					language="html"
-					codeString={`<input type="text" value="No editable" disabled>
+				<CodeTabs
+					html={`<label for="email">Correo:</label>
+<input type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email">
+
+<input type="text" value="No editable" disabled>
 <input type="text" value="Valor de solo lectura" readonly>`}
 				/>
 			</div>
@@ -311,24 +308,17 @@ const Lecture7Es = () => (
 				</Preview>
 			</div>
 			<div className="space-y-4">
-				<CodeBlock
-					language="html"
-					codeString={`<label for="nombre">Nombre:</label>
-<input type="text" id="nombre" name="nombre" required>`}
-				/>
-				<CodeBlock
-					language="html"
-					codeString={`<label for="pass">Contraseña (8-16 caracteres):</label>
-<input type="password" id="pass" name="pass" minlength="8" maxlength="16" required>`}
-				/>
-				<CodeBlock
-					language="html"
-					codeString={`<label for="edad">Edad (18+):</label>
-<input type="number" id="edad" name="edad" min="18" max="120">`}
-				/>
-				<CodeBlock
-					language="html"
-					codeString={`<label for="cp">Código Postal (5 dígitos):</label>
+				<CodeTabs
+					html={`<label for="nombre">Nombre:</label>
+<input type="text" id="nombre" name="nombre" required>
+
+<label for="pass">Contraseña (8-16 caracteres):</label>
+<input type="password" id="pass" name="pass" minlength="8" maxlength="16" required>
+
+<label for="edad">Edad (18+):</label>
+<input type="number" id="edad" name="edad" min="18" max="120">
+
+<label for="cp">Código Postal (5 dígitos):</label>
 <input type="text" id="cp" name="cp" pattern="[0-9]{5}" title="Por favor, introduce 5 dígitos numéricos.">`}
 				/>
 			</div>
@@ -359,9 +349,9 @@ const Lecture7Es = () => (
 				<p className="mb-3 text-center font-mono text-sm font-semibold text-gray-700 dark:text-gray-200">
 					Selector {"{"} Propiedad: Valor; {"}"}
 				</p>
-				<CodeBlock
-					language="css"
-					codeString={`h1 {
+				<CodeTabs
+					html={`<h1>Mi primer título</h1>`}
+					css={`h1 {
   color: blue;
   font-size: 24px;
 }`}

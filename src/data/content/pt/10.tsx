@@ -18,7 +18,7 @@ import {
 	SectionTitle,
 	Step,
 } from "@/components/lecture/lecture-blocks";
-import CodeBlock from "@/components/ui/code-block";
+import CodeTabs from "@/components/ui/code-tabs";
 
 const Code = ({ children }: { children: React.ReactNode }) => (
 	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
@@ -139,10 +139,13 @@ const Lecture10Pt = () => (
 				chega no módulo 3). O exemplo completo da lição, com aspas gigantes
 				absolutas, é este:
 			</p>
-			<div className="space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`blockquote {
+			<CodeTabs
+				html={`<blockquote>O design é a inteligência feita visível.</blockquote>
+
+<p>Era uma vez um parágrafo aberto por uma letra gigante.</p>
+
+<p>Só esta primeira linha vai em cinzento: se estreitares a janela, a segunda volta à cor normal.</p>`}
+				css={`blockquote {
   font-style: italic;
   position: relative; /* Necessário para posicionar os pseudo-elementos */
 }
@@ -154,23 +157,18 @@ blockquote::before {
   position: absolute;
   left: -0.5em;
   top: -0.2em;
-}`}
-				/>
-				<CodeBlock
-					language="css"
-					codeString={`p::first-letter {
+}
+
+p::first-letter {
   font-size: 200%;
   font-weight: bold;
   color: #2980b9;
-}`}
-				/>
-				<CodeBlock
-					language="css"
-					codeString={`p::first-line {
+}
+
+p::first-line {
   color: #7f8c8d;
 }`}
-				/>
-			</div>
+			/>
 		</section>
 
 		<section>
@@ -259,18 +257,12 @@ blockquote::before {
 					</div>
 				</Preview>
 			</div>
-			<div className="space-y-4">
-				<CodeBlock
-					language="html"
-					codeString={`<p id="paragrafo-importante" class="texto-azul">Olá Mundo</p>`}
-				/>
-				<CodeBlock
-					language="css"
-					codeString={`#paragrafo-importante { color: red; }   /* GANHA (1 ID) */
+			<CodeTabs
+				html={`<p id="paragrafo-importante" class="texto-azul">Olá Mundo</p>`}
+				css={`#paragrafo-importante { color: red; }   /* GANHA (1 ID) */
 .texto-azul { color: blue; }     /* Perde (1 Classe) */
 p { color: green; }               /* Perde (1 Tag) */`}
-				/>
-			</div>
+			/>
 
 			<Subhead>Passo 2 · Cascata: em empate, ganha a última</Subhead>
 			<p className="mb-4">
@@ -287,9 +279,9 @@ p { color: green; }               /* Perde (1 Tag) */`}
 					</div>
 				</Preview>
 			</div>
-			<CodeBlock
-				language="css"
-				codeString={`p { color: blue; }
+			<CodeTabs
+				html={`<p>Este parágrafo é vermelho: ganhou a última regra.</p>`}
+				css={`p { color: blue; }
 p { color: red; } /* Esta ganha, o parágrafo será vermelho */`}
 			/>
 
@@ -317,9 +309,8 @@ p { color: red; } /* Esta ganha, o parágrafo será vermelho */`}
 					</div>
 				</Preview>
 			</div>
-			<CodeBlock
-				language="html"
-				codeString={`<div style="color: green;">
+			<CodeTabs
+				html={`<div style="color: green;">
   <p>Este texto é verde porque herda a cor da div.</p>
 </div>`}
 			/>

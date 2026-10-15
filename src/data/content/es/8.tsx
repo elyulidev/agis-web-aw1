@@ -19,7 +19,7 @@ import {
 	SectionTitle,
 	Step,
 } from "@/components/lecture/lecture-blocks";
-import CodeBlock from "@/components/ui/code-block";
+import CodeTabs from "@/components/ui/code-tabs";
 
 const Code = ({ children }: { children: React.ReactNode }) => (
 	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
@@ -122,13 +122,11 @@ const Lecture8Es = () => (
 				Reservalo para casos puntuales, como estilos dinámicos con JavaScript.
 			</Callout>
 			<div className="space-y-4">
-				<CodeBlock
-					language="html"
-					codeString={`<p style="color: red; font-size: 16px;">Este párrafo es rojo.</p>`}
+				<CodeTabs
+					html={`<p style="color: red; font-size: 16px;">Este párrafo es rojo.</p>`}
 				/>
-				<CodeBlock
-					language="html"
-					codeString={`<head>
+				<CodeTabs
+					html={`<head>
   <style>
     p {
       color: green;
@@ -143,21 +141,17 @@ const Lecture8Es = () => (
 					La interna ya es mejor, pero solo vale para esa página: con varias
 					páginas repetirías el CSS en cada una.
 				</p>
-				<CodeBlock
-					language="css"
-					codeString={`/* Dentro de styles.css */
-p {
-  color: blue;
-}`}
-				/>
-				<CodeBlock
-					language="html"
-					codeString={`<head>
+				<CodeTabs
+					html={`<head>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <p>Este párrafo es azul.</p>
 </body>`}
+					css={`/* Dentro de styles.css */
+p {
+  color: blue;
+}`}
 				/>
 			</div>
 			<Callout variant="success" title="Ventajas de la hoja externa">
@@ -250,9 +244,8 @@ p {
 				proyectos:
 			</p>
 			<div className="space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`/* 1. Reset universal: el punto de partida más común */
+				<CodeTabs
+					css={`/* 1. Reset universal: el punto de partida más común */
 *,
 *::before,
 *::after {
@@ -270,9 +263,8 @@ p {
 					<Code>*::after</Code> también, porque esos pseudo-elementos generan
 					cajitas que si no, se medirían con la regla vieja.
 				</p>
-				<CodeBlock
-					language="css"
-					codeString={`/* 2. Reset del body: el navegador deja ~8px alrededor de todo */
+				<CodeTabs
+					css={`/* 2. Reset del body: el navegador deja ~8px alrededor de todo */
 body {
   margin: 0;
 }
@@ -390,9 +382,8 @@ ul.sin-vinetas {
 				</Preview>
 			</div>
 			<div className="space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`/* content-box: el ancho se estira por fuera */
+				<CodeTabs
+					css={`/* content-box: el ancho se estira por fuera */
 .caja-default {
   width: 200px;
   padding: 20px;
@@ -423,9 +414,8 @@ ul.sin-vinetas {
 				.
 			</Callout>
 			<div className="mt-4 space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`/* El truco maestro: todas las cajas miden lo que pedís */
+				<CodeTabs
+					css={`/* El truco maestro: todas las cajas miden lo que pedís */
 *,
 *::before,
 *::after {
@@ -487,9 +477,8 @@ ul.sin-vinetas {
 
 			<Subhead>Universal y tipo · código</Subhead>
 			<div className="space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`*,
+				<CodeTabs
+					css={`*,
 *::before,
 *::after {
   box-sizing: border-box; /* Un reinicio común */
@@ -500,9 +489,8 @@ ul.sin-vinetas {
 					<Code>border-box</Code>) lo acabamos de ver en la sección 2: con este
 					reinicio todos los anchos se vuelven predecibles.
 				</p>
-				<CodeBlock
-					language="css"
-					codeString={`/* Hace que todos los h2 sean de color gris oscuro */
+				<CodeTabs
+					css={`/* Hace que todos los h2 sean de color gris oscuro */
 h2 {
   color: #333;
 }`}
@@ -523,16 +511,12 @@ h2 {
 				</Preview>
 			</div>
 			<div className="space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`.alerta {
+				<CodeTabs
+					html={`<p class="alerta">Cuidado, esto es importante.</p>`}
+					css={`.alerta {
   color: red;
   font-weight: bold;
 }`}
-				/>
-				<CodeBlock
-					language="html"
-					codeString={`<p class="alerta">Cuidado, esto es importante.</p>`}
 				/>
 			</div>
 
@@ -545,15 +529,11 @@ h2 {
 				</Preview>
 			</div>
 			<div className="space-y-4">
-				<CodeBlock
-					language="css"
-					codeString={`#encabezado-principal {
+				<CodeTabs
+					html={`<header id="encabezado-principal">...</header>`}
+					css={`#encabezado-principal {
   background-color: #f0f0f0;
 }`}
-				/>
-				<CodeBlock
-					language="html"
-					codeString={`<header id="encabezado-principal">...</header>`}
 				/>
 			</div>
 
@@ -573,9 +553,11 @@ h2 {
 					</div>
 				</Preview>
 			</div>
-			<CodeBlock
-				language="css"
-				codeString={`h1, h2, h3 {
+			<CodeTabs
+				html={`<h1>Título 1</h1>
+<h2>Título 2</h2>
+<h3>Título 3</h3>`}
+				css={`h1, h2, h3 {
   font-family: 'Georgia', serif;
   color: navy;
 }`}
