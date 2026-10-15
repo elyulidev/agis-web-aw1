@@ -142,30 +142,42 @@ const Lecture10Pt = () => (
 			<CodeTabs
 				html={`<blockquote>O design é a inteligência feita visível.</blockquote>
 
-<p>Era uma vez um parágrafo aberto por uma letra gigante.</p>
+<p class="cita-cap">Era uma vez um parágrafo aberto por uma letra gigante.</p>
 
-<p>Só esta primeira linha vai em cinzento: se estreitares a janela, a segunda volta à cor normal.</p>`}
+<p class="cita-linea">Só esta primeira linha vai em cinzento: se estreitares a janela, a segunda volta à cor normal.</p>`}
 				css={`blockquote {
   font-style: italic;
-  position: relative; /* Necessário para posicionar os pseudo-elementos */
+  position: relative; /* Necessário para posicionar as aspas */
+  padding: 0.2em 1.2em;
 }
 
 blockquote::before {
-  content: '"'; /* O conteúdo é obrigatório */
+  content: '\\201C'; /* Aspa de abertura: sem content não se renderiza */
   font-size: 4em;
-  color: #ddd;
+  line-height: 1;
+  color: #3a0abe;
   position: absolute;
-  left: -0.5em;
-  top: -0.2em;
+  left: -0.2em;
+  bottom: -0.23em;
 }
 
-p::first-letter {
+blockquote::after {
+  content: '\\201D'; /* Aspa de fecho */
+  font-size: 4em;
+  line-height: 1;
+  color: #3a0abe;
+  position: absolute;
+  right: 4.4em;
+  bottom: -0.23em;
+}
+
+.cita-cap::first-letter {
   font-size: 200%;
   font-weight: bold;
   color: #2980b9;
 }
 
-p::first-line {
+.cita-linea::first-line {
   color: #7f8c8d;
 }`}
 			/>
@@ -200,58 +212,69 @@ p::first-line {
 				</div>
 			</div>
 
-			<Subhead>Passo 1 · Especificidade: o peso do seletor</Subhead>
+			<Subhead>Passo 1 · Especificidade: o marcador de pontos</Subhead>
 			<p className="mb-4">
-				O navegador calcula que seletor é mais “específico”. A hierarquia, do
-				maior para o menor peso:
+				Pensa nisto como um cartão com três casas:{" "}
+				<strong>[IDs, Classes, Tags]</strong>. Cada seletor soma pontos na sua
+				coluna e compara-se <strong>da esquerda para a direita</strong>, como os
+				números: os milhares ganham aos cientos. Um ID é VIP, as classes são
+				profissionais e as tags são comuns.
 			</p>
 			<div className="grid gap-4 sm:grid-cols-2">
 				<ConceptCard
 					icon={<Zap className="h-5 w-5" aria-hidden />}
-					title="Estilos em linha"
+					title="Estilos em linha · ∞"
 					iconClassName="bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
 				>
-					Um atributo <Code>style</Code> ganha sobre qualquer folha. (Mas já
-					sabes pela lição 8 que convém evitá-lo.)
+					Um atributo <Code>style</Code> ganha a tudo, mas tira-te a
+					flexibilidade do CSS. (Já sabes pela 8 que convém evitá-lo.)
 				</ConceptCard>
 				<ConceptCard
 					icon={<KeyRound className="h-5 w-5" aria-hidden />}
-					title="ID (#)"
+					title="ID (#) · [1, 0, 0] os VIP"
 					iconClassName="bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
 				>
-					Extremamente específico: um só ID pesa mais que qualquer quantidade de
-					classes.
+					Um só ID esmaga qualquer quantidade de classes. Podes somar 50 classes
+					que o ID ganha sempre.
 				</ConceptCard>
 				<ConceptCard
 					icon={<Tag className="h-5 w-5" aria-hidden />}
-					title="Classes, pseudo-classes e atributos"
+					title="Classes e atributos · [0, 1, 0]"
 					iconClassName="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
 				>
 					<Code>.btn</Code>, <Code>:hover</Code>,{" "}
-					<Code>[type=&quot;text&quot;]</Code>: o mesmo nível entre eles.
+					<Code>[type=&quot;text&quot;]</Code>: um ponto na coluna do meio.
+					Profissionais.
 				</ConceptCard>
 				<ConceptCard
 					icon={<Type className="h-5 w-5" aria-hidden />}
-					title="Tipos e pseudo-elementos"
+					title="Tipos · [0, 0, 1] os comuns"
 					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
 				>
-					<Code>p</Code>, <Code>div</Code>, <Code>::before</Code>: os menos
-					específicos. O <Code>*</Code> e os combinadores valem zero.
+					<Code>p</Code>, <Code>div</Code>, <Code>::before</Code>: um ponto à
+					direita. <Code>*</Code> e combinadores valem zero.
 				</ConceptCard>
 			</div>
-			<Callout variant="info" title="Como se calcula?">
-				O navegador conta IDs, classes e tags de cada seletor.{" "}
-				<Code>#nav .link</Code> (1 ID + 1 classe) ganha a{" "}
-				<Code>div a.button.active</Code> (0 IDs + 3 classes): o ID pesa mais que
-				todas as classes juntas.
+			<Callout variant="info" title="Como se desempata?">
+				Compara da esquerda para a direita: mais IDs ganha; se empatam, mais
+				classes; e só no fim contam as tags. <Code>#nav .link</Code> [1, 1, 0]
+				ganha a <Code>div a.button.active</Code> [0, 3, 2].
+			</Callout>
+			<Callout
+				variant="warning"
+				title="Regra de ouro: não uses IDs para pintar"
+			>
+				Reserva os <Code>#id</Code> para âncoras de JavaScript ou formulários.
+				Se pintas com IDs, crias uma guerra de especificidade que depois só se
+				apaga com <Code>!important</Code>. Usa sempre classes.
 			</Callout>
 			<div className="mb-4">
 				<Preview label="Vista prévia · três regras lutam, uma ganha (prevê antes de ver)">
 					<style>{`.d10-batalla p { color: green; }
 .d10-batalla .texto-azul { color: blue; }
-.d10-batalla #parrafo-importante { color: red; }`}</style>
+.d10-batalla #paragrafo-importante { color: red; }`}</style>
 					<div className="d10-batalla">
-						<p id="parrafo-importante" className="texto-azul">
+						<p id="paragrafo-importante" className="texto-azul">
 							Olá Mundo (deveria ver-se vermelho)
 						</p>
 					</div>
@@ -259,9 +282,9 @@ p::first-line {
 			</div>
 			<CodeTabs
 				html={`<p id="paragrafo-importante" class="texto-azul">Olá Mundo</p>`}
-				css={`#paragrafo-importante { color: red; }   /* GANHA (1 ID) */
-.texto-azul { color: blue; }     /* Perde (1 Classe) */
-p { color: green; }               /* Perde (1 Tag) */`}
+				css={`#paragrafo-importante { color: red; }   /* Placar [1, 0, 0]: GANHA */
+.texto-azul { color: blue; }     /* Placar [0, 1, 0]: perde */
+p { color: green; }               /* Placar [0, 0, 1]: perde */`}
 			/>
 
 			<Subhead>Passo 2 · Cascata: em empate, ganha a última</Subhead>

@@ -65,6 +65,7 @@ export const translations = {
 		"lab.objective": "Objetivo",
 		"lab.instructions": "Consigna",
 		"lab.verify": "¿Cómo sé que está bien?",
+		"lab.expected": "Resultado esperado",
 		"lab.review": "Repasar conferencia {lectureId}",
 	},
 	pt: {
@@ -133,6 +134,7 @@ export const translations = {
 		"lab.objective": "Objetivo",
 		"lab.instructions": "Enunciado",
 		"lab.verify": "Como sei que está bem?",
+		"lab.expected": "Resultado esperado",
 		"lab.review": "Rever aula {lectureId}",
 	},
 };

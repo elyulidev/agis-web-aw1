@@ -141,30 +141,42 @@ const Lecture10Es = () => (
 			<CodeTabs
 				html={`<blockquote>El diseño es la inteligencia hecha visible.</blockquote>
 
-<p>Érase una vez un párrafo abierto por una letra gigante.</p>
+<p class="cita-cap">Érase una vez un párrafo abierto por una letra gigante.</p>
 
-<p>Solo esta primera línea va en gris: si achicás la ventana, la segunda vuelve al color normal.</p>`}
+<p class="cita-linea">Solo esta primera línea va en gris: si achicás la ventana, la segunda vuelve al color normal.</p>`}
 				css={`blockquote {
   font-style: italic;
-  position: relative; /* Necesario para posicionar los pseudo-elementos */
+  position: relative; /* Necesario para posicionar las comillas */
+  padding: 0.2em 1.2em;
 }
 
 blockquote::before {
-  content: '"'; /* El contenido es obligatorio */
+  content: '\\201C'; /* Comilla de apertura: sin content no se renderiza */
   font-size: 4em;
-  color: #ddd;
+  line-height: 1;
+  color: #3a0abe;
   position: absolute;
-  left: -0.5em;
-  top: -0.2em;
+  left: -0.2em;
+  bottom: -0.23em;
 }
 
-p::first-letter {
+blockquote::after {
+  content: '\\201D'; /* Comilla de cierre */
+  font-size: 4em;
+  line-height: 1;
+  color: #3a0abe;
+  position: absolute;
+  right: 4.4em;
+  bottom: -0.23em;
+}
+
+.cita-cap::first-letter {
   font-size: 200%;
   font-weight: bold;
   color: #2980b9;
 }
 
-p::first-line {
+.cita-linea::first-line {
   color: #7f8c8d;
 }`}
 			/>
@@ -199,50 +211,58 @@ p::first-line {
 				</div>
 			</div>
 
-			<Subhead>Paso 1 · Especificidad: el peso del selector</Subhead>
+			<Subhead>Paso 1 · Especificidad: el marcador de puntos</Subhead>
 			<p className="mb-4">
-				El navegador calcula qué selector es más “específico”. La jerarquía, de
-				más a menos peso:
+				Pensalo como un carné con tres casillas:{" "}
+				<strong>[IDs, Clases, Etiquetas]</strong>. Cada selector suma puntos en
+				su columna y se compara <strong>de izquierda a derecha</strong>, como
+				los números: los miles le ganan a las centenas. Un ID es VIP, las clases
+				son profesionales y las etiquetas son comunes.
 			</p>
 			<div className="grid gap-4 sm:grid-cols-2">
 				<ConceptCard
 					icon={<Zap className="h-5 w-5" aria-hidden />}
-					title="Estilos en línea"
+					title="Estilos en línea · ∞"
 					iconClassName="bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
 				>
-					Un atributo <Code>style</Code> gana sobre cualquier hoja. (Pero ya
-					sabés por la conferencia 8 que conviene evitarlo.)
+					Un atributo <Code>style</Code> gana a todo, pero te quita la
+					flexibilidad del CSS. (Ya sabés por la 8 que conviene evitarlo.)
 				</ConceptCard>
 				<ConceptCard
 					icon={<KeyRound className="h-5 w-5" aria-hidden />}
-					title="ID (#)"
+					title="ID (#) · [1, 0, 0] los VIP"
 					iconClassName="bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
 				>
-					Extremadamente específico: un solo ID pesa más que cualquier cantidad
-					de clases.
+					Un solo ID aplasta cualquier cantidad de clases. Podés sumar 50 clases
+					y el ID gana igual.
 				</ConceptCard>
 				<ConceptCard
 					icon={<Tag className="h-5 w-5" aria-hidden />}
-					title="Clases, pseudo-clases y atributos"
+					title="Clases y atributos · [0, 1, 0]"
 					iconClassName="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
 				>
 					<Code>.btn</Code>, <Code>:hover</Code>,{" "}
-					<Code>[type=&quot;text&quot;]</Code>: el mismo nivel entre ellos.
+					<Code>[type=&quot;text&quot;]</Code>: un punto en la columna del
+					medio. Profesionales.
 				</ConceptCard>
 				<ConceptCard
 					icon={<Type className="h-5 w-5" aria-hidden />}
-					title="Tipos y pseudo-elementos"
+					title="Tipos · [0, 0, 1] los comunes"
 					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
 				>
-					<Code>p</Code>, <Code>div</Code>, <Code>::before</Code>: los menos
-					específicos. El <Code>*</Code> y los combinadores valen cero.
+					<Code>p</Code>, <Code>div</Code>, <Code>::before</Code>: un punto a la
+					derecha. <Code>*</Code> y combinadores valen cero.
 				</ConceptCard>
 			</div>
-			<Callout variant="info" title="¿Cómo se calcula?">
-				El navegador cuenta IDs, clases y etiquetas de cada selector.{" "}
-				<Code>#nav .link</Code> (1 ID + 1 clase) le gana a{" "}
-				<Code>div a.button.active</Code> (0 IDs + 3 clases): el ID pesa más que
-				todas las clases juntas.
+			<Callout variant="info" title="¿Cómo se desempata?">
+				Compará de izquierda a derecha: más IDs gana; si empatan, más clases; y
+				solo al final cuentan las etiquetas. <Code>#nav .link</Code> [1, 1, 0]
+				le gana a <Code>div a.button.active</Code> [0, 3, 2].
+			</Callout>
+			<Callout variant="warning" title="Regla de oro: no uses IDs para pintar">
+				Reservá los <Code>#id</Code> para anclas de JavaScript o formularios. Si
+				pintás con IDs, armás una guerra de especificidad que después solo se
+				apaga con <Code>!important</Code>. Estilizá siempre con clases.
 			</Callout>
 			<div className="mb-4">
 				<Preview label="Vista previa · tres reglas pelean, una gana (predecí antes de mirar)">
@@ -258,9 +278,9 @@ p::first-line {
 			</div>
 			<CodeTabs
 				html={`<p id="parrafo-importante" class="texto-azul">Hola Mundo</p>`}
-				css={`#parrafo-importante { color: red; }   /* GANA (1 ID) */
-.texto-azul { color: blue; }     /* Pierde (1 Clase) */
-p { color: green; }               /* Pierde (1 Etiqueta) */`}
+				css={`#parrafo-importante { color: red; }   /* Marcador [1, 0, 0]: GANA */
+.texto-azul { color: blue; }     /* Marcador [0, 1, 0]: pierde */
+p { color: green; }               /* Marcador [0, 0, 1]: pierde */`}
 			/>
 
 			<Subhead>Paso 2 · Cascada: a igual peso, gana la última</Subhead>

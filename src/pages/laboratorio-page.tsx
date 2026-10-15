@@ -1,5 +1,6 @@
-import { Check, FlaskConical, RotateCcw } from "lucide-react";
+import { Check, Eye, FlaskConical, RotateCcw } from "lucide-react";
 import { Link } from "react-router-dom";
+import ExpectedPreview from "@/components/lab/expected-previews";
 import { Callout, SectionTitle } from "@/components/lecture/lecture-blocks";
 import type { LabExercise } from "@/data/laboratory-content";
 import { labModulo1, labModulo2 } from "@/data/laboratory-content";
@@ -71,6 +72,17 @@ export default function LaboratorioPage({ module }: { module: 1 | 2 }) {
 					</li>
 				))}
 			</ul>
+
+			<p className="mt-6 mb-3 text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+				{t("lab.expected")}
+			</p>
+			<div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-800/40">
+				<ExpectedPreview id={exercise.id} lang={language} />
+				<p className="mt-3 flex items-start gap-2 text-xs text-gray-500 dark:text-gray-400">
+					<Eye className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />
+					<span>{exercise.expected[language]}</span>
+				</p>
+			</div>
 		</section>
 	);
 

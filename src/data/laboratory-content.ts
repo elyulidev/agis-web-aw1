@@ -7,6 +7,7 @@ export interface LabExercise {
 	objective: LocalizedString;
 	steps: LocalizedString[];
 	verify: LocalizedString[];
+	expected: LocalizedString;
 }
 
 export const labModulo1: LabExercise[] = [
@@ -53,6 +54,10 @@ export const labModulo1: LabExercise[] = [
 				pt: "Ao mudar o texto e salvar, o navegador recarrega sozinho.",
 			},
 		],
+		expected: {
+			es: "En el navegador ves tu h1 gigante con ¡Hola, Mundo! y debajo tu presentación, servido desde http://127.0.0.1:5500.",
+			pt: "No navegador vês o teu h1 gigante com Olá, Mundo! e abaixo a tua apresentação, servido de http://127.0.0.1:5500.",
+		},
 	},
 	{
 		id: 2,
@@ -97,6 +102,10 @@ export const labModulo1: LabExercise[] = [
 				pt: "Os acentos e o ç aparecem corretamente (UTF-8).",
 			},
 		],
+		expected: {
+			es: "Ves tu nombre como título principal, dos secciones con subtítulos y párrafos legibles con tildes y ñ perfectas.",
+			pt: "Vês o teu nome como título principal, duas secções com subtítulos e parágrafos legíveis com acentos perfeitos.",
+		},
 	},
 	{
 		id: 3,
@@ -141,6 +150,10 @@ export const labModulo1: LabExercise[] = [
 				pt: "Cada lista usa a sua tag correta: ul, ol e dl.",
 			},
 		],
+		expected: {
+			es: "Ves ingredientes con viñetas, pasos numerados, glosario con términos y una nota resaltada en amarillo.",
+			pt: "Vês ingredientes com marcas, passos numerados, glossário com termos e uma nota destacada a amarelo.",
+		},
 	},
 	{
 		id: 4,
@@ -185,6 +198,10 @@ export const labModulo1: LabExercise[] = [
 				pt: "O vídeo e o mapa ficam bem no ecrã do telemóvel.",
 			},
 		],
+		expected: {
+			es: "Ves dos imágenes, una que abre un sitio externo en pestaña nueva, más video y mapa incrustados que se adaptan al celular.",
+			pt: "Vês duas imagens, uma que abre um site externo em novo separador, mais vídeo e mapa incorporados que se adaptam ao telemóvel.",
+		},
 	},
 	{
 		id: 5,
@@ -199,16 +216,16 @@ export const labModulo1: LabExercise[] = [
 		},
 		steps: [
 			{
-				es: "Crea horario.html con tabla de lunes a viernes: thead con los días, tbody con horas y clases.",
-				pt: "Cria horario.html com tabela de segunda a sexta: thead com os dias, tbody com horas e aulas.",
+				es: "Crea horario.html con tabla de lunes a viernes: caption “Mi horario”, thead con una fila (th vacía + Lun a Vie con scope='col') y tbody con tres filas de horas (la hora en th con scope='row').",
+				pt: "Cria horario.html com tabela de segunda a sexta: caption “Meu horário”, thead com uma linha (th vazia + Seg a Sex com scope='col') e tbody com três linhas de horas (a hora em th com scope='row').",
 			},
 			{
 				es: 'Usa <table border="1"> solo para ver los bordes sin CSS; el estilo con CSS lo verás en el Módulo 2.',
 				pt: 'Usa <table border="1"> só para ver as bordas sem CSS; o estilo com CSS vais ver no Módulo 2.',
 			},
 			{
-				es: "Reto: rowspan='2' para la clase de dos horas y colspan con “Libre” en la tarde libre.",
-				pt: "Desafio: rowspan='2' para a aula de duas horas e colspan com “Livre” na tarde livre.",
+				es: "Reto: AW1 ocupa dos horas el lunes (td con rowspan='2') y la tarde del viernes queda “Libre” con td y colspan='2'.",
+				pt: "Desafio: AW1 ocupa duas horas à segunda (td com rowspan='2') e a tarde de sexta fica “Livre” com td e colspan='2'.",
 			},
 			{
 				es: "Estructura la página: header con h1 + nav a index.html, tabla en el cuerpo, footer con tu nombre y año.",
@@ -217,14 +234,18 @@ export const labModulo1: LabExercise[] = [
 		],
 		verify: [
 			{
-				es: "La tabla se entiende sin estilos: tr, th con scope y td bien usados, con bordes visibles.",
-				pt: "A tabela percebe-se sem estilos: tr, th com scope e td bem usados, com bordas visíveis.",
+				es: "La tabla se entiende sin estilos: caption, tr, th con scope (col en días, row en horas) y td bien usados, con bordes visibles.",
+				pt: "A tabela percebe-se sem estilos: caption, tr, th com scope (col nos dias, row nas horas) e td bem usados, com bordas visíveis.",
 			},
 			{
 				es: "No hay tablas usadas para maquetar: solo datos.",
 				pt: "Não há tabelas usadas para layout: só dados.",
 			},
 		],
+		expected: {
+			es: "Ves la semana con días como encabezados, una clase ocupando dos horas y la tarde libre combinada, todo con bordes.",
+			pt: "Vês a semana com dias como cabeçalhos, uma aula a ocupar duas horas e a tarde livre combinada, tudo com bordas.",
+		},
 	},
 	{
 		id: 6,
@@ -265,6 +286,10 @@ export const labModulo1: LabExercise[] = [
 				pt: "Escreve um e-mail sem @ e tenta enviar: o navegador mostra o aviso.",
 			},
 		],
+		expected: {
+			es: "Ves etiquetas que al clic enfocan cada campo y un email sin @ que el navegador frena con aviso.",
+			pt: "Vês rótulos que ao clicar focam cada campo e um e-mail sem @ que o navegador trava com aviso.",
+		},
 	},
 	{
 		id: 7,
@@ -309,6 +334,10 @@ export const labModulo1: LabExercise[] = [
 				pt: "Cada página tem um único h1 e title próprio na aba.",
 			},
 		],
+		expected: {
+			es: "Ves tres páginas navegables entre sí, cada una con su h1 y título de pestaña, sin errores en consola.",
+			pt: "Vês três páginas navegáveis entre si, cada uma com o seu h1 e título de aba, sem erros na consola.",
+		},
 	},
 ];
 
@@ -356,6 +385,10 @@ export const labModulo2: LabExercise[] = [
 				pt: "O title do telefone explica o formato esperado.",
 			},
 		],
+		expected: {
+			es: "Ves el mismo formulario que ahora frena vacío, con mensaje corto o teléfono inválido, todo sin JavaScript.",
+			pt: "Vês o mesmo formulário que agora trava vazio, com mensagem curta ou telefone inválido, tudo sem JavaScript.",
+		},
 	},
 	{
 		id: 9,
@@ -374,8 +407,8 @@ export const labModulo2: LabExercise[] = [
 				pt: "Cria estilos-biografia.css na mesma pasta que biografia.html.",
 			},
 			{
-				es: "Escribe el reset universal: * con margin 0, padding 0 y box-sizing border-box.",
-				pt: "Escreve o reset universal: * com margin 0, padding 0 e box-sizing border-box.",
+				es: "Escribe el reset universal: *, *::before y *::after con margin 0, padding 0 y box-sizing border-box.",
+				pt: "Escreve o reset universal: *, *::before e *::after com margin 0, padding 0 e box-sizing border-box.",
 			},
 			{
 				es: "Enlaza la hoja en el head de biografia.html con link rel='stylesheet'.",
@@ -392,10 +425,18 @@ export const labModulo2: LabExercise[] = [
 				pt: "Sem a ligação veem-se os ~8px do navegador; com a ligação, o conteúdo cola às bordas.",
 			},
 			{
-				es: "Todo el CSS vive en el .css: el HTML no tiene atributos style.",
-				pt: "Todo o CSS vive no .css: o HTML não tem atributos style.",
+				es: "Todo el CSS vive en estilos-biografia.css: el HTML no tiene atributos style.",
+				pt: "Todo o CSS vive em estilos-biografia.css: o HTML não tem atributos style.",
+			},
+			{
+				es: "Dos cajas de 200px con padding y borde entran lado a lado en 400px: el box-sizing no las estira.",
+				pt: "Duas caixas de 200px com padding e borda cabem lado a lado em 400px: o box-sizing não as estica.",
 			},
 		],
+		expected: {
+			es: "Ves la biografía pegada a los bordes (sin los 8px) y todo el estilo viviendo en el .css.",
+			pt: "Vês a biografia colada às bordas (sem os 8px) e todo o estilo a viver no .css.",
+		},
 	},
 	{
 		id: 10,
@@ -440,6 +481,10 @@ export const labModulo2: LabExercise[] = [
 				pt: "Cada regra usa o seletor pedido: inspeciona-o nas DevTools.",
 			},
 		],
+		expected: {
+			es: "Ves el body con tu fondo y fuente, el h1 centrado de tu color, secciones con borde y relleno, y h1 con h2 del mismo color.",
+			pt: "Vês o body com o teu fundo e fonte, o h1 centrado da tua cor, secções com borda e preenchimento, e h1 com h2 da mesma cor.",
+		},
 	},
 	{
 		id: 11,
@@ -484,6 +529,10 @@ export const labModulo2: LabExercise[] = [
 				pt: "Tudo feito com seletores: sem classes extra nem JavaScript.",
 			},
 		],
+		expected: {
+			es: "Ves el menú que cambia con el cursor y la lista con fondo alternado, primero en negrita y último con borde.",
+			pt: "Vês o menu que muda com o cursor e a lista com fundo alternado, primeiro a negrito e último com borda.",
+		},
 	},
 	{
 		id: 12,
@@ -524,6 +573,10 @@ export const labModulo2: LabExercise[] = [
 				pt: "A tua previsão estava correta: ganha o ID por especificidade.",
 			},
 		],
+		expected: {
+			es: "Ves el blockquote con comillas gigantes y el botón del color del ID: tu predicción acertó.",
+			pt: "Vês o blockquote com aspas gigantes e o botão da cor do ID: a tua previsão acertou.",
+		},
 	},
 	{
 		id: 13,
@@ -542,12 +595,12 @@ export const labModulo2: LabExercise[] = [
 				pt: "Cria estilos.css com o reset universal e liga-o nas três páginas do integrador do Módulo 1: index.html, horario.html e contato.html.",
 			},
 			{
-				es: "Dale estilo base al nav de todo el sitio con nav a y feedback con a:hover.",
-				pt: "Dá estilo base ao nav de todo o site com nav a e feedback com a:hover.",
+				es: "Dale estilo base al nav compartido de todo el sitio con nav a y feedback con a:hover (lo mismo del ejercicio 11, pero ahora en la hoja compartida).",
+				pt: "Dá estilo base ao nav partilhado de todo o site com nav a e feedback com a:hover (o mesmo do exercício 11, mas agora na folha partilhada).",
 			},
 			{
-				es: "En horario.html, viste la tabla con cebra (tbody tr:nth-child(even)); en la hoja compartida, agrupa h1, h2 con un mismo color.",
-				pt: "Em horario.html, veste a tabela com zebra (tbody tr:nth-child(even)); na folha partilhada, agrupa h1, h2 com uma mesma cor.",
+				es: "En horario.html, aplica la cebra a la tabla de datos con tbody tr:nth-child(even) (en el ejercicio 11 era una lista ol; ahora es una tabla real) y agrupa h1, h2 con un mismo color en la hoja compartida.",
+				pt: "Em horario.html, aplica a zebra à tabela de dados com tbody tr:nth-child(even) (no exercício 11 era uma lista ol; agora é uma tabela real) e agrupa h1, h2 com uma mesma cor na folha partilhada.",
 			},
 			{
 				es: "En contacto.html reutiliza el formulario validado del ejercicio 8 de este laboratorio; en index.html añade una cita (blockquote) con comillas vía ::before/::after (con content).",
@@ -564,5 +617,9 @@ export const labModulo2: LabExercise[] = [
 				pt: "Zero atributos style no HTML: a apresentação vive só no CSS.",
 			},
 		],
+		expected: {
+			es: "Ves el sitio de 3 páginas con nav con hover, tabla cebra, formulario que valida y cita con comillas en la portada.",
+			pt: "Vês o site de 3 páginas com nav com hover, tabela zebra, formulário que valida e citação com aspas na capa.",
+		},
 	},
 ];
