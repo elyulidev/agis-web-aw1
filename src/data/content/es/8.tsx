@@ -253,7 +253,9 @@ p {
 				<CodeBlock
 					language="css"
 					codeString={`/* 1. Reset universal: el punto de partida más común */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -264,7 +266,9 @@ p {
 					navegador (<Code>body</Code>, <Code>h1</Code>, <Code>p</Code>);{" "}
 					<Code>padding: 0</Code> saca los rellenos (las listas); y{" "}
 					<Code>box-sizing</Code> lo vemos en detalle acá abajo: es el que
-					vuelve predecibles los anchos.
+					vuelve predecibles los anchos. Lo aplicamos a <Code>*::before</Code> y{" "}
+					<Code>*::after</Code> también, porque esos pseudo-elementos generan
+					cajitas que si no, se medirían con la regla vieja.
 				</p>
 				<CodeBlock
 					language="css"
@@ -288,14 +292,49 @@ ul.sin-vinetas {
 				para estilos de diseño.
 			</Callout>
 
-			<Subhead>El problema del box-sizing, con números</Subhead>
+			<Subhead>El problema del box-sizing, con una caja de verdad</Subhead>
 			<p className="mb-4">
-				Por defecto el navegador usa <Code>content-box</Code>:{" "}
-				<Code>width</Code> mide <strong>solo el contenido</strong>, y el relleno
-				(<Code>padding</Code>) y el borde (<Code>border</Code>) se{" "}
-				<strong>suman por fuera</strong>. Mirá la cuenta con una caja de{" "}
+				Pensalo así: comprás una caja de cartón de <strong>20 cm</strong> para
+				enviar un regalo por correo (<Code>width: 200px</Code>). La pregunta
+				clave es: ¿esos 20 cm son <strong>solo el hueco interior</strong> o{" "}
+				<strong>la caja entera con todo y bordes</strong>? CSS responde con dos
+				modos:
+			</p>
+			<div className="grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<Send className="h-5 w-5" aria-hidden />}
+					title="content-box: el paquete sorpresa"
+					iconClassName="bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
+				>
+					Esos 20 cm son <strong>solo el regalo de adentro</strong>. Si le sumás
+					acolchado de 2 cm por lado (<Code>padding: 20px</Code>) y un marco de
+					1 cm por lado (<Code>border: 5px</Code>), la caja real ya no mide 20
+					cm. El cartero te cobra de más.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Sparkles className="h-5 w-5" aria-hidden />}
+					title="border-box: el tamaño mandatorio"
+					iconClassName="bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+				>
+					Le decís al fabricante:{" "}
+					<strong>“quiero que la caja entera mida 20 cm”</strong>. Le pongas el
+					acolchado y el borde que le pongas, la caja clava 200px en total: lo
+					único que se achica es el hueco interior para el regalo.
+				</ConceptCard>
+			</div>
+			<Callout variant="warning" title="La frase que lo aclara todo">
+				En CSS, <Code>width</Code> no significa{" "}
+				<strong>“cuánto ocupa mi caja en la pantalla”</strong>. En el modo por
+				defecto significa <strong>“cuánto mide el contenido de adentro”</strong>
+				. Por eso el navegador suma cosas por fuera en vez de obedecer tus
+				200px.
+			</Callout>
+			<p className="mb-4">
+				Por defecto el navegador usa <Code>content-box</Code>: el relleno (
+				<Code>padding</Code>) y el borde (<Code>border</Code>) se{" "}
+				<strong>suman por fuera</strong>. Mirá la cuenta con{" "}
 				<Code>width: 200px</Code>, <Code>padding: 20px</Code> y{" "}
-				<Code>border: 5px</Code>:
+				<Code>border: 5px</Code> (20px de cada lado, 5px de cada lado):
 			</p>
 			<p className="mb-4 text-center font-mono text-sm font-semibold text-gray-700 dark:text-gray-200">
 				200 + (2 × 20) + (2 × 5) = 250px de ancho real
@@ -305,7 +344,8 @@ ul.sin-vinetas {
 				400px y el layout se rompe sin que entiendas por qué. Con{" "}
 				<Code>border-box</Code>, en cambio, esos 200px son el{" "}
 				<strong>total final</strong>: el contenido se encoge solo a 150px (200 −
-				40 − 10) y la caja ocupa exactamente lo pedido.
+				40 − 10) y la caja ocupa exactamente lo pedido. Matemáticas felices: si
+				tu columna mide 400px y metés dos cajas de 200px, caben perfecto.
 			</p>
 			<div className="mb-4">
 				<Preview label="En vivo · misma width: 200px, distinto box-sizing">
@@ -369,12 +409,30 @@ ul.sin-vinetas {
 }`}
 				/>
 			</div>
-			<Callout variant="success" title="Por eso va en el reset universal">
-				Al poner <Code>box-sizing: border-box</Code> dentro del <Code>*</Code>,{" "}
-				<strong>todas</strong> las cajas de tu página miden lo que pedís. Es lo
-				primero que hacen casi todos los proyectos modernos, y ahora ya sabés
-				exactamente por qué.
+			<Callout
+				variant="success"
+				title="El truco maestro: el reset que lo ordena todo"
+			>
+				Por eso los desarrolladores ponen esto al principio de cualquier
+				proyecto: <Code>box-sizing: border-box</Code> dentro del reset.
+				Significa:{" "}
+				<strong>
+					“a partir de ahora, obligame a que todas las cajas midan exactamente
+					lo que pido, sin sorpresas ni sumas raras por fuera”
+				</strong>
+				.
 			</Callout>
+			<div className="mt-4 space-y-4">
+				<CodeBlock
+					language="css"
+					codeString={`/* El truco maestro: todas las cajas miden lo que pedís */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}`}
+				/>
+			</div>
 		</section>
 
 		<section>
@@ -431,7 +489,9 @@ ul.sin-vinetas {
 			<div className="space-y-4">
 				<CodeBlock
 					language="css"
-					codeString={`* {
+					codeString={`*,
+*::before,
+*::after {
   box-sizing: border-box; /* Un reinicio común */
 }`}
 				/>

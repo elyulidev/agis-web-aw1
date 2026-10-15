@@ -253,7 +253,9 @@ p {
 				<CodeBlock
 					language="css"
 					codeString={`/* 1. Reset universal: o ponto de partida mais comum */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -264,7 +266,9 @@ p {
 					<Code>body</Code>, <Code>h1</Code>, <Code>p</Code>);{" "}
 					<Code>padding: 0</Code> tira os preenchimentos (as listas); e{" "}
 					<Code>box-sizing</Code> vê-se em detalhe aqui em baixo: é o que torna
-					as larguras previsíveis.
+					as larguras previsíveis. Aplicamo-lo também a <Code>*::before</Code> e{" "}
+					<Code>*::after</Code>, porque esses pseudo-elementos geram caixinhas
+					que, senão, medir-se-iam com a regra antiga.
 				</p>
 				<CodeBlock
 					language="css"
@@ -288,14 +292,49 @@ ul.sem-marcas {
 				para estilos de design.
 			</Callout>
 
-			<Subhead>O problema do box-sizing, com números</Subhead>
+			<Subhead>O problema do box-sizing, com uma caixa a sério</Subhead>
 			<p className="mb-4">
-				Por defeito o navegador usa <Code>content-box</Code>: <Code>width</Code>{" "}
-				mede <strong>só o conteúdo</strong>, e o preenchimento (
+				Pensa assim: compras uma caixa de cartão de <strong>20 cm</strong> para
+				enviar uma prenda por correio (<Code>width: 200px</Code>). A pergunta
+				chave é: esses 20 cm são <strong>só o espaço interior</strong> ou{" "}
+				<strong>a caixa inteira com tudo e bordas</strong>? O CSS responde com
+				dois modos:
+			</p>
+			<div className="grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<Send className="h-5 w-5" aria-hidden />}
+					title="content-box: o pacote surpresa"
+					iconClassName="bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
+				>
+					Esses 20 cm são <strong>só a prenda lá dentro</strong>. Se juntares
+					acolchoado de 2 cm de cada lado (<Code>padding: 20px</Code>) e uma
+					moldura de 1 cm de cada lado (<Code>border: 5px</Code>), a caixa real
+					já não mede 20 cm. O carteiro cobra-te mais.
+				</ConceptCard>
+				<ConceptCard
+					icon={<Sparkles className="h-5 w-5" aria-hidden />}
+					title="border-box: o tamanho obrigatório"
+					iconClassName="bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+				>
+					Dizes ao fabricante:{" "}
+					<strong>“quero que a caixa inteira meça 20 cm”</strong>. Ponhas o
+					acolchoado e a borda que puseres, a caixa crava 200px no total: o
+					único que encolhe é o espaço interior para a prenda.
+				</ConceptCard>
+			</div>
+			<Callout variant="warning" title="A frase que explica tudo">
+				Em CSS, <Code>width</Code> não significa{" "}
+				<strong>“quanto ocupa a minha caixa no ecrã”</strong>. No modo por
+				defeito significa <strong>“quanto mede o conteúdo lá dentro”</strong>.
+				Por isso o navegador soma coisas por fora em vez de obedecer aos teus
+				200px.
+			</Callout>
+			<p className="mb-4">
+				Por defeito o navegador usa <Code>content-box</Code>: o preenchimento (
 				<Code>padding</Code>) e a borda (<Code>border</Code>){" "}
-				<strong>somam-se por fora</strong>. Vê a conta com uma caixa de{" "}
+				<strong>somam-se por fora</strong>. Vê a conta com{" "}
 				<Code>width: 200px</Code>, <Code>padding: 20px</Code> e{" "}
-				<Code>border: 5px</Code>:
+				<Code>border: 5px</Code> (20px de cada lado, 5px de cada lado):
 			</p>
 			<p className="mb-4 text-center font-mono text-sm font-semibold text-gray-700 dark:text-gray-200">
 				200 + (2 × 20) + (2 × 5) = 250px de largura real
@@ -305,7 +344,8 @@ ul.sem-marcas {
 				400px e o layout parte-se sem perceberes porquê. Com{" "}
 				<Code>border-box</Code>, pelo contrário, esses 200px são o{" "}
 				<strong>total final</strong>: o conteúdo encolhe sozinho para 150px (200
-				− 40 − 10) e a caixa ocupa exatamente o pedido.
+				− 40 − 10) e a caixa ocupa exatamente o pedido. Contas felizes: se a tua
+				coluna mede 400px e metes duas caixas de 200px, cabem na perfeição.
 			</p>
 			<div className="mb-4">
 				<Preview label="Em direto · mesma width: 200px, box-sizing diferente">
@@ -368,12 +408,29 @@ ul.sem-marcas {
 }`}
 				/>
 			</div>
-			<Callout variant="success" title="Por isso vai no reset universal">
-				Ao pôr <Code>box-sizing: border-box</Code> dentro do <Code>*</Code>,{" "}
-				<strong>todas</strong> as caixas da tua página medem o que pedes. É o
-				primeiro que fazem quase todos os projetos modernos, e agora já sabes
-				exatamente porquê.
+			<Callout
+				variant="success"
+				title="O truque de mestre: o reset que põe tudo em ordem"
+			>
+				Por isso os programadores põem isto no início de qualquer projeto:{" "}
+				<Code>box-sizing: border-box</Code> dentro do reset. Significa:{" "}
+				<strong>
+					“a partir de agora, obriga-me a que todas as caixas meçam exatamente o
+					que peço, sem surpresas nem somas estranhas por fora”
+				</strong>
+				.
 			</Callout>
+			<div className="mt-4 space-y-4">
+				<CodeBlock
+					language="css"
+					codeString={`/* O truque de mestre: todas as caixas medem o que pedes */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}`}
+				/>
+			</div>
 		</section>
 
 		<section>
@@ -430,7 +487,9 @@ ul.sem-marcas {
 			<div className="space-y-4">
 				<CodeBlock
 					language="css"
-					codeString={`* {
+					codeString={`*,
+*::before,
+*::after {
   box-sizing: border-box; /* Uma reinicialização comum */
 }`}
 				/>
