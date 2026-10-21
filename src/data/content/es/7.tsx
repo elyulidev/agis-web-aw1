@@ -379,8 +379,8 @@ const Lecture7Es = () => (
 				formulario robusto
 			</h3>
 			<p className="mb-6 text-gray-600 dark:text-gray-300">
-				Aplicá lo nuevo sobre el <Code>contacto.html</Code> que creaste en la
-				conferencia 6.
+				Armá un formulario de inscripción a un taller con nombre, correo, taller
+				y mensaje, y agregale las validaciones de los pasos siguientes.
 			</p>
 			<ol className="space-y-3">
 				<Step number={1} title="Hacelo obligatorio">

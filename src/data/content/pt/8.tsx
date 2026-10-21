@@ -162,14 +162,14 @@ p {
 			<div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
 				<div className="flex-1 rounded-xl bg-orange-50 p-3 text-center text-sm font-semibold text-orange-800 dark:bg-orange-950/40 dark:text-orange-200">
 					<FileText className="mx-auto mb-1 h-5 w-5" aria-hidden />
-					biografia.html
+					cartaz.html
 				</div>
 				<div className="text-center font-bold text-gray-400" aria-hidden>
 					→
 				</div>
 				<div className="flex-1 rounded-xl bg-blue-50 p-3 text-center text-sm font-semibold text-blue-800 dark:bg-blue-950/40 dark:text-blue-200">
 					<Link2 className="mx-auto mb-1 h-5 w-5" aria-hidden />
-					&lt;link&gt; para estilos-biografia.css
+					&lt;link&gt; para estilos-cartaz.css
 				</div>
 				<div className="text-center font-bold text-gray-400" aria-hidden>
 					→
@@ -569,33 +569,30 @@ h2 {
 		<section className="rounded-3xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-6 dark:border-gray-700 dark:from-gray-800/60 dark:to-gray-900 sm:p-8">
 			<h3 className="text-2xl font-semibold mb-2 flex items-center gap-2">
 				<Send className="h-6 w-6 text-blue-500" aria-hidden />📝 Tarefa:
-				estilizando a sua biografia
+				estilizando o cartaz de um festival
 			</h3>
 			<p className="mb-6 text-gray-600 dark:text-gray-300">
-				Hora de dar cor e forma à biografia do Módulo 1, tudo com folha externa.
+				Hora de dar cor e forma a um cartaz de festival, tudo com folha externa.
 			</p>
 			<ol className="space-y-3">
 				<Step number={1} title="Crie a folha externa">
-					Crie <Code>estilos-biografia.css</Code> na mesma pasta que{" "}
-					<Code>biografia.html</Code>.
+					Crie <Code>estilos-cartaz.css</Code> na mesma pasta que{" "}
+					<Code>cartaz.html</Code>.
 				</Step>
 				<Step number={2} title="Ligue-a">
-					No <Code>&lt;head&gt;</Code> do <Code>biografia.html</Code> adicione{" "}
-					<Code>
-						&lt;link rel="stylesheet" href="estilos-biografia.css"&gt;
-					</Code>
-					.
+					No <Code>&lt;head&gt;</Code> do <Code>cartaz.html</Code> adicione{" "}
+					<Code>&lt;link rel="stylesheet" href="estilos-cartaz.css"&gt;</Code>.
 				</Step>
 				<Step number={3} title="Marque com classes e ID">
 					Dê um ID ao seu <Code>&lt;h1&gt;</Code> (por exemplo{" "}
-					<Code>id="nome-titulo"</Code>) e uma classe a cada secção (por exemplo{" "}
-					<Code>class="seccao"</Code>).
+					<Code>id="titulo-festival"</Code>) e uma classe a cada secção (por
+					exemplo <Code>class="bloque"</Code>).
 				</Step>
 				<Step number={4} title="Escreva as quatro regras">
-					Em <Code>estilos-biografia.css</Code>: tipo para <Code>body</Code> (
+					Em <Code>estilos-cartaz.css</Code>: tipo para <Code>body</Code> (
 					<Code>background-color</Code> + <Code>font-family</Code>), ID para o{" "}
 					<Code>h1</Code> (cor + <Code>text-align: center;</Code>), classe{" "}
-					<Code>.seccao</Code> (<Code>border</Code> + <Code>padding</Code>) e
+					<Code>.bloque</Code> (<Code>border</Code> + <Code>padding</Code>) e
 					agrupamento para <Code>h1, h2</Code>.
 				</Step>
 				<Step number={5} title="Veja o resultado">

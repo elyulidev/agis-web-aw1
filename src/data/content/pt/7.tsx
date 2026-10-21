@@ -382,7 +382,8 @@ const Lecture7Pt = () => (
 				formulário robusto
 			</h3>
 			<p className="mb-6 text-gray-600 dark:text-gray-300">
-				Aplica o novo sobre o <Code>contato.html</Code> que criaste na lição 6.
+				Monta um formulário de inscrição num workshop com nome, e-mail, workshop
+				e mensagem, e acrescenta-lhe as validações dos passos seguintes.
 			</p>
 			<ol className="space-y-3">
 				<Step number={1} title="Torna-o obrigatório">

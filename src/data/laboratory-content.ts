@@ -1,5 +1,10 @@
 import type { LocalizedString } from "@/types";
 
+export interface LabStarterFile {
+	file: string;
+	code: string;
+}
+
 export interface LabExercise {
 	id: number;
 	lectureId: number;
@@ -8,6 +13,10 @@ export interface LabExercise {
 	steps: LocalizedString[];
 	verify: LocalizedString[];
 	expected: LocalizedString;
+	starter?: {
+		es: LabStarterFile[];
+		pt: LabStarterFile[];
+	};
 }
 
 export const labModulo1: LabExercise[] = [
@@ -346,200 +355,564 @@ export const labModulo2: LabExercise[] = [
 		id: 8,
 		lectureId: 7,
 		title: {
-			es: "Formulario robusto sin JavaScript",
-			pt: "Formulário robusto sem JavaScript",
+			es: "Inscripción a un taller",
+			pt: "Inscrição num workshop",
 		},
 		objective: {
-			es: "Dar inteligencia al formulario del Módulo 1 con validación nativa del navegador.",
-			pt: "Dar inteligência ao formulário do Módulo 1 com validação nativa do navegador.",
+			es: "Validar un formulario entero con las herramientas del navegador, sin una sola línea de JavaScript.",
+			pt: "Validar um formulário inteiro com as ferramentas do navegador, sem uma única linha de JavaScript.",
 		},
 		steps: [
 			{
-				es: "Abre el contacto.html del Laboratorio del Módulo 1 (ejercicio 6 de ese laboratorio).",
-				pt: "Abre o contato.html do Laboratório do Módulo 1 (exercício 6 desse laboratório).",
+				es: "Copiá el código inicial de abajo en un archivo llamado inscripcion.html y abrilo con Live Server.",
+				pt: "Copia o código inicial abaixo para um ficheiro chamado inscricao.html e abre-o com o Live Server.",
 			},
 			{
-				es: "Añade required a los campos de nombre y email.",
-				pt: "Adiciona required aos campos de nome e e-mail.",
+				es: "Marcá como obligatorios el nombre, el correo y el taller agregando required a esos tres campos.",
+				pt: "Marca como obrigatórios o nome, o e-mail e o workshop adicionando required a esses três campos.",
 			},
 			{
-				es: "En el textarea del mensaje añade minlength='10'.",
-				pt: "No textarea da mensagem adiciona minlength='10'.",
+				es: "En el mensaje pedí un mínimo y un máximo de caracteres con minlength='20' y maxlength='300'.",
+				pt: "Na mensagem pede um mínimo e um máximo de caracteres com minlength='20' e maxlength='300'.",
 			},
 			{
-				es: "Añade el campo Teléfono completo: label (“Teléfono”), input con id, name, type='tel', pattern='[0-9]{9}', placeholder y title que explique el formato (9 dígitos).",
-				pt: "Adiciona o campo Telefone completo: label (“Telefone”), input com id, name, type='tel', pattern='[0-9]{9}', placeholder e title a explicar o formato (9 dígitos).",
+				es: "En el teléfono agregá pattern='[0-9]{9}' y un title que explique el formato; en el correo, autocomplete='email'.",
+				pt: "No telefone adiciona pattern='[0-9]{9}' e um title que explique o formato; no e-mail, autocomplete='email'.",
 			},
 			{
-				es: "Pulsa Enviar con el formulario vacío y luego con datos incorrectos (mensaje de 3 letras, teléfono con letras). Si todo es válido, la página simplemente se recarga: aún no hay servidor que reciba los datos.",
-				pt: "Prime Enviar com o formulário vazio e depois com dados incorretos (mensagem de 3 letras, telefone com letras). Se tudo for válido, a página apenas recarrega: ainda não há servidor para receber os dados.",
+				es: "Probá los cuatro fallos: enviá vacío, con un mensaje de 5 letras, con un teléfono con letras y con un correo sin @.",
+				pt: "Experimenta os quatro casos: envia vazio, com uma mensagem de 5 letras, com um telefone com letras e com um e-mail sem @.",
 			},
 		],
 		verify: [
 			{
-				es: "Vacío: el navegador marca nombre y email; mensaje corto o teléfono con letras: también frena. Todo sin JavaScript.",
-				pt: "Vazio: o navegador marca nome e e-mail; mensagem curta ou telefone com letras: também trava. Tudo sem JavaScript.",
+				es: "El navegador frena el envío vacío, el mensaje de 5 letras, el teléfono con letras y el correo sin @: los mensajes los pone el navegador, no tu código.",
+				pt: "O navegador trava o envio vazio, a mensagem de 5 letras, o telefone com letras e o e-mail sem @: as mensagens põe-nas o navegador, não o teu código.",
 			},
 			{
-				es: "El title del teléfono explica el formato esperado.",
-				pt: "O title do telefone explica o formato esperado.",
+				es: "Al pasar el cursor por el teléfono, el title explica el formato esperado.",
+				pt: "Ao passar o cursor pelo telefone, o title explica o formato esperado.",
+			},
+			{
+				es: "No hay ni un script en la página: la validación es del navegador.",
+				pt: "Não há nem um script na página: a validação é do navegador.",
 			},
 		],
 		expected: {
-			es: "Ves el mismo formulario que ahora frena vacío, con mensaje corto o teléfono inválido, todo sin JavaScript.",
-			pt: "Vês o mesmo formulário que agora trava vazio, com mensagem curta ou telefone inválido, tudo sem JavaScript.",
+			es: "Ves el formulario de inscripción con los campos obligatorios marcados y el navegador frenando los cuatro casos, sin JavaScript en tu código.",
+			pt: "Vês o formulário de inscrição com os campos obrigatórios marcados e o navegador a travar os quatro casos, sem JavaScript no teu código.",
+		},
+		starter: {
+			es: [
+				{
+					file: "inscripcion.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscripción al taller</title>
+</head>
+<body>
+  <h1>Inscripción al taller</h1>
+  <p>Completa los datos para reservar tu plaza.</p>
+
+  <form>
+    <label for="nombre">Nombre completo:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" placeholder="tu@correo.com">
+
+    <label for="taller">Taller:</label>
+    <select id="taller" name="taller">
+      <option value="">Elige un taller</option>
+      <option value="html">HTML semántico</option>
+      <option value="css">CSS desde cero</option>
+      <option value="git">Git y GitHub</option>
+    </select>
+
+    <label for="telefono">Teléfono (9 dígitos):</label>
+    <input type="tel" id="telefono" name="telefono" placeholder="600000000">
+
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos por qué quieres ir"></textarea>
+
+    <button type="submit">Reservar plaza</button>
+    <button type="reset">Limpiar</button>
+  </form>
+</body>
+</html>`,
+				},
+			],
+			pt: [
+				{
+					file: "inscricao.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscrição no workshop</title>
+</head>
+<body>
+  <h1>Inscrição no workshop</h1>
+  <p>Preenche os dados para reservar a tua vaga.</p>
+
+  <form>
+    <label for="nome">Nome completo:</label>
+    <input type="text" id="nome" name="nome" placeholder="O teu nome">
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" placeholder="teu@email.com">
+
+    <label for="workshop">Workshop:</label>
+    <select id="workshop" name="workshop">
+      <option value="">Escolhe um workshop</option>
+      <option value="html">HTML semântico</option>
+      <option value="css">CSS do zero</option>
+      <option value="git">Git e GitHub</option>
+    </select>
+
+    <label for="telefone">Telefone (9 dígitos):</label>
+    <input type="tel" id="telefone" name="telefone" placeholder="900000000">
+
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" name="mensagem" placeholder="Conta-nos porque queres ir"></textarea>
+
+    <button type="submit">Reservar vaga</button>
+    <button type="reset">Limpar</button>
+  </form>
+</body>
+</html>`,
+				},
+			],
 		},
 	},
 	{
 		id: 9,
 		lectureId: 8,
 		title: {
-			es: "Mi primera hoja externa y el reset",
-			pt: "Minha primeira folha externa e o reset",
+			es: "La carta de un restaurante",
+			pt: "A carta de um restaurante",
 		},
 		objective: {
-			es: "Sacar el CSS a un archivo externo y partir de una base neutra con el reset universal.",
-			pt: "Tirar o CSS para um ficheiro externo e partir de uma base neutra com o reset universal.",
+			es: "Comparar las tres formas de incluir CSS y partir de una base neutra con el reset y el box-sizing.",
+			pt: "Comparar as três formas de incluir CSS e partir de uma base neutra com o reset e o box-sizing.",
 		},
 		steps: [
 			{
-				es: "Crea estilos-biografia.css en la misma carpeta que biografia.html.",
-				pt: "Cria estilos-biografia.css na mesma pasta que biografia.html.",
+				es: "Copiá el código inicial de abajo en carta.html y abrilo con Live Server.",
+				pt: "Copia o código inicial abaixo para carta.html e abre-o com o Live Server.",
 			},
 			{
-				es: "Escribe el reset universal: *, *::before y *::after con margin 0, padding 0 y box-sizing border-box.",
-				pt: "Escreve o reset universal: *, *::before e *::after com margin 0, padding 0 e box-sizing border-box.",
+				es: "CSS en línea: agregá style='background-color: #f3ead9' al header y mirá el resultado.",
+				pt: "CSS em linha: adiciona style='background-color: #f3ead9' ao header e vê o resultado.",
 			},
 			{
-				es: "Enlaza la hoja en el head de biografia.html con link rel='stylesheet'.",
-				pt: "Liga a folha no head de biografia.html com link rel='stylesheet'.",
+				es: "CSS interno: sacá el estilo en línea y poné un bloque style en el head con la misma regla.",
+				pt: "CSS interno: retira o estilo em linha e coloca um bloco style no head com a mesma regra.",
 			},
 			{
-				es: "Recarga con y sin el enlace (comenta la línea del link) y compara los márgenes del body.",
-				pt: "Recarrega com e sem a ligação (comenta a linha do link) e compara as margens do body.",
+				es: "CSS externo: creá carta.css en la misma carpeta, pasá la regla ahí y enlazala con link rel='stylesheet' href='carta.css' en el head.",
+				pt: "CSS externo: cria carta.css na mesma pasta, passa a regra para lá e liga-a com link rel='stylesheet' href='carta.css' no head.",
+			},
+			{
+				es: "Compará los tres casos: se ve igual. Lo que cambia es dónde vive el CSS, no lo que se ve.",
+				pt: "Compara os três casos: vê-se igual. O que muda é onde vive o CSS, não o que se vê.",
+			},
+			{
+				es: "Reset: en carta.css escribí el reset universal (*, *::before y *::after con margin 0, padding 0 y box-sizing border-box). Recargá: el body pierde los 8px del navegador y los títulos pierden sus márgenes por defecto.",
+				pt: "Reset: em carta.css escreve o reset universal (*, *::before e *::after com margin 0, padding 0 e box-sizing border-box). Recarrega: o body perde os 8px do navegador e os títulos perdem as margens por omissão.",
+			},
+			{
+				es: "Box-sizing: creá .fila con 400px de ancho y .caja con 200px, padding 20px y border 10px. Sin el reset las cajas se desbordan; con el reset entran lado a lado.",
+				pt: "Box-sizing: cria .fila com 400px de largura e .caja com 200px, padding 20px e border 10px. Sem o reset as caixas transbordam; com o reset entram lado a lado.",
 			},
 		],
 		verify: [
 			{
-				es: "Sin el enlace se ven los ~8px del navegador; con el enlace, el contenido pega a los bordes.",
-				pt: "Sem a ligação veem-se os ~8px do navegador; com a ligação, o conteúdo cola às bordas.",
+				es: "Las tres formas de incluir CSS se ven igual: lo que cambia es dónde vive el código.",
+				pt: "As três formas de incluir CSS vêem-se igual: o que muda é onde vive o código.",
 			},
 			{
-				es: "Todo el CSS vive en estilos-biografia.css: el HTML no tiene atributos style.",
-				pt: "Todo o CSS vive em estilos-biografia.css: o HTML não tem atributos style.",
+				es: "Sin reset el body tiene los ~8px del navegador; con el reset, el contenido pega al borde.",
+				pt: "Sem reset o body tem os ~8px do navegador; com o reset, o conteúdo cola à borda.",
 			},
 			{
-				es: "Dos cajas de 200px con padding y borde entran lado a lado en 400px: el box-sizing no las estira.",
-				pt: "Duas caixas de 200px com padding e borda cabem lado a lado em 400px: o box-sizing não as estica.",
+				es: "Las dos cajas de 200px con padding y borde entran lado a lado en los 400px de .fila.",
+				pt: "As duas caixas de 200px com padding e borda entram lado a lado nos 400px de .fila.",
+			},
+			{
+				es: "El HTML no tiene atributos style: el CSS vive en carta.css.",
+				pt: "O HTML não tem atributos style: o CSS vive em carta.css.",
 			},
 		],
 		expected: {
-			es: "Ves la biografía pegada a los bordes (sin los 8px) y todo el estilo viviendo en el .css.",
-			pt: "Vês a biografia colada às bordas (sem os 8px) e todo o estilo a viver no .css.",
+			es: "Ves la carta pegada al borde, con los títulos sin los márgenes del navegador y las dos cajas de 200px entrando lado a lado en su fila de 400px.",
+			pt: "Vês a carta colada à borda, com os títulos sem as margens do navegador e as duas caixas de 200px a entrar lado a lado na sua fila de 400px.",
+		},
+		starter: {
+			es: [
+				{
+					file: "carta.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta del restaurante</title>
+</head>
+<body>
+  <header>
+    <h1>Restaurante La Plaza</h1>
+    <p>Cocina de temporada todos los días</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Entrantes</h2>
+      <ul>
+        <li>Tortilla de patatas - 8 €</li>
+        <li>Gazpacho - 7 €</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Platos</h2>
+      <ul>
+        <li>Salmorejo con huevo - 14 €</li>
+        <li>Lubina al horno - 19 €</li>
+      </ul>
+    </section>
+
+    <div class="fila">
+      <div class="caja">Caja 1</div>
+      <div class="caja">Caja 2</div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Reservas: 900 000 000</p>
+  </footer>
+</body>
+</html>`,
+				},
+			],
+			pt: [
+				{
+					file: "carta.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta do restaurante</title>
+</head>
+<body>
+  <header>
+    <h1>Restaurante A Praça</h1>
+    <p>Cozinha de estação todos os dias</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Entrantes</h2>
+      <ul>
+        <li>Tortilha de batatas - 8 €</li>
+        <li>Gazpacho - 7 €</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Pratos</h2>
+      <ul>
+        <li>Salmorejo com ovo - 14 €</li>
+        <li>Robalo assado - 19 €</li>
+      </ul>
+    </section>
+
+    <div class="fila">
+      <div class="caja">Caixa 1</div>
+      <div class="caja">Caixa 2</div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Reservas: 900 000 000</p>
+  </footer>
+</body>
+</html>`,
+				},
+			],
 		},
 	},
 	{
 		id: 10,
 		lectureId: 8,
 		title: {
-			es: "Selectores básicos en la biografía",
-			pt: "Seletores básicos na biografia",
+			es: "Cartelera de un festival",
+			pt: "Cartaz de um festival",
 		},
 		objective: {
-			es: "Apuntar con selectores de tipo, ID, clase y agrupación sobre tu propia página.",
-			pt: "Apontar com seletores de tipo, ID, classe e agrupamento na tua própria página.",
+			es: "Apuntar con selectores de tipo, ID, clase y agrupación sobre una cartelera real.",
+			pt: "Apontar com seletores de tipo, ID, classe e agrupamento num cartaz real.",
 		},
 		steps: [
 			{
-				es: "Dale id='nombre-titulo' a tu h1 y class='seccion' a cada sección de contenido.",
-				pt: "Dá id='nome-titulo' ao teu h1 e class='seccao' a cada secção de conteúdo.",
+				es: "Copiá el código inicial de abajo en cartelera.html. El enlace a cartelera.css ya está en el head: creá ese archivo en la misma carpeta.",
+				pt: "Copia o código inicial abaixo para cartaz.html. A ligação a cartaz.css já está no head: cria esse ficheiro na mesma pasta.",
 			},
 			{
-				es: "Con el selector de tipo, dale al body un background-color y un font-family a tu elección.",
-				pt: "Com o seletor de tipo, dá ao body um background-color e um font-family à tua escolha.",
+				es: "Selector de tipo: con body definí un background-color y un font-family.",
+				pt: "Seletor de tipo: com body define um background-color e um font-family.",
 			},
 			{
-				es: "Con el selector de ID, dale color a tu h1 y céntralo con text-align: center.",
-				pt: "Com o seletor de ID, dá cor ao teu h1 e centra-o com text-align: center.",
+				es: "Selector de ID: con #titulo-festival dale un color al h1 y centralo con text-align: center.",
+				pt: "Seletor de ID: com #titulo-festival dá uma cor ao h1 e centra-o com text-align: center.",
 			},
 			{
-				es: "Con el selector de clase, dale a .seccion un border y un padding.",
-				pt: "Com o seletor de classe, dá a .seccao um border e um padding.",
+				es: "Selector de clase: con .bloque dale un border, un padding y un fondo a los dos bloques.",
+				pt: "Seletor de classe: com .bloque dá um border, um padding e um fundo aos dois blocos.",
 			},
 			{
-				es: "Con agrupación (h1, h2), dales a todos los encabezados un mismo color.",
-				pt: "Com agrupamento (h1, h2), dá a todos os cabeçalhos uma mesma cor.",
+				es: "Agrupación: con h1, h2 les das a todos los encabezados el mismo color y revisá cada regla en DevTools.",
+				pt: "Agrupamento: com h1, h2 dá a todos os cabeçalhos a mesma cor e revê cada regra nas DevTools.",
 			},
 		],
 		verify: [
 			{
-				es: "Cambiar .seccion afecta a todas las secciones a la vez; cambiar el ID solo al h1.",
-				pt: "Mudar .seccao afeta todas as secções de uma vez; mudar o ID só o h1.",
+				es: "Cambiar .bloque afecta a los dos bloques a la vez; cambiar #titulo-festival solo al h1.",
+				pt: "Mudar .bloque afeta os dois blocos de uma vez; mudar #titulo-festival só o h1.",
 			},
 			{
-				es: "Cada regla usa el selector pedido: inspecciónalo en DevTools.",
+				es: "Cada regla usa el selector pedido: inspeccionalo en DevTools.",
 				pt: "Cada regra usa o seletor pedido: inspeciona-o nas DevTools.",
+			},
+			{
+				es: "El HTML no tiene atributos style: todo el estilo está en cartelera.css.",
+				pt: "O HTML não tem atributos style: todo o estilo está em cartaz.css.",
 			},
 		],
 		expected: {
-			es: "Ves el body con tu fondo y fuente, el h1 centrado de tu color, secciones con borde y relleno, y h1 con h2 del mismo color.",
-			pt: "Vês o body com o teu fundo e fonte, o h1 centrado da tua cor, secções com borda e preenchimento, e h1 com h2 da mesma cor.",
+			es: "Ves el fondo y la fuente de la cartelera, el título centrado con tu color, los dos bloques con borde y relleno y todos los encabezados del mismo color.",
+			pt: "Vês o fundo e a fonte do cartaz, o título centrado com a tua cor, os dois blocos com borda e preenchimento e todos os cabeçalhos com a mesma cor.",
+		},
+		starter: {
+			es: [
+				{
+					file: "cartelera.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartelera del festival</title>
+  <link rel="stylesheet" href="cartelera.css">
+</head>
+<body>
+  <header>
+    <h1 id="titulo-festival">Noche de Jazz</h1>
+    <nav>
+      <a href="#programa">Programa</a>
+      <a href="#entradas">Entradas</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bloque" id="programa">
+      <h2>Programa</h2>
+      <p>Conciertos de 20:00 a 23:30 en la sala principal.</p>
+    </section>
+
+    <section class="bloque" id="entradas">
+      <h2>Entradas</h2>
+      <p>Entrada general: 12 €. Entrada reducida: 8 €.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Ayuntamiento de Música y Artes Escénicas</p>
+  </footer>
+</body>
+</html>`,
+				},
+			],
+			pt: [
+				{
+					file: "cartaz.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartaz do festival</title>
+  <link rel="stylesheet" href="cartaz.css">
+</head>
+<body>
+  <header>
+    <h1 id="titulo-festival">Noite de Jazz</h1>
+    <nav>
+      <a href="#programa">Programa</a>
+      <a href="#entradas">Entradas</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bloque" id="programa">
+      <h2>Programa</h2>
+      <p>Concertos das 20:00 às 23:30 na sala principal.</p>
+    </section>
+
+    <section class="bloque" id="entradas">
+      <h2>Entradas</h2>
+      <p>Geral: 12 €. Meia: 8 €.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Câmara Municipal de Música e Artes Performativas</p>
+  </footer>
+</body>
+</html>`,
+				},
+			],
 		},
 	},
 	{
 		id: 11,
 		lectureId: 9,
 		title: {
-			es: "Menú interactivo y lista cebra",
-			pt: "Menu interativo e lista zebra",
+			es: "Menú y ranking",
+			pt: "Menu e ranking",
 		},
 		objective: {
-			es: "Seleccionar por relación, estado y posición en un menú y una lista reales.",
-			pt: "Selecionar por relação, estado e posição num menu e numa lista reais.",
+			es: "Seleccionar por relación, atributo, estado y posición en un menú y un ranking reales.",
+			pt: "Selecionar por relação, atributo, estado e posição num menu e num ranking reais.",
 		},
 		steps: [
 			{
-				es: "Crea menu.html con un nav > ul con tres enlaces y un ol con cinco ítems.",
-				pt: "Cria menu.html com um nav > ul com três links e um ol com cinco itens.",
+				es: "Copiá el código inicial de abajo en menu.html. El enlace a menu.css ya está en el head: creá ese archivo en la misma carpeta.",
+				pt: "Copia o código inicial abaixo para menu.html. A ligação a menu.css já está no head: cria esse ficheiro na mesma pasta.",
 			},
 			{
-				es: "Con el descendiente nav a, dale estilo base a los enlaces del menú.",
-				pt: "Com o descendente nav a, dá estilo base aos links do menu.",
+				es: "Descendiente: con nav a, dale estilo base a los enlaces del menú.",
+				pt: "Descendente: com nav a, dá estilo base aos links do menu.",
 			},
 			{
-				es: "Con a:hover, haz que cambien de color o se subrayen con el cursor encima.",
-				pt: "Com a:hover, faz com que mudem de cor ou sejam sublinhados com o cursor em cima.",
+				es: "Estado: con a:hover, que cambien de color y se subrayen al pasar el cursor.",
+				pt: "Estado: com a:hover, que mudem de cor e sejam sublinhados ao passar o cursor.",
 			},
 			{
-				es: "En la lista: :nth-child(odd) con fondo, :first-child en negrita y :last-child con borde inferior.",
-				pt: "Na lista: :nth-child(odd) com fundo, :first-child a negrito e :last-child com borda inferior.",
+				es: "Posición: con ol > li:nth-child(even) pintá el fondo de los ítems pares (cebra); con ol > li:first-child poné el primero en negrita y con ol > li:last-child poné un borde inferior al último.",
+				pt: "Posição: com ol > li:nth-child(even) pinta o fundo dos itens pares (zebra); com ol > li:first-child põe o primeiro a negrito e com ol > li:last-child põe uma borda inferior ao último.",
 			},
 			{
-				es: "Pasa el cursor por el menú y revisa la cebra; si el hover “no funciona”, revisa el orden LoVe-HA.",
-				pt: "Passa o cursor pelo menu e revê a zebra; se o hover “não funciona”, revê a ordem LoVe-HA.",
+				es: "Atributo y hermano: con a[href^='#'] distinguí los enlaces internos del menú, y con ul > li + li separá los ítems del menú con un margen.",
+				pt: "Atributo e irmão: com a[href^='#'] distingue os links internos do menu, e com ul > li + li separa os itens do menu com uma margem.",
 			},
 		],
 		verify: [
 			{
-				es: "El menú reacciona al cursor y la lista alterna el fondo con primero y último destacados.",
-				pt: "O menu reage ao cursor e a lista alterna o fundo com primeiro e último destacados.",
+				es: "El menú reacciona al cursor y el ranking alterna el fondo, con el primero en negrita y el último con borde.",
+				pt: "O menu reage ao cursor e o ranking alterna o fundo, com o primeiro a negrito e o último com borda.",
+			},
+			{
+				es: "Los enlaces internos (href que empieza con #) tienen un color distinto.",
+				pt: "Os links internos (href que começa com #) têm uma cor diferente.",
 			},
 			{
 				es: "Todo se logró con selectores: sin clases extra ni JavaScript.",
-				pt: "Tudo feito com seletores: sem classes extra nem JavaScript.",
+				pt: "Tudo ficou feito com seletores: sem classes extra nem JavaScript.",
 			},
 		],
 		expected: {
-			es: "Ves el menú que cambia con el cursor y la lista con fondo alternado, primero en negrita y último con borde.",
-			pt: "Vês o menu que muda com o cursor e a lista com fundo alternado, primeiro a negrito e último com borda.",
+			es: "Ves el menú que cambia con el cursor y el ranking con el fondo alternado, el primero en negrita, el último con borde y los enlaces internos con otro color.",
+			pt: "Vês o menu que muda com o cursor e o ranking com o fundo alternado, o primeiro a negrito, o último com borda e os links internos com outra cor.",
+		},
+		starter: {
+			es: [
+				{
+					file: "menu.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú y ranking</title>
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#temporadas">Temporadas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <h1>Ranking de la temporada</h1>
+
+  <ol>
+    <li>Cielo roto</li>
+    <li>La casa de enfrente</li>
+    <li>Vértigo</li>
+    <li>Línea de sueño</li>
+    <li>El último tren</li>
+  </ol>
+
+  <footer>
+    <p>Promovido por <a href="https://example.com">el ayuntamiento</a></p>
+  </footer>
+</body>
+</html>`,
+				},
+			],
+			pt: [
+				{
+					file: "menu.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu e ranking</title>
+  <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#temporadas">Temporadas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <h1>Ranking da temporada</h1>
+
+  <ol>
+    <li>Céu partido</li>
+    <li>A casa em frente</li>
+    <li>Vertigem</li>
+    <li>Linha de sonho</li>
+    <li>O último comboio</li>
+  </ol>
+
+  <footer>
+    <p>Promovido pela <a href="https://example.com">câmara municipal</a></p>
+  </footer>
+</body>
+</html>`,
+				},
+			],
 		},
 	},
 	{
 		id: 12,
 		lectureId: 10,
 		title: {
-			es: "Cita con estilo y duelo de especificidad",
-			pt: "Citação com estilo e duelo de especificidade",
+			es: "Reseña de un lector",
+			pt: "Crítica de um leitor",
 		},
 		objective: {
 			es: "Generar contenido con pseudo-elementos y predecir el ganador de una pelea de selectores.",
@@ -547,64 +920,116 @@ export const labModulo2: LabExercise[] = [
 		},
 		steps: [
 			{
-				es: "Crea cita.html con un blockquote y un button con id='btn-principal' y class='btn-accion'.",
-				pt: "Cria citacao.html com um blockquote e um button com id='btn-principal' e class='btn-acao'.",
+				es: "Copiá el código inicial de abajo en resena.html. El enlace a resena.css ya está en el head: creá ese archivo en la misma carpeta.",
+				pt: "Copia o código inicial abaixo para critica.html. A ligação a critica.css já está no head: cria esse ficheiro na mesma pasta.",
 			},
 			{
-				es: "Con ::before y ::after (no olvides content), añade comillas gigantes al blockquote.",
-				pt: "Com ::before e ::after (não esqueças o content), adiciona aspas gigantes ao blockquote.",
+				es: "Pseudo-elementos: con blockquote::before y blockquote::after añadí comillas gigantes. No olvides content: '\"' en las dos reglas: sin content el pseudo-elemento no se renderiza.",
+				pt: "Pseudo-elementos: com blockquote::before e blockquote::after adiciona aspas gigantes. Não esqueças content: '\"' nas duas regras: sem content o pseudo-elemento não se renderiza.",
 			},
 			{
-				es: "Tres reglas para el background del botón, cada una de un color: button, .btn-accion y #btn-principal.",
-				pt: "Três regras para o background do botão, cada uma de uma cor: button, .btn-acao e #btn-principal.",
+				es: "Tres reglas para el fondo del botón, cada una de un color: button (gris), .btn-accion (verde) y #btn-reservar (rojo).",
+				pt: "Três regras para o fundo do botão, cada uma de uma cor: button (cinzento), .btn-acao (verde) e #btn-reservar (vermelho).",
 			},
 			{
-				es: "Antes de abrir el navegador, anota de qué color crees que será el botón y por qué paso del algoritmo.",
-				pt: "Antes de abrir o navegador, anota de que cor achas que será o botão e por que passo do algoritmo.",
+				es: "Antes de abrir el navegador, anotá de qué color creés que va a quedar el botón y por qué paso del algoritmo.",
+				pt: "Antes de abrir o navegador, anota de que cor achas que vai ficar o botão e por que passo do algoritmo.",
 			},
 		],
 		verify: [
 			{
-				es: "Si quitas content, las comillas desaparecen: el pseudo-elemento no se renderiza.",
+				es: "Si quitás content, las comillas desaparecen: el pseudo-elemento no se renderiza.",
 				pt: "Se tirares o content, as aspas desaparecem: o pseudo-elemento não se renderiza.",
 			},
 			{
-				es: "Tu predicción fue correcta: gana el ID por especificidad.",
-				pt: "A tua previsão estava correta: ganha o ID por especificidade.",
+				es: "Tu predicción fue correcta: gana el ID por especificidad (1-0-0 le gana a 0-1-0, que le gana a 0-0-1).",
+				pt: "A tua previsão estava correta: ganha o ID por especificidade (1-0-0 ganha a 0-1-0, que ganha a 0-0-1).",
+			},
+			{
+				es: "El botón quedó con su color sin usar !important.",
+				pt: "O botão ficou com a sua cor sem usar !important.",
 			},
 		],
 		expected: {
-			es: "Ves el blockquote con comillas gigantes y el botón del color del ID: tu predicción acertó.",
-			pt: "Vês o blockquote com aspas gigantes e o botão da cor do ID: a tua previsão acertou.",
+			es: "Ves la cita con comillas gigantes y el botón en rojo: ganó el ID, tal como predijiste.",
+			pt: "Vês a crítica com aspas gigantes e o botão a vermelho: ganhou o ID, tal como previste.",
+		},
+		starter: {
+			es: [
+				{
+					file: "resena.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reseña de un lector</title>
+  <link rel="stylesheet" href="resena.css">
+</head>
+<body>
+  <blockquote>
+    La simplicidad es la última sofisticación.
+  </blockquote>
+
+  <button id="btn-reservar" class="btn-accion" type="button">Reservar butaca</button>
+</body>
+</html>`,
+				},
+			],
+			pt: [
+				{
+					file: "critica.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crítica de um leitor</title>
+  <link rel="stylesheet" href="critica.css">
+</head>
+<body>
+  <blockquote>
+    A simplicidade é a última sofisticação.
+  </blockquote>
+
+  <button id="btn-reservar" class="btn-acao" type="button">Reservar lugar</button>
+</body>
+</html>`,
+				},
+			],
 		},
 	},
 	{
 		id: 13,
 		lectureId: 10,
 		title: {
-			es: "Integrador: mi sitio con estilos",
-			pt: "Integrador: meu site com estilos",
+			es: "Integrador: la web de una librería",
+			pt: "Integrador: o site de uma livraria",
 		},
 		objective: {
-			es: "Vestir el sitio del Módulo 1 con una hoja compartida usando todo el módulo.",
-			pt: "Vestir o site do Módulo 1 com uma folha partilhada usando todo o módulo.",
+			es: "Vestir tres páginas con una sola hoja compartida usando todo el módulo.",
+			pt: "Vestir três páginas com uma única folha partilhada usando todo o módulo.",
 		},
 		steps: [
 			{
-				es: "Crea estilos.css con el reset universal y enlázalo en las tres páginas del integrador del Módulo 1: index.html, horario.html y contacto.html.",
-				pt: "Cria estilos.css com o reset universal e liga-o nas três páginas do integrador do Módulo 1: index.html, horario.html e contato.html.",
+				es: "Copiá los tres archivos de abajo (index.html, catalogo.html y pedidos.html) en una carpeta llamada libreria.",
+				pt: "Copia os três ficheiros abaixo (index.html, catalogo.html e pedidos.html) para uma pasta chamada livraria.",
 			},
 			{
-				es: "Dale estilo base al nav compartido de todo el sitio con nav a y feedback con a:hover (lo mismo del ejercicio 11, pero ahora en la hoja compartida).",
-				pt: "Dá estilo base ao nav partilhado de todo o site com nav a e feedback com a:hover (o mesmo do exercício 11, mas agora na folha partilhada).",
+				es: "Creá estilos-libreria.css en esa carpeta con el reset universal (*, *::before y *::after con margin 0, padding 0 y box-sizing border-box). Los tres archivos ya lo enlazan.",
+				pt: "Cria estilos-livraria.css nessa pasta com o reset universal (*, *::before e *::after com margin 0, padding 0 e box-sizing border-box). Os três ficheiros já o ligam.",
 			},
 			{
-				es: "En horario.html, aplica la cebra a la tabla de datos con tbody tr:nth-child(even) (en el ejercicio 11 era una lista ol; ahora es una tabla real) y agrupa h1, h2 con un mismo color en la hoja compartida.",
-				pt: "Em horario.html, aplica a zebra à tabela de dados com tbody tr:nth-child(even) (no exercício 11 era uma lista ol; agora é uma tabela real) e agrupa h1, h2 com uma mesma cor na folha partilhada.",
+				es: "Nav compartido: con nav a y nav a:hover dale estilo a los enlaces del menú en las tres páginas.",
+				pt: "Nav partilhado: com nav a e nav a:hover dá estilo aos links do menu nas três páginas.",
 			},
 			{
-				es: "En contacto.html reutiliza el formulario validado del ejercicio 8 de este laboratorio; en index.html añade una cita (blockquote) con comillas vía ::before/::after (con content).",
-				pt: "Em contato.html reutiliza o formulário validado do exercício 8 deste laboratório; em index.html adiciona uma citação (blockquote) com aspas via ::before/::after (com content).",
+				es: "En catalogo.html, aplicá la cebra a la tabla con tbody tr:nth-child(even) y agrupá h1, h2 con un mismo color en la hoja compartida.",
+				pt: "Em catalogo.html, aplica a zebra à tabela com tbody tr:nth-child(even) e agrupa h1, h2 com uma mesma cor na folha partilhada.",
+			},
+			{
+				es: "En pedidos.html el formulario ya trae la validación (required, minlength y type): comprobá que frena vacío y que el correo sin @ no pasa. En index.html, añadí comillas a la cita con blockquote::before y blockquote::after (con content).",
+				pt: "Em pedidos.html o formulário já traz a validação (required, minlength e type): confirma que trava vazio e que o e-mail sem @ não passa. Em index.html, adiciona aspas à citação com blockquote::before e blockquote::after (com content).",
 			},
 		],
 		verify: [
@@ -613,13 +1038,341 @@ export const labModulo2: LabExercise[] = [
 				pt: "Um colega percorre as 3 páginas: nav com hover, tabela zebra, formulário que valida e citação com aspas na capa.",
 			},
 			{
-				es: "Cero atributos style en el HTML: la presentación vive solo en el CSS.",
-				pt: "Zero atributos style no HTML: a apresentação vive só no CSS.",
+				es: "Cero atributos style en el HTML: la presentación vive solo en estilos-libreria.css.",
+				pt: "Zero atributos style no HTML: a apresentação vive só em estilos-livraria.css.",
+			},
+			{
+				es: "El formulario frena el envío vacío y el correo sin @, sin JavaScript.",
+				pt: "O formulário trava o envio vazio e o e-mail sem @, sem JavaScript.",
 			},
 		],
 		expected: {
-			es: "Ves el sitio de 3 páginas con nav con hover, tabla cebra, formulario que valida y cita con comillas en la portada.",
-			pt: "Vês o site de 3 páginas com nav com hover, tabela zebra, formulário que valida e citação com aspas na capa.",
+			es: "Ves las 3 páginas con el mismo nav y su hover, el catálogo con la tabla alternada, el formulario que valida y la cita con comillas en la portada.",
+			pt: "Vês as 3 páginas com o mesmo nav e o seu hover, o catálogo com a tabela alternada, o formulário que valida e a citação com aspas na capa.",
+		},
+		starter: {
+			es: [
+				{
+					file: "index.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Librería El Faro</title>
+  <link rel="stylesheet" href="estilos-libreria.css">
+</head>
+<body>
+  <header>
+    <h1>Librería El Faro</h1>
+    <nav>
+      <a href="index.html">Portada</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="pedidos.html">Pedidos</a>
+    </nav>
+  </header>
+
+  <main>
+    <blockquote>Una librería es un puerto con tejado.</blockquote>
+
+    <section>
+      <h2>Sobre la librería</h2>
+      <p>Somos una librería de barrio con más de veinte años de oficio.</p>
+    </section>
+
+    <section>
+      <h2>Horarios</h2>
+      <p>De lunes a viernes de 10:00 a 20:00, sábados de 10:00 a 14:00.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Calle del Faro, 12 - 900 000 000</p>
+  </footer>
+</body>
+</html>`,
+				},
+				{
+					file: "catalogo.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo · Librería El Faro</title>
+  <link rel="stylesheet" href="estilos-libreria.css">
+</head>
+<body>
+  <header>
+    <h1>Catálogo</h1>
+    <nav>
+      <a href="index.html">Portada</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="pedidos.html">Pedidos</a>
+    </nav>
+  </header>
+
+  <main>
+    <table>
+      <caption>Títulos disponibles</caption>
+      <thead>
+        <tr>
+          <th scope="col">Título</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>La torre de cristal</td>
+          <td>M. Larrañaga</td>
+          <td>14,50 €</td>
+        </tr>
+        <tr>
+          <td>Cuaderno de invierno</td>
+          <td>A. Ribeiro</td>
+          <td>11,00 €</td>
+        </tr>
+        <tr>
+          <td>El jardín de los espejos</td>
+          <td>L. Fonseca</td>
+          <td>16,90 €</td>
+        </tr>
+        <tr>
+          <td>Marea baja</td>
+          <td>P. Duarte</td>
+          <td>13,20 €</td>
+        </tr>
+        <tr>
+          <td>El último tranvía</td>
+          <td>S. Almeida</td>
+          <td>18,00 €</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>Calle del Faro, 12 - 900 000 000</p>
+  </footer>
+</body>
+</html>`,
+				},
+				{
+					file: "pedidos.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos · Librería El Faro</title>
+  <link rel="stylesheet" href="estilos-libreria.css">
+</head>
+<body>
+  <header>
+    <h1>Pedidos</h1>
+    <nav>
+      <a href="index.html">Portada</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="pedidos.html">Pedidos</a>
+    </nav>
+  </header>
+
+  <main>
+    <form>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required placeholder="tu@correo.com">
+
+      <label for="libro">Título:</label>
+      <select id="libro" name="libro" required>
+        <option value="">Elige un título</option>
+        <option value="torre">La torre de cristal</option>
+        <option value="cuaderno">Cuaderno de invierno</option>
+        <option value="jardin">El jardín de los espejos</option>
+      </select>
+
+      <label for="cantidad">Unidades:</label>
+      <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="1" required>
+
+      <label for="mensaje">Mensaje:</label>
+      <textarea id="mensaje" name="mensaje" minlength="10" placeholder="Nota para el pedido"></textarea>
+
+      <button type="submit">Enviar pedido</button>
+      <button type="reset">Limpiar</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>Calle del Faro, 12 - 900 000 000</p>
+  </footer>
+</body>
+</html>`,
+				},
+			],
+			pt: [
+				{
+					file: "index.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livraria O Farol</title>
+  <link rel="stylesheet" href="estilos-livraria.css">
+</head>
+<body>
+  <header>
+    <h1>Livraria O Farol</h1>
+    <nav>
+      <a href="index.html">Capa</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="pedidos.html">Encomendas</a>
+    </nav>
+  </header>
+
+  <main>
+    <blockquote>Uma livraria é um porto com telhado.</blockquote>
+
+    <section>
+      <h2>Sobre a livraria</h2>
+      <p>Somos uma livraria de bairro com mais de vinte anos de ofício.</p>
+    </section>
+
+    <section>
+      <h2>Horários</h2>
+      <p>De segunda a sexta das 10:00 às 20:00, sábado das 10:00 às 14:00.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Rua do Farol, 12 - 900 000 000</p>
+  </footer>
+</body>
+</html>`,
+				},
+				{
+					file: "catalogo.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo · Livraria O Farol</title>
+  <link rel="stylesheet" href="estilos-livraria.css">
+</head>
+<body>
+  <header>
+    <h1>Catálogo</h1>
+    <nav>
+      <a href="index.html">Capa</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="pedidos.html">Encomendas</a>
+    </nav>
+  </header>
+
+  <main>
+    <table>
+      <caption>Títulos disponíveis</caption>
+      <thead>
+        <tr>
+          <th scope="col">Título</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A torre de cristal</td>
+          <td>M. Larrañaga</td>
+          <td>14,50 €</td>
+        </tr>
+        <tr>
+          <td>Caderno de inverno</td>
+          <td>A. Ribeiro</td>
+          <td>11,00 €</td>
+        </tr>
+        <tr>
+          <td>O jardim dos espelhos</td>
+          <td>L. Fonseca</td>
+          <td>16,90 €</td>
+        </tr>
+        <tr>
+          <td>Marea baixa</td>
+          <td>P. Duarte</td>
+          <td>13,20 €</td>
+        </tr>
+        <tr>
+          <td>O último elétrico</td>
+          <td>S. Almeida</td>
+          <td>18,00 €</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>Rua do Farol, 12 - 900 000 000</p>
+  </footer>
+</body>
+</html>`,
+				},
+				{
+					file: "pedidos.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encomendas · Livraria O Farol</title>
+  <link rel="stylesheet" href="estilos-livraria.css">
+</head>
+<body>
+  <header>
+    <h1>Encomendas</h1>
+    <nav>
+      <a href="index.html">Capa</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="pedidos.html">Encomendas</a>
+    </nav>
+  </header>
+
+  <main>
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required placeholder="O teu nome">
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required placeholder="teu@email.com">
+
+      <label for="livro">Título:</label>
+      <select id="livro" name="livro" required>
+        <option value="">Escolhe um título</option>
+        <option value="torre">A torre de cristal</option>
+        <option value="cuaderno">Caderno de inverno</option>
+        <option value="jardim">O jardim dos espelhos</option>
+      </select>
+
+      <label for="quantidade">Unidades:</label>
+      <input type="number" id="quantidade" name="quantidade" min="1" max="10" value="1" required>
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" minlength="10" placeholder="Nota para a encomenda"></textarea>
+
+      <button type="submit">Enviar encomenda</button>
+      <button type="reset">Limpar</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>Rua do Farol, 12 - 900 000 000</p>
+  </footer>
+</body>
+</html>`,
+				},
+			],
 		},
 	},
 ];

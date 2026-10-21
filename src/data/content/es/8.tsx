@@ -162,14 +162,14 @@ p {
 			<div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
 				<div className="flex-1 rounded-xl bg-orange-50 p-3 text-center text-sm font-semibold text-orange-800 dark:bg-orange-950/40 dark:text-orange-200">
 					<FileText className="mx-auto mb-1 h-5 w-5" aria-hidden />
-					biografia.html
+					cartelera.html
 				</div>
 				<div className="text-center font-bold text-gray-400" aria-hidden>
 					→
 				</div>
 				<div className="flex-1 rounded-xl bg-blue-50 p-3 text-center text-sm font-semibold text-blue-800 dark:bg-blue-950/40 dark:text-blue-200">
 					<Link2 className="mx-auto mb-1 h-5 w-5" aria-hidden />
-					&lt;link&gt; a estilos-biografia.css
+					&lt;link&gt; a estilos-cartelera.css
 				</div>
 				<div className="text-center font-bold text-gray-400" aria-hidden>
 					→
@@ -571,34 +571,34 @@ h2 {
 		<section className="rounded-3xl border border-gray-200 bg-gradient-to-b from-white to-gray-50 p-6 dark:border-gray-700 dark:from-gray-800/60 dark:to-gray-900 sm:p-8">
 			<h3 className="text-2xl font-semibold mb-2 flex items-center gap-2">
 				<Send className="h-6 w-6 text-blue-500" aria-hidden />📝 Tarea:
-				estilizando tu biografía
+				estilizando la cartelera de un festival
 			</h3>
 			<p className="mb-6 text-gray-600 dark:text-gray-300">
-				Hora de dar color y forma a la biografía del Módulo 1, todo con hoja
+				Hora de dar color y forma a una cartelera de festival, todo con hoja
 				externa.
 			</p>
 			<ol className="space-y-3">
 				<Step number={1} title="Crea la hoja externa">
-					Crea <Code>estilos-biografia.css</Code> en la misma carpeta que{" "}
-					<Code>biografia.html</Code>.
+					Crea <Code>estilos-cartelera.css</Code> en la misma carpeta que{" "}
+					<Code>cartelera.html</Code>.
 				</Step>
 				<Step number={2} title="Enlázala">
-					En el <Code>&lt;head&gt;</Code> de <Code>biografia.html</Code> agregá{" "}
+					En el <Code>&lt;head&gt;</Code> de <Code>cartelera.html</Code> agregá{" "}
 					<Code>
-						&lt;link rel="stylesheet" href="estilos-biografia.css"&gt;
+						&lt;link rel="stylesheet" href="estilos-cartelera.css"&gt;
 					</Code>
 					.
 				</Step>
 				<Step number={3} title="Marca con clases e IDs">
 					Dale un ID a tu <Code>&lt;h1&gt;</Code> (por ejemplo{" "}
-					<Code>id="nombre-titulo"</Code>) y una clase a cada sección (por
-					ejemplo <Code>class="seccion"</Code>).
+					<Code>id="titulo-festival"</Code>) y una clase a cada sección (por
+					ejemplo <Code>class="bloque"</Code>).
 				</Step>
 				<Step number={4} title="Escribe las cuatro reglas">
-					En <Code>estilos-biografia.css</Code>: tipo para <Code>body</Code> (
+					En <Code>estilos-cartelera.css</Code>: tipo para <Code>body</Code> (
 					<Code>background-color</Code> + <Code>font-family</Code>), ID para el{" "}
 					<Code>h1</Code> (color + <Code>text-align: center;</Code>), clase{" "}
-					<Code>.seccion</Code> (<Code>border</Code> + <Code>padding</Code>) y
+					<Code>.bloque</Code> (<Code>border</Code> + <Code>padding</Code>) y
 					agrupación para <Code>h1, h2</Code>.
 				</Step>
 				<Step number={5} title="Mirá el resultado">

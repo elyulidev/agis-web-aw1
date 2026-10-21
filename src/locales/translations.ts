@@ -64,6 +64,9 @@ export const translations = {
 			"Necesitas Visual Studio Code con las extensiones Live Server y Prettier. Cada ejercicio se hace en tu computadora: crea los archivos, ábrelos con Live Server y verifica el resultado con la lista de control.",
 		"lab.objective": "Objetivo",
 		"lab.instructions": "Consigna",
+		"lab.starter": "Código inicial",
+		"lab.starterHint":
+			"Copiá este HTML tal cual en el archivo indicado y, a partir de ahí, escribí el CSS que pide la consigna. No necesitás el laboratorio anterior.",
 		"lab.verify": "¿Cómo sé que está bien?",
 		"lab.expected": "Resultado esperado",
 		"lab.review": "Repasar conferencia {lectureId}",
@@ -133,6 +136,9 @@ export const translations = {
 			"Precisas do Visual Studio Code com as extensões Live Server e Prettier. Cada exercício faz-se no teu computador: cria os ficheiros, abre-os com o Live Server e verifica o resultado com a lista de controlo.",
 		"lab.objective": "Objetivo",
 		"lab.instructions": "Enunciado",
+		"lab.starter": "Código inicial",
+		"lab.starterHint":
+			"Copia este HTML tal e qual para o ficheiro indicado e, a partir daí, escreve o CSS que o enunciado pede. Não precisas do laboratório anterior.",
 		"lab.verify": "Como sei que está bem?",
 		"lab.expected": "Resultado esperado",
 		"lab.review": "Rever aula {lectureId}",

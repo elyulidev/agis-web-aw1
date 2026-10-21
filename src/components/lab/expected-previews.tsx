@@ -30,6 +30,65 @@ const text = {
 		quote: "El diseño es la inteligencia hecha visible.",
 		button: "Botón principal",
 		site: "Mi sitio: 3 páginas enlazadas",
+		formName: "Nombre completo",
+		formEmail: "Correo electrónico",
+		formWorkshop: "Taller",
+		formPhone: "Teléfono (9 dígitos)",
+		formMsg: "Mensaje",
+		reserve: "Reservar plaza",
+		required: "obligatorio",
+		wsPlaceholder: "Elige un taller",
+		ws1: "HTML semántico",
+		ws2: "CSS desde cero",
+		ws3: "Git y GitHub",
+		winner: "(gana el ID)",
+		restaurant: "Restaurante La Plaza",
+		slogan: "Cocina de temporada todos los días",
+		starters: "Entrantes",
+		mains: "Platos",
+		dish1: "Tortilla de patatas - 8 €",
+		dish2: "Gazpacho - 7 €",
+		dish3: "Salmorejo con huevo - 14 €",
+		dish4: "Lubina al horno - 19 €",
+		box1: "Caja 1",
+		box2: "Caja 2",
+		boxesFit:
+			"Con box-sizing: border-box las dos cajas de 200px entran lado a lado en los 400px de .fila.",
+		festival: "Noche de Jazz",
+		program: "Programa",
+		tickets: "Entradas",
+		programText: "Conciertos de 20:00 a 23:30 en la sala principal.",
+		ticketsText: "Entrada general: 12 €. Entrada reducida: 8 €.",
+		city: "Ayuntamiento de Música y Artes Escénicas",
+		ranking: "Ranking de la temporada",
+		r1: "Cielo roto",
+		r2: "La casa de enfrente",
+		r3: "Vértigo",
+		r4: "Línea de sueño",
+		r5: "El último tren",
+		quote2: "La simplicidad es la última sofisticación.",
+		reserveSeat: "Reservar butaca",
+		library: "Librería El Faro",
+		home: "Portada",
+		catalog: "Catálogo",
+		orders: "Pedidos",
+		libQuote: "Una librería es un puerto con tejado.",
+		book1: "La torre de cristal",
+		book2: "Cuaderno de invierno",
+		book3: "El jardín de los espejos",
+		book4: "Marea baja",
+		book5: "El último tranvía",
+		author1: "M. Larrañaga",
+		author2: "A. Ribeiro",
+		author3: "L. Fonseca",
+		author4: "P. Duarte",
+		author5: "S. Almeida",
+		price1: "14,50 €",
+		price2: "11,00 €",
+		price3: "16,90 €",
+		price4: "13,20 €",
+		price5: "18,00 €",
+		libFooter: "Calle del Faro, 12 - 900 000 000",
 	},
 	pt: {
 		hello: "Olá, Mundo!",
@@ -60,6 +119,65 @@ const text = {
 		quote: "O design é a inteligência feita visível.",
 		button: "Botão principal",
 		site: "Meu site: 3 páginas ligadas",
+		formName: "Nome completo",
+		formEmail: "E-mail",
+		formWorkshop: "Workshop",
+		formPhone: "Telefone (9 dígitos)",
+		formMsg: "Mensagem",
+		reserve: "Reservar vaga",
+		required: "obrigatório",
+		wsPlaceholder: "Escolhe um workshop",
+		ws1: "HTML semântico",
+		ws2: "CSS do zero",
+		ws3: "Git e GitHub",
+		winner: "(gana o ID)",
+		restaurant: "Restaurante A Praça",
+		slogan: "Cozinha de estação todos os dias",
+		starters: "Entrantes",
+		mains: "Pratos",
+		dish1: "Tortilha de batatas - 8 €",
+		dish2: "Gazpacho - 7 €",
+		dish3: "Salmorejo com ovo - 14 €",
+		dish4: "Robalo assado - 19 €",
+		box1: "Caixa 1",
+		box2: "Caixa 2",
+		boxesFit:
+			"Com box-sizing: border-box as duas caixas de 200px entram lado a lado nos 400px de .fila.",
+		festival: "Noite de Jazz",
+		program: "Programa",
+		tickets: "Entradas",
+		programText: "Concertos das 20:00 às 23:30 na sala principal.",
+		ticketsText: "Entrada geral: 12 €. Entrada meia: 8 €.",
+		city: "Câmara Municipal de Música e Artes Performativas",
+		ranking: "Ranking da temporada",
+		r1: "Céu partido",
+		r2: "A casa em frente",
+		r3: "Vertigem",
+		r4: "Linha de sonho",
+		r5: "O último comboio",
+		quote2: "A simplicidade é a última sofisticação.",
+		reserveSeat: "Reservar lugar",
+		library: "Livraria O Farol",
+		home: "Capa",
+		catalog: "Catálogo",
+		orders: "Encomendas",
+		libQuote: "Uma livraria é um porto com telhado.",
+		book1: "A torre de cristal",
+		book2: "Caderno de inverno",
+		book3: "O jardim dos espelhos",
+		book4: "Marea baixa",
+		book5: "O último elétrico",
+		author1: "M. Larrañaga",
+		author2: "A. Ribeiro",
+		author3: "L. Fonseca",
+		author4: "P. Duarte",
+		author5: "S. Almeida",
+		price1: "14,50 €",
+		price2: "11,00 €",
+		price3: "16,90 €",
+		price4: "13,20 €",
+		price5: "18,00 €",
+		libFooter: "Rua do Farol, 12 - 900 000 000",
 	},
 };
 
@@ -199,8 +317,6 @@ export default function ExpectedPreview({
 				</div>
 			);
 		case 6:
-		case 8: {
-			const robust = id === 8;
 			return (
 				<form
 					className="space-y-2"
@@ -209,58 +325,36 @@ export default function ExpectedPreview({
 					}}
 				>
 					<div>
-						<label
-							htmlFor={`lab${id}-nombre`}
-							className="text-xs font-semibold"
-						>
+						<label htmlFor="lab6-nombre" className="text-xs font-semibold">
 							Nombre
 						</label>
 						<input
-							id={`lab${id}-nombre`}
+							id="lab6-nombre"
 							name="nombre"
 							type="text"
-							required={robust}
 							placeholder="Tu nombre"
 							className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-900"
 						/>
 					</div>
 					<div>
-						<label htmlFor={`lab${id}-email`} className="text-xs font-semibold">
+						<label htmlFor="lab6-email" className="text-xs font-semibold">
 							Correo
 						</label>
 						<input
-							id={`lab${id}-email`}
+							id="lab6-email"
 							name="email"
 							type="email"
-							required={robust}
 							placeholder="tu@email.com"
 							className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-900"
 						/>
 					</div>
-					{robust && (
-						<div>
-							<label htmlFor={`lab${id}-tel`} className="text-xs font-semibold">
-								Teléfono (9 dígitos)
-							</label>
-							<input
-								id={`lab${id}-tel`}
-								name="telefono"
-								type="tel"
-								pattern="[0-9]{9}"
-								title="Introduce 9 dígitos numéricos."
-								placeholder="123456789"
-								className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-900"
-							/>
-						</div>
-					)}
 					<div>
-						<label htmlFor={`lab${id}-msg`} className="text-xs font-semibold">
+						<label htmlFor="lab6-mensaje" className="text-xs font-semibold">
 							Mensaje
 						</label>
 						<textarea
-							id={`lab${id}-msg`}
+							id="lab6-mensaje"
 							name="mensaje"
-							minLength={robust ? 10 : undefined}
 							placeholder="Escribe tu mensaje"
 							className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-900"
 						/>
@@ -281,7 +375,102 @@ export default function ExpectedPreview({
 					</div>
 				</form>
 			);
-		}
+		case 8:
+			return (
+				<form
+					className="space-y-2"
+					onSubmit={(e) => {
+						e.preventDefault();
+					}}
+				>
+					<div>
+						<label htmlFor="lab8-nombre" className="text-xs font-semibold">
+							{t.formName} <span className="text-red-500">*</span>
+						</label>
+						<input
+							id="lab8-nombre"
+							name="nombre"
+							type="text"
+							required
+							placeholder="Tu nombre"
+							className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-900"
+						/>
+					</div>
+					<div>
+						<label htmlFor="lab8-email" className="text-xs font-semibold">
+							{t.formEmail} <span className="text-red-500">*</span>
+						</label>
+						<input
+							id="lab8-email"
+							name="email"
+							type="email"
+							required
+							placeholder="tu@correo.com"
+							className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-900"
+						/>
+					</div>
+					<div>
+						<label htmlFor="lab8-taller" className="text-xs font-semibold">
+							{t.formWorkshop} <span className="text-red-500">*</span>
+						</label>
+						<select
+							id="lab8-taller"
+							name="taller"
+							required
+							className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-900"
+						>
+							<option value="">{t.wsPlaceholder}</option>
+							<option value="html">{t.ws1}</option>
+							<option value="css">{t.ws2}</option>
+							<option value="git">{t.ws3}</option>
+						</select>
+					</div>
+					<div>
+						<label htmlFor="lab8-telefono" className="text-xs font-semibold">
+							{t.formPhone}
+						</label>
+						<input
+							id="lab8-telefono"
+							name="telefono"
+							type="tel"
+							pattern="[0-9]{9}"
+							title="Introduce 9 dígitos numéricos."
+							placeholder="600000000"
+							className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-900"
+						/>
+					</div>
+					<div>
+						<label htmlFor="lab8-mensaje" className="text-xs font-semibold">
+							{t.formMsg}
+						</label>
+						<textarea
+							id="lab8-mensaje"
+							name="mensaje"
+							minLength={20}
+							maxLength={300}
+							placeholder="Cuéntanos por qué quieres ir"
+							className="w-full rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-900"
+						/>
+					</div>
+					<div className="flex gap-2">
+						<button
+							type="submit"
+							className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white"
+						>
+							{t.reserve}
+						</button>
+						<button
+							type="reset"
+							className="rounded-lg border px-3 py-1.5 text-xs"
+						>
+							{t.clear}
+						</button>
+					</div>
+					<p className="text-[10px] text-gray-500 dark:text-gray-400">
+						* {t.required}
+					</p>
+				</form>
+			);
 		case 7:
 			return (
 				<div>
@@ -296,32 +485,51 @@ export default function ExpectedPreview({
 			);
 		case 9:
 			return (
-				<div className="grid gap-2 sm:grid-cols-2">
-					<div className="rounded-lg border p-2">
-						<p className="text-xs font-semibold">Sin reset: ~8px</p>
-						<div className="mt-1 border border-dashed p-2">
-							<p
-								style={{
-									margin: "8px",
-								}}
-								className="bg-amber-100 text-xs"
-							>
-								Contenido separado del borde
-							</p>
-						</div>
+				<div className="space-y-2">
+					<div style={{ backgroundColor: "#f3ead9" }} className="p-2">
+						<p className="text-sm font-bold"> {t.restaurant} </p>
+						<p className="text-[11px]"> {t.slogan} </p>
 					</div>
-					<div className="rounded-lg border p-2">
-						<p className="text-xs font-semibold">Con reset: pegado</p>
-						<div className="border border-dashed p-2">
-							<p
+					<div className="text-[11px]">
+						<p className="font-bold"> {t.starters} </p>
+						<ul className="list-disc pl-4">
+							<li>{t.dish1}</li>
+							<li>{t.dish2}</li>
+						</ul>
+						<p className="font-bold"> {t.mains} </p>
+						<ul className="list-disc pl-4">
+							<li>{t.dish3}</li>
+							<li>{t.dish4}</li>
+						</ul>
+					</div>
+					<div className="overflow-x-auto">
+						<div style={{ width: "400px" }} className="flex">
+							<div
 								style={{
-									margin: 0,
+									width: "200px",
+									padding: "20px",
+									border: "10px solid #94a3b8",
+									boxSizing: "border-box",
 								}}
-								className="bg-emerald-100 text-xs"
+								className="text-[11px]"
 							>
-								Contenido pegado al borde
-							</p>
+								{t.box1}
+							</div>
+							<div
+								style={{
+									width: "200px",
+									padding: "20px",
+									border: "10px solid #94a3b8",
+									boxSizing: "border-box",
+								}}
+								className="text-[11px]"
+							>
+								{t.box2}
+							</div>
 						</div>
+						<p className="mt-1 text-[10px] text-gray-500 dark:text-gray-400">
+							{t.boxesFit}
+						</p>
 					</div>
 				</div>
 			);
@@ -329,20 +537,46 @@ export default function ExpectedPreview({
 			return (
 				<div
 					style={{ backgroundColor: "#f8fafc", fontFamily: "Georgia, serif" }}
+					className="p-2"
 				>
 					<h1
-						id="nombre-titulo"
+						id="titulo-festival"
 						style={{ color: "#1d4ed8", textAlign: "center" }}
+						className="text-lg font-extrabold"
 					>
-						{t.name}
+						{t.festival}
 					</h1>
-					<h2 style={{ color: "#1d4ed8" }}> {t.about} </h2>
+					<nav className="flex justify-center gap-3 text-[11px] font-semibold">
+						<span className="text-blue-600"> {t.program} </span>
+						<span className="text-blue-600"> {t.tickets} </span>
+					</nav>
 					<div
-						className="seccion"
-						style={{ border: "1px solid #94a3b8", padding: "8px" }}
+						className="bloque mt-2"
+						style={{
+							border: "1px solid #94a3b8",
+							padding: "8px",
+							backgroundColor: "#e2e8f0",
+						}}
 					>
-						<p className="text-sm"> {t.aboutBody} </p>
+						<h2 style={{ color: "#1d4ed8" }} className="text-sm font-bold">
+							{t.program}
+						</h2>
+						<p className="text-[11px]"> {t.programText} </p>
 					</div>
+					<div
+						className="bloque mt-2"
+						style={{
+							border: "1px solid #94a3b8",
+							padding: "8px",
+							backgroundColor: "#e2e8f0",
+						}}
+					>
+						<h2 style={{ color: "#1d4ed8" }} className="text-sm font-bold">
+							{t.tickets}
+						</h2>
+						<p className="text-[11px]"> {t.ticketsText} </p>
+					</div>
+					<p className="mt-2 text-[10px] text-gray-500"> {t.city} </p>
 				</div>
 			);
 		case 11:
@@ -352,36 +586,37 @@ export default function ExpectedPreview({
 						<ul className="flex gap-3 text-sm font-semibold">
 							<li>
 								<a
-									href="#lab11"
-									className="text-blue-600 hover:text-red-600 hover:underline"
+									href="#inicio"
+									className="text-purple-600 hover:text-red-600 hover:underline"
 								>
 									{t.menu1}
 								</a>
 							</li>
 							<li>
 								<a
-									href="#lab11"
-									className="text-blue-600 hover:text-red-600 hover:underline"
+									href="#temporadas"
+									className="text-purple-600 hover:text-red-600 hover:underline"
 								>
 									{t.menu2}
 								</a>
 							</li>
 							<li>
 								<a
-									href="#lab11"
-									className="text-blue-600 hover:text-red-600 hover:underline"
+									href="#contacto"
+									className="text-purple-600 hover:text-red-600 hover:underline"
 								>
 									{t.menu3}
 								</a>
 							</li>
 						</ul>
 					</nav>
-					<ol className="mt-2 list-decimal space-y-0.5 pl-5 text-sm">
-						<li className="font-bold">Primer ítem</li>
-						<li className="bg-gray-100 dark:bg-gray-800">Segundo ítem</li>
-						<li>Tercer ítem</li>
-						<li className="bg-gray-100 dark:bg-gray-800">Cuarto ítem</li>
-						<li className="border-b-2 border-blue-500">Último ítem</li>
+					<p className="mt-2 text-sm font-bold"> {t.ranking} </p>
+					<ol className="mt-1 list-decimal space-y-0.5 pl-5 text-sm">
+						<li className="font-bold">{t.r1}</li>
+						<li className="bg-gray-100 dark:bg-gray-800">{t.r2}</li>
+						<li>{t.r3}</li>
+						<li className="bg-gray-100 dark:bg-gray-800">{t.r4}</li>
+						<li className="border-b-2 border-blue-500">{t.r5}</li>
 					</ol>
 				</div>
 			);
@@ -395,18 +630,20 @@ export default function ExpectedPreview({
 						<span aria-hidden className="absolute top-0 left-0 text-3xl">
 							“
 						</span>
-						{t.quote}
+						{t.quote2}
 						<span aria-hidden className="absolute right-0 bottom-0 text-3xl">
 							”
 						</span>
 					</blockquote>
 					<button
 						type="button"
-						id="btn-principal"
-						className="btn-accion rounded-lg px-3 py-1.5 text-xs font-medium text-white"
+						id="btn-reservar"
+						className={`${
+							lang === "pt" ? "btn-acao" : "btn-accion"
+						} rounded-lg px-3 py-1.5 text-xs font-medium text-white`}
 						style={{ backgroundColor: "red" }}
 					>
-						{t.button} (gana el ID)
+						{t.reserveSeat} {t.winner}
 					</button>
 				</div>
 			);
@@ -414,21 +651,31 @@ export default function ExpectedPreview({
 			return (
 				<div className="space-y-2">
 					<nav className="flex gap-3 text-xs font-semibold">
-						<span className="text-blue-600 hover:underline">{t.menu1}</span>
-						<span className="text-blue-600 hover:underline">{t.menu2}</span>
-						<span className="text-blue-600 hover:underline">{t.menu3}</span>
+						<span className="text-blue-600 hover:underline"> {t.home} </span>
+						<span className="text-blue-600 hover:underline"> {t.catalog} </span>
+						<span className="text-blue-600 hover:underline"> {t.orders} </span>
 					</nav>
-					<table className="w-full text-left text-xs" border={1}>
+					<blockquote className="text-sm italic">“{t.libQuote}”</blockquote>
+					<table className="w-full text-left text-[10px]">
 						<tbody>
+							<tr>
+								<td>{t.book1}</td>
+								<td>{t.author1}</td>
+								<td>{t.price1}</td>
+							</tr>
 							<tr className="bg-gray-100 dark:bg-gray-800">
-								<td>AW1</td>
+								<td>{t.book2}</td>
+								<td>{t.author2}</td>
+								<td>{t.price2}</td>
 							</tr>
 							<tr>
-								<td>Libre</td>
+								<td>{t.book3}</td>
+								<td>{t.author3}</td>
+								<td>{t.price3}</td>
 							</tr>
 						</tbody>
 					</table>
-					<blockquote className="text-sm italic">“{t.quote}”</blockquote>
+					<p className="text-[10px] text-gray-500"> {t.libFooter} </p>
 				</div>
 			);
 		default:

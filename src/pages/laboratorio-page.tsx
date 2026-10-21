@@ -2,6 +2,7 @@ import { Check, Eye, FlaskConical, RotateCcw } from "lucide-react";
 import { Link } from "react-router-dom";
 import ExpectedPreview from "@/components/lab/expected-previews";
 import { Callout, SectionTitle } from "@/components/lecture/lecture-blocks";
+import CodeBlock from "@/components/ui/code-block";
 import type { LabExercise } from "@/data/laboratory-content";
 import { labModulo1, labModulo2 } from "@/data/laboratory-content";
 import { useI18n } from "@/hooks/use-I18n";
@@ -55,6 +56,27 @@ export default function LaboratorioPage({ module }: { module: 1 | 2 }) {
 					</NumberedItem>
 				))}
 			</ol>
+
+			{exercise.starter && (
+				<>
+					<p className="mt-6 mb-3 text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+						{t("lab.starter")}
+					</p>
+					<div className="rounded-2xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800/40">
+						<p className="mb-3 text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+							{t("lab.starterHint")}
+						</p>
+						{exercise.starter[language].map((file) => (
+							<div key={file.file} className="mb-4 last:mb-0">
+								<p className="mb-1 font-mono text-xs font-semibold text-gray-600 dark:text-gray-300">
+									{file.file}
+								</p>
+								<CodeBlock codeString={file.code} language="html" />
+							</div>
+						))}
+					</div>
+				</>
+			)}
 
 			<p className="mt-6 mb-3 text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
 				{t("lab.verify")}
