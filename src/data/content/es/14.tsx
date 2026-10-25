@@ -1,72 +1,139 @@
-import CodeBlock from "@/components/ui/code-block";
+import { Sparkles } from "lucide-react";
+import { Callout } from "@/components/lecture/lecture-blocks";
+import CodeTabs from "@/components/ui/code-tabs";
+
+const Code = ({ children }: { children: React.ReactNode }) => (
+	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
+		{children}
+	</code>
+);
+
+const Subhead = ({ children }: { children: React.ReactNode }) => (
+	<p className="mt-8 mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+		<span className="h-2 w-2 rounded-full bg-blue-500" aria-hidden />
+		<span>{children}</span>
+	</p>
+);
+
+const Preview = ({
+	label,
+	children,
+}: {
+	label: string;
+	children: React.ReactNode;
+}) => (
+	<div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-5 dark:border-gray-600 dark:bg-gray-800/40">
+		<p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
+			{label}
+		</p>
+		<div className="text-gray-800 dark:text-gray-200">{children}</div>
+	</div>
+);
 
 const Lecture14Es = () => (
-	<div className='space-y-8'>
+	<div className="space-y-12">
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				1. Rompiendo las Reglas: Sacando Elementos del Flujo Normal
-			</h3>
-			<p className='mb-4'>
-				Hemos dominado el modelo de caja y cómo los elementos se apilan y fluyen
-				uno tras otro. Pero para diseños más complejos, como superposiciones,
-				menús desplegables o encabezados fijos, necesitamos una forma de sacar a
-				los elementos de este "flujo normal" del documento. Aquí es donde entra
-				la propiedad <code>position</code>.
+			<p className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
+				<Sparkles className="h-3.5 w-3.5" aria-hidden />
+				Módulo 3 · box model y posicionamiento
+			</p>
+			<p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+				Última conferencia del módulo: hoy rompemos el flujo normal. Cuando
+				termines, superposiciones, menús desplegables y encabezados fijos dejan
+				de ser magia.
 			</p>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				2. La Propiedad `position` y las Coordenadas
-			</h3>
-			<p className='mb-4'>
-				La propiedad <code>position</code>, junto con las propiedades de
-				coordenadas <code>top</code>, <code>right</code>, <code>bottom</code> y{" "}
-				<code>left</code>, nos permite colocar un elemento en cualquier lugar de
+			<Subhead>
+				Rompiendo las reglas: sacando elementos del flujo normal
+			</Subhead>
+			<p className="mb-4">
+				Hemos dominado el modelo de caja y cómo los elementos se apilan y fluyen
+				uno tras otro. Pero para diseños más complejos, como superposiciones,
+				menús desplegables o encabezados fijos, necesitamos una forma de sacar a
+				los elementos de este "flujo normal" del documento. Aquí es donde entra
+				la propiedad <Code>position</Code>.
+			</p>
+		</section>
+
+		<section>
+			<Subhead>La propiedad `position` y las coordenadas</Subhead>
+			<p className="mb-4">
+				La propiedad <Code>position</Code>, junto con las propiedades de
+				coordenadas <Code>top</Code>, <Code>right</Code>, <Code>bottom</Code> y{" "}
+				<Code>left</Code>, nos permite colocar un elemento en cualquier lugar de
 				la página.
 			</p>
-			<ul className='list-disc list-inside space-y-4 pl-4 mb-4'>
-				<li>
-					<strong>`position: static;` (El Valor por Defecto)</strong>
-					<p className='mt-2'>
-						Todo elemento es <code>static</code> por defecto. Significa que
-						sigue el flujo normal de la página. Las propiedades <code>top</code>
-						, <code>right</code>, etc., no tienen ningún efecto sobre él.
-					</p>
-				</li>
-				<li>
-					<strong>`position: relative;` (El Punto de Partida)</strong>
-					<p className='mt-2'>
-						El elemento sigue ocupando su espacio en el flujo normal, pero ahora
-						podemos "moverlo" o desplazarlo de su posición original usando las
-						coordenadas. Lo más importante es que{" "}
-						<strong>crea un contexto de posicionamiento</strong> para sus
-						elementos hijos con <code>position: absolute;</code>.
-					</p>
-					<CodeBlock
-						language='css'
-						codeString={`.caja-relativa {
+
+			<p className="mb-2 font-bold">
+				<Code>position: static;</Code> (El Valor por Defecto)
+			</p>
+			<p className="mb-8">
+				Todo elemento es <Code>static</Code> por defecto. Significa que sigue el
+				flujo normal de la página. Las propiedades <Code>top</Code>,{" "}
+				<Code>right</Code>, etc., no tienen ningún efecto sobre él.
+			</p>
+
+			<p className="mb-2 font-bold">
+				<Code>position: relative;</Code> (El Punto de Partida)
+			</p>
+			<p className="mb-4">
+				El elemento sigue ocupando su espacio en el flujo normal, pero ahora
+				podemos "moverlo" o desplazarlo de su posición original usando las
+				coordenadas. Lo más importante es que{" "}
+				<strong>crea un contexto de posicionamiento</strong> para sus elementos
+				hijos con <Code>position: absolute;</Code>.
+			</p>
+			<div className="mb-4">
+				<Preview label="Vista previa · relative: se desplaza, pero su hueco queda reservado">
+					<style>{`.d14-c {
+  display: inline-block; background-color: #ddd6fe; border: 1px solid #8b5cf6;
+  padding: 4px 10px; font-size: 0.9rem;
+}
+.d14-c2 { position: relative; left: 30px; top: 10px; }`}</style>
+					<div>
+						<div className="d14-c">Caja 1: en su sitio</div>
+						<div className="d14-c d14-c2">
+							Caja 2: relative, left 30px, top 10px
+						</div>
+						<p className="mt-2 text-sm">
+							El hueco de la caja 2 sigue reservado: solo se desplaza el dibujo,
+							no la reserva de espacio.
+						</p>
+					</div>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<div class="caja-relativa">Estoy en mi sitio, pero desplazada.</div>`}
+				css={`.caja-relativa {
   position: relative;
   left: 30px;
   top: 10px;
 }`}
-					/>
-				</li>
-				<li>
-					<strong>`position: absolute;` (El Elemento "Libre")</strong>
-					<p className='mt-2'>
-						Este es un cambio radical. El elemento es{" "}
-						<strong>completamente removido</strong> del flujo del documento. Ya
-						no ocupa espacio y los otros elementos se comportan como si no
-						existiera. Se posiciona con respecto a su{" "}
-						<strong>ancestro posicionado más cercano</strong> (cualquier
-						ancestro cuya posición no sea <code>static</code>). Si no encuentra
-						ninguno, se posiciona con respecto al <code>&lt;body&gt;</code>.
-					</p>
-					<CodeBlock
-						language='css'
-						codeString={`.contenedor-padre {
+			/>
+
+			<p className="mt-8 mb-2 font-bold">
+				<Code>position: absolute;</Code> (El Elemento "Libre")
+			</p>
+			<p className="mb-4">
+				Este es un cambio radical. El elemento es{" "}
+				<strong>completamente removido</strong> del flujo del documento. Ya no
+				ocupa espacio y los otros elementos se comportan como si no existiera.
+				Se posiciona con respecto a su{" "}
+				<strong>ancestro posicionado más cercano</strong> (cualquier ancestro
+				cuya posición no sea <Code>static</Code>). Si no encuentra ninguno, se
+				posiciona con respecto al <Code>&lt;body&gt;</Code>.
+			</p>
+			<CodeTabs
+				html={`<!-- El padre fija el contexto; el badge flota sobre una esquina -->
+<div class="contenedor-padre">
+  <button>Nuevo mensaje</button>
+  <span class="badge">3</span>
+</div>`}
+				css={`.contenedor-padre {
   position: relative; /* Contexto de posicionamiento */
+  display: inline-block;
 }
 .badge {
   position: absolute;
@@ -75,61 +142,96 @@ const Lecture14Es = () => (
   background-color: red;
   color: white;
 }`}
-					/>
-				</li>
-				<li>
-					<strong>`position: fixed;` (El Elemento "Pegado")</strong>
-					<p className='mt-2'>
-						También es removido del flujo normal, pero se posiciona con respecto
-						a la <strong>ventana del navegador (viewport)</strong>. Esto
-						significa que no se moverá aunque el usuario haga scroll en la
-						página. Es perfecto para encabezados fijos, barras de cookies o
-						botones de "volver arriba".
-					</p>
-					<CodeBlock
-						language='css'
-						codeString={`.encabezado-fijo {
+			/>
+
+			<p className="mt-8 mb-2 font-bold">
+				<Code>position: fixed;</Code> (El Elemento "Pegado")
+			</p>
+			<p className="mb-4">
+				También es removido del flujo normal, pero se posiciona con respecto a
+				la <strong>ventana del navegador (viewport)</strong>. Esto significa que
+				no se moverá aunque el usuario haga scroll en la página. Es perfecto
+				para encabezados fijos, barras de cookies o botones de "volver arriba".
+			</p>
+			<CodeTabs
+				html={`<header class="encabezado-fijo">
+  Menú fijo: la parte de la página que nunca escapa del viewport.
+</header>`}
+				css={`.encabezado-fijo {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: white;
 }`}
-					/>
-				</li>
-				<li>
-					<strong>`position: sticky;` (El Híbrido Inteligente)</strong>
-					<p className='mt-2'>
-						Se comporta como <code>relative</code> hasta que el usuario hace
-						scroll y el elemento alcanza un umbral definido por las coordenadas
-						(ej. <code>top: 0;</code>). En ese momento, se comporta como{" "}
-						<code>fixed</code>. Ideal para encabezados de sección o barras
-						laterales que deben "pegarse" en la parte superior al hacer scroll.
-					</p>
-				</li>
-			</ul>
+			/>
+
+			<p className="mt-8 mb-2 font-bold">
+				<Code>position: sticky;</Code> (El Híbrido Inteligente)
+			</p>
+			<p className="mb-4">
+				Se comporta como <Code>relative</Code> hasta que el usuario hace scroll
+				y el elemento alcanza un umbral definido por las coordenadas (ej.{" "}
+				<Code>top: 0;</Code>). En ese momento, se comporta como{" "}
+				<Code>fixed</Code>. Ideal para encabezados de sección o barras laterales
+				que deben "pegarse" en la parte superior al hacer scroll.
+			</p>
+			<div className="mb-4">
+				<Preview label="Vista previa · sticky: desplaza la lista interna y mira la cabecera">
+					<style>{`.d14-scroll { max-height: 150px; overflow-y: auto; border: 1px solid #d1d5db; border-radius: 8px; }
+.d14-cabecera { position: sticky; top: 0; background-color: #2980b9; color: white; padding: 6px 10px; font-size: 0.9rem; }
+.d14-scroll li { padding: 6px 10px; font-size: 0.9rem; border-top: 1px solid #f3f4f6; }
+.d14-scroll ul { margin: 0; padding: 0; list-style: none; }`}</style>
+					<div className="d14-scroll">
+						<div className="d14-cabecera">Cabecera sticky (top: 0)</div>
+						<ul>
+							<li>Desplázame con la rueda o la barra…</li>
+							<li>…la cabecera se queda pegada arriba…</li>
+							<li>…como si fuera fixed…</li>
+							<li>…pero sin salir jamás de mi contenedor.</li>
+							<li>Elemento 5</li>
+							<li>Elemento 6</li>
+							<li>Elemento 7</li>
+							<li>Elemento 8</li>
+						</ul>
+					</div>
+				</Preview>
+			</div>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				3. Apilando Elementos: `z-index`
-			</h3>
-			<p className='mb-4'>
+			<Subhead>Apilando elementos: `z-index`</Subhead>
+			<p className="mb-4">
 				Cuando los elementos se posicionan fuera del flujo normal, pueden
-				superponerse. La propiedad <code>z-index</code> controla el orden de
+				superponerse. La propiedad <Code>z-index</Code> controla el orden de
 				apilamiento en el eje Z (la profundidad).
 			</p>
-			<p>
-				Un elemento con un <code>z-index</code> más alto aparecerá encima de un
-				elemento con un <code>z-index</code> más bajo. Importante:{" "}
+			<p className="mb-4">
+				Un elemento con un <Code>z-index</Code> más alto aparecerá encima de un
+				elemento con un <Code>z-index</Code> más bajo. Importante:{" "}
 				<strong>
-					<code>z-index</code> solo funciona en elementos posicionados
+					<Code>z-index</Code> solo funciona en elementos posicionados
 				</strong>{" "}
-				(aquellos cuya posición no es <code>static</code>).
+				(aquellos cuya posición no es <Code>static</Code>).
 			</p>
-			<CodeBlock
-				language='css'
-				codeString={`.dialogo-modal {
+			<div className="mb-4">
+				<Preview label="Vista previa · el eje Z visto desde arriba">
+					<style>{`.d14-tablero { position: relative; height: 170px; }
+.d14-ficha { position: absolute; width: 110px; height: 110px; border-radius: 12px; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center; padding: 6px; }
+.d14-f1 { z-index: 1; background-color: #34d399; top: 12px; left: 12px; }
+.d14-f2 { z-index: 2; background-color: #f59e0b; top: 40px; left: 52px; }
+.d14-f3 { z-index: 3; background-color: #ef4444; top: 68px; left: 92px; }`}</style>
+					<div className="d14-tablero">
+						<div className="d14-ficha d14-f1">z-index: 1</div>
+						<div className="d14-ficha d14-f2">z-index: 2</div>
+						<div className="d14-ficha d14-f3">z-index: 3</div>
+					</div>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<div class="overlay">Fondo oscuro que cubre todo</div>
+<div class="dialogo-modal">Ventana modal por encima del fondo</div>`}
+				css={`.dialogo-modal {
   position: fixed;
   z-index: 100; /* Estará por encima de casi todo */
 }
@@ -141,77 +243,135 @@ const Lecture14Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				4. Una Nota sobre `float` (Legado)
-			</h3>
-			<p className='mb-4'>
+			<Subhead>Una nota sobre `float` (Legado)</Subhead>
+			<p className="mb-4">
 				Antes de que existieran herramientas modernas como Flexbox y Grid, la
-				propiedad <code>float</code> (con valores <code>left</code> o{" "}
-				<code>right</code>) era la principal forma de crear diseños de columnas
+				propiedad <Code>float</Code> (con valores <Code>left</Code> o{" "}
+				<Code>right</Code>) era la principal forma de crear diseños de columnas
 				y hacer que el texto fluyera alrededor de las imágenes.
 			</p>
-			<p>
+			<p className="mb-4">
 				Hoy en día, su uso para la maquetación general de una página se
 				considera una <strong>práctica obsoleta</strong>. Sin embargo, todavía
 				es útil para su propósito original: hacer que un elemento, como una
 				imagen, "flote" dentro de un bloque de texto.
 			</p>
+			<div className="mb-4">
+				<Preview label="Vista previa · el propósito original de float">
+					<style>{`.d14-imagen {
+  float: left; width: 64px; height: 64px; background-color: #7c3aed; color: white;
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; margin: 0 12px 8px 0;
+}`}</style>
+					<p className="text-sm leading-relaxed">
+						<span className="d14-imagen">IMG</span>
+						La caja morada flota a la izquierda y el texto la rodea, línea a
+						línea, exactamente como un diario impreso: eso era el trabajo de
+						float en la web antigua.
+					</p>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<p>
+  <span class="miniatura">IMG</span>
+  El elemento flotante deja que el texto lo rodee, como una foto impresa.
+</p>`}
+				css={`/* El float original: texto alrededor de la imagen */
+.miniatura {
+  float: left; /* o right */
+  width: 64px;
+  height: 64px;
+  margin: 0 12px 8px 0;
+  background-color: #7c3aed;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}`}
+			/>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				📝 Tarea: Creando un "Modal" Básico
-			</h3>
-			<p className='mb-4'>
-				Vamos a aplicar lo aprendido sobre posicionamiento y `z-index` para
-				crear la estructura de una ventana modal, un componente de UI muy común.
+			<Subhead>📝 Tarea: Creando un "Modal" Básico</Subhead>
+			<p className="mb-4">
+				Vamos a aplicar lo aprendido sobre posicionamiento y{" "}
+				<Code>z-index</Code> para crear la estructura de una ventana modal, un
+				componente de UI muy común.
 			</p>
-			<ol className='list-decimal list-inside space-y-2 pl-4 mb-4'>
+			<p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+				Partimos de este HTML y este esqueleto de CSS; completa donde los pasos
+				te pidan:
+			</p>
+			<CodeTabs
+				html={`<div class="overlay"></div>
+<div class="modal-content">
+  <h2>¿Confirmar?</h2>
+  <p>Ventana modal sobre un fondo oscuro.</p>
+</div>`}
+				css={`/* Paso 2: el overlay cubre toda la pantalla */
+.overlay {
+  /* position: fixed; */
+  /* top: 0; left: 0; width: 100%; height: 100%; */
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* z-index: 10; */
+}
+
+/* Paso 3: el contenido del modal flota encima, centrado */
+.modal-content {
+  /* position: fixed; */
+  /* top: 50%; left: 50%; transform: translate(-50%, -50%); */
+  /* background-color: white; */
+  /* padding: 24px; */
+  /* width: 320px; */
+  /* z-index: 20; */
+}`}
+			/>
+			<ol className="list-decimal list-inside space-y-2 pl-4 mb-4 mt-4">
 				<li>
-					<strong>HTML:</strong> Crea dos <code>&lt;div&gt;</code> en tu HTML.
-					Uno con la clase <code>overlay</code> y otro con la clase{" "}
-					<code>modal-content</code>.
+					<strong>HTML:</strong> Ya arrancaste con dos <Code>&lt;div&gt;</Code>{" "}
+					en tu HTML: uno con la clase <Code>overlay</Code> y otro con la clase{" "}
+					<Code>modal-content</Code>.
 				</li>
 				<li>
 					<strong>CSS para el Overlay:</strong>
-					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
+					<ul className="list-disc list-inside space-y-1 pl-6 my-2">
 						<li>
-							Dale a <code>.overlay</code> un <code>position: fixed;</code>.
+							Dale a <Code>.overlay</Code> un <Code>position: fixed;</Code>.
 						</li>
 						<li>
 							Haz que ocupe toda la pantalla usando{" "}
-							<code>top: 0; left: 0; width: 100%; height: 100%;</code>.
+							<Code>top: 0; left: 0; width: 100%; height: 100%;</Code>.
 						</li>
 						<li>
 							Dale un color de fondo semi-transparente, por ejemplo:{" "}
-							<code>background-color: rgba(0, 0, 0, 0.5);</code>.
+							<Code>background-color: rgba(0, 0, 0, 0.5);</Code>.
 						</li>
 						<li>
-							Asígnale un <code>z-index: 10;</code>.
+							Asígnale un <Code>z-index: 10;</Code>.
 						</li>
 					</ul>
 				</li>
 				<li>
 					<strong>CSS para el Contenido del Modal:</strong>
-					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
+					<ul className="list-disc list-inside space-y-1 pl-6 my-2">
 						<li>
-							Dale a <code>.modal-content</code> un{" "}
-							<code>position: fixed;</code>.
+							Dale a <Code>.modal-content</Code> un{" "}
+							<Code>position: fixed;</Code>.
 						</li>
 						<li>
 							Céntralo en la pantalla. (Una forma simple es:{" "}
-							<code>
+							<Code>
 								top: 50%; left: 50%; transform: translate(-50%, -50%);
-							</code>
-							. La propiedad <code>transform</code> la veremos más adelante,
+							</Code>
+							. La propiedad <Code>transform</Code> la veremos más adelante,
 							pero por ahora puedes usarla).
 						</li>
 						<li>
-							Dale un <code>background-color: white;</code>, un{" "}
-							<code>padding</code>, y un <code>width</code>.
+							Dale un <Code>background-color: white;</Code>, un{" "}
+							<Code>padding</Code>, y un <Code>width</Code>.
 						</li>
 						<li>
-							Asígnale un <code>z-index: 20;</code> para que aparezca por encima
+							Asígnale un <Code>z-index: 20;</Code> para que aparezca por encima
 							del overlay.
 						</li>
 					</ul>
@@ -221,6 +381,11 @@ const Lecture14Es = () => (
 					sobre un fondo oscuro que cubre toda la página.
 				</li>
 			</ol>
+			<Callout variant="info" title="Cierre del módulo 3">
+				Con esto ya calculas cajas (box model), pones bloques en el centro
+				(margin: auto) y rompes el flujo (position y z-index). El módulo 4 te
+				espera con colores, unidades y variables.
+			</Callout>
 		</section>
 	</div>
 );
