@@ -14,13 +14,14 @@ Branch: main (estrategia de entrega: commits directos a main, elegida por el usu
 
 ## Tasks
 
-- T1 (S1-S4) conf 11 ES+PT al estándar; CodeTabs en ejemplos; demo viva especificidad/cascada. Route: inline. Commit: pendiente.
-- T2 (S3-S4) conf 12 ES+PT al estándar; CodeTabs; demo box model/box-sizing. Route: inline. Commit: pendiente.
-- T3 (S3-S4) conf 13 ES+PT al estándar; CodeTabs; demo margin/display. Route: inline o writer paralelo. Commit: pendiente.
-- T4 (S3-S4) conf 14 ES+PT al estándar; CodeTabs; demo position/z-index. Route: inline o writer paralelo. Commit: pendiente.
-- T5 (S6) labModulo3 + página ruta 3 + sidebar + i18n + previews. Route: inline. Commit: pendiente.
+- T1 (S1-S4) conf 11 ES+PT al estándar; CodeTabs en ejemplos; demo viva especificidad/cascada. Route: inline. Commit: 4a29a7b. Assess: medium, review_due=false (under_budget), base d818b66.
+- T2 (S3-S4) conf 12 ES+PT al estándar; CodeTabs; demo box model/box-sizing. Route: inline. Commit: 37db82a. Assess: medium, review_due=false (under_budget), base 4a29a7b.
+- T3 (S3-S4) conf 13 ES+PT al estándar; CodeTabs; demo margin/display. Route: inline. Commit: 279afee.
+- T4 (S3-S4) conf 14 ES+PT al estándar; CodeTabs; demo position/z-index. Route: inline. Commit: ee270ff. Assess slice 12-14: medium, review_due=false (under_budget), 2243 líneas.
+- T5 (S6) labModulo3 + página ruta 3 + sidebar + i18n + previews. Route: inline. Commit: baf0ad9. Assess: medium, review_due=false (under_budget), 1317 líneas (base ee270ff).
 - T6 (S1-S6) verificación global: npm run build, format:check, paridad ES/PT estructural. Route: inline. Commit: docs si aplica.
 
 ## Log
 
 - L1 (2026-10-25): "avanzemos al módulo 3. Quiero que mejores el diseño sin tocar el contenido, eso sí mira los ejemplos que tiene y que le añadas lo necesario para que sea copiar y pegar(Recuerda que tenemos un componente que te coloca las pestañas HTML, CSS, JS) y que estén funcionales. Vamos a hacerlo por conferencia. Por último crearíamos un laboratorio de ejercicios para este módulo"
+- L2 (2026-10-25): Estrategia de delivery en main directo, elegida por el usuario de 3 opciones. Feature completada: 4a29a7b (conf 11), 37db82a (conf 12), 279afee (conf 13), ee270ff (conf 14), baf0ad9 (lab M3). Verificación final T6 OK: build pasa, Biome limpio en los 12 archivos tocados (los 8 lint preexistentes en App/sidebar no vienen de esta feature). Assess RDD por slice: medium/under_budget siempre, sin review vencida. Push queda pendiente de pedido del usuario.
