@@ -1,9 +1,10 @@
 import { Check, Eye, FlaskConical, RotateCcw } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import ExpectedPreview from "@/components/lab/expected-previews";
 import { Callout, SectionTitle } from "@/components/lecture/lecture-blocks";
 import CodeBlock from "@/components/ui/code-block";
-import type { LabExercise } from "@/data/laboratory-content";
+import type { LabExercise, LabStarterFile } from "@/data/laboratory-content";
 import { labModulo1, labModulo2, labModulo3 } from "@/data/laboratory-content";
 import { useI18n } from "@/hooks/use-I18n";
 
@@ -23,6 +24,59 @@ const NumberedItem = ({
 		</span>
 	</li>
 );
+
+const STARTER_LANGUAGE: Record<string, string> = {
+	html: "html",
+	htm: "html",
+	css: "css",
+	js: "javascript",
+};
+
+function starterLanguage(fileName: string): string {
+	const ext = fileName.slice(fileName.lastIndexOf(".") + 1).toLowerCase();
+	return STARTER_LANGUAGE[ext] ?? "html";
+}
+
+const StartTabs = ({ files }: { files: LabStarterFile[] }) => {
+	const [active, setActive] = useState(0);
+	const activeFile = files[Math.min(active, files.length - 1)];
+
+	return (
+		<div>
+			<div
+				role="tablist"
+				aria-label="Código inicial"
+				className="flex gap-1 overflow-x-auto rounded-t-lg border border-gray-200 border-b-0 bg-gray-100 p-1 dark:border-gray-700 dark:bg-gray-800"
+			>
+				{files.map((file, index) => {
+					const selected = index === active;
+					return (
+						<button
+							key={file.file}
+							type="button"
+							role="tab"
+							aria-selected={selected}
+							onClick={() => setActive(index)}
+							className={`shrink-0 rounded-md px-4 py-1.5 font-mono text-sm font-semibold transition-colors ${
+								selected
+									? "bg-white text-gray-900 shadow dark:bg-gray-900 dark:text-gray-100"
+									: "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+							}`}
+						>
+							{file.file}
+						</button>
+					);
+				})}
+			</div>
+			<div className="[&>div]:my-0 [&>div]:rounded-t-none">
+				<CodeBlock
+					codeString={activeFile.code}
+					language={starterLanguage(activeFile.file)}
+				/>
+			</div>
+		</div>
+	);
+};
 
 export default function LaboratorioPage({ module }: { module: 1 | 2 | 3 }) {
 	const { language, t } = useI18n();
@@ -67,14 +121,7 @@ export default function LaboratorioPage({ module }: { module: 1 | 2 | 3 }) {
 						<p className="mb-3 text-xs leading-relaxed text-gray-600 dark:text-gray-300">
 							{t("lab.starterHint")}
 						</p>
-						{exercise.starter[language].map((file) => (
-							<div key={file.file} className="mb-4 last:mb-0">
-								<p className="mb-1 font-mono text-xs font-semibold text-gray-600 dark:text-gray-300">
-									{file.file}
-								</p>
-								<CodeBlock codeString={file.code} language="html" />
-							</div>
-						))}
+						<StartTabs files={exercise.starter[language]} />
 					</div>
 				</>
 			)}

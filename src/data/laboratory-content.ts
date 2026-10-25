@@ -1494,7 +1494,7 @@ p.primero {
 			],
 			pt: [
 				{
-					file: "batalla.html (pt: batalha.html)",
+					file: "batalha.html",
 					code: `<!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -1964,7 +1964,7 @@ p.primeiro {
 			],
 			pt: [
 				{
-					file: "revista.html (pt: revista.html)",
+					file: "revista.html",
 					code: `<!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -2320,7 +2320,7 @@ body {
 			],
 			pt: [
 				{
-					file: "reservas.html (pt: reservas.html)",
+					file: "reservas.html",
 					code: `<!DOCTYPE html>
 <html lang="pt">
 <head>
