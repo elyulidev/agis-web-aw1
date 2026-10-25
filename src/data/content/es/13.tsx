@@ -1,25 +1,71 @@
-import CodeBlock from "@/components/ui/code-block";
+import { LifeBuoy, MoveHorizontal, Rows3, Sparkles, Timer } from "lucide-react";
+import {
+	Callout,
+	ConceptCard,
+	SectionTitle,
+} from "@/components/lecture/lecture-blocks";
+import CodeTabs from "@/components/ui/code-tabs";
+
+const Code = ({ children }: { children: React.ReactNode }) => (
+	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
+		{children}
+	</code>
+);
+
+const Preview = ({
+	label,
+	children,
+}: {
+	label: string;
+	children: React.ReactNode;
+}) => (
+	<div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-5 dark:border-gray-600 dark:bg-gray-800/40">
+		<p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
+			{label}
+		</p>
+		<div className="text-gray-800 dark:text-gray-200">{children}</div>
+	</div>
+);
 
 const Lecture13Es = () => (
-	<div className='space-y-8'>
+	<div className="space-y-12">
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				1. Margen (Margin): Espacio Exterior
-			</h3>
-			<p className='mb-4'>
+			<p className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
+				<Sparkles className="h-3.5 w-3.5" aria-hidden />
+				Módulo 3 · box model y posicionamiento
+			</p>
+			<p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+				Ayer cerramos la caja por dentro. Hoy la caja convive con sus vecinos:
+				márgenes, el misterio del colapso, el centrado y el <em>display</em>.
+			</p>
+		</section>
+
+		<section>
+			<SectionTitle index={1}>Margen (Margin): Espacio Exterior</SectionTitle>
+			<p className="mb-4">
 				Hemos cubierto las tres capas internas del modelo de caja. La última
 				capa es el <strong>margen (margin)</strong>, que es el espacio{" "}
 				<em>fuera</em> del borde. El margen es transparente y se usa para crear
 				espacio entre un elemento y sus vecinos.
 			</p>
-			<p>
+			<p className="mb-4">
 				La sintaxis para los márgenes es idéntica a la del padding, con
-				propiedades individuales (<code>margin-top</code>, etc.) y atajos
+				propiedades individuales (<Code>margin-top</Code>, etc.) y atajos
 				(shorthands).
 			</p>
-			<CodeBlock
-				language='css'
-				codeString={`.elemento {
+			<div className="mb-4">
+				<Preview label="Vista previa · el contorno naranja marca el borde: todo el aire alrededor es margen">
+					<style>{`.d13-marcada { margin: 20px 15px 30px; outline: 1px dashed #f97316; }`}</style>
+					<div className="d13-marcada bg-blue-50 border border-blue-200 p-2 text-sm">
+						Mi margen: 20px arriba, 15px a los lados, 30px abajo.
+					</div>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<div class="elemento">
+  20px de espacio arriba, 15px a los lados, 30px abajo.
+</div>`}
+				css={`.elemento {
   /* 20px de espacio arriba, 15px a los lados, 30px abajo */
   margin: 20px 15px 30px;
 }`}
@@ -27,41 +73,65 @@ const Lecture13Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				2. El Misterio del Colapso de Márgenes
-			</h3>
-			<p className='mb-4'>
+			<SectionTitle index={2}>El Misterio del Colapso de Márgenes</SectionTitle>
+			<p className="mb-4">
 				Los márgenes tienen un comportamiento único llamado{" "}
 				<strong>colapso de márgenes (margin collapsing)</strong>. Cuando dos
 				elementos de bloque con márgenes verticales están uno encima del otro,
 				sus márgenes no se suman. En su lugar, el margen más grande "gana" y el
 				más pequeño "colapsa" o desaparece.
 			</p>
-			<p>
-				Esto solo ocurre con los márgenes verticales (<code>margin-top</code> y{" "}
-				<code>margin-bottom</code>), no con los horizontales.
+			<p className="mb-4">
+				Esto solo ocurre con los márgenes verticales (<Code>margin-top</Code> y{" "}
+				<Code>margin-bottom</Code>), no con los horizontales.
 			</p>
-			<CodeBlock
-				language='css'
-				codeString={`.caja-arriba { margin-bottom: 30px; }
+			<div className="mb-4">
+				<Preview label="Vista previa · el hueco es 30px, no 50px">
+					<style>{`.d13-sub { background-color: #dbeafe; border: 1px solid #93c5fd; padding: 8px; font-size: 0.9rem; }
+.d13-sub-arriba { margin-bottom: 30px; }
+.d13-sub-abajo { margin-top: 20px; }`}</style>
+					<div>
+						<div className="d13-sub d13-sub-arriba">Caja superior (30px)</div>
+						<div className="d13-sub d13-sub-abajo">Caja inferior (20px)</div>
+					</div>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<div class="caja-arriba">Caja superior: margin-bottom: 30px</div>
+<div class="caja-abajo">Caja inferior: margin-top: 20px</div>`}
+				css={`.caja-arriba { margin-bottom: 30px; }
 .caja-abajo { margin-top: 20px; }
 /* El espacio entre las dos cajas será de 30px, no de 50px */`}
 			/>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				3. Centrado Horizontal: `margin: auto`
-			</h3>
-			<p className='mb-4'>
+			<SectionTitle index={3}>Centrado Horizontal: `margin: auto`</SectionTitle>
+			<p className="mb-4">
 				Una de las técnicas más comunes y esenciales en CSS es centrar un
 				elemento de bloque horizontalmente dentro de su contenedor. Esto se
 				logra fácilmente dándole al elemento un ancho definido y estableciendo
-				sus márgenes izquierdo y derecho en <code>auto</code>.
+				sus márgenes izquierdo y derecho en <Code>auto</Code>.
 			</p>
-			<CodeBlock
-				language='css'
-				codeString={`.contenedor-centrado {
+			<div className="mb-4">
+				<Preview label="Vista previa · el bloque se centra con margin: 0 auto">
+					<style>{`.d13-centrada {
+  width: 80%;
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 8px;
+  margin: 0 auto; /* auto a los lados reparte el espacio disponible */
+}`}</style>
+					<div className="d13-centrada text-sm">
+						Centrado de verdad, sin hacks.
+					</div>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<div class="contenedor-centrado">
+  Tengo el ancho definido y los márgenes sobrantes me llevan al centro.
+</div>`}
+				css={`.contenedor-centrado {
   width: 80%; /* Debe tener un ancho definido que no sea 100% */
   max-width: 900px;
   margin-left: auto;
@@ -78,131 +148,243 @@ const Lecture13Es = () => (
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				4. La Propiedad `display`: El Comportamiento del Elemento
-			</h3>
-			<p className='mb-4'>
-				La propiedad <code>display</code> es una de las más importantes de CSS.
+			<SectionTitle index={4}>
+				La Propiedad `display`: El Comportamiento del Elemento
+			</SectionTitle>
+			<p className="mb-4">
+				La propiedad <Code>display</Code> es una de las más importantes de CSS.
 				Define cómo se renderiza un elemento y cómo interactúa con los demás.
 				Los valores más fundamentales son:
 			</p>
-			<ul className='list-disc list-inside space-y-4 pl-4 mb-4'>
-				<li>
-					<strong>`display: block;`</strong>
-					<ul className='list-inside space-y-1 pl-6 my-2'>
+			<div className="mb-4 grid gap-4 sm:grid-cols-2">
+				<ConceptCard
+					icon={<Rows3 className="h-5 w-5" aria-hidden />}
+					title="display: block"
+					iconClassName="bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+				>
+					<ul className="list-disc list-inside space-y-1">
 						<li>Empieza en una nueva línea.</li>
 						<li>Ocupa todo el ancho disponible por defecto.</li>
 						<li>
-							Respeta las propiedades <code>width</code>, <code>height</code>,{" "}
-							<code>margin</code>, <code>padding</code> y <code>border</code>.
+							Respeta las propiedades <Code>width</Code>, <Code>height</Code>,{" "}
+							<Code>margin</Code>, <Code>padding</Code> y <Code>border</Code>.
 						</li>
 						<li>
-							Ejemplos: <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>,{" "}
-							<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>,{" "}
-							<code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code>.
+							Ejemplos: <Code>&lt;div&gt;</Code>, <Code>&lt;p&gt;</Code>,{" "}
+							<Code>&lt;h1&gt;</Code>-<Code>&lt;h6&gt;</Code>,{" "}
+							<Code>&lt;ul&gt;</Code>, <Code>&lt;li&gt;</Code>.
 						</li>
 					</ul>
-				</li>
-				<li>
-					<strong>`display: inline;`</strong>
-					<ul className='list-inside space-y-1 pl-6 my-2'>
+				</ConceptCard>
+				<ConceptCard
+					icon={<MoveHorizontal className="h-5 w-5" aria-hidden />}
+					title="display: inline"
+					iconClassName="bg-purple-100 text-purple-700 dark:bg-purple-950 dark:text-purple-300"
+				>
+					<ul className="list-disc list-inside space-y-1">
 						<li>No empieza en una nueva línea; fluye con el texto.</li>
 						<li>Ocupa solo el ancho de su contenido.</li>
 						<li>
-							<strong>Ignora</strong> <code>width</code> y <code>height</code>.
+							<strong>Ignora</strong> <Code>width</Code> y <Code>height</Code>.
 							Los márgenes y paddings verticales tienen un efecto limitado.
 						</li>
 						<li>
-							Ejemplos: <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>,{" "}
-							<code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>.
+							Ejemplos: <Code>&lt;span&gt;</Code>, <Code>&lt;a&gt;</Code>,{" "}
+							<Code>&lt;strong&gt;</Code>, <Code>&lt;em&gt;</Code>.
 						</li>
 					</ul>
-				</li>
-				<li>
-					<strong>`display: inline-block;`</strong>
-					<ul className='list-inside space-y-1 pl-6 my-2'>
+				</ConceptCard>
+				<ConceptCard
+					icon={<LifeBuoy className="h-5 w-5" aria-hidden />}
+					title="display: inline-block"
+					iconClassName="bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
+				>
+					<ul className="list-disc list-inside space-y-1">
 						<li>
 							Lo mejor de ambos mundos: se comporta como un elemento{" "}
-							<code>inline</code> (no empieza en una nueva línea) pero respeta{" "}
-							<code>width</code>, <code>height</code>, <code>margin</code> y{" "}
-							<code>padding</code> como un elemento <code>block</code>.
+							<Code>inline</Code> (no empieza en una nueva línea) pero respeta{" "}
+							<Code>width</Code>, <Code>height</Code>, <Code>margin</Code> y{" "}
+							<Code>padding</Code> como un elemento <Code>block</Code>.
 						</li>
 						<li>
 							Muy útil para crear elementos de navegación o botones que deben
 							estar uno al lado del otro pero con dimensiones específicas.
 						</li>
 					</ul>
-				</li>
-				<li>
-					<strong>`display: none;`</strong>
-					<ul className='list-inside space-y-1 pl-6 my-2'>
+				</ConceptCard>
+				<ConceptCard
+					icon={<Timer className="h-5 w-5" aria-hidden />}
+					title="display: none"
+					iconClassName="bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-300"
+				>
+					<ul className="list-disc list-inside space-y-1">
 						<li>
 							Elimina completamente el elemento de la página. No ocupa espacio y
 							es como si no existiera en el HTML.
 						</li>
 						<li>
-							Diferencia clave con <code>visibility: hidden;</code>, que oculta
+							Diferencia clave con <Code>visibility: hidden;</Code>, que oculta
 							el elemento pero este sigue ocupando su espacio en el layout.
 						</li>
 					</ul>
-				</li>
-			</ul>
+				</ConceptCard>
+			</div>
+			<div className="mb-4">
+				<Preview label="Vista previa · block, inline e inline-block en el mismo rincón">
+					<style>{`.d13-bloque { display: block; background-color: #e0e7ff; padding: 4px 8px; margin: 4px 0; font-size: 0.9rem; }
+.d13-enlinea { display: inline; background-color: #fce7f3; padding: 0 4px; }
+.d13-tipoblo { display: inline-block; background-color: #fde68a; padding: 6px 12px; margin: 4px; }
+.d13-fantasma { display: none; background-color: #fca5a5; padding: 6px 12px; }`}</style>
+					<div>
+						<div className="d13-bloque">
+							Soy block: línea propia y ancho completo.
+						</div>
+						<p className="text-sm">
+							Texto normal y{" "}
+							<span className="d13-enlinea">yo soy inline, fluyo con él</span>{" "}
+							sin cortar la línea…
+						</p>
+						<div className="mt-2">
+							<span className="d13-tipoblo">inline-block A</span>
+							<span className="d13-tipoblo">inline-block B</span>
+							<span className="d13-fantasma">display none: ni existo</span>
+							<span className="text-sm">
+								← ¡con visibility: hidden, ese mismo espacio seguiría ocupado!
+							</span>
+						</div>
+					</div>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<article>
+  <p>
+    Un <span class="categoria">tutorial</span> para principiantes.
+  </p>
+  <a class="btn-leer-mas" href="#">Leer más</a>
+</article>`}
+				css={`/* Un <span> es inline por defecto: el padding vertical "se pisa" */
+.categoria {
+  padding: 6px 12px;
+  background-color: gold;
+  border-radius: 999px;
+  /* display: inline-block;  ← descomenta y mira cómo ahora sí respeta el espacio */
+}
+
+/* El botón sí necesita inline-block para aceptar padding y márgenes */
+.btn-leer-mas {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2e86c1;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}`}
+			/>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
-				📝 Tarea: Maquetando un Blog Simple
-			</h3>
-			<p className='mb-4'>
+			<SectionTitle index={5}>📝 Tarea: Maquetando un Blog Simple</SectionTitle>
+			<p className="mb-4">
 				Vamos a aplicar estos conceptos para crear la estructura de una página
 				de blog.
 			</p>
-			<ol className='list-decimal list-inside space-y-2 pl-4 mb-4'>
+			<p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+				Partimos de este HTML y este esqueleto de CSS; después completa donde te
+				lo pidan los pasos:
+			</p>
+			<CodeTabs
+				html={`<div class="pagina-wrapper">
+  <header>Mi blog</header>
+  <main>
+    <article>
+      <h2>Título del artículo</h2>
+      <p>
+        Publicado en <span class="categoria">tutorial</span>
+      </p>
+      <a class="btn-leer-mas" href="#">Leer más</a>
+    </article>
+    <article>
+      <!-- Crea más artículos -->
+    </article>
+  </main>
+  <footer>Pie de página</footer>
+</div>`}
+				css={`/* Centra el wrapper en la página */
+.pagina-wrapper {
+  /* width: 90%; */
+  /* max-width: 1000px; */
+  /* margin: 0 auto; */
+}
+
+/* Separa los artículos verticalmente */
+article {
+  /* margin-bottom: 24px; */
+}
+
+/* La etiqueta de categoría: primero inline, luego inline-block */
+.categoria {
+  /* padding: 6px 12px; */
+  /* background-color: gold; */
+  /* border-radius: 999px; */
+}
+
+/* El botón "Leer más" */
+.btn-leer-mas {
+  /* display: inline-block; */
+  /* padding: 10px 20px; */
+}`}
+			/>
+			<ol className="list-decimal list-inside space-y-2 pl-4 mb-4 mt-4">
 				<li>
-					<strong>HTML:</strong> Crea un <code>&lt;div&gt;</code> con la clase{" "}
-					<code>pagina-wrapper</code>. Dentro, pon un{" "}
-					<code>&lt;header&gt;</code>, un <code>&lt;main&gt;</code> y un{" "}
-					<code>&lt;footer&gt;</code>. Dentro del <code>&lt;main&gt;</code>,
-					crea varios elementos <code>&lt;article&gt;</code>.
+					<strong>HTML:</strong> Ya tienes el <Code>&lt;div&gt;</Code> con la
+					clase <Code>pagina-wrapper</Code>, un
+					<Code>&lt;header&gt;</Code>, un <Code>&lt;main&gt;</Code> y un{" "}
+					<Code>&lt;footer&gt;</Code>, con varios <Code>&lt;article&gt;</Code>{" "}
+					dentro del <Code>&lt;main&gt;</Code>.
 				</li>
 				<li>
 					<strong>CSS:</strong>
-					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
+					<ul className="list-disc list-inside space-y-1 pl-6 my-2">
 						<li>
-							Dale al <code>.pagina-wrapper</code> un <code>width</code> (ej.{" "}
-							<code>90%</code>) y un <code>max-width</code> (ej.{" "}
-							<code>1000px</code>).
+							Dale al <Code>.pagina-wrapper</Code> un <Code>width</Code> (ej.{" "}
+							<Code>90%</Code>) y un <Code>max-width</Code> (ej.{" "}
+							<Code>1000px</Code>).
 						</li>
 						<li>
-							Usa la técnica de <code>margin: 0 auto;</code> para centrar el{" "}
-							<code>.pagina-wrapper</code> en la página.
+							Usa la técnica de <Code>margin: 0 auto;</Code> para centrar el{" "}
+							<Code>.pagina-wrapper</Code> en la página.
 						</li>
 						<li>
-							Dale a cada <code>&lt;article&gt;</code> un{" "}
-							<code>margin-bottom</code> para separarlos verticalmente.
+							Dale a cada <Code>&lt;article&gt;</Code> un{" "}
+							<Code>margin-bottom</Code> para separarlos verticalmente.
 						</li>
 						<li>
-							Dentro de un <code>&lt;article&gt;</code>, añade un{" "}
-							<code>&lt;span&gt;</code> con la clase <code>categoria</code>.
-							Dale a esta clase un <code>padding</code>, un{" "}
-							<code>background-color</code> y un <code>border-radius</code>.
-							Observa cómo, al ser <code>inline</code> por defecto, el padding
+							Dentro de un <Code>&lt;article&gt;</Code>, añade un{" "}
+							<Code>&lt;span&gt;</Code> con la clase <Code>categoria</Code>.
+							Dale a esta clase un <Code>padding</Code>, un{" "}
+							<Code>background-color</Code> y un <Code>border-radius</Code>.
+							Observa cómo, al ser <Code>inline</Code> por defecto, el padding
 							se comporta.
 						</li>
 						<li>
-							Ahora, cambia el <code>display</code> de <code>.categoria</code> a{" "}
-							<code>inline-block</code>. Observa cómo ahora respeta mejor el
+							Ahora, cambia el <Code>display</Code> de <Code>.categoria</Code> a{" "}
+							<Code>inline-block</Code>. Observa cómo ahora respeta mejor el
 							espacio.
 						</li>
 						<li>
-							Finalmente, crea un botón de "Leer más" (<code>&lt;a&gt;</code>{" "}
-							con una clase) y dale <code>display: inline-block;</code> para
+							Finalmente, crea un botón de "Leer más" (<Code>&lt;a&gt;</Code>{" "}
+							con una clase) y dale <Code>display: inline-block;</Code> para
 							poder aplicarle padding y márgenes y que se alinee correctamente
 							con el texto.
 						</li>
 					</ul>
 				</li>
 			</ol>
+			<Callout variant="tip" title="Cierre">
+				Al terminar, tienes una página centrada, artículos separados y botones
+				con padding. Todo con solo margin y display: no se necesita flexbox ni
+				nada parecido todavía.
+			</Callout>
 		</section>
 	</div>
 );
