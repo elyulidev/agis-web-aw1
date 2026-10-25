@@ -20,8 +20,10 @@ Branch: main (estrategia de entrega: commits directos a main, elegida por el usu
 - T4 (S3-S4) conf 14 ES+PT al estándar; CodeTabs; demo position/z-index. Route: inline. Commit: ee270ff. Assess slice 12-14: medium, review_due=false (under_budget), 2243 líneas.
 - T5 (S6) labModulo3 + página ruta 3 + sidebar + i18n + previews. Route: inline. Commit: baf0ad9. Assess: medium, review_due=false (under_budget), 1317 líneas (base ee270ff).
 - T6 (S1-S6) verificación global: npm run build, format:check, paridad ES/PT estructural. Route: inline. Commit: docs si aplica.
+- T7 (S6) starters del laboratorio con pestañas de código (HTML/CSS/JS) por archivo. Route: inline. Commit: b54dac3. Assess: medium, review_due=false (under_budget), base baf0ad9.
 
 ## Log
 
 - L1 (2026-10-25): "avanzemos al módulo 3. Quiero que mejores el diseño sin tocar el contenido, eso sí mira los ejemplos que tiene y que le añadas lo necesario para que sea copiar y pegar(Recuerda que tenemos un componente que te coloca las pestañas HTML, CSS, JS) y que estén funcionales. Vamos a hacerlo por conferencia. Por último crearíamos un laboratorio de ejercicios para este módulo"
 - L2 (2026-10-25): Estrategia de delivery en main directo, elegida por el usuario de 3 opciones. Feature completada: 4a29a7b (conf 11), 37db82a (conf 12), 279afee (conf 13), ee270ff (conf 14), baf0ad9 (lab M3). Verificación final T6 OK: build pasa, Biome limpio en los 12 archivos tocados (los 8 lint preexistentes en App/sidebar no vienen de esta feature). Assess RDD por slice: medium/under_budget siempre, sin review vencida. Push queda pendiente de pedido del usuario.
+- L3 (2026-10-25): "en el laboratorio en la sección del código inicial utiliza el componente que te pone HTML, CSS, JS". Reemplazada la lista de archivos starter por pestañas estilo CodeTabs: componente `StartTabs` local en laboratorio-page.tsx (labels = nombre de archivo, lenguaje inferido por extensión), aplicado a labs 1, 2 y 3 por render compartido. Corregidos 3 labels PT con sufijo "(pt:" → nombres reales PT (batalha.html, revista.html, reservas.html). Commit b54dac3; assess medium/under_budget (base baf0ad9); build y Biome OK.
