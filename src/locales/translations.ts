@@ -57,8 +57,11 @@ export const translations = {
 			"Siete ejercicios para hacer en tu PC con VS Code y Live Server: uno por conferencia, más un integrador final.",
 		"lab.subtitle2":
 			"Seis ejercicios para hacer en tu PC con VS Code y Live Server: uno por tema, más un integrador final.",
+		"lab.subtitle3":
+			"Seis ejercicios para hacer en tu PC con VS Code y Live Server: uno por tema, más un integrador final.",
 		"lab.module1": "Módulo 1 · Fundamentos de HTML",
 		"lab.module2": "Módulo 2 · Fundamentos de CSS",
+		"lab.module3": "Módulo 3 · Box Model y Posicionamiento",
 		"lab.requirementsTitle": "Antes de empezar",
 		"lab.requirementsBody":
 			"Necesitas Visual Studio Code con las extensiones Live Server y Prettier. Cada ejercicio se hace en tu computadora: crea los archivos, ábrelos con Live Server y verifica el resultado con la lista de control.",
@@ -129,8 +132,11 @@ export const translations = {
 			"Sete exercícios para fazer no teu PC com VS Code e Live Server: um por aula, mais um integrador final.",
 		"lab.subtitle2":
 			"Seis exercícios para fazer no teu PC com VS Code e Live Server: um por tema, mais um integrador final.",
+		"lab.subtitle3":
+			"Seis exercícios para fazer no teu PC com VS Code e Live Server: um por tema, mais um integrador final.",
 		"lab.module1": "Módulo 1 · Fundamentos de HTML",
 		"lab.module2": "Módulo 2 · Fundamentos de CSS",
+		"lab.module3": "Módulo 3 · Modelo de Caixa e Posicionamento",
 		"lab.requirementsTitle": "Antes de começar",
 		"lab.requirementsBody":
 			"Precisas do Visual Studio Code com as extensões Live Server e Prettier. Cada exercício faz-se no teu computador: cria os ficheiros, abre-os com o Live Server e verifica o resultado com a lista de controlo.",

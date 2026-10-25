@@ -4,7 +4,7 @@ import ExpectedPreview from "@/components/lab/expected-previews";
 import { Callout, SectionTitle } from "@/components/lecture/lecture-blocks";
 import CodeBlock from "@/components/ui/code-block";
 import type { LabExercise } from "@/data/laboratory-content";
-import { labModulo1, labModulo2 } from "@/data/laboratory-content";
+import { labModulo1, labModulo2, labModulo3 } from "@/data/laboratory-content";
 import { useI18n } from "@/hooks/use-I18n";
 
 const NumberedItem = ({
@@ -24,9 +24,10 @@ const NumberedItem = ({
 	</li>
 );
 
-export default function LaboratorioPage({ module }: { module: 1 | 2 }) {
+export default function LaboratorioPage({ module }: { module: 1 | 2 | 3 }) {
 	const { language, t } = useI18n();
-	const exercises = module === 1 ? labModulo1 : labModulo2;
+	const exercises =
+		module === 1 ? labModulo1 : module === 2 ? labModulo2 : labModulo3;
 
 	const renderExercise = (exercise: LabExercise, index: number) => (
 		<section
@@ -112,13 +113,25 @@ export default function LaboratorioPage({ module }: { module: 1 | 2 }) {
 		<div className="mx-auto max-w-4xl">
 			<p className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
 				<FlaskConical className="h-3.5 w-3.5" aria-hidden />
-				{t(module === 1 ? "lab.module1" : "lab.module2")}
+				{t(
+					module === 1
+						? "lab.module1"
+						: module === 2
+							? "lab.module2"
+							: "lab.module3",
+				)}
 			</p>
 			<h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
 				{t("lab.title", { module })}
 			</h1>
 			<p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-				{t(module === 1 ? "lab.subtitle1" : "lab.subtitle2")}
+				{t(
+					module === 1
+						? "lab.subtitle1"
+						: module === 2
+							? "lab.subtitle2"
+							: "lab.subtitle3",
+				)}
 			</p>
 
 			<Callout variant="info" title={t("lab.requirementsTitle")}>

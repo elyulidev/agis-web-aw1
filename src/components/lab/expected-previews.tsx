@@ -89,6 +89,42 @@ const text = {
 		price4: "13,20 €",
 		price5: "18,00 €",
 		libFooter: "Calle del Faro, 12 - 900 000 000",
+		battle1: "1) Dos reglas iguales me apuntan: ¿cuál gana?",
+		battle2: "2) Yo no declaro color: ¿de dónde lo saco?",
+		battle3: "3) Una clase y un ID me disputan el color.",
+		battleNote: "Verde por cascada · azul heredado · morado por el ID (100)",
+		fichaA: "Ficha A",
+		fichaB: "Ficha B",
+		fichasNote:
+			"Con border-box, cada ficha completa mide 200px y las dos caben en la fila de 440px.",
+		nursery: "Vivero La Cortina",
+		nurseryIntro: "Plantas de interior para todos los meses del año.",
+		plant1: "Monstera",
+		plant2: "Cactus",
+		plant3: "Bonsái",
+		plantNote: "El hueco entre tarjetas es 30px, no 50px.",
+		article1: "Cuatro esquinas, un mismo banco",
+		article2: "El kiosco que aprendió CSS",
+		chip1: "ciudad",
+		chip2: "data",
+		readMore: "Leer más",
+		chipsNote: "El padding vertical ya no se pisa: inline-block pide su lugar.",
+		leagueTitle: "Clasificación · Jornada 12",
+		league1: "Atlético Norte",
+		league2: "Río Verde",
+		league3: "Estrella Roja",
+		leagueNote:
+			"La cabecera sticky se pega arriba; la insignia del puesto 1 tapa el borde de su fila.",
+		theater: "Reservas del teatro El Faro",
+		theaterIntro:
+			"La función de esta noche está llena. Confirmá tus datos abajo para entrar en la lista de espera.",
+		theaterButton: "Abrir lista de espera",
+		modalTitle: "Lista de espera",
+		modalBody: "Confirmá tu correo para entrar en la lista de espera.",
+		modalInput: "tu@correo.com",
+		modalButton: "Confirmar",
+		modalNote:
+			"Overlay fijo (z-index 10) por debajo del modal (20), centrado con transform.",
 	},
 	pt: {
 		hello: "Olá, Mundo!",
@@ -178,6 +214,43 @@ const text = {
 		price4: "13,20 €",
 		price5: "18,00 €",
 		libFooter: "Rua do Farol, 12 - 900 000 000",
+		battle1: "1) Duas regras iguais apontam para mim: qual ganha?",
+		battle2: "2) Eu não declaro cor: de onde tiro?",
+		battle3: "3) Uma classe e um ID disputam a minha cor.",
+		battleNote: "Verde pela cascata · azul herdado · roxo pelo ID (100)",
+		fichaA: "Ficha A",
+		fichaB: "Ficha B",
+		fichasNote:
+			"Com border-box, cada ficha completa mede 200px e as duas cabem na fila de 440px.",
+		nursery: "Viveiro A Cortina",
+		nurseryIntro: "Plantas de interior para todos os meses do ano.",
+		plant1: "Costela-de-adão",
+		plant2: "Cacto",
+		plant3: "Bonsai",
+		plantNote: "O buraco entre cartões é 30px, não 50px.",
+		article1: "Quatro esquinas, um mesmo banco",
+		article2: "O quiosque que aprendeu CSS",
+		chip1: "cidade",
+		chip2: "dados",
+		readMore: "Ler mais",
+		chipsNote:
+			"O padding vertical já não se pisa: inline-block pede o seu lugar.",
+		leagueTitle: "Classificação · Jornada 12",
+		league1: "Atlético Norte",
+		league2: "Río Verde",
+		league3: "Estrela Vermelha",
+		leagueNote:
+			"O cabeçalho sticky cola-se no topo; a insígnia do lugar 1 tapa a borda da sua linha.",
+		theater: "Reservas do teatro O Farol",
+		theaterIntro:
+			"A sessão de hoje está esgotada. Confirma os teus dados em baixo para entrar na lista de espera.",
+		theaterButton: "Abrir lista de espera",
+		modalTitle: "Lista de espera",
+		modalBody: "Confirma o teu e-mail para entrar na lista de espera.",
+		modalInput: "tu@correo.com",
+		modalButton: "Confirmar",
+		modalNote:
+			"Overlay fixo (z-index 10) por baixo do modal (20), centrado com transform.",
 	},
 };
 
@@ -676,6 +749,202 @@ export default function ExpectedPreview({
 						</tbody>
 					</table>
 					<p className="text-[10px] text-gray-500"> {t.libFooter} </p>
+				</div>
+			);
+		case 14:
+			return (
+				<div className="space-y-2">
+					<p className="text-sm" style={{ color: "#16a085" }}>
+						{t.battle1}
+					</p>
+					<div
+						className="rounded p-2"
+						style={{ border: "1px solid #3b82f6", color: "#2980b9" }}
+					>
+						<p className="text-sm">{t.battle2}</p>
+					</div>
+					<p className="text-sm" style={{ color: "#8e44ad" }}>
+						{t.battle3}
+					</p>
+					<p className="text-[10px] text-gray-500">{t.battleNote}</p>
+				</div>
+			);
+		case 15:
+			return (
+				<div className="space-y-2">
+					<div
+						className="p-2"
+						style={{ border: "1px solid #94a3b8", width: "280px" }}
+					>
+						<code className="text-[10px] text-gray-500">.fila · 440px</code>
+						<div
+							className="mt-1 inline-block text-sm"
+							style={{
+								width: "240px",
+								padding: "10px",
+								border: "4px solid #94a3b8",
+								backgroundColor: "#fde68a",
+							}}
+						>
+							{t.fichaA}
+						</div>
+						<div
+							className="inline-block text-sm"
+							style={{
+								width: "240px",
+								padding: "10px",
+								border: "4px solid #94a3b8",
+								backgroundColor: "#fde68a",
+							}}
+						>
+							{t.fichaB}
+						</div>
+					</div>
+					<p className="text-[10px] text-gray-500">{t.fichasNote}</p>
+				</div>
+			);
+		case 16:
+			return (
+				<div>
+					<div
+						className="mx-auto p-2"
+						style={{
+							width: "85%",
+							maxWidth: "320px",
+							border: "1px dashed #94a3b8",
+						}}
+					>
+						<p className="text-sm font-bold">{t.nursery}</p>
+						<p className="text-[10px]">{t.nurseryIntro}</p>
+						{[t.plant1, t.plant2, t.plant3].map((plant) => (
+							<div
+								key={plant}
+								className="mt-2 p-1.5 text-xs"
+								style={{
+									border: "1px solid #86efac",
+									backgroundColor: "#dcfce7",
+								}}
+							>
+								{plant}
+							</div>
+						))}
+					</div>
+					<p className="mt-1 text-[10px] text-gray-500">{t.plantNote}</p>
+				</div>
+			);
+		case 17:
+			return (
+				<div className="space-y-2">
+					<div className="rounded border border-gray-300 p-2">
+						<h2 className="text-sm font-bold">{t.article1}</h2>
+						<p className="text-xs">
+							Lorem ipsum{" "}
+							<span
+								className="inline-block rounded-full px-2 py-1 text-[10px]"
+								style={{ backgroundColor: "#fde68a" }}
+							>
+								{t.chip1}
+							</span>
+						</p>
+						<button
+							type="button"
+							className="mt-1 rounded px-3 py-1.5 text-xs text-white"
+							style={{ backgroundColor: "#2e86c1" }}
+						>
+							{t.readMore}
+						</button>
+					</div>
+					<div className="rounded border border-gray-300 p-2">
+						<h2 className="text-sm font-bold">{t.article2}</h2>
+						<p className="text-xs">
+							Lorem ipsum{" "}
+							<span
+								className="inline-block rounded-full px-2 py-1 text-[10px]"
+								style={{ backgroundColor: "#fde68a" }}
+							>
+								{t.chip2}
+							</span>
+						</p>
+						<button
+							type="button"
+							className="mt-1 rounded px-3 py-1.5 text-xs text-white"
+							style={{ backgroundColor: "#2e86c1" }}
+						>
+							{t.readMore}
+						</button>
+					</div>
+					<p className="text-[10px] text-gray-500">{t.chipsNote}</p>
+				</div>
+			);
+		case 18:
+			return (
+				<div className="space-y-2">
+					<div
+						className="rounded border border-gray-300 p-2"
+						style={{ maxHeight: "none" }}
+					>
+						<div
+							className="-mx-2 -mt-2 mb-2 px-2 py-1.5 text-xs font-bold text-white"
+							style={{ backgroundColor: "#2980b9" }}
+						>
+							{t.leagueTitle}
+						</div>
+						<div className="flex items-center gap-2 text-xs">
+							<span
+								className="inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold text-white"
+								style={{ backgroundColor: "#e67e22" }}
+							>
+								1
+							</span>
+							{t.league1}
+						</div>
+						<div className="mt-1 flex items-center gap-2 text-xs">
+							<span className="font-bold text-[10px]">2</span>
+							{t.league2}
+						</div>
+						<div className="mt-1 flex items-center gap-2 text-xs">
+							<span className="font-bold text-[10px]">3</span>
+							{t.league3}
+						</div>
+					</div>
+					<p className="text-[10px] text-gray-500">{t.leagueNote}</p>
+				</div>
+			);
+		case 19:
+			return (
+				<div>
+					<div
+						className="relative overflow-hidden rounded p-2"
+						style={{ minHeight: "110px", backgroundColor: "#f3f4f6" }}
+					>
+						<p className="text-xs font-bold">{t.theater}</p>
+						<p className="text-[10px]">{t.theaterIntro}</p>
+						<button
+							type="button"
+							className="mt-1 rounded bg-blue-600 px-2 py-1 text-[10px] text-white"
+						>
+							{t.theaterButton}
+						</button>
+						<div
+							className="absolute inset-0"
+							style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+						/>
+						<div
+							className="absolute top-1/2 right-1/2 w-3/5 translate-x-1/2 -translate-y-1/2 rounded p-2"
+							style={{ backgroundColor: "white" }}
+						>
+							<h2 className="text-xs font-bold">{t.modalTitle}</h2>
+							<p className="text-[10px]">{t.modalBody}</p>
+							<p className="text-[9px] text-gray-400">{t.modalInput}</p>
+							<button
+								type="button"
+								className="mt-1 rounded bg-emerald-600 px-2 py-0.5 text-[10px] text-white"
+							>
+								{t.modalButton}
+							</button>
+						</div>
+					</div>
+					<p className="mt-1 text-[10px] text-gray-500">{t.modalNote}</p>
 				</div>
 			);
 		default:

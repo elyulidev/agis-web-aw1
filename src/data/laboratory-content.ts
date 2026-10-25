@@ -1376,3 +1376,1014 @@ export const labModulo2: LabExercise[] = [
 		},
 	},
 ];
+
+export const labModulo3: LabExercise[] = [
+	{
+		id: 14,
+		lectureId: 11,
+		title: {
+			es: "La batalla por el color",
+			pt: "A batalha pelas cores",
+		},
+		objective: {
+			es: "Predecir el ganador de una cascada con herencia, especificidad y !important, y comprobarlo en DevTools.",
+			pt: "Prever o vencedor de uma cascata com herança, especificidade e !important, e confirmar nas DevTools.",
+		},
+		steps: [
+			{
+				es: "Copiá los dos archivos de abajo (batalla.html y batalla.css) en la misma carpeta y abrí batalla.html con Live Server. La hoja ya viene escrita: este ejercicio es de CSI, de analizar.",
+				pt: "Copia os dois ficheiros abaixo (batalla.html e batalla.css) para a mesma pasta e abre batalla.html com o Live Server. A folha já vem escrita: este exercício é de CSI, de análise.",
+			},
+			{
+				es: "Antes de tocar nada, anotá en papel el color final de cada párrafo pensando en la cascada, la herencia y los puntos.",
+				pt: "Antes de tocar em nada, anota no papel a cor final de cada parágrafo pensando na cascada, na herança e nos pontos.",
+			},
+			{
+				es: "En DevTools seleccioná el primer párrafo: verás las dos reglas con el mismo selector, una de ellas tachada. Gana la última en el archivo (verde): es la cascada en acción.",
+				pt: "Nas DevTools seleciona o primeiro parágrafo: vais ver as duas regras com o mesmo seletor, uma delas riscada. Ganha a última no ficheiro (verde): é a cascata em ação.",
+			},
+			{
+				es: "El segundo párrafo no declara color: lo hereda del div .tarjeta. Comprobalo en DevTools, en la sección 'Heredado de .tarjeta'.",
+				pt: "O segundo parágrafo não declara cor: herda-a do div .tarjeta. Confirma-o nas DevTools, na secção 'Herdado de .tarjeta'.",
+			},
+			{
+				es: "El tercer párrafo tiene dos reglas: .pares (0, 1, 0 = 10 puntos) y #clave (1, 0, 0 = 100 puntos). Sumá los puntos con DevTools y comprobá que el ID gana aunque se declare al final.",
+				pt: "O terceiro parágrafo tem duas regras: .pares (0, 1, 0 = 10 pontos) e #chave (1, 0, 0 = 100 pontos). Soma os pontos nas DevTools e confirma que o ID ganha mesmo declarado no fim.",
+			},
+			{
+				es: "Agregá al final de batalla.css la regla p { color: #f59e0b !important; } y recargá: gana contra todo, incluso contra el ID. Después comentá la regla y mirá cómo la cascada vuelve a decidir.",
+				pt: "Adiciona ao fim de batalla.css a regra p { color: #f59e0b !important; } e recarrega: ganha contra tudo, mesmo contra o ID. Depois comenta a regra e vê como a cascata volta a decidir.",
+			},
+		],
+		verify: [
+			{
+				es: "En DevTools, la regla perdedora del primer párrafo aparece tachada y la activa es la verde, la última del archivo.",
+				pt: "Nas DevTools, a regra perdedora do primeiro parágrafo aparece riscada e a ativa é a verde, a última do ficheiro.",
+			},
+			{
+				es: "El segundo párrafo se ve del azul de .tarjeta por herencia, sin tener regla propia.",
+				pt: "O segundo parágrafo fica da cor azul de .tarjeta por herança, sem regra própria.",
+			},
+			{
+				es: "El tercer párrafo queda del color del ID y, mientras la regla !important esté activa, del ámbar: !important se impuso a todo.",
+				pt: "O terceiro parágrafo fica da cor do ID e, enquanto a regra !important estiver ativa, do âmbar: o !important impôs-se a tudo.",
+			},
+			{
+				es: "Al comentar la regla !important, el navegador vuelve a decidir con la cascada y la especificidad.",
+				pt: "Ao comentar a regra !important, o navegador volta a decidir com a cascata e a especificidade.",
+			},
+		],
+		expected: {
+			es: "Ves tres párrafos con tres colores distintos: verde por la cascada, azul heredado de la tarjeta y morado por los 100 puntos del ID.",
+			pt: "Vês três parágrafos com três cores diferentes: verde pela cascata, azul herdado do cartão e roxo pelos 100 pontos do ID.",
+		},
+		starter: {
+			es: [
+				{
+					file: "batalla.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La batalla por el color</title>
+  <link rel="stylesheet" href="batalla.css">
+</head>
+<body>
+  <main>
+    <p class="primero">1) Dos reglas iguales me apuntan: ¿cuál gana?</p>
+
+    <div class="tarjeta">
+      <p class="una">2) Yo no declaro color: ¿de dónde lo saco?</p>
+    </div>
+
+    <p id="clave" class="pares">3) Una clase y un ID me disputan el color.</p>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "batalla.css",
+					code: `/* Regla A: para el párrafo 1, color rojo */
+p.primero {
+  color: #e74c3c;
+}
+
+/* El mismo selector otra vez: ¿cuál de las dos gana? */
+p.primero {
+  color: #16a085;
+}
+
+/* El contenedor declara: sus hijos heredan */
+.tarjeta {
+  color: #2980b9;
+  border: 1px solid #3b82f6;
+  padding: 12px;
+}
+
+/* Regla B: para el párrafo 3, la clase vale 10 puntos */
+.pares {
+  color: #e67e22;
+}
+
+/* La regla del ID vale 100 puntos */
+#clave {
+  color: #8e44ad;
+}`,
+				},
+			],
+			pt: [
+				{
+					file: "batalla.html (pt: batalha.html)",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A batalha pelas cores</title>
+  <link rel="stylesheet" href="batalha.css">
+</head>
+<body>
+  <main>
+    <p class="primeiro">1) Duas regras iguais apontam para mim: qual ganha?</p>
+
+    <div class="tarjeta">
+      <p class="una">2) Eu não declaro cor: de onde tiro?</p>
+    </div>
+
+    <p id="chave" class="pares">3) Uma classe e um ID disputam a minha cor.</p>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "batalha.css",
+					code: `/* Regra A: para o parágrafo 1, cor vermelha */
+p.primeiro {
+  color: #e74c3c;
+}
+
+/* O mesmo seletor outra vez: qual das duas ganha? */
+p.primeiro {
+  color: #16a085;
+}
+
+/* O contentor declara: os filhos herdam */
+.tarjeta {
+  color: #2980b9;
+  border: 1px solid #3b82f6;
+  padding: 12px;
+}
+
+/* Regra B: para o parágrafo 3, a classe vale 10 pontos */
+.pares {
+  color: #e67e22;
+}
+
+/* A regra do ID vale 100 pontos */
+#chave {
+  color: #8e44ad;
+}`,
+				},
+			],
+		},
+	},
+	{
+		id: 15,
+		lectureId: 12,
+		title: {
+			es: "Las fichas del almacén",
+			pt: "As fichas do armazém",
+		},
+		objective: {
+			es: "Calcular el tamaño real de una caja y dominar el reset universal con box-sizing: border-box.",
+			pt: "Calcular o tamanho real de uma caixa e dominar o reset universal com box-sizing: border-box.",
+		},
+		steps: [
+			{
+				es: "Copiá el código inicial de abajo en almacen.html. El enlace a almacen.css ya está en el head: creá ese archivo en la misma carpeta.",
+				pt: "Copia o código inicial abaixo para armazem.html. A ligação a armazem.css já está no head: cria esse ficheiro na mesma pasta.",
+			},
+			{
+				es: "En almacen.css escribí el reset universal (*, *::before y *::after con margin: 0 y padding: 0) y definí .fila con width: 440px.",
+				pt: "Em armazem.css escreve o reset universal (*, *::before e *::after com margin: 0 e padding: 0) e define .fila com width: 440px.",
+			},
+			{
+				es: "Con .ficha definí width: 200px, padding: 20px, border: 6px solid #94a3b8, background-color: #fde68a y display: inline-block para que las fichas compartan línea.",
+				pt: "Com .ficha define width: 200px, padding: 20px, border: 6px solid #94a3b8, background-color: #fde68a e display: inline-block para que as fichas partilhem a linha.",
+			},
+			{
+				es: "En DevTools abrí la pestaña 'Layout' (o 'Computed' con el diagrama de caja) y medí una ficha: 200px de contenido + 40px de padding + 12px de borde = 252px. ¡Dos fichas ya no entran en la fila de 440px!",
+				pt: "Nas DevTools abre o separador 'Layout' (ou 'Computed' com o diagrama da caixa) e mede uma ficha: 200px de conteúdo + 40px de padding + 12px de borda = 252px. Duas fichas já não cabem na fila de 440px!",
+			},
+			{
+				es: "Agregá box-sizing: border-box al reset, recargá y medí de nuevo: ahora cada ficha completa mide 200px exactos y las dos caben en la fila.",
+				pt: "Adiciona box-sizing: border-box ao reset, recarrega e mede outra vez: agora cada ficha completa mede 200px exatos e as duas cabem na fila.",
+			},
+		],
+		verify: [
+			{
+				es: "Sin border-box, DevTools muestra content 200 + padding 40 + border 12 = 252px por ficha, y la segunda ficha cae a la línea siguiente.",
+				pt: "Sem border-box, as DevTools mostram content 200 + padding 40 + border 12 = 252px por ficha, e a segunda ficha cai para a linha seguinte.",
+			},
+			{
+				es: "Con border-box en el reset, cada ficha mide 200px de punta a punta (padding y borde contados dentro) y ambas quedan lado a lado.",
+				pt: "Com border-box no reset, cada ficha mede 200px de ponta a ponta (padding e borda contados por dentro) e as duas ficam lado a lado.",
+			},
+			{
+				es: "La fila mide 440px y las fichas usan exactamente los selectores pedidos.",
+				pt: "A fila mede 440px e as fichas usam exatamente os seletores pedidos.",
+			},
+		],
+		expected: {
+			es: "Ves dos fichas amarillas lado a lado dentro de la fila, midiendo 200px cada una con su padding y su borde incluidos en el total.",
+			pt: "Vês duas fichas amarelas lado a lado dentro da fila, medindo 200px cada uma com o padding e a borda incluídos no total.",
+		},
+		starter: {
+			es: [
+				{
+					file: "almacen.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Las fichas del almacén</title>
+  <link rel="stylesheet" href="almacen.css">
+</head>
+<body>
+  <div class="fila">
+    <div class="ficha">Ficha A</div>
+    <div class="ficha">Ficha B</div>
+  </div>
+</body>
+</html>`,
+				},
+				{
+					file: "almacen.css",
+					code: `/* 1) El reset universal: primero solo margin y padding.
+   La consigna te pedirá agregar box-sizing en el paso 5. */
+*, *::before, *::after {
+  /* margin: 0; */
+  /* padding: 0; */
+}
+
+/* 2) La fila que contiene las fichas */
+.fila {
+  /* width: 440px; */
+}
+
+/* 3) Cada ficha */
+.ficha {
+  /* width: 200px; */
+  /* padding: 20px; */
+  /* border: 6px solid #94a3b8; */
+  /* background-color: #fde68a; */
+  /* display: inline-block; */
+}`,
+				},
+			],
+			pt: [
+				{
+					file: "armazem.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>As fichas do armazém</title>
+  <link rel="stylesheet" href="armazem.css">
+</head>
+<body>
+  <div class="fila">
+    <div class="ficha">Ficha A</div>
+    <div class="ficha">Ficha B</div>
+  </div>
+</body>
+</html>`,
+				},
+				{
+					file: "armazem.css",
+					code: `/* 1) O reset universal: primeiro só margin e padding.
+   A consigna pede-te para adicionar box-sizing no passo 5. */
+*, *::before, *::after {
+  /* margin: 0; */
+  /* padding: 0; */
+}
+
+/* 2) A fila que contém as fichas */
+.fila {
+  /* width: 440px; */
+}
+
+/* 3) Cada ficha */
+.ficha {
+  /* width: 200px; */
+  /* padding: 20px; */
+  /* border: 6px solid #94a3b8; */
+  /* background-color: #fde68a; */
+  /* display: inline-block; */
+}`,
+				},
+			],
+		},
+	},
+	{
+		id: 16,
+		lectureId: 13,
+		title: {
+			es: "El centro del catálogo",
+			pt: "O centro do catálogo",
+		},
+		objective: {
+			es: "Centrar un bloque con margin: 0 auto y comprobar el colapso de márgenes entre tarjetas.",
+			pt: "Centrar um bloco com margin: 0 auto e confirmar o colapso de margens entre cartões.",
+		},
+		steps: [
+			{
+				es: "Copiá el código inicial de abajo en vivero.html. El enlace a vivero.css ya está en el head: creá ese archivo en la misma carpeta.",
+				pt: "Copia o código inicial abaixo para viveiro.html. A ligação a viveiro.css já está no head: cria esse ficheiro na mesma pasta.",
+			},
+			{
+				es: "Con .pagina definí width: 90%, max-width: 800px y margin: 0 auto, y mirá cómo el catálogo queda centrado en cualquier ancho de ventana.",
+				pt: "Com .pagina define width: 90%, max-width: 800px e margin: 0 auto, e vê como o catálogo fica centrado em qualquer largura de janela.",
+			},
+			{
+				es: "Con .tarjeta definí padding: 12px, border: 1px solid #86efac y background-color: #dcfce7. Para separar las tarjetas, dale margin-bottom: 30px a .tarjeta y margin-top: 20px a .tarjeta + .tarjeta.",
+				pt: "Com .tarjeta define padding: 12px, border: 1px solid #86efac e background-color: #dcfce7. Para separar os cartões, dá margin-bottom: 30px a .tarjeta e margin-top: 20px a .tarjeta + .tarjeta.",
+			},
+			{
+				es: "Medí el hueco entre dos tarjetas con DevTools: es 30px, no 50px. El margen mayor gana: es el colapso de márgenes, y solo pasa en vertical.",
+				pt: "Mede o buraco entre dois cartões com as DevTools: é 30px, não 50px. A margem maior ganha: é o colapso de margens, e só acontece na vertical.",
+			},
+			{
+				es: "Estirá la ventana a toda la pantalla y después apretala a un ancho chico: el bloque centrado se adapta a los dos tamaños, porque el width es porcentaje y el max-width fija el techo.",
+				pt: "Estica a janela para todo o ecrã e depois estreita-a para uma largura pequena: o bloco centrado adapta-se aos dois tamanhos, porque o width é uma percentagem e o max-width fixa o teto.",
+			},
+		],
+		verify: [
+			{
+				es: "En DevTools, .pagina muestra márgenes izquierdo y derecho iguales (los auto repartidos).",
+				pt: "Nas DevTools, .pagina mostra margens esquerda e direita iguais (os auto repartidos).",
+			},
+			{
+				es: "El hueco entre tarjetas es de 30px: el margen más alto colapsó al más chico.",
+				pt: "O buraco entre cartões é de 30px: a margem maior colapsou a menor.",
+			},
+			{
+				es: "El HTML no se tocó: todo el trabajo se hizo en vivero.css.",
+				pt: "O HTML não foi tocado: todo o trabalho ficou feito em viveiro.css.",
+			},
+		],
+		expected: {
+			es: "Ves el catálogo centrado en la ventana y las tarjetas separadas por 30px, no por 50px.",
+			pt: "Vês o catálogo centrado na janela e os cartões separados por 30px, não por 50px.",
+		},
+		starter: {
+			es: [
+				{
+					file: "vivero.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vivero La Cortina</title>
+  <link rel="stylesheet" href="vivero.css">
+</head>
+<body>
+  <div class="pagina">
+    <h1>Vivero La Cortina</h1>
+    <p class="intro">Plantas de interior para todos los meses del año.</p>
+
+    <section class="tarjeta">
+      <h2>Monstera</h2>
+      <p>Sombra ligera y riego semanal.</p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Cactus</h2>
+      <p>Luz directa y riego escaso.</p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Bonsái</h2>
+      <p>Suelo seco y paciencia de años.</p>
+    </section>
+  </div>
+</body>
+</html>`,
+				},
+				{
+					file: "vivero.css",
+					code: `/* 1) El bloque centrado */
+.pagina {
+  /* width: 90%; */
+  /* max-width: 800px; */
+  /* margin: 0 auto; */
+}
+
+/* 2) Cada tarjeta del catálogo */
+.tarjeta {
+  /* padding: 12px; */
+  /* border: 1px solid #86efac; */
+  /* background-color: #dcfce7; */
+}
+
+/* 3) La separación entre tarjetas (y el colapso, ¡que lo mides tú!) */
+.tarjeta + .tarjeta {
+  /* margin-top: 20px; */
+}`,
+				},
+			],
+			pt: [
+				{
+					file: "viveiro.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viveiro A Cortina</title>
+  <link rel="stylesheet" href="viveiro.css">
+</head>
+<body>
+  <div class="pagina">
+    <h1>Viveiro A Cortina</h1>
+    <p class="intro">Plantas de interior para todos os meses do ano.</p>
+
+    <section class="tarjeta">
+      <h2>Costela-de-adão</h2>
+      <p>Sombra leve e rega semanal.</p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Cacto</h2>
+      <p>Luz direta e rega escassa.</p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Bonsai</h2>
+      <p>Terra seca e paciência de anos.</p>
+    </section>
+  </div>
+</body>
+</html>`,
+				},
+				{
+					file: "viveiro.css",
+					code: `/* 1) O bloco centrado */
+.pagina {
+  /* width: 90%; */
+  /* max-width: 800px; */
+  /* margin: 0 auto; */
+}
+
+/* 2) Cada cartão do catálogo */
+.tarjeta {
+  /* padding: 12px; */
+  /* border: 1px solid #86efac; */
+  /* background-color: #dcfce7; */
+}
+
+/* 3) A separação entre cartões (e o colapso, cabe-te a medi-lo!) */
+.tarjeta + .tarjeta {
+  /* margin-top: 20px; */
+}`,
+				},
+			],
+		},
+	},
+	{
+		id: 17,
+		lectureId: 13,
+		title: {
+			es: "El magazine del barrio",
+			pt: "A revista do bairro",
+		},
+		objective: {
+			es: "Diferenciar display inline, block e inline-block aplicando etiquetas de categoría y botones con padding.",
+			pt: "Diferenciar display inline, block e inline-block aplicando etiquetas de categoria e botões com padding.",
+		},
+		steps: [
+			{
+				es: "Copiá el código inicial de abajo en revista.html. El enlace a revista.css ya está en el head: creá ese archivo en la misma carpeta.",
+				pt: "Copia o código inicial abaixo para revista.html. A ligação a revista.css já está no head: cria esse ficheiro na mesma pasta.",
+			},
+			{
+				es: "La .etiqueta es un <span>: dotale padding: 6px 12px, background-color: #fde68a, border-radius: 999px y font-size: 0.8rem, y mirá cómo el padding vertical pisa las líneas de texto: es inline de fábrica.",
+				pt: "A .etiqueta é um <span>: dá-lhe padding: 6px 12px, background-color: #fde68a, border-radius: 999px e font-size: 0.8rem, e vê como o padding vertical pisa as linhas de texto: é inline de fábrica.",
+			},
+			{
+				es: "A la misma .etiqueta agregale display: inline-block y recargá: ahora sí pide su lugar en el layout y el padding vertical se respeta.",
+				pt: "À mesma .etiqueta adiciona display: inline-block e recarrega: agora sim pede o seu lugar no layout e o padding vertical é respeitado.",
+			},
+			{
+				es: "El .boton-leer es un <a>: dotale display: inline-block, padding: 10px 20px, background-color: #2e86c1, color: white, border-radius: 4px y text-decoration: none para que parezca botón de verdad.",
+				pt: "O .boton-leer é um <a>: dá-lhe display: inline-block, padding: 10px 20px, background-color: #2e86c1, color: white, border-radius: 4px e text-decoration: none para que pareça um botão de verdade.",
+			},
+			{
+				es: "Comprobá en DevTools que cada <article> arranca en línea propia y ocupa todo el ancho: es block por defecto, como te dijo la conferencia. Con eso tienes los tres display del bloque a la vista.",
+				pt: "Confirma nas DevTools que cada <article> começa em linha própria e ocupa toda a largura: é block por defeito, como a conferência disse. Com isso tens os três displays do bloco à vista.",
+			},
+		],
+		verify: [
+			{
+				es: "Las etiquetas mantienen su altura con inline-block: el padding vertical ya no se pisa.",
+				pt: "As etiquetas mantêm a altura com inline-block: o padding vertical já não se pisa.",
+			},
+			{
+				es: "El botón 'Leer más' se ve como un rectángulo con padding y sin subrayado.",
+				pt: "O botão 'Ler mais' aparece como um retângulo com padding e sem sublinhado.",
+			},
+			{
+				es: "Cada article empieza en línea propia y a todo el ancho: block por defecto.",
+				pt: "Cada article começa em linha própria e a toda a largura: block por defeito.",
+			},
+		],
+		expected: {
+			es: "Ves cada nota con su chip de categoría respetando el padding y un botón 'Leer más' rectangular debajo del texto.",
+			pt: "Vês cada nota com o chip de categoria a respeitar o padding e um botão 'Ler mais' retangular por baixo do texto.",
+		},
+		starter: {
+			es: [
+				{
+					file: "revista.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El magazine del barrio</title>
+  <link rel="stylesheet" href="revista.css">
+</head>
+<body>
+  <main>
+    <article>
+      <h2>Cuatro esquinas, un mismo banco</h2>
+      <p>
+        La plaza del barrio estrena asientos.
+        <span class="etiqueta">ciudad</span>
+      </p>
+      <a class="boton-leer" href="#">Leer más</a>
+    </article>
+
+    <article>
+      <h2>El kiosco que aprendió CSS</h2>
+      <p>
+        Los diarios se ordenan solos con display.
+        <span class="etiqueta">data</span>
+      </p>
+      <a class="boton-leer" href="#">Leer más</a>
+    </article>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "revista.css",
+					code: `/* 1) El chip de categoría: es un <span>, o sea inline */
+.etiqueta {
+  /* padding: 6px 12px; */
+  /* background-color: #fde68a; */
+  /* border-radius: 999px; */
+  /* font-size: 0.8rem; */
+  /* display: inline-block; (paso 3) */
+}
+
+/* 2) El botón 'Leer más': es un <a>, también inline */
+.boton-leer {
+  /* display: inline-block; */
+  /* padding: 10px 20px; */
+  /* background-color: #2e86c1; */
+  /* color: white; */
+  /* border-radius: 4px; */
+  /* text-decoration: none; */
+}`,
+				},
+			],
+			pt: [
+				{
+					file: "revista.html (pt: revista.html)",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A revista do bairro</title>
+  <link rel="stylesheet" href="revista.css">
+</head>
+<body>
+  <main>
+    <article>
+      <h2>Quatro esquinas, um mesmo banco</h2>
+      <p>
+        A praça do bairro estreia assentos.
+        <span class="etiqueta">cidade</span>
+      </p>
+      <a class="boton-leer" href="#">Ler mais</a>
+    </article>
+
+    <article>
+      <h2>O quiosque que aprendeu CSS</h2>
+      <p>
+        Os jornais ordenam-se sozinhos com display.
+        <span class="etiqueta">dados</span>
+      </p>
+      <a class="boton-leer" href="#">Ler mais</a>
+    </article>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "revista.css",
+					code: `/* 1) O chip de categoria: é um <span>, ou seja inline */
+.etiqueta {
+  /* padding: 6px 12px; */
+  /* background-color: #fde68a; */
+  /* border-radius: 999px; */
+  /* font-size: 0.8rem; */
+  /* display: inline-block; (passo 3) */
+}
+
+/* 2) O botão 'Ler mais': é um <a>, também inline */
+.boton-leer {
+  /* display: inline-block; */
+  /* padding: 10px 20px; */
+  /* background-color: #2e86c1; */
+  /* color: white; */
+  /* border-radius: 4px; */
+  /* text-decoration: none; */
+}`,
+				},
+			],
+		},
+	},
+	{
+		id: 18,
+		lectureId: 14,
+		title: {
+			es: "El ranking de la liga",
+			pt: "O ranking da liga",
+		},
+		objective: {
+			es: "Pegar la cabecera de una tabla con sticky y elevar una insignia con position: relative y z-index.",
+			pt: "Colar o cabeçalho de uma tabela com sticky e elevar uma insígnia com position: relative e z-index.",
+		},
+		steps: [
+			{
+				es: "Copiá el código inicial de abajo en liga.html. El enlace a liga.css ya está en el head: creá ese archivo en la misma carpeta.",
+				pt: "Copia o código inicial abaixo para liga.html. A ligação a liga.css já está no head: cria esse ficheiro na mesma pasta.",
+			},
+			{
+				es: "Con .tabla definí max-height: 240px y overflow-y: auto: ese div pequeño es el que hace scroll por su cuenta.",
+				pt: "Com .tabula define max-height: 240px e overflow-y: auto: esse div pequeno é quem faz scroll por conta própria.",
+			},
+			{
+				es: "Con .cabecera-tabla, además del fondo azul y el color blanco, definí position: sticky y top: 0, y probá el scroll dentro del div: la cabecera se queda pegada arriba.",
+				pt: "Com .cabecera-tabla, além do fundo azul e da cor branca, define position: sticky e top: 0, e experimenta o scroll dentro do div: o cabeçalho fica colado em cima.",
+			},
+			{
+				es: "Con .numero (todas las posiciones) definí font-weight: bold. Para la insignia del primer puesto, con .pri definí position: relative y z-index: 2, y comprobá que se superpone a la fila sin salir del flujo.",
+				pt: "Com .numero (todas as posições) define font-weight: bold. Para a insígnia do primeiro lugar, com .pri define position: relative e z-index: 2, e confirma que ela se sobrepõe à linha sem sair do fluxo.",
+			},
+			{
+				es: "Experimento final: cambiá el z-index de .pri a 2000 y recargá. ¿Tapó a la cabecera o se quedó detrás? La respuesta te la da el contexto: sticky crea su propio contexto de apilamiento, y dentro de la tabla la cabecera decide. Dejalo en 2.",
+				pt: "Experimento final: muda o z-index de .pri para 2000 e recarrega. Tapou o cabeçalho ou ficou por baixo? A resposta dá-lha o contexto: o sticky cria o seu próprio contexto de empilhamento, e dentro da tabela o cabeçalho decide. Deixa-o em 2.",
+			},
+		],
+		verify: [
+			{
+				es: "Al hacer el scroll dentro de .tabla, la cabecera azul se queda pegada arriba y las filas pasan por debajo.",
+				pt: "Ao fazer o scroll dentro de .tabula, o cabeçalho azul fica colado em cima e as linhas passam por baixo.",
+			},
+			{
+				es: "La insignia del primer puesto se superpone a la fila: relative + z-index funcionando en la práctica.",
+				pt: "A insígnia do primeiro lugar sobrepõe-se à linha: relative + z-index na prática.",
+			},
+			{
+				es: "Si le sacás position a la insignia (o la dejás en static), el z-index deja de actuar: solo funciona en elementos posicionados.",
+				pt: "Se lhe tirares o position à insígnia (ou o deixares em static), o z-index deixa de atuar: só funciona em elementos posicionados.",
+			},
+		],
+		expected: {
+			es: "Ves la cabecera azul pegada arriba del ranking al hacer scroll y la insignia del puesto 1 tapando el borde de su fila.",
+			pt: "Vês o cabeçalho azul colado no topo do ranking ao fazer scroll e a insígnia do lugar 1 a tapar a borda da sua linha.",
+		},
+		starter: {
+			es: [
+				{
+					file: "liga.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El ranking de la liga</title>
+  <link rel="stylesheet" href="liga.css">
+</head>
+<body>
+  <div class="tabla">
+    <div class="cabecera-tabla">Clasificación · Jornada 12</div>
+    <ul>
+      <li><span class="numero pri">1</span> Atlético Norte</li>
+      <li><span class="numero">2</span> Río Verde</li>
+      <li><span class="numero">3</span> Estrella Roja</li>
+      <li><span class="numero">4</span> Costa Azul</li>
+      <li><span class="numero">5</span> Nervión</li>
+      <li><span class="numero">6</span> Portuario</li>
+      <li><span class="numero">7</span> Bosque Viejo</li>
+      <li><span class="numero">8</span> Salinero</li>
+    </ul>
+  </div>
+</body>
+</html>`,
+				},
+				{
+					file: "liga.css",
+					code: `/* 1) El contenedor que hace scroll */
+.tabla {
+  /* max-height: 240px; */
+  /* overflow-y: auto; */
+}
+
+/* 2) La cabecera que se pega al hacer scroll */
+.cabecera-tabla {
+  /* background-color: #2980b9; */
+  /* color: white; */
+  /* padding: 8px 12px; */
+  /* position: sticky; */
+  /* top: 0; */
+}
+
+/* 3) Limpieza de la lista */
+.tabla ul {
+  /* margin: 0; padding: 0; list-style: none; */
+}
+.tabla li {
+  /* padding: 8px 12px; border-top: 1px solid #e5e7eb; */
+}
+
+/* 4) Los números de posición y la insignia elevada */
+.numero {
+  /* font-weight: bold; */
+}
+.pri {
+  /* position: relative; */
+  /* z-index: 2; */
+}`,
+				},
+			],
+			pt: [
+				{
+					file: "liga.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O ranking da liga</title>
+  <link rel="stylesheet" href="liga.css">
+</head>
+<body>
+  <div class="tabla">
+    <div class="cabecera-tabla">Classificação · Jornada 12</div>
+    <ul>
+      <li><span class="numero pri">1</span> Atlético Norte</li>
+      <li><span class="numero">2</span> Río Verde</li>
+      <li><span class="numero">3</span> Estrela Vermelha</li>
+      <li><span class="numero">4</span> Costa Azul</li>
+      <li><span class="numero">5</span> Nervión</li>
+      <li><span class="numero">6</span> Portuario</li>
+      <li><span class="numero">7</span> Bosque Viejo</li>
+      <li><span class="numero">8</span> Salinero</li>
+    </ul>
+  </div>
+</body>
+</html>`,
+				},
+				{
+					file: "liga.css",
+					code: `/* 1) O contentor que faz scroll */
+.tabla {
+  /* max-height: 240px; */
+  /* overflow-y: auto; */
+}
+
+/* 2) O cabeçalho que se cola ao scroll */
+.cabecera-tabla {
+  /* background-color: #2980b9; */
+  /* color: white; */
+  /* padding: 8px 12px; */
+  /* position: sticky; */
+  /* top: 0; */
+}
+
+/* 3) Arrumação da lista */
+.tabla ul {
+  /* margin: 0; padding: 0; list-style: none; */
+}
+.tabla li {
+  /* padding: 8px 12px; border-top: 1px solid #e5e7eb; */
+}
+
+/* 4) Os números de posição e a insígnia elevada */
+.numero {
+  /* font-weight: bold; */
+}
+.pri {
+  /* position: relative; */
+  /* z-index: 2; */
+}`,
+				},
+			],
+		},
+	},
+	{
+		id: 19,
+		lectureId: 14,
+		title: {
+			es: "Integrador: el modal de reservas",
+			pt: "Integrador: o modal das reservas",
+		},
+		objective: {
+			es: "Montar un modal completo con overlay fijo, contenido centrado y una jerarquía de z-index bien ordenada.",
+			pt: "Montar um modal completo com overlay fixo, conteúdo centrado e uma hierarquia de z-index bem ordenada.",
+		},
+		steps: [
+			{
+				es: "Copiá el código inicial de abajo en reservas.html. El enlace a reservas.css ya está en el head: creá ese archivo en la misma carpeta.",
+				pt: "Copia o código inicial abaixo para reservas.html. A ligação a reservas.css já está no head: cria esse ficheiro na mesma pasta.",
+			},
+			{
+				es: "Base: con body definí font-family: sans-serif, un background-color claro y padding. Con .pagina volvé a aplicar el centrado del módulo: max-width: 640px y margin: 0 auto. Todo lo aprendido se usa.",
+				pt: "Base: com body define font-family: sans-serif, um background-color claro e padding. Com .pagina volta a aplicar a centralização do módulo: max-width: 640px e margin: 0 auto. Tudo o que aprendeu dá-se uso.",
+			},
+			{
+				es: "El overlay: con .overlay definí position: fixed, top: 0, left: 0, width: 100%, height: 100%, background-color: rgba(0, 0, 0, 0.5) y z-index: 10.",
+				pt: "O overlay: com .overlay define position: fixed, top: 0, left: 0, width: 100%, height: 100%, background-color: rgba(0, 0, 0, 0.5) e z-index: 10.",
+			},
+			{
+				es: "El contenido: con .modal-content definí position: fixed, top: 50%, left: 50% y transform: translate(-50%, -50%) para centrarlo en el viewport, más background-color: white, padding: 24px, width: 320px, border-radius: 8px y z-index: 20.",
+				pt: "O conteúdo: com .modal-content define position: fixed, top: 50%, left: 50% e transform: translate(-50%, -50%) para o centrar no viewport, mais background-color: white, padding: 24px, width: 320px, border-radius: 8px e z-index: 20.",
+			},
+			{
+				es: "Prueba de jerarquía: cambiá el z-index del modal a 5 (debajo del overlay 10) y mirá cómo el modal queda tapado. Volvé a ponerlo en 20: el orden del eje Z lo decidís vos.",
+				pt: "Prova de hierarquia: muda o z-index do modal para 5 (por baixo do overlay 10) e vê como o modal fica tapado. Volta a pô-lo em 20: a ordem do eixo Z decide-a tu.",
+			},
+		],
+		verify: [
+			{
+				es: "El modal está centrado (viewport) y flotando sobre un fondo oscuro que cubre toda la página.",
+				pt: "O modal está centrado no viewport e a flutuar sobre um fundo escuro que cobre toda a página.",
+			},
+			{
+				es: "El overlay no tapa al modal: 20 > 10. Si intercambiás los z-index, el overlay gana: la jerarquía es real.",
+				pt: "O overlay não tapa o modal: 20 > 10. Se trocares os z-index, o overlay ganha: a hierarquia é real.",
+			},
+			{
+				es: "La página base sigue a la vista y centrada: el modal se superpone sin romper el flujo, porque fixed lo saca del documento.",
+				pt: "A página base continua à vista e centrada: o modal sobrepõe-se sem quebrar o fluxo, porque o fixed o retira do documento.",
+			},
+		],
+		expected: {
+			es: "Ves la página del teatro centrada y, encima de todo, el fondo oscuro con el modal blanco 'Lista de espera' centrado en la pantalla.",
+			pt: "Vês a página do teatro centrada e, por cima de tudo, o fundo escuro com o modal branco 'Lista de espera' centrado no ecrã.",
+		},
+		starter: {
+			es: [
+				{
+					file: "reservas.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservas del teatro El Faro</title>
+  <link rel="stylesheet" href="reservas.css">
+</head>
+<body>
+  <div class="pagina">
+    <h1>Reservas del teatro El Faro</h1>
+    <p>La función de esta noche está llena. Confirmá tus datos abajo para entrar en la lista de espera.</p>
+    <button type="button">Abrir lista de espera</button>
+  </div>
+
+  <div class="overlay"></div>
+  <div class="modal-content">
+    <h2>Lista de espera</h2>
+    <p>Confirmá tu correo para entrar en la lista de espera.</p>
+    <input type="email" placeholder="tu@correo.com">
+    <button type="button">Confirmar</button>
+  </div>
+</body>
+</html>`,
+				},
+				{
+					file: "reservas.css",
+					code: `/* 1) Base */
+body {
+  /* font-family: sans-serif; */
+  /* background-color: #f3f4f6; */
+  /* padding: 32px 16px; */
+}
+.pagina {
+  /* max-width: 640px; */
+  /* margin: 0 auto; */
+}
+
+/* 2) El overlay: cubre toda la pantalla */
+.overlay {
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* z-index: 10; */
+}
+
+/* 3) El modal: flotando centrado por encima del overlay */
+.modal-content {
+  /* position: fixed; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  /* background-color: white; */
+  /* padding: 24px; */
+  /* width: 320px; */
+  /* border-radius: 8px; */
+  /* z-index: 20; */
+}`,
+				},
+			],
+			pt: [
+				{
+					file: "reservas.html (pt: reservas.html)",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservas do teatro O Farol</title>
+  <link rel="stylesheet" href="reservas.css">
+</head>
+<body>
+  <div class="pagina">
+    <h1>Reservas do teatro O Farol</h1>
+    <p>A sessão de hoje está esgotada. Confirma os teus dados em baixo para entrar na lista de espera.</p>
+    <button type="button">Abrir lista de espera</button>
+  </div>
+
+  <div class="overlay"></div>
+  <div class="modal-content">
+    <h2>Lista de espera</h2>
+    <p>Confirma o teu e-mail para entrar na lista de espera.</p>
+    <input type="email" placeholder="tu@correo.com">
+    <button type="button">Confirmar</button>
+  </div>
+</body>
+</html>`,
+				},
+				{
+					file: "reservas.css",
+					code: `/* 1) Base */
+body {
+  /* font-family: sans-serif; */
+  /* background-color: #f3f4f6; */
+  /* padding: 32px 16px; */
+}
+.pagina {
+  /* max-width: 640px; */
+  /* margin: 0 auto; */
+}
+
+/* 2) O overlay: cobre todo o ecrã */
+.overlay {
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  /* height: 100%; */
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* z-index: 10; */
+}
+
+/* 3) O modal: a flutuar centrado por cima do overlay */
+.modal-content {
+  /* position: fixed; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  /* background-color: white; */
+  /* padding: 24px; */
+  /* width: 320px; */
+  /* border-radius: 8px; */
+  /* z-index: 20; */
+}`,
+				},
+			],
+		},
+	},
+];

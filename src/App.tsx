@@ -48,6 +48,10 @@ export default function App() {
 							path="/laboratorio/modulo-2"
 							element={<LaboratorioPage module={2} />}
 						/>
+						<Route
+							path="/laboratorio/modulo-3"
+							element={<LaboratorioPage module={3} />}
+						/>
 						<Route path="*" element={<Navigate to="/" />} />
 					</Routes>
 				</div>
