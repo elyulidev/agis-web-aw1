@@ -105,7 +105,7 @@ const Lecture12Es = () => (
 			</p>
 			<div className="mb-4">
 				<Preview label="Vista previa · una caja de 300×200">
-					<style>{`.d12-caja-ancho { width: 300px; height: 200px; background-color: lightblue; }`}</style>
+					<style>{`.d12-caja-ancho { width: 300px; height: 200px; background-color: lightblue; color: #1f2937; }`}</style>
 					<div className="d12-caja-ancho flex items-center justify-center text-sm">
 						Soy la caja del ejemplo: 300px de ancho, 200px de alto.
 					</div>
@@ -158,6 +158,7 @@ const Lecture12Es = () => (
   padding: 10px 20px;
   background-color: lemonchiffon;
   border: 1px solid #999;
+  color: #1f2937;
 }`}</style>
 					<div className="d12-caja-pad text-sm">
 						Mi contenido respira 10px arriba, 20px a los lados y 10px abajo.
@@ -252,6 +253,7 @@ const Lecture12Es = () => (
 				<Preview label="Vista previa · misma declaración width, dos totales distintos">
 					<style>{`.d12-cont, .d12-bor {
   width: 200px; padding: 20px; border: 4px solid #64748b; background-color: #e0f2fe; margin-bottom: 6px;
+  color: #1f2937;
 }
 .d12-cont { box-sizing: content-box; } /* 200 + 20 + 20 + 4 + 4 = 248px */
 .d12-bor { box-sizing: border-box; }  /* 200px en total, el navegador resta */`}</style>

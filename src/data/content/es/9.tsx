@@ -611,7 +611,7 @@ input:disabled {
 			<div className="mb-4">
 				<Preview label="Vista previa · lista cebra: primero, pares y último">
 					<style>{`.d9-zebra li:first-child { font-weight: bold; }
-.d9-zebra li:nth-child(even) { background-color: #f2f2f2; }
+.d9-zebra li:nth-child(even) { background-color: #f2f2f2; color: #1f2937; }
 .d9-zebra li:last-child { border-bottom: 3px solid #3498db; }`}</style>
 					<ol className="d9-zebra list-decimal list-inside space-y-1">
 						<li>Primer ítem (negrita)</li>

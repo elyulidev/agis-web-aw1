@@ -89,7 +89,7 @@ const Lecture14Pt = () => (
 				<Preview label="Pré-visualização · relative: deslocar-se, mas o seu buraco fica reservado">
 					<style>{`.d14-c {
   display: inline-block; background-color: #ddd6fe; border: 1px solid #8b5cf6;
-  padding: 4px 10px; font-size: 0.9rem;
+  padding: 4px 10px; font-size: 0.9rem; color: #1f2937;
 }
 .d14-c2 { position: relative; left: 30px; top: 10px; }`}</style>
 					<div>

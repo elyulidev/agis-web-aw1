@@ -31,7 +31,7 @@ const Preview = ({
 		<p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
 			{label}
 		</p>
-		<div className="text-gray-800 dark:text-gray-200">{children}</div>
+		<div className="text-gray-800 dark:text-black-200">{children}</div>
 	</div>
 );
 
@@ -105,7 +105,7 @@ const Lecture12Pt = () => (
 			</p>
 			<div className="mb-4">
 				<Preview label="Pré-visualização · uma caixa de 300×200">
-					<style>{`.d12-caixa-largura { width: 300px; height: 200px; background-color: lightblue; }`}</style>
+					<style>{`.d12-caixa-largura { width: 300px; height: 200px; background-color: lightblue; color: #1f2937; }`}</style>
 					<div className="d12-caixa-largura flex items-center justify-center text-sm">
 						Sou a caixa do exemplo: 300px de largura, 200px de altura.
 					</div>
@@ -159,6 +159,7 @@ const Lecture12Pt = () => (
   padding: 10px 20px;
   background-color: lemonchiffon;
   border: 1px solid #999;
+  color: #1f2937;
 }`}</style>
 					<div className="d12-caixa-pad text-sm">
 						O meu conteúdo respira 10px em cima, 20px nos lados e 10px em baixo.
@@ -253,6 +254,7 @@ const Lecture12Pt = () => (
 				<Preview label="Pré-visualização · mesma declaração width, dois totais diferentes">
 					<style>{`.d12-cont, .d12-bor {
   width: 200px; padding: 20px; border: 4px solid #64748b; background-color: #e0f2fe; margin-bottom: 6px;
+  color: #1f2937;
 }
 .d12-cont { box-sizing: content-box; } /* 200 + 20 + 20 + 4 + 4 = 248px */
 .d12-bor { box-sizing: border-box; }  /* 200px no total, o navegador subtrai */`}</style>

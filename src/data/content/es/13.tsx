@@ -56,7 +56,7 @@ const Lecture13Es = () => (
 			<div className="mb-4">
 				<Preview label="Vista previa · el contorno naranja marca el borde: todo el aire alrededor es margen">
 					<style>{`.d13-marcada { margin: 20px 15px 30px; outline: 1px dashed #f97316; }`}</style>
-					<div className="d13-marcada bg-blue-50 border border-blue-200 p-2 text-sm">
+					<div className="d13-marcada dark:text-gray-900 bg-blue-50 border border-blue-200 p-2 text-sm">
 						20px de espacio arriba, 15px a los lados, 30px abajo.
 					</div>
 				</Preview>
@@ -94,7 +94,7 @@ const Lecture13Es = () => (
 			</p>
 			<div className="mb-4">
 				<Preview label="Vista previa · el hueco es 30px, no 50px">
-					<style>{`.d13-sub { background-color: #dbeafe; border: 1px solid #93c5fd; padding: 8px; font-size: 0.9rem; }
+					<style>{`.d13-sub { background-color: #dbeafe; border: 1px solid #93c5fd; padding: 8px; font-size: 0.9rem; color: #1f2937; }
 .d13-sub-arriba { margin-bottom: 30px; }
 .d13-sub-abajo { margin-top: 20px; }`}</style>
 					<div>
@@ -143,6 +143,7 @@ const Lecture13Es = () => (
   background-color: #dcfce7;
   border: 1px solid #86efac;
   padding: 8px;
+  color: #1f2937;
   margin: 0 auto; /* auto a los lados reparte el espacio disponible */
 }`}</style>
 					<div className="d13-centrada text-sm">
@@ -269,6 +270,7 @@ const Lecture13Es = () => (
   padding: 6px 12px;
   background-color: gold;
   border-radius: 999px;
+  color: #1f2937;
 }
 .d13-btn {
   display: inline-block;
