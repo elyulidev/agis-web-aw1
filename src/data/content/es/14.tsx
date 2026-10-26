@@ -163,33 +163,31 @@ const Lecture14Es = () => (
 				para encabezados fijos, barras de cookies o botones de "volver arriba".
 			</p>
 			<div className="mb-4">
-				<Preview label="Vista previa · fixed: la barra se queda pegada en la mini-ventana, desplázate dentro">
-					<style>{`.d14-mview { height: 150px; overflow-y: auto; border: 1px solid #d1d5db; border-radius: 8px; transform: translateZ(0); }
-.d14-barra { position: fixed; top: 0; left: 0; width: 100%; background-color: white; color: #1f2937; padding: 6px 10px; font-size: 0.9rem; border-bottom: 1px solid #e5e7eb; }
-.d14-mview p { margin: 0; padding: 6px 10px; font-size: 0.9rem; border-bottom: 1px dashed #f3f4f6; }`}</style>
-					<div className="d14-mview">
-						<div className="d14-barra">Barra fija (viewport simulado)</div>
-						<p>Desplázame: la barra no se mueve…</p>
-						<p>…sigue clavada al tope…</p>
-						<p>…aunque el contenido scrollee.</p>
-						<p>Fila 4</p>
-						<p>Fila 5</p>
-						<p>Fila 6</p>
-						<p>Fila 7</p>
-						<p>Fila 8</p>
-					</div>
+				<Preview label="Vista previa · fixed: haz scroll en esta página y el botón no se mueve">
+					<style>{`.d14-boton-fijo { position: fixed; bottom: 16px; right: 16px; background-color: #2e86c1; color: white; padding: 10px 16px; border-radius: 999px; font-size: 0.9rem; text-decoration: none; z-index: 50; }
+.d14-boton-fijo:hover { background-color: #2471a3; }`}</style>
+					<a href="#arriba" className="d14-boton-fijo">
+						↑ Volver arriba
+					</a>
+					<p className="text-sm">
+						Mira la esquina inferior derecha: ese botón está clavado a la
+						ventana. Baja y sube esta página, el botón sigue exactamente donde
+						está.
+					</p>
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<header class="encabezado-fijo">
-  Menú fijo: la parte de la página que nunca escapa del viewport.
-</header>`}
-				css={`.encabezado-fijo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: white;
+				html={`<!-- El botón queda clavado en la esquina, aunque la página scrollee -->
+<a class="volver-arriba" href="#arriba">Volver arriba</a>`}
+				css={`.volver-arriba {
+  position: fixed; /* Respecto a la ventana, no al contenedor */
+  bottom: 16px;
+  right: 16px;
+  background-color: #2e86c1;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
 }`}
 			/>
 

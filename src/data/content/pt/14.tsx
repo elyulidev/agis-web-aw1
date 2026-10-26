@@ -163,33 +163,30 @@ const Lecture14Pt = () => (
 				cabeçalhos fixos, barras de cookies ou botões de "voltar ao topo".
 			</p>
 			<div className="mb-4">
-				<Preview label="Pré-visualização · fixed: a barra fica pregada na mini-janela, desloca lá dentro">
-					<style>{`.d14-mview { height: 150px; overflow-y: auto; border: 1px solid #d1d5db; border-radius: 8px; transform: translateZ(0); }
-.d14-barra { position: fixed; top: 0; left: 0; width: 100%; background-color: white; color: #1f2937; padding: 6px 10px; font-size: 0.9rem; border-bottom: 1px solid #e5e7eb; }
-.d14-mview p { margin: 0; padding: 6px 10px; font-size: 0.9rem; border-bottom: 1px dashed #f3f4f6; }`}</style>
-					<div className="d14-mview">
-						<div className="d14-barra">Barra fixa (viewport simulado)</div>
-						<p>Desloca-me: a barra não se mexe…</p>
-						<p>…segue pregada ao topo…</p>
-						<p>…mesmo com o conteúdo a deslizar.</p>
-						<p>Linha 4</p>
-						<p>Linha 5</p>
-						<p>Linha 6</p>
-						<p>Linha 7</p>
-						<p>Linha 8</p>
-					</div>
+				<Preview label="Pré-visualização · fixed: faz scroll nesta página e o botão não se move">
+					<style>{`.d14-boton-fijo { position: fixed; bottom: 16px; right: 16px; background-color: #2e86c1; color: white; padding: 10px 16px; border-radius: 999px; font-size: 0.9rem; text-decoration: none; z-index: 50; }
+.d14-boton-fijo:hover { background-color: #2471a3; }`}</style>
+					<a href="#topo" className="d14-boton-fijo">
+						↑ Voltar ao topo
+					</a>
+					<p className="text-sm">
+						Olha o canto inferior direito: esse botão está pregado à janela.
+						Desce e sobe esta página, o botão fica exatamente onde está.
+					</p>
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<header class="cabecalho-fixo">
-  Menu fixo: a parte da página que nunca escapa do viewport.
-</header>`}
-				css={`.cabecalho-fixo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: white;
+				html={`<!-- O botão fica pregado no canto, mesmo que a página deslize -->
+<a class="voltar-topo" href="#topo">Voltar ao topo</a>`}
+				css={`.voltar-topo {
+  position: fixed; /* Em relação à janela, não ao contêiner */
+  bottom: 16px;
+  right: 16px;
+  background-color: #2e86c1;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
 }`}
 			/>
 
