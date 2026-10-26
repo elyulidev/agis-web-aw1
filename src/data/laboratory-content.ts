@@ -2091,12 +2091,12 @@ p.primeiro {
 				pt: "Copia o código inicial abaixo para liga.html. A ligação a liga.css já está no head: cria esse ficheiro na mesma pasta.",
 			},
 			{
-				es: "Con .tabla definí max-height: 240px y overflow-y: auto: ese div pequeño es el que hace scroll por su cuenta.",
-				pt: "Com .tabela define max-height: 240px e overflow-y: auto: esse div pequeno é quem faz scroll por conta própria.",
+				es: "Con .tabla definí max-height: 160px y overflow-y: auto: ese div pequeño es el que hace scroll por su cuenta. En .tabla ul poné además list-style: none, para que las filas no arrastren las viñetas del navegador.",
+				pt: "Com .tabela define max-height: 160px e overflow-y: auto: esse div pequeno é quem faz scroll por conta própria. Em .tabela ul põe também list-style: none, para as linhas não arrastarem os marcadores do navegador.",
 			},
 			{
 				es: "Con .cabecera-tabla, además del fondo azul y el color blanco, definí position: sticky y top: 0, y probá el scroll dentro del div: la cabecera se queda pegada arriba.",
-				pt: "Com .cabecera-tabela, além do fundo azul e da cor branca, define position: sticky e top: 0, e experimenta o scroll dentro do div: o cabeçalho fica colado em cima.",
+				pt: "Com .cabecalho-tabela, além do fundo azul e da cor branca, define position: sticky e top: 0, e experimenta o scroll dentro do div: o cabeçalho fica colado em cima.",
 			},
 			{
 				es: "Con .numero (todas las posiciones) definí font-weight: bold. Para la insignia del primer puesto, con .pri definí position: relative y z-index: 2, y comprobá que se superpone a la fila sin salir del flujo.",
@@ -2167,7 +2167,7 @@ p.primeiro {
 
 /* 1) El contenedor que hace scroll */
 .tabla {
-  /* max-height: 240px; */
+  /* max-height: 160px; */
   /* overflow-y: auto; */
 }
 
@@ -2211,7 +2211,7 @@ p.primeiro {
 </head>
 <body>
   <div class="tabela">
-    <div class="cabecera-tabela">Classificação · Jornada 12</div>
+    <div class="cabecalho-tabela">Classificação · Jornada 12</div>
     <ul>
       <li><span class="numero pri">1</span> Atlético Norte</li>
       <li><span class="numero">2</span> Rio Verde</li>
@@ -2239,12 +2239,12 @@ p.primeiro {
 
 /* 1) O contentor que faz scroll */
 .tabela {
-  /* max-height: 240px; */
+  /* max-height: 160px; */
   /* overflow-y: auto; */
 }
 
 /* 2) O cabeçalho que se cola ao scroll */
-.cabecera-tabela {
+.cabecalho-tabela {
   /* background-color: #2980b9; */
   /* color: white; */
   /* padding: 8px 12px; */
