@@ -214,10 +214,14 @@ p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #
 				css={`body {
   margin: 0;
   padding-top: 2.5rem; /* deixa espaço para a barra não tampar a primeira linha */
+  background-color: #fff;
+  color: #1f2937;
+  font-family: system-ui, sans-serif;
 }
 p {
   margin: 0;
   padding: 8px 12px;
+  font-size: 0.9rem;
   border-bottom: 1px dashed #e5e7eb;
 }
 .cabecalho-fixo {
