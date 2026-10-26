@@ -203,7 +203,7 @@ const Lecture12Es = () => (
 					<style>{`.d12-tag-b { border: 2px solid #333; padding: 6px 10px; display: inline-block; margin: 2px; font-size: 0.85rem; }
 .d12-tag-d { border: 2px dashed #333; padding: 6px 10px; display: inline-block; margin: 2px; font-size: 0.85rem; }
 .d12-tag-dot { border: 2px dotted #333; padding: 6px 10px; display: inline-block; margin: 2px; font-size: 0.85rem; }`}</style>
-					<div>
+					<div className="flex flex-wrap gap-3 rounded-md bg-white p-3 text-gray-800 dark:bg-white dark:text-gray-800">
 						<span className="d12-tag-b">solid</span>
 						<span className="d12-tag-d">dashed</span>
 						<span className="d12-tag-dot">dotted</span>
