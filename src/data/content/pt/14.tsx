@@ -281,6 +281,10 @@ p {
   <div class="caixa-sticky">Caixa sticky (top: 10px)</div>
   <p class="fila">Linha 3: …a caixa já se colou na sua posição…</p>
   <p class="fila">Linha 4</p>
+  <p class="fila">Linha 5</p>
+  <p class="fila">Linha 6</p>
+  <p class="fila">Linha 7</p>
+  <p class="fila">Linha 8</p>
 </div>`}
 				css={`.lista-scroll {
   max-height: 150px;
