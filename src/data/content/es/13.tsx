@@ -57,7 +57,7 @@ const Lecture13Es = () => (
 				<Preview label="Vista previa · el contorno naranja marca el borde: todo el aire alrededor es margen">
 					<style>{`.d13-marcada { margin: 20px 15px 30px; outline: 1px dashed #f97316; }`}</style>
 					<div className="d13-marcada bg-blue-50 border border-blue-200 p-2 text-sm">
-						Mi margen: 20px arriba, 15px a los lados, 30px abajo.
+						20px de espacio arriba, 15px a los lados, 30px abajo.
 					</div>
 				</Preview>
 			</div>
@@ -68,6 +68,13 @@ const Lecture13Es = () => (
 				css={`.elemento {
   /* 20px de espacio arriba, 15px a los lados, 30px abajo */
   margin: 20px 15px 30px;
+}
+
+/* Scaffolding para que el ejemplo se vea: */
+.elemento {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 8px;
 }`}
 			/>
 		</section>
@@ -91,16 +98,32 @@ const Lecture13Es = () => (
 .d13-sub-arriba { margin-bottom: 30px; }
 .d13-sub-abajo { margin-top: 20px; }`}</style>
 					<div>
-						<div className="d13-sub d13-sub-arriba">Caja superior (30px)</div>
-						<div className="d13-sub d13-sub-abajo">Caja inferior (20px)</div>
+						<div className="d13-sub d13-sub-arriba">
+							Caja superior: margin-bottom: 30px
+						</div>
+						<div className="d13-sub d13-sub-abajo">
+							Caja inferior: margin-top: 20px
+						</div>
 					</div>
 				</Preview>
 			</div>
 			<CodeTabs
 				html={`<div class="caja-arriba">Caja superior: margin-bottom: 30px</div>
 <div class="caja-abajo">Caja inferior: margin-top: 20px</div>`}
-				css={`.caja-arriba { margin-bottom: 30px; }
+				css={`.caja-arriba {
+  margin-bottom: 30px;
+}
 .caja-abajo { margin-top: 20px; }
+
+/* Scaffolding para que el ejemplo se vea: */
+.caja-arriba,
+.caja-abajo {
+  background-color: #dbeafe;
+  border: 1px solid #93c5fd;
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
 /* El espacio entre las dos cajas será de 30px, no de 50px */`}
 			/>
 		</section>
@@ -123,7 +146,8 @@ const Lecture13Es = () => (
   margin: 0 auto; /* auto a los lados reparte el espacio disponible */
 }`}</style>
 					<div className="d13-centrada text-sm">
-						Centrado de verdad, sin hacks.
+						Tengo el ancho definido y los márgenes sobrantes me llevan al
+						centro.
 					</div>
 				</Preview>
 			</div>
@@ -138,11 +162,21 @@ const Lecture13Es = () => (
   margin-right: auto;
 }
 
+/* Scaffolding para que el ejemplo se vea: */
+.contenedor-centrado {
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 8px;
+}
+
 /* Atajo (shorthand) para lo mismo */
 .contenedor-centrado-atajo {
   width: 80%;
   max-width: 900px;
   margin: 0 auto; /* 0 para arriba/abajo, auto para izquierda/derecha */
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 8px;
 }`}
 			/>
 		</section>
@@ -230,28 +264,28 @@ const Lecture13Es = () => (
 				</ConceptCard>
 			</div>
 			<div className="mb-4">
-				<Preview label="Vista previa · block, inline e inline-block en el mismo rincón">
-					<style>{`.d13-bloque { display: block; background-color: #e0e7ff; padding: 4px 8px; margin: 4px 0; font-size: 0.9rem; }
-.d13-enlinea { display: inline; background-color: #fce7f3; padding: 0 4px; }
-.d13-tipoblo { display: inline-block; background-color: #fde68a; padding: 6px 12px; margin: 4px; }
-.d13-fantasma { display: none; background-color: #fca5a5; padding: 6px 12px; }`}</style>
-					<div>
-						<div className="d13-bloque">
-							Soy block: línea propia y ancho completo.
-						</div>
-						<p className="text-sm">
-							Texto normal y{" "}
-							<span className="d13-enlinea">yo soy inline, fluyo con él</span>{" "}
-							sin cortar la línea…
+				<Preview label="Vista previa · un inline aplasta su padding vertical; un inline-block no">
+					<style>{`.d13-categoria {
+  padding: 6px 12px;
+  background-color: gold;
+  border-radius: 999px;
+}
+.d13-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2e86c1;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}`}</style>
+					<div className="text-sm">
+						<p>
+							Un <span className="d13-categoria">tutorial</span> con padding
+							vertical: la etiqueta se pisa sobre las líneas vecinas.
 						</p>
-						<div className="mt-2">
-							<span className="d13-tipoblo">inline-block A</span>
-							<span className="d13-tipoblo">inline-block B</span>
-							<span className="d13-fantasma">display none: ni existo</span>
-							<span className="text-sm">
-								← ¡con visibility: hidden, ese mismo espacio seguiría ocupado!
-							</span>
-						</div>
+						<a href="#ler-mais" className="d13-btn">
+							Leer más
+						</a>
 					</div>
 				</Preview>
 			</div>

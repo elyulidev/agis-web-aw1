@@ -56,7 +56,7 @@ const Lecture13Pt = () => (
 				<Preview label="Pré-visualização · o contorno laranja marca a borda: todo o ar em redor é margem">
 					<style>{`.d13-marcada { margin: 20px 15px 30px; outline: 1px dashed #f97316; }`}</style>
 					<div className="d13-marcada bg-blue-50 border border-blue-200 p-2 text-sm">
-						A minha margem: 20px em cima, 15px nos lados, 30px em baixo.
+						20px de espaço em cima, 15px nos lados, 30px em baixo.
 					</div>
 				</Preview>
 			</div>
@@ -67,6 +67,13 @@ const Lecture13Pt = () => (
 				css={`.elemento {
   /* 20px de espaço em cima, 15px nos lados, 30px em baixo */
   margin: 20px 15px 30px;
+}
+
+/* Andaime para o exemplo se ver: */
+.elemento {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 8px;
 }`}
 			/>
 		</section>
@@ -90,16 +97,32 @@ const Lecture13Pt = () => (
 .d13-sub-cima { margin-bottom: 30px; }
 .d13-sub-baixo { margin-top: 20px; }`}</style>
 					<div>
-						<div className="d13-sub d13-sub-cima">Caixa superior (30px)</div>
-						<div className="d13-sub d13-sub-baixo">Caixa inferior (20px)</div>
+						<div className="d13-sub d13-sub-cima">
+							Caixa superior: margin-bottom: 30px
+						</div>
+						<div className="d13-sub d13-sub-baixo">
+							Caixa inferior: margin-top: 20px
+						</div>
 					</div>
 				</Preview>
 			</div>
 			<CodeTabs
 				html={`<div class="caixa-cima">Caixa superior: margin-bottom: 30px</div>
 <div class="caixa-baixo">Caixa inferior: margin-top: 20px</div>`}
-				css={`.caixa-cima { margin-bottom: 30px; }
+				css={`.caixa-cima {
+  margin-bottom: 30px;
+}
 .caixa-baixo { margin-top: 20px; }
+
+/* Andaime para o exemplo se ver: */
+.caixa-cima,
+.caixa-baixo {
+  background-color: #dbeafe;
+  border: 1px solid #93c5fd;
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
 /* O espaço entre as duas caixas será de 30px, não de 50px */`}
 			/>
 		</section>
@@ -124,7 +147,7 @@ const Lecture13Pt = () => (
   margin: 0 auto; /* auto nos lados reparte o espaço disponível */
 }`}</style>
 					<div className="d13-centrada text-sm">
-						Centrado de verdade, sem truques.
+						Tenho a largura definida e as margens excedentes levam-me ao centro.
 					</div>
 				</Preview>
 			</div>
@@ -139,11 +162,21 @@ const Lecture13Pt = () => (
   margin-right: auto;
 }
 
+/* Andaime para o exemplo se ver: */
+.contentor-centrado {
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 8px;
+}
+
 /* Atalho (shorthand) para o mesmo */
 .contentor-centrado-atalho {
   width: 80%;
   max-width: 900px;
   margin: 0 auto; /* 0 para cima/baixo, auto para esquerda/direita */
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 8px;
 }`}
 			/>
 		</section>
@@ -231,28 +264,28 @@ const Lecture13Pt = () => (
 				</ConceptCard>
 			</div>
 			<div className="mb-4">
-				<Preview label="Pré-visualização · block, inline e inline-block no mesmo canto">
-					<style>{`.d13-bloque { display: block; background-color: #e0e7ff; padding: 4px 8px; margin: 4px 0; font-size: 0.9rem; }
-.d13-enlinea { display: inline; background-color: #fce7f3; padding: 0 4px; }
-.d13-tipoblo { display: inline-block; background-color: #fde68a; padding: 6px 12px; margin: 4px; }
-.d13-fantasma { display: none; background-color: #fca5a5; padding: 6px 12px; }`}</style>
-					<div>
-						<div className="d13-bloque">
-							Sou block: linha própria e largura completa.
-						</div>
-						<p className="text-sm">
-							Texto normal e{" "}
-							<span className="d13-enlinea">sou inline, fluyo com ele</span> sem
-							cortar a linha…
+				<Preview label="Pré-visualização · um inline pisa o seu padding vertical; um inline-block não">
+					<style>{`.d13-categoria {
+  padding: 6px 12px;
+  background-color: gold;
+  border-radius: 999px;
+}
+.d13-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2e86c1;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}`}</style>
+					<div className="text-sm">
+						<p>
+							Um <span className="d13-categoria">tutorial</span> com padding
+							vertical: a etiqueta pisa-se sobre as linhas vizinhas.
 						</p>
-						<div className="mt-2">
-							<span className="d13-tipoblo">inline-block A</span>
-							<span className="d13-tipoblo">inline-block B</span>
-							<span className="d13-fantasma">display none: nem existo</span>
-							<span className="text-sm">
-								← com visibility: hidden, esse mesmo espaço continuaria ocupado!
-							</span>
-						</div>
+						<a href="#ler-mais" className="d13-btn">
+							Ler mais
+						</a>
 					</div>
 				</Preview>
 			</div>
