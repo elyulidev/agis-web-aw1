@@ -1907,8 +1907,8 @@ p.primeiro {
 				pt: "Copia o código inicial abaixo para revista.html. A ligação a revista.css já está no head: cria esse ficheiro na mesma pasta.",
 			},
 			{
-				es: "La .etiqueta es un <span>: dotale padding: 6px 12px, background-color: #fde68a, border-radius: 999px y font-size: 0.8rem, y mirá cómo el padding vertical pisa las líneas de texto: es inline de fábrica.",
-				pt: "A .etiqueta é um <span>: dá-lhe padding: 6px 12px, background-color: #fde68a, border-radius: 999px e font-size: 0.8rem, e vê como o padding vertical pisa as linhas de texto: é inline de fábrica.",
+				es: "La .etiqueta es un <span>: dotale padding: 6px 12px, background-color: #fde68a, border-radius: 999px y font-size: 0.8rem, y mirá cómo el padding vertical pisa las líneas vecinas (es sutil: subí el padding a 20px un momento, verás la pastillita tapar lo que hay arriba y abajo sin apartarlo, y después volvé a 6px): es inline de fábrica.",
+				pt: "A .etiqueta é um <span>: dá-lhe padding: 6px 12px, background-color: #fde68a, border-radius: 999px e font-size: 0.8rem, e vê como o padding vertical pisa as linhas vizinhas (é subtil: sobe o padding para 20px um momento — vais ver a pastilha tapar o que está por cima e por baixo sem afastá-lo — e depois volta aos 6px): é inline de fábrica.",
 			},
 			{
 				es: "A la misma .etiqueta agregale display: inline-block y recargá: ahora sí pide su lugar en el layout y el padding vertical se respeta.",
