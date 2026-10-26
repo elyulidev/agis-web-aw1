@@ -105,9 +105,18 @@ const Lecture14Es = () => (
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<div class="caja-relativa">Estoy en mi sitio, pero desplazada.</div>`}
-				css={`.caja-relativa {
-  position: relative;
+				html={`<!-- La caja 2 requiere display: inline-block para verse alineada -->
+<div class="caja">Caja 1: en su sitio</div>
+<div class="caja caja-desplazada">Caja 2: relative, left 30px, top 10px</div>`}
+				css={`.caja {
+  display: inline-block; /* scaffolding para que el ejemplo se vea */
+  background-color: #ddd6fe;
+  border: 1px solid #8b5cf6;
+  padding: 4px 10px;
+  font-size: 0.9rem;
+}
+.caja-desplazada {
+  position: relative; /* crea el contexto y permite moverla */
   left: 30px;
   top: 10px;
 }`}
@@ -197,6 +206,41 @@ const Lecture14Es = () => (
 					</div>
 				</Preview>
 			</div>
+			<CodeTabs
+				html={`<div class="lista-scroll">
+  <div class="cabecera">Cabecera sticky (top: 0)</div>
+  <ul>
+    <li>Desplázame con la rueda o la barra…</li>
+    <li>…la cabecera se queda pegada arriba…</li>
+    <li>Elemento 5</li>
+    <li>Elemento 6</li>
+  </ul>
+</div>`}
+				css={`.lista-scroll {
+  max-height: 150px;
+  overflow-y: auto; /* el scroll interno es el que gatilla el sticky */
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+.cabecera {
+  position: sticky; /* relative... hasta cruzar top: 0, entonces se comporta como fixed */
+  top: 0;
+  background-color: #2980b9;
+  color: white;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+.lista-scroll ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lista-scroll li {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border-top: 1px solid #f3f4f6;
+}`}
+			/>
 		</section>
 
 		<section>
@@ -229,16 +273,36 @@ const Lecture14Es = () => (
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<div class="overlay">Fondo oscuro que cubre todo</div>
-<div class="dialogo-modal">Ventana modal por encima del fondo</div>`}
-				css={`.dialogo-modal {
-  position: fixed;
-  z-index: 100; /* Estará por encima de casi todo */
+				html={`<div class="tablero">
+  <div class="ficha ficha-1">z-index: 1</div>
+  <div class="ficha ficha-2">z-index: 2</div>
+  <div class="ficha ficha-3">z-index: 3</div>
+</div>`}
+				css={`/* El contenedor también debe estar posicionado para que absolute anide bien */
+.tablero {
+  position: relative;
+  height: 170px;
 }
-.overlay {
-  position: fixed;
-  z-index: 99; /* Estará justo debajo del diálogo */
-}`}
+
+/* Sin position: absolute las fichas no se superponen y z-index no actúa */
+.ficha {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 12px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 6px;
+}
+
+.ficha-1 { z-index: 1; background-color: #34d399; top: 12px; left: 12px; }
+.ficha-2 { z-index: 2; background-color: #f59e0b; top: 40px; left: 52px; }
+.ficha-3 { z-index: 3; background-color: #ef4444; top: 68px; left: 92px; }
+`}
 			/>
 		</section>
 
@@ -265,9 +329,8 @@ const Lecture14Es = () => (
 }`}</style>
 					<p className="text-sm leading-relaxed">
 						<span className="d14-imagen">IMG</span>
-						La caja morada flota a la izquierda y el texto la rodea, línea a
-						línea, exactamente como un diario impreso: eso era el trabajo de
-						float en la web antigua.
+						El elemento flotante deja que el texto lo rodee, como una foto
+						impresa.
 					</p>
 				</Preview>
 			</div>
@@ -284,6 +347,8 @@ const Lecture14Es = () => (
   margin: 0 12px 8px 0;
   background-color: #7c3aed;
   color: white;
+  border-radius: 10px;
+  font-size: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -105,9 +105,18 @@ const Lecture14Pt = () => (
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<div class="caixa-relativa">Estou no meu lugar, mas deslocada.</div>`}
-				css={`.caixa-relativa {
-  position: relative;
+				html={`<!-- A caixa 2 precisa de display: inline-block para se ver alinhada -->
+<div class="caixa">Caixa 1: no seu lugar</div>
+<div class="caixa caixa-deslocada">Caixa 2: relative, left 30px, top 10px</div>`}
+				css={`.caixa {
+  display: inline-block; /* andaime para o exemplo se ver */
+  background-color: #ddd6fe;
+  border: 1px solid #8b5cf6;
+  padding: 4px 10px;
+  font-size: 0.9rem;
+}
+.caixa-deslocada {
+  position: relative; /* cria o contexto e permite movê-la */
   left: 30px;
   top: 10px;
 }`}
@@ -197,6 +206,76 @@ const Lecture14Pt = () => (
 					</div>
 				</Preview>
 			</div>
+			<CodeTabs
+				html={`<div class="lista-scroll">
+  <div class="cabecalho">Cabeçalho sticky (top: 0)</div>
+  <ul>
+    <li>Desloca-me com a roda ou a barra…</li>
+    <li>…o cabeçalho fica colado em cima…</li>
+    <li>Elemento 5</li>
+    <li>Elemento 6</li>
+  </ul>
+</div>`}
+				css={`.lista-scroll {
+  max-height: 150px;
+  overflow-y: auto; /* o scroll interno é o que detona o sticky */
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+.cabecalho {
+  position: sticky; /* relative... até cruzar top: 0, então comporta-se como fixed */
+  top: 0;
+  background-color: #2980b9;
+  color: white;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+.lista-scroll ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lista-scroll li {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border-top: 1px solid #f3f4f6;
+}`}
+			/>
+			<CodeTabs
+				html={`<div class="lista-scroll">
+  <div class="cabecalho">Cabeçalho sticky (top: 0)</div>
+  <ul>
+    <li>Desloca-me com a roda ou a barra…</li>
+    <li>…o cabeçalho fica colado em cima…</li>
+    <li>Elemento 5</li>
+    <li>Elemento 6</li>
+  </ul>
+</div>`}
+				css={`.lista-scroll {
+  max-height: 150px;
+  overflow-y: auto; /* o scroll interno é o que detona o sticky */
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+.cabecalho {
+  position: sticky; /* relative... até cruzar top: 0, então comporta-se como fixed */
+  top: 0;
+  background-color: #2980b9;
+  color: white;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+.lista-scroll ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lista-scroll li {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border-top: 1px solid #f3f4f6;
+}`}
+			/>
 		</section>
 
 		<section>
@@ -229,16 +308,36 @@ const Lecture14Pt = () => (
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<div class="overlay">Fundo escuro que cobre tudo</div>
-<div class="dialogo-modal">Janela modal por cima do fundo</div>`}
-				css={`.dialogo-modal {
-  position: fixed;
-  z-index: 100; /* Estará por cima de quase tudo */
+				html={`<div class="tabuleiro">
+  <div class="peca peca-1">z-index: 1</div>
+  <div class="peca peca-2">z-index: 2</div>
+  <div class="peca peca-3">z-index: 3</div>
+</div>`}
+				css={`/* O contentor também precisa de estar posicionado para o absolute aninhar bem */
+.tabuleiro {
+  position: relative;
+  height: 170px;
 }
-.overlay {
-  position: fixed;
-  z-index: 99; /* Estará logo abaixo do diálogo */
-}`}
+
+/* Sem position: absolute as peças não se sobrepõem e o z-index não atua */
+.peca {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 12px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 6px;
+}
+
+.peca-1 { z-index: 1; background-color: #34d399; top: 12px; left: 12px; }
+.peca-2 { z-index: 2; background-color: #f59e0b; top: 40px; left: 52px; }
+.peca-3 { z-index: 3; background-color: #ef4444; top: 68px; left: 92px; }
+`}
 			/>
 		</section>
 
@@ -264,9 +363,8 @@ const Lecture14Pt = () => (
   font-size: 0.75rem; margin: 0 12px 8px 0;
 }`}</style>
 					<p className="text-sm leading-relaxed">
-						<span className="d14-imagem">IMG</span>A caixa roxa flutua à
-						esquerda e o texto rodeia-a, linha a linha, exatamente como um
-						jornal impresso: esse era o trabalho do float na web antiga.
+						<span className="d14-imagem">IMG</span>O elemento flutuante deixa o
+						texto rodeá-lo, como uma foto impressa.
 					</p>
 				</Preview>
 			</div>
@@ -283,6 +381,8 @@ const Lecture14Pt = () => (
   margin: 0 12px 8px 0;
   background-color: #7c3aed;
   color: white;
+  border-radius: 10px;
+  font-size: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
