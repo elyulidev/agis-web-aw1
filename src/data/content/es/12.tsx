@@ -107,7 +107,7 @@ const Lecture12Es = () => (
 				<Preview label="Vista previa · una caja de 300×200">
 					<style>{`.d12-caja-ancho { width: 300px; height: 200px; background-color: lightblue; }`}</style>
 					<div className="d12-caja-ancho flex items-center justify-center text-sm">
-						300px × 200px, color exacto del ejemplo
+						Soy la caja del ejemplo: 300px de ancho, 200px de alto.
 					</div>
 				</Preview>
 			</div>
@@ -166,7 +166,7 @@ const Lecture12Es = () => (
 			</div>
 			<CodeTabs
 				html={`<div class="caja">
-  Mi contenido respira gracias al padding.
+  Mi contenido respira 10px arriba, 20px a los lados y 10px abajo.
 </div>`}
 				css={`/* Lado por lado */
 .caja {
@@ -178,11 +178,15 @@ const Lecture12Es = () => (
 
 /* Atajo (shorthand) - en el sentido de las agujas del reloj: Arriba, Derecha, Abajo, Izquierda */
 .caja {
-  /* 1 valor: todos los lados */
-  padding: 20px;
-
+  /* 1 valor: padding: 20px; aplicaría a los cuatro lados (coméntalo para probarlo) */
   /* 2 valores: (arriba/abajo) (izquierda/derecha) */
   padding: 10px 20px;
+}
+
+/* Scaffolding para que el ejemplo se vea: */
+.caja {
+  background-color: lemonchiffon;
+  border: 1px solid #999;
 }`}
 			/>
 		</section>
@@ -206,20 +210,23 @@ const Lecture12Es = () => (
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<div class="caja">
-  Mi borde la envuelve: 2px, trazo sólido, color #333.
-</div>`}
-				css={`/* Propiedades individuales */
-.caja {
-  border-width: 2px;
-  border-style: solid; /* Otros: dashed, dotted, double, etc. */
-  border-color: #333;
+				html={`<span class="caja-solid">solid</span>
+<span class="caja-dashed">dashed</span>
+<span class="caja-dotted">dotted</span>`}
+				css={`/* Atajo (shorthand): grosor, estilo y color en una línea */
+.caja-solid,
+.caja-dashed,
+.caja-dotted {
+  border: 2px solid #333;
+  padding: 6px 10px;
+  display: inline-block;
+  margin: 2px;
+  font-size: 0.85rem;
 }
 
-/* Atajo (shorthand) - el orden no importa */
-.caja {
-  border: 2px solid #333;
-}`}
+/* Solo cambia el estilo; el grosor y el color quedan */
+.caja-dashed { border-style: dashed; }
+.caja-dotted { border-style: dotted; } /* Otros: double, groove, ridge, etc. */`}
 			/>
 		</section>
 

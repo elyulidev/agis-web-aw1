@@ -107,7 +107,7 @@ const Lecture12Pt = () => (
 				<Preview label="Pré-visualização · uma caixa de 300×200">
 					<style>{`.d12-caixa-largura { width: 300px; height: 200px; background-color: lightblue; }`}</style>
 					<div className="d12-caixa-largura flex items-center justify-center text-sm">
-						300px × 200px, a cor exata do exemplo
+						Sou a caixa do exemplo: 300px de largura, 200px de altura.
 					</div>
 				</Preview>
 			</div>
@@ -167,7 +167,7 @@ const Lecture12Pt = () => (
 			</div>
 			<CodeTabs
 				html={`<div class="caixa">
-  O meu conteúdo respira graças ao padding.
+  O meu conteúdo respira 10px em cima, 20px nos lados e 10px em baixo.
 </div>`}
 				css={`/* Lado a lado */
 .caixa {
@@ -179,11 +179,15 @@ const Lecture12Pt = () => (
 
 /* Atalho (shorthand) - no sentido dos ponteiros do relógio: Cima, Direita, Baixo, Esquerda */
 .caixa {
-  /* 1 valor: todos os lados */
-  padding: 20px;
-
+  /* 1 valor: padding: 20px; aplicaria aos quatro lados (descomenta para o testar) */
   /* 2 valores: (cima/baixo) (esquerda/direita) */
   padding: 10px 20px;
+}
+
+/* Andaime para o exemplo se ver: */
+.caixa {
+  background-color: lemonchiffon;
+  border: 1px solid #999;
 }`}
 			/>
 		</section>
@@ -207,20 +211,23 @@ const Lecture12Pt = () => (
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<div class="caixa">
-  A minha borda envolve-me: 2px, traço sólido, cor #333.
-</div>`}
-				css={`/* Propriedades individuais */
-.caixa {
-  border-width: 2px;
-  border-style: solid; /* Outros: dashed, dotted, double, etc. */
-  border-color: #333;
+				html={`<span class="caixa-solido">solid</span>
+<span class="caixa-tracado">dashed</span>
+<span class="caixa-pontilhado">dotted</span>`}
+				css={`/* Atalho (shorthand): espessura, estilo e cor numa linha */
+.caixa-solido,
+.caixa-tracado,
+.caixa-pontilhado {
+  border: 2px solid #333;
+  padding: 6px 10px;
+  display: inline-block;
+  margin: 2px;
+  font-size: 0.85rem;
 }
 
-/* Atalho (shorthand) - a ordem não importa */
-.caixa {
-  border: 2px solid #333;
-}`}
+/* Só muda o estilo; a espessura e a cor ficam */
+.caixa-tracado { border-style: dashed; }
+.caixa-pontilhado { border-style: dotted; } /* Outros: double, groove, ridge, etc. */`}
 			/>
 		</section>
 
