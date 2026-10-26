@@ -2307,8 +2307,8 @@ p.primeiro {
 				pt: "O overlay: com .overlay define position: fixed, top: 0, left: 0, width: 100%, height: 100%, background-color: rgba(0, 0, 0, 0.5) e z-index: 10.",
 			},
 			{
-				es: "El contenido: con .modal-content definí position: fixed, top: 50%, left: 50% y transform: translate(-50%, -50%) para centrarlo en el viewport, más background-color: white, padding: 24px, width: 320px, border-radius: 8px y z-index: 20.",
-				pt: "O conteúdo: com .modal-content define position: fixed, top: 50%, left: 50% e transform: translate(-50%, -50%) para o centrar no viewport, mais background-color: white, padding: 24px, width: 320px, border-radius: 8px e z-index: 20.",
+				es: "El contenido: con .modal-content definí position: fixed, top: 50% y left: 50% — con eso la esquina del modal cae en el medio de la pantalla — y transform: translate(-50%, -50%), que lo empuja hacia atrás la mitad de su propio ancho y su propia altura: la esquina pasa a ser su centro. Es la receta clásica del centrado absoluto; el transform ganará su sección propia más adelante. A todo eso sumale background-color: white, padding: 24px, width: 320px, border-radius: 8px y z-index: 20.",
+				pt: "O conteúdo: com .modal-content define position: fixed, top: 50% e left: 50% — com isso o canto do modal cai no meio do ecrã — e transform: translate(-50%, -50%), que o empurra de volta metade da sua própria largura e da sua própria altura: o canto passa a ser o seu centro. É a receita clássica do centrado absoluto; o transform ganará a sua secção própria mais adiante. A tudo isso soma background-color: white, padding: 24px, width: 320px, border-radius: 8px e z-index: 20.",
 			},
 			{
 				es: "Prueba de jerarquía: cambiá el z-index del modal a 5 (debajo del overlay 10) y mirá cómo el modal queda tapado. Volvé a ponerlo en 20: el orden del eje Z lo decidís vos.",
