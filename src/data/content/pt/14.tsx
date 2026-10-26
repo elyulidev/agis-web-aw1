@@ -162,11 +162,14 @@ const Lecture14Pt = () => (
   display: inline-block;
 }
 .badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: red;
-  color: white;
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	background-color: red;
+	color: white;
+	padding: 2px 7px;
+	border-radius: 999px;
+	font-size: 0.8rem;
 }`}
 			/>
 
@@ -180,39 +183,39 @@ const Lecture14Pt = () => (
 				cabeçalhos fixos, barras de cookies ou botões de "voltar ao topo".
 			</p>
 			<div className="mb-4">
-				<Preview label="Pré-visualização · fixed: faz scroll DENTRO da janelinha e o botão não se move">
+				<Preview label="Pré-visualização · fixed: faz scroll DENTRO da janelinha e o cabeçalho não se move">
 					<iframe
 						title="Demo de position fixed"
 						className="h-[170px] w-full rounded-lg border border-gray-300 bg-white"
 						srcDoc={`<!doctype html><html><head><style>
-body { margin: 0; background-color: #fff; color: #1f2937; font-family: system-ui, sans-serif; padding-bottom: 4rem; }
+body { margin: 0; padding-top: 2.5rem; background-color: #fff; color: #1f2937; font-family: system-ui, sans-serif; }
 p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #e5e7eb; }
-.voltar-topo { position: fixed; bottom: 16px; right: 16px; background-color: #2e86c1; color: white; padding: 10px 16px; border-radius: 999px; text-decoration: none; font-size: 0.9rem; }
+.cabecalho-fixo { position: fixed; top: 0; left: 0; width: 100%; background-color: #2e86c1; color: white; padding: 8px 12px; font-size: 0.9rem; }
 </style></head><body>
-<p id="topo">Linha 1: desliza dentro desta janelinha…</p>
+<header class="cabecalho-fixo">Menu fixo (fixed, top: 0)</header>
+<p>Linha 1: deslize dentro desta janelinha…</p>
 <p>Linha 2: o conteúdo se move…</p>
-<p>Linha 3: …mas o botão não…</p>
+<p>Linha 3: …mas o cabeçalho não…</p>
 <p>Linha 4</p>
 <p>Linha 5</p>
 <p>Linha 6</p>
 <p>Linha 7</p>
-<a class="voltar-topo" href="#topo">↑ Voltar ao topo</a>
 </body></html>`}
 					/>
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<!-- O botão fica pregado no canto, mesmo que a página deslize -->
-<a class="voltar-topo" href="#topo">Voltar ao topo</a>`}
-				css={`.voltar-topo {
+				html={`<!-- O cabeçalho fica pregado em cima, mesmo que a página deslize -->
+<header class="cabecalho-fixo">Menu fixo (fixed, top: 0)</header>`}
+				css={`.cabecalho-fixo {
   position: fixed; /* Em relação à janela, não ao contêiner */
-  bottom: 16px;
-  right: 16px;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: #2e86c1;
   color: white;
-  padding: 10px 16px;
-  border-radius: 999px;
-  text-decoration: none;
+  padding: 8px 12px;
+  font-size: 0.9rem;
 }`}
 			/>
 
@@ -227,95 +230,52 @@ p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #
 				que devem "colar-se" no topo ao fazer scroll.
 			</p>
 			<div className="mb-4">
-				<Preview label="Pré-visualização · sticky: desloca a lista interna e vê o cabeçalho">
+				<Preview label="Pré-visualização · sticky: faz scroll e vê a caixa colar-se">
 					<style>{`.d14-scroll { max-height: 150px; overflow-y: auto; border: 1px solid #d1d5db; border-radius: 8px; }
-.d14-cabecalho { position: sticky; top: 0; background-color: #2980b9; color: white; padding: 6px 10px; font-size: 0.9rem; }
-.d14-scroll li { padding: 6px 10px; font-size: 0.9rem; border-top: 1px solid #f3f4f6; }
-.d14-scroll ul { margin: 0; padding: 0; list-style: none; }`}</style>
+.d14-caixa-sticky { position: sticky; top: 10px; background-color: #8e44ad; color: white; margin: 4px 8px; padding: 6px 10px; border-radius: 8px; font-size: 0.9rem; }
+.d14-fila { margin: 0; padding: 8px 10px; font-size: 0.9rem; border-bottom: 1px dashed #f3f4f6; }`}</style>
 					<div className="d14-scroll">
-						<div className="d14-cabecalho">Cabeçalho sticky (top: 0)</div>
-						<ul>
-							<li>Desloca-me com a roda ou a barra…</li>
-							<li>…o cabeçalho fica colado em cima…</li>
-							<li>…como se fosse fixed…</li>
-							<li>…mas sem sair nunca do meu contentor.</li>
-							<li>Elemento 5</li>
-							<li>Elemento 6</li>
-							<li>Elemento 7</li>
-							<li>Elemento 8</li>
-						</ul>
+						<p className="d14-fila">Linha 1: continua a descer…</p>
+						<p className="d14-fila">
+							Linha 2: a caixa ainda viaja com o conteúdo…
+						</p>
+						<div className="d14-caixa-sticky">Caixa sticky (top: 10px)</div>
+						<p className="d14-fila">
+							Linha 3: …a caixa já se colou na sua posição…
+						</p>
+						<p className="d14-fila">Linha 4</p>
+						<p className="d14-fila">Linha 5</p>
+						<p className="d14-fila">Linha 6</p>
+						<p className="d14-fila">Linha 7</p>
+						<p className="d14-fila">Linha 8</p>
 					</div>
 				</Preview>
 			</div>
 			<CodeTabs
 				html={`<div class="lista-scroll">
-  <div class="cabecalho">Cabeçalho sticky (top: 0)</div>
-  <ul>
-    <li>Desloca-me com a roda ou a barra…</li>
-    <li>…o cabeçalho fica colado em cima…</li>
-    <li>Elemento 5</li>
-    <li>Elemento 6</li>
-  </ul>
+  <p class="fila">Linha 1: continua a descer…</p>
+  <p class="fila">Linha 2: a caixa ainda viaja com o conteúdo…</p>
+  <div class="caixa-sticky">Caixa sticky (top: 10px)</div>
+  <p class="fila">Linha 3: …a caixa já se colou na sua posição…</p>
+  <p class="fila">Linha 4</p>
 </div>`}
 				css={`.lista-scroll {
   max-height: 150px;
-  overflow-y: auto; /* o scroll interno é o que detona o sticky */
+  overflow-y: auto; /* o scroll interno detona o sticky */
   border: 1px solid #d1d5db;
   border-radius: 8px;
 }
-.cabecalho {
-  position: sticky; /* relative... até cruzar top: 0, então comporta-se como fixed */
-  top: 0;
-  background-color: #2980b9;
+.caixa-sticky {
+  position: sticky; /* relative até cruzar top: 10px, então colar-se */
+  top: 10px;
+  background-color: #8e44ad;
   color: white;
+  margin: 4px 8px;
   padding: 6px 10px;
-  font-size: 0.9rem;
-}
-.lista-scroll ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.lista-scroll li {
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  border-top: 1px solid #f3f4f6;
-}`}
-			/>
-			<CodeTabs
-				html={`<div class="lista-scroll">
-  <div class="cabecalho">Cabeçalho sticky (top: 0)</div>
-  <ul>
-    <li>Desloca-me com a roda ou a barra…</li>
-    <li>…o cabeçalho fica colado em cima…</li>
-    <li>Elemento 5</li>
-    <li>Elemento 6</li>
-  </ul>
-</div>`}
-				css={`.lista-scroll {
-  max-height: 150px;
-  overflow-y: auto; /* o scroll interno é o que detona o sticky */
-  border: 1px solid #d1d5db;
   border-radius: 8px;
-}
-.cabecalho {
-  position: sticky; /* relative... até cruzar top: 0, então comporta-se como fixed */
-  top: 0;
-  background-color: #2980b9;
-  color: white;
-  padding: 6px 10px;
   font-size: 0.9rem;
 }
-.lista-scroll ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.lista-scroll li {
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  border-top: 1px solid #f3f4f6;
-}`}
+.fila { margin: 0; padding: 8px 10px; font-size: 0.9rem; border-bottom: 1px dashed #f3f4f6; }`}
 			/>
 		</section>
 

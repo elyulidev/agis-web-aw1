@@ -163,10 +163,13 @@ const Lecture14Es = () => (
 }
 .badge {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: red;
-  color: white;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-size: 0.8rem;
 }`}
 			/>
 
@@ -180,39 +183,39 @@ const Lecture14Es = () => (
 				para encabezados fijos, barras de cookies o botones de "volver arriba".
 			</p>
 			<div className="mb-4">
-				<Preview label="Vista previa · fixed: haz scroll DENTRO de la ventanita y el botón no se mueve">
+				<Preview label="Vista previa · fixed: haz scroll DENTRO de la ventanita y el encabezado no se mueve">
 					<iframe
 						title="Demo de position fixed"
 						className="h-[170px] w-full rounded-lg border border-gray-300 bg-white"
 						srcDoc={`<!doctype html><html><head><style>
-body { margin: 0; background-color: #fff; color: #1f2937; font-family: system-ui, sans-serif; padding-bottom: 4rem; }
+body { margin: 0; padding-top: 2.5rem; background-color: #fff; color: #1f2937; font-family: system-ui, sans-serif; }
 p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #e5e7eb; }
-.volver-arriba { position: fixed; bottom: 16px; right: 16px; background-color: #2e86c1; color: white; padding: 10px 16px; border-radius: 999px; text-decoration: none; font-size: 0.9rem; }
+.encabezado-fijo { position: fixed; top: 0; left: 0; width: 100%; background-color: #2e86c1; color: white; padding: 8px 12px; font-size: 0.9rem; }
 </style></head><body>
-<p id="arriba">Fila 1: haz scroll dentro de esta ventanita…</p>
+<header class="encabezado-fijo">Menú fijo (fixed, top: 0)</header>
+<p>Fila 1: haz scroll dentro de esta ventanita…</p>
 <p>Fila 2: el contenido se mueve…</p>
-<p>Fila 3: …pero el botón no…</p>
+<p>Fila 3: …pero el encabezado no…</p>
 <p>Fila 4</p>
 <p>Fila 5</p>
 <p>Fila 6</p>
 <p>Fila 7</p>
-<a class="volver-arriba" href="#arriba">↑ Volver arriba</a>
 </body></html>`}
 					/>
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<!-- El botón queda clavado en la esquina, aunque la página scrollee -->
-<a class="volver-arriba" href="#arriba">Volver arriba</a>`}
-				css={`.volver-arriba {
+				html={`<!-- El encabezado queda clavado arriba, aunque la página scrollee -->
+<header class="encabezado-fijo">Menú fijo (fixed, top: 0)</header>`}
+				css={`.encabezado-fijo {
   position: fixed; /* Respecto a la ventana, no al contenedor */
-  bottom: 16px;
-  right: 16px;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: #2e86c1;
   color: white;
-  padding: 10px 16px;
-  border-radius: 999px;
-  text-decoration: none;
+  padding: 8px 12px;
+  font-size: 0.9rem;
 }`}
 			/>
 
@@ -227,60 +230,52 @@ p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #
 				que deben "pegarse" en la parte superior al hacer scroll.
 			</p>
 			<div className="mb-4">
-				<Preview label="Vista previa · sticky: desplaza la lista interna y mira la cabecera">
+				<Preview label="Vista previa · sticky: haz scroll y mira cómo la caja se pega">
 					<style>{`.d14-scroll { max-height: 150px; overflow-y: auto; border: 1px solid #d1d5db; border-radius: 8px; }
-.d14-cabecera { position: sticky; top: 0; background-color: #2980b9; color: white; padding: 6px 10px; font-size: 0.9rem; }
-.d14-scroll li { padding: 6px 10px; font-size: 0.9rem; border-top: 1px solid #f3f4f6; }
-.d14-scroll ul { margin: 0; padding: 0; list-style: none; }`}</style>
+.d14-caja-sticky { position: sticky; top: 10px; background-color: #8e44ad; color: white; margin: 4px 8px; padding: 6px 10px; border-radius: 8px; font-size: 0.9rem; }
+.d14-fila { margin: 0; padding: 8px 10px; font-size: 0.9rem; border-bottom: 1px dashed #f3f4f6; }`}</style>
 					<div className="d14-scroll">
-						<div className="d14-cabecera">Cabecera sticky (top: 0)</div>
-						<ul>
-							<li>Desplázame con la rueda o la barra…</li>
-							<li>…la cabecera se queda pegada arriba…</li>
-							<li>…como si fuera fixed…</li>
-							<li>…pero sin salir jamás de mi contenedor.</li>
-							<li>Elemento 5</li>
-							<li>Elemento 6</li>
-							<li>Elemento 7</li>
-							<li>Elemento 8</li>
-						</ul>
+						<p className="d14-fila">Fila 1: sigue bajando…</p>
+						<p className="d14-fila">
+							Fila 2: la caja todavía viaja con el contenido…
+						</p>
+						<div className="d14-caja-sticky">Caja sticky (top: 10px)</div>
+						<p className="d14-fila">
+							Fila 3: …la caja ya se pegó en su posición…
+						</p>
+						<p className="d14-fila">Fila 4</p>
+						<p className="d14-fila">Fila 5</p>
+						<p className="d14-fila">Fila 6</p>
+						<p className="d14-fila">Fila 7</p>
+						<p className="d14-fila">Fila 8</p>
 					</div>
 				</Preview>
 			</div>
 			<CodeTabs
 				html={`<div class="lista-scroll">
-  <div class="cabecera">Cabecera sticky (top: 0)</div>
-  <ul>
-    <li>Desplázame con la rueda o la barra…</li>
-    <li>…la cabecera se queda pegada arriba…</li>
-    <li>Elemento 5</li>
-    <li>Elemento 6</li>
-  </ul>
+  <p class="fila">Fila 1: sigue bajando…</p>
+  <p class="fila">Fila 2: la caja todavía viaja con el contenido…</p>
+  <div class="caja-sticky">Caja sticky (top: 10px)</div>
+  <p class="fila">Fila 3: …la caja ya se pegó en su posición…</p>
+  <p class="fila">Fila 4</p>
 </div>`}
 				css={`.lista-scroll {
   max-height: 150px;
-  overflow-y: auto; /* el scroll interno es el que gatilla el sticky */
+  overflow-y: auto; /* el scroll interno gatilla el sticky */
   border: 1px solid #d1d5db;
   border-radius: 8px;
 }
-.cabecera {
-  position: sticky; /* relative... hasta cruzar top: 0, entonces se comporta como fixed */
-  top: 0;
-  background-color: #2980b9;
+.caja-sticky {
+  position: sticky; /* relative hasta cruzar top: 10px, entonces se pega */
+  top: 10px;
+  background-color: #8e44ad;
   color: white;
+  margin: 4px 8px;
   padding: 6px 10px;
+  border-radius: 8px;
   font-size: 0.9rem;
 }
-.lista-scroll ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.lista-scroll li {
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  border-top: 1px solid #f3f4f6;
-}`}
+.fila { margin: 0; padding: 8px 10px; font-size: 0.9rem; border-bottom: 1px dashed #f3f4f6; }`}
 			/>
 		</section>
 
