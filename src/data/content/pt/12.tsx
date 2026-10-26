@@ -1,6 +1,5 @@
 import { Box, Sparkles, Square } from "lucide-react";
 import {
-	Callout,
 	ConceptCard,
 	SectionTitle,
 	Step,
@@ -233,77 +232,7 @@ const Lecture12Pt = () => (
 		</section>
 
 		<section>
-			<SectionTitle index={5}>O Dilema do Tamanho: `box-sizing`</SectionTitle>
-			<p className="mb-4">
-				Por defeito (<Code>box-sizing: content-box;</Code>), quando define um{" "}
-				<Code>width: 300px;</Code>, essa é a largura do{" "}
-				<strong>conteúdo</strong>. O padding e a borda são adicionados a essa
-				largura, tornando o tamanho total da caixa maior que 300px. Isto é muito
-				pouco intuitivo.
-			</p>
-			<p className="mb-4">
-				A solução moderna é{" "}
-				<strong>
-					<Code>box-sizing: border-box;</Code>
-				</strong>
-				. Com este valor, o <Code>width</Code> que define é a largura total da
-				caixa, incluindo padding e borda. O navegador ajusta o espaço do
-				conteúdo automaticamente.
-			</p>
-			<div className="mb-4">
-				<Preview label="Pré-visualização · mesma declaração width, dois totais diferentes">
-					<style>{`.d12-cont, .d12-bor {
-  width: 200px; padding: 20px; border: 4px solid #64748b; background-color: #e0f2fe; margin-bottom: 6px;
-  color: #1f2937;
-}
-.d12-cont { box-sizing: content-box; } /* 200 + 20 + 20 + 4 + 4 = 248px */
-.d12-bor { box-sizing: border-box; }  /* 200px no total, o navegador subtrai */`}</style>
-					<div>
-						<div className="d12-cont text-sm">content-box: total 248px</div>
-						<div className="d12-bor text-sm">border-box: total 200px</div>
-					</div>
-				</Preview>
-			</div>
-			<CodeTabs
-				html={`<div class="duas-caixas">
-  <div class="conteudo">content-box: total 248px</div>
-  <div class="bordada">border-box: total 200px</div>
-</div>`}
-				css={`/* As duas têm a MESMA declaração width... */
-.conteudo, .bordada {
-  width: 200px;
-  padding: 20px;
-  border: 4px solid #64748b;
-  background-color: #e0f2fe;
-}
-
-/* ...mas o modo do tamanho muda o total */
-.conteudo {
-  box-sizing: content-box; /* 200 + 40 + 8 = 248px */
-}
-
-.bordada {
-  box-sizing: border-box; /* 200px, o navegador subtrai por dentro */
-}`}
-			/>
-			<Callout variant="info" title="Prática Recomendada Universal">
-				Aplique <Code>border-box</Code> a todos os elementos no início do seu
-				CSS. Isto torna o design de layouts incrivelmente mais fácil e
-				previsível.
-			</Callout>
-			<CodeTabs
-				css={`html {
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit; /* Todos os elementos herdam de html */
-}`}
-			/>
-		</section>
-
-		<section>
-			<SectionTitle index={6}>
+			<SectionTitle index={5}>
 				📝 Tarefa: Construa o seu Cartão de Perfil
 			</SectionTitle>
 			<p className="mb-4">
