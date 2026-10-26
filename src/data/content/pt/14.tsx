@@ -134,6 +134,23 @@ const Lecture14Pt = () => (
 				cuja posição não seja <Code>static</Code>). Se não encontrar nenhum,
 				posiciona-se em relação ao <Code>&lt;body&gt;</Code>.
 			</p>
+			<div className="mb-4">
+				<Preview label="Pré-visualização · absolute: o badge flutua sobre o canto do botão">
+					<style>{`.d14-padre { position: relative; display: inline-block; }
+.d14-boton-msj { padding: 6px 12px; font-size: 0.9rem; border-radius: 8px; border: 1px solid #9ca3af; background-color: #f9fafb; color: #1f2937; }
+.d14-badge { position: absolute; top: -10px; right: -10px; background-color: red; color: white; padding: 2px 7px; border-radius: 999px; font-size: 0.8rem; }`}</style>
+					<div className="d14-padre">
+						<button type="button" className="d14-boton-msj">
+							Nova mensagem
+						</button>
+						<span className="d14-badge">3</span>
+					</div>
+					<p className="mt-2 text-sm">
+						O contador vermelho está fora do fluxo: flutua sobre o canto do
+						botão sem empurrar nada.
+					</p>
+				</Preview>
+			</div>
 			<CodeTabs
 				html={`<!-- O pai fixa o contexto; o badge flutua sobre um canto -->
 <div class="contentor-pai">
@@ -163,16 +180,25 @@ const Lecture14Pt = () => (
 				cabeçalhos fixos, barras de cookies ou botões de "voltar ao topo".
 			</p>
 			<div className="mb-4">
-				<Preview label="Pré-visualização · fixed: faz scroll nesta página e o botão não se move">
-					<style>{`.d14-boton-fijo { position: fixed; bottom: 16px; right: 16px; background-color: #2e86c1; color: white; padding: 10px 16px; border-radius: 999px; font-size: 0.9rem; text-decoration: none; z-index: 50; }
-.d14-boton-fijo:hover { background-color: #2471a3; }`}</style>
-					<a href="#topo" className="d14-boton-fijo">
-						↑ Voltar ao topo
-					</a>
-					<p className="text-sm">
-						Olha o canto inferior direito: esse botão está pregado à janela.
-						Desce e sobe esta página, o botão fica exatamente onde está.
-					</p>
+				<Preview label="Pré-visualização · fixed: faz scroll DENTRO da janelinha e o botão não se move">
+					<iframe
+						title="Demo de position fixed"
+						className="h-[170px] w-full rounded-lg border border-gray-300 bg-white"
+						srcDoc={`<!doctype html><html><head><style>
+body { margin: 0; background-color: #fff; color: #1f2937; font-family: system-ui, sans-serif; padding-bottom: 4rem; }
+p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #e5e7eb; }
+.voltar-topo { position: fixed; bottom: 16px; right: 16px; background-color: #2e86c1; color: white; padding: 10px 16px; border-radius: 999px; text-decoration: none; font-size: 0.9rem; }
+</style></head><body>
+<p id="topo">Linha 1: desliza dentro desta janelinha…</p>
+<p>Linha 2: o conteúdo se move…</p>
+<p>Linha 3: …mas o botão não…</p>
+<p>Linha 4</p>
+<p>Linha 5</p>
+<p>Linha 6</p>
+<p>Linha 7</p>
+<a class="voltar-topo" href="#topo">↑ Voltar ao topo</a>
+</body></html>`}
+					/>
 				</Preview>
 			</div>
 			<CodeTabs

@@ -134,6 +134,23 @@ const Lecture14Es = () => (
 				cuya posición no sea <Code>static</Code>). Si no encuentra ninguno, se
 				posiciona con respecto al <Code>&lt;body&gt;</Code>.
 			</p>
+			<div className="mb-4">
+				<Preview label="Vista previa · absolute: el badge flota sobre la esquina del botón">
+					<style>{`.d14-padre { position: relative; display: inline-block; }
+.d14-boton-msj { padding: 6px 12px; font-size: 0.9rem; border-radius: 8px; border: 1px solid #9ca3af; background-color: #f9fafb; color: #1f2937; }
+.d14-badge { position: absolute; top: -10px; right: -10px; background-color: red; color: white; padding: 2px 7px; border-radius: 999px; font-size: 0.8rem; }`}</style>
+					<div className="d14-padre">
+						<button type="button" className="d14-boton-msj">
+							Nuevo mensaje
+						</button>
+						<span className="d14-badge">3</span>
+					</div>
+					<p className="mt-2 text-sm">
+						El contador rojo está fuera del flujo: flota sobre la esquina del
+						botón sin empujar nada.
+					</p>
+				</Preview>
+			</div>
 			<CodeTabs
 				html={`<!-- El padre fija el contexto; el badge flota sobre una esquina -->
 <div class="contenedor-padre">
@@ -163,17 +180,25 @@ const Lecture14Es = () => (
 				para encabezados fijos, barras de cookies o botones de "volver arriba".
 			</p>
 			<div className="mb-4">
-				<Preview label="Vista previa · fixed: haz scroll en esta página y el botón no se mueve">
-					<style>{`.d14-boton-fijo { position: fixed; bottom: 16px; right: 16px; background-color: #2e86c1; color: white; padding: 10px 16px; border-radius: 999px; font-size: 0.9rem; text-decoration: none; z-index: 50; }
-.d14-boton-fijo:hover { background-color: #2471a3; }`}</style>
-					<a href="#arriba" className="d14-boton-fijo">
-						↑ Volver arriba
-					</a>
-					<p className="text-sm">
-						Mira la esquina inferior derecha: ese botón está clavado a la
-						ventana. Baja y sube esta página, el botón sigue exactamente donde
-						está.
-					</p>
+				<Preview label="Vista previa · fixed: haz scroll DENTRO de la ventanita y el botón no se mueve">
+					<iframe
+						title="Demo de position fixed"
+						className="h-[170px] w-full rounded-lg border border-gray-300 bg-white"
+						srcDoc={`<!doctype html><html><head><style>
+body { margin: 0; background-color: #fff; color: #1f2937; font-family: system-ui, sans-serif; padding-bottom: 4rem; }
+p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #e5e7eb; }
+.volver-arriba { position: fixed; bottom: 16px; right: 16px; background-color: #2e86c1; color: white; padding: 10px 16px; border-radius: 999px; text-decoration: none; font-size: 0.9rem; }
+</style></head><body>
+<p id="arriba">Fila 1: haz scroll dentro de esta ventanita…</p>
+<p>Fila 2: el contenido se mueve…</p>
+<p>Fila 3: …pero el botón no…</p>
+<p>Fila 4</p>
+<p>Fila 5</p>
+<p>Fila 6</p>
+<p>Fila 7</p>
+<a class="volver-arriba" href="#arriba">↑ Volver arriba</a>
+</body></html>`}
+					/>
 				</Preview>
 			</div>
 			<CodeTabs
