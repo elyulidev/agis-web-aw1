@@ -1464,7 +1464,16 @@ export const labModulo3: LabExercise[] = [
 				},
 				{
 					file: "batalla.css",
-					code: `/* Regla A: para el párrafo 1, color rojo */
+					code: `/* Reset: quita márgenes y paddings de navegador; con border-box el padding y el border no agrandan las cajas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Regla A: para el párrafo 1, color rojo */
 p.primero {
   color: #e74c3c;
 }
@@ -1518,7 +1527,16 @@ p.primero {
 				},
 				{
 					file: "batalha.css",
-					code: `/* Regra A: para o parágrafo 1, cor vermelha */
+					code: `/* Reset: tira margens e paddings do browser; com border-box o padding e a border não alargam as caixas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Regra A: para o parágrafo 1, cor vermelha */
 p.primeiro {
   color: #e74c3c;
 }
@@ -1776,7 +1794,16 @@ p.primeiro {
 				},
 				{
 					file: "vivero.css",
-					code: `/* 1) El bloque centrado */
+					code: `/* Reset: quita márgenes y paddings de navegador; con border-box el padding y el border no agrandan las cajas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1) El bloque centrado */
 .pagina {
   /* width: 90%; */
   /* max-width: 800px; */
@@ -1832,7 +1859,16 @@ p.primeiro {
 				},
 				{
 					file: "viveiro.css",
-					code: `/* 1) O bloco centrado */
+					code: `/* Reset: tira margens e paddings do browser; com border-box o padding e a border não alargam as caixas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1) O bloco centrado */
 .pagina {
   /* width: 90%; */
   /* max-width: 800px; */
@@ -1942,7 +1978,16 @@ p.primeiro {
 				},
 				{
 					file: "revista.css",
-					code: `/* 1) El chip de categoría: es un <span>, o sea inline */
+					code: `/* Reset: quita márgenes y paddings de navegador; con border-box el padding y el border no agrandan las cajas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1) El chip de categoría: es un <span>, o sea inline */
 .etiqueta {
   /* padding: 6px 12px; */
   /* background-color: #fde68a; */
@@ -1998,7 +2043,16 @@ p.primeiro {
 				},
 				{
 					file: "revista.css",
-					code: `/* 1) O chip de categoria: é um <span>, ou seja inline */
+					code: `/* Reset: tira margens e paddings do browser; com border-box o padding e a border não alargam as caixas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1) O chip de categoria: é um <span>, ou seja inline */
 .etiqueta {
   /* padding: 6px 12px; */
   /* background-color: #fde68a; */
@@ -2102,7 +2156,16 @@ p.primeiro {
 				},
 				{
 					file: "liga.css",
-					code: `/* 1) El contenedor que hace scroll */
+					code: `/* Reset: quita márgenes y paddings de navegador; con border-box el padding y el border no agrandan las cajas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1) El contenedor que hace scroll */
 .tabla {
   /* max-height: 240px; */
   /* overflow-y: auto; */
@@ -2165,7 +2228,16 @@ p.primeiro {
 				},
 				{
 					file: "liga.css",
-					code: `/* 1) O contentor que faz scroll */
+					code: `/* Reset: tira margens e paddings do browser; com border-box o padding e a border não alargam as caixas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1) O contentor que faz scroll */
 .tabla {
   /* max-height: 240px; */
   /* overflow-y: auto; */
@@ -2282,7 +2354,16 @@ p.primeiro {
 				},
 				{
 					file: "reservas.css",
-					code: `/* 1) Base */
+					code: `/* Reset: quita márgenes y paddings de navegador; con border-box el padding y el border no agrandan las cajas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1) Base */
 body {
   /* font-family: sans-serif; */
   /* background-color: #f3f4f6; */
@@ -2348,7 +2429,16 @@ body {
 				},
 				{
 					file: "reservas.css",
-					code: `/* 1) Base */
+					code: `/* Reset: tira margens e paddings do browser; com border-box o padding e a border não alargam as caixas */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1) Base */
 body {
   /* font-family: sans-serif; */
   /* background-color: #f3f4f6; */
