@@ -114,8 +114,7 @@ const Lecture11Es = () => (
   color: #16a085; /* Misma especificidad: la última gana */
 }`}</style>
 					<p className="d11-cascada font-mono text-sm">
-						Al ver este texto en verde, entiendes la cascada: el párrafo declara
-						el color dos veces, y simplemente llegó el último.
+						Este texto declara el color dos veces: rojo primero, verde después.
 					</p>
 				</Preview>
 			</div>
@@ -143,8 +142,7 @@ const Lecture11Es = () => (
 					<div className="d11-padre">
 						Soy el padre y declaro la tipografía.
 						<p className="mt-2">
-							Y yo, el párrafo hijo, heredé tu <em>color</em> y tu{" "}
-							<em>font-family</em> sin declarar nada.
+							Y yo, el párrafo hijo, heredé tu color y tu font-family.
 						</p>
 					</div>
 				</Preview>
@@ -251,12 +249,11 @@ const Lecture11Es = () => (
 			</div>
 			<div className="mb-4">
 				<Preview label="Vista previa · batalla etiqueta vs clase vs ID">
-					<style>{`p.d11-parrafo { color: #16a085; } /* etiqueta + clase = 11 */
+					<style>{`p.d11-destacado { color: #16a085; } /* etiqueta + clase = 11 */
 .d11-destacado { color: #e67e22; } /* clase = 10 */
 #d11-titulo { color: #2980b9; } /* ID = 100: gana aunque se declare primero */`}</style>
-					<p id="d11-titulo" className="d11-parrafo font-medium">
-						Tres reglas me apuntan a la vez: etiqueta+clase (11), clase (10) e
-						ID (100). Gana el ID, lo declare primero o último.
+					<p id="d11-titulo" className="d11-destacado font-medium">
+						Tres selectores me apuntan a la vez: etiqueta, clase e ID.
 					</p>
 				</Preview>
 			</div>
@@ -300,17 +297,17 @@ p.destacado {
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<p class="reina">
-  Este texto declara el color dos veces y el azul gana.
-</p>`}
-				css={`/* Una de 11 puntos: etiqueta + clase... */
-p.reina {
-  color: red;
+				html={`<div class="campo">
+  <p class="cap">La regla de 20 puntos es más específica, pero pierde contra el azul porque lleva un !important.</p>
+</div>`}
+				css={`/* 20 puntos: dos clases */
+.campo .cap {
+  color: #e74c3c;
 }
 
-/* ...pierde contra esta de 1 punto por el !important */
-p {
-  color: blue !important;
+/* 11 puntos (campo + p), pero con !important: gana */
+.campo p {
+  color: #2e86c1 !important;
 }`}
 			/>
 			<Callout variant="warning" title="¡Úsalo con extrema precaución!">

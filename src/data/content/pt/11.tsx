@@ -111,8 +111,8 @@ const Lecture11Pt = () => (
   color: #16a085; /* Mesma especificidade: a última ganha */
 }`}</style>
 					<p className="d11-cascada font-mono text-sm">
-						Ao ver este texto em verde, percebes a cascata: o parágrafo declara
-						a cor duas vezes, e simplesmente chegou último.
+						Este texto declara a cor duas vezes: vermelho primeiro, verde
+						depois.
 					</p>
 				</Preview>
 			</div>
@@ -140,8 +140,7 @@ const Lecture11Pt = () => (
 					<div className="d11-pai">
 						Sou o pai e declaro a tipografia.
 						<p className="mt-2">
-							E eu, o parágrafo filho, herdei o teu <em>color</em> e a tua{" "}
-							<em>font-family</em> sem declarar nada.
+							E eu, o parágrafo filho, herdei o teu color e a tua font-family.
 						</p>
 					</div>
 				</Preview>
@@ -247,13 +246,12 @@ const Lecture11Pt = () => (
 			</div>
 			<div className="mb-4">
 				<Preview label="Pré-visualização · batalha etiqueta vs classe vs ID">
-					<style>{`p.d11-paragrafo { color: #16a085; } /* etiqueta + classe = 11 */
+					<style>{`p.d11-destacado { color: #16a085; } /* etiqueta + classe = 11 */
 .d11-destacado { color: #e67e22; } /* classe = 10 */
 #d11-titulo { color: #2980b9; } /* ID = 100: ganha apesar de declarar-se primeiro */`}</style>
-					<p id="d11-titulo" className="d11-paragrafo font-medium">
-						Três regras apontam para mim ao mesmo tempo: etiqueta+classe (11),
-						classe (10) e ID (100). Ganha o ID, declarado primeiro ou por
-						último.
+					<p id="d11-titulo" className="d11-destacado font-medium">
+						Três seletores apontam para mim ao mesmo tempo: etiqueta, classe e
+						ID.
 					</p>
 				</Preview>
 			</div>
@@ -298,17 +296,17 @@ p.destacado {
 				</Preview>
 			</div>
 			<CodeTabs
-				html={`<p class="rainha">
-  Este texto declara a cor duas vezes e o azul ganha.
-</p>`}
-				css={`/* Uma de 11 pontos: etiqueta + classe... */
-p.rainha {
-  color: red;
+				html={`<div class="campo">
+  <p class="capa">A regra de 20 pontos é mais específica, mas perde contra o azul porque tem um !important.</p>
+</div>`}
+				css={`/* 20 pontos: duas classes */
+.campo .capa {
+  color: #e74c3c;
 }
 
-/* ...perde contra esta de 1 ponto pelo !important */
-p {
-  color: blue !important;
+/* 11 pontos (campo + p), mas com !important: ganha */
+.campo p {
+  color: #2e86c1 !important;
 }`}
 			/>
 			<Callout variant="warning" title="Use com extrema precaução!">
