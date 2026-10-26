@@ -1907,12 +1907,12 @@ p.primeiro {
 				pt: "Copia o código inicial abaixo para revista.html. A ligação a revista.css já está no head: cria esse ficheiro na mesma pasta.",
 			},
 			{
-				es: "La .etiqueta es un <span>: dotale padding: 6px 12px, background-color: #fde68a, border-radius: 999px y font-size: 0.8rem, y mirá cómo el padding vertical pisa las líneas vecinas (es sutil: subí el padding a 20px un momento, verás la pastillita tapar lo que hay arriba y abajo sin apartarlo, y después volvé a 6px): es inline de fábrica.",
-				pt: "A .etiqueta é um <span>: dá-lhe padding: 6px 12px, background-color: #fde68a, border-radius: 999px e font-size: 0.8rem, e vê como o padding vertical pisa as linhas vizinhas (é subtil: sobe o padding para 20px um momento — vais ver a pastilha tapar o que está por cima e por baixo sem afastá-lo — e depois volta aos 6px): é inline de fábrica.",
+				es: "La .etiqueta es un <span>: dotale padding: 20px 12px, background-color: #fde68a, border-radius: 999px y font-size: 0.8rem. Recargá y mirá el derrame: el fondo amarillo tapa el título de arriba y el 'Leer más' de abajo sin apartarlos — eso es inline: no pide lugar para su altura.",
+				pt: "A .etiqueta é um <span>: dá-lhe padding: 20px 12px, background-color: #fde68a, border-radius: 999px e font-size: 0.8rem. Recarrega e vê o transbordo: o fundo amarelo tapa o título de cima e o 'Ler mais' de baixo sem afastá-los — isso é inline: não pede lugar para a sua altura.",
 			},
 			{
-				es: "A la misma .etiqueta agregale display: inline-block y recargá: ahora sí pide su lugar en el layout y el padding vertical se respeta.",
-				pt: "À mesma .etiqueta adiciona display: inline-block e recarrega: agora sim pede o seu lugar no layout e o padding vertical é respeitado.",
+				es: "Ahora bajá el padding a 6px 12px y agregá display: inline-block a la misma .etiqueta: el derrame desaparece y el padding vertical se respeta — inline-block mantiene el chip en la línea del texto pero con su caja completa.",
+				pt: "Agora baixa o padding para 6px 12px e adiciona display: inline-block à mesma .etiqueta: o transbordo desaparece e o padding vertical é respeitado — inline-block mantém o chip na linha do texto mas com a sua caixa completa.",
 			},
 			{
 				es: "El .boton-leer es un <a>: dotale display: inline-block, padding: 10px 20px, background-color: #2e86c1, color: white, border-radius: 4px y text-decoration: none para que parezca botón de verdad.",
@@ -1989,7 +1989,7 @@ p.primeiro {
 
 /* 1) El chip de categoría: es un <span>, o sea inline */
 .etiqueta {
-  /* padding: 6px 12px; */
+  /* padding: 20px 12px; (paso 2: derrame; en el paso 3 baja a 6px 12px) */
   /* background-color: #fde68a; */
   /* border-radius: 999px; */
   /* font-size: 0.8rem; */
@@ -2054,7 +2054,7 @@ p.primeiro {
 
 /* 1) O chip de categoria: é um <span>, ou seja inline */
 .etiqueta {
-  /* padding: 6px 12px; */
+  /* padding: 20px 12px; (passo 2: transbordo; no passo 3 baixa para 6px 12px) */
   /* background-color: #fde68a; */
   /* border-radius: 999px; */
   /* font-size: 0.8rem; */
