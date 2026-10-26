@@ -193,7 +193,7 @@ p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #
 .encabezado-fijo { position: fixed; top: 0; left: 0; width: 100%; background-color: #2e86c1; color: white; padding: 8px 12px; font-size: 0.9rem; }
 </style></head><body>
 <header class="encabezado-fijo">Menú fijo (fixed, top: 0)</header>
-<p>Fila 1: haz scroll dentro de esta ventanita…</p>
+<p id="arriba">Fila 1: haz scroll dentro de esta ventanita…</p>
 <p>Fila 2: el contenido se mueve…</p>
 <p>Fila 3: …pero el encabezado no…</p>
 <p>Fila 4</p>
@@ -201,18 +201,6 @@ p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #
 <p>Fila 6</p>
 <p>Fila 7</p>
 <p>Fila 8</p>
-<p>Fila 9</p>
-<p>Fila 10</p>
-<p>Fila 11</p>
-<p>Fila 12</p>
-<p>Fila 13</p>
-<p>Fila 14</p>
-<p>Fila 15</p>
-<p>Fila 16</p>
-<p>Fila 17</p>
-<p>Fila 18</p>
-<p>Fila 19</p>
-<p>Fila 20</p>
 </body></html>`}
 					/>
 				</Preview>
@@ -227,23 +215,11 @@ p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #
 <p>Fila 5</p>
 <p>Fila 6</p>
 <p>Fila 7</p>
-<p>Fila 8</p>
-<p>Fila 9</p>
-<p>Fila 10</p>
-<p>Fila 11</p>
-<p>Fila 12</p>
-<p>Fila 13</p>
-<p>Fila 14</p>
-<p>Fila 15</p>
-<p>Fila 16</p>
-<p>Fila 17</p>
-<p>Fila 18</p>
-<p>Fila 19</p>
-<p>Fila 20</p>
-<!-- Sin scroll no se aprecia fixed: agrega más filas si tu página no llega más abajo que tu ventana -->`}
+<p>Fila 8</p>`}
 				css={`body {
   margin: 0;
   padding-top: 2.5rem; /* deja espacio para que la barra no tape la primera fila */
+  min-height: 110vh; /* fuerza una página más alta que la ventana: garantiza el scroll */
   background-color: #fff;
   color: #1f2937;
   font-family: system-ui, sans-serif;

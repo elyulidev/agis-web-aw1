@@ -201,18 +201,6 @@ p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #
 <p>Linha 6</p>
 <p>Linha 7</p>
 <p>Linha 8</p>
-<p>Linha 9</p>
-<p>Linha 10</p>
-<p>Linha 11</p>
-<p>Linha 12</p>
-<p>Linha 13</p>
-<p>Linha 14</p>
-<p>Linha 15</p>
-<p>Linha 16</p>
-<p>Linha 17</p>
-<p>Linha 18</p>
-<p>Linha 19</p>
-<p>Linha 20</p>
 </body></html>`}
 					/>
 				</Preview>
@@ -227,23 +215,11 @@ p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #
 <p>Linha 5</p>
 <p>Linha 6</p>
 <p>Linha 7</p>
-<p>Linha 8</p>
-<p>Linha 9</p>
-<p>Linha 10</p>
-<p>Linha 11</p>
-<p>Linha 12</p>
-<p>Linha 13</p>
-<p>Linha 14</p>
-<p>Linha 15</p>
-<p>Linha 16</p>
-<p>Linha 17</p>
-<p>Linha 18</p>
-<p>Linha 19</p>
-<p>Linha 20</p>
-<!-- Sem scroll não se vê o fixed: adicione mais linhas se a sua página não chegar mais abaixo que a janela -->`}
+<p>Linha 8</p>`}
 				css={`body {
   margin: 0;
   padding-top: 2.5rem; /* deixa espaço para a barra não tampar a primeira linha */
+  min-height: 110vh; /* força uma página mais alta que a janela: garante o scroll */
   background-color: #fff;
   color: #1f2937;
   font-family: system-ui, sans-serif;
