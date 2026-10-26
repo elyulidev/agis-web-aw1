@@ -617,7 +617,7 @@ export const labModulo2: LabExercise[] = [
 
   <main>
     <section>
-      <h2>Entrantes</h2>
+      <h2>Entradas</h2>
       <ul>
         <li>Tortilha de batatas - 8 €</li>
         <li>Gazpacho - 7 €</li>
@@ -2214,13 +2214,13 @@ p.primeiro {
     <div class="cabecera-tabla">Classificação · Jornada 12</div>
     <ul>
       <li><span class="numero pri">1</span> Atlético Norte</li>
-      <li><span class="numero">2</span> Río Verde</li>
+      <li><span class="numero">2</span> Rio Verde</li>
       <li><span class="numero">3</span> Estrela Vermelha</li>
       <li><span class="numero">4</span> Costa Azul</li>
       <li><span class="numero">5</span> Nervión</li>
-      <li><span class="numero">6</span> Portuario</li>
-      <li><span class="numero">7</span> Bosque Viejo</li>
-      <li><span class="numero">8</span> Salinero</li>
+      <li><span class="numero">6</span> Portuário</li>
+      <li><span class="numero">7</span> Bosque Velho</li>
+      <li><span class="numero">8</span> Salineiro</li>
     </ul>
   </div>
 </body>
@@ -2421,7 +2421,7 @@ body {
   <div class="modal-content">
     <h2>Lista de espera</h2>
     <p>Confirma o teu e-mail para entrar na lista de espera.</p>
-    <input type="email" placeholder="tu@correo.com">
+    <input type="email" placeholder="teu@email.com">
     <button type="button">Confirmar</button>
   </div>
 </body>
