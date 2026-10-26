@@ -2099,12 +2099,12 @@ p.primeiro {
 				pt: "Com .cabecalho-tabela, além do fundo azul e da cor branca, define position: sticky e top: 0, e experimenta o scroll dentro do div: o cabeçalho fica colado em cima.",
 			},
 			{
-				es: "Con .numero (todas las posiciones) definí font-weight: bold. Para la insignia del primer puesto, con .pri definí position: relative y z-index: 2, y comprobá que se superpone a la fila sin salir del flujo.",
-				pt: "Com .numero (todas as posições) define font-weight: bold. Para a insígnia do primeiro lugar, com .pri define position: relative e z-index: 2, e confirma que ela se sobrepõe à linha sem sair do fluxo.",
+				es: "Con .numero (todas las posiciones) definí font-weight: bold. Para la insignia del primer puesto, con .pri definí position: relative y z-index: 2, y probá el scroll: cuando la fila 1 entra en la zona de la cabecera, el número pasa por encima del azul — un posicionado con z-index positivo le gana a la cabecera, que no tiene z-index — sin salir de su lugar en el flujo.",
+				pt: "Com .numero (todas as posições) define font-weight: bold. Para a insígnia do primeiro lugar, com .pri define position: relative e z-index: 2, e experimenta o scroll: quando a fila 1 entra na zona do cabeçalho, o número passa por cima do azul — um posicionado com z-index positivo ganha da cabeçalho, que não tem z-index — sem sair do seu lugar no fluxo.",
 			},
 			{
-				es: "Experimento final: cambiá el z-index de .pri a 2000 y recargá. ¿Tapó a la cabecera o se quedó detrás? La respuesta te la da el contexto: sticky crea su propio contexto de apilamiento, y dentro de la tabla la cabecera decide. Dejalo en 2.",
-				pt: "Experimento final: muda o z-index de .pri para 2000 e recarrega. Tapou o cabeçalho ou ficou por baixo? A resposta dá-lha o contexto: o sticky cria o seu próprio contexto de empilhamento, e dentro da tabela o cabeçalho decide. Deixa-o em 2.",
+				es: "Experimento final: cambiá el z-index de .pri a 2000 y recargá: no cambia nada. 2 o 2000, el positivo ya le ganaba a la cabecera sin z-index (auto vale 0): el z-index compara números dentro de la misma pila, no hay números mágicos. Para que la cabecera gane, dale a .cabecera-tabla z-index: 3: la insignia pasa por debajo, como las cabeceras fijas de la vida real. Dejá la cabecera con 3 y el .pri con 2.",
+				pt: "Experimento final: muda o z-index de .pri para 2000 e recarrega: não muda nada. 2 ou 2000, o positivo já ganhava da cabeçalho sem z-index (auto vale 0): o z-index compara números dentro da mesma pilha, não há números mágicos. Para o cabeçalho ganhar, dá à .cabecalho-tabela z-index: 3: a insígnia fica por baixo, como as cabeceras fixas da vida real. Deixa a cabeçalho com 3 e o .pri com 2.",
 			},
 		],
 		verify: [
@@ -2113,8 +2113,8 @@ p.primeiro {
 				pt: "Ao fazer o scroll dentro de .tabela, o cabeçalho azul fica colado em cima e as linhas passam por baixo.",
 			},
 			{
-				es: "La insignia del primer puesto se superpone a la fila: relative + z-index funcionando en la práctica.",
-				pt: "A insígnia do primeiro lugar sobrepõe-se à linha: relative + z-index na prática.",
+				es: "Con la cabecera en z-index: 3, las filas — incluida la insignia — pasan por debajo: el mayor número de la pila decide.",
+				pt: "Com a cabeçalho em z-index: 3, as filas — incluindo a insígnia — passam por baixo: o número maior da pilha decide.",
 			},
 			{
 				es: "Si le sacás position a la insignia (o la dejás en static), el z-index deja de actuar: solo funciona en elementos posicionados.",
@@ -2178,6 +2178,7 @@ p.primeiro {
   /* padding: 8px 12px; */
   /* position: sticky; */
   /* top: 0; */
+  /* z-index: 3; (experimento final) */
 }
 
 /* 3) Limpieza de la lista */
@@ -2250,6 +2251,7 @@ p.primeiro {
   /* padding: 8px 12px; */
   /* position: sticky; */
   /* top: 0; */
+  /* z-index: 3; (experimento final) */
 }
 
 /* 3) Arrumação da lista */
