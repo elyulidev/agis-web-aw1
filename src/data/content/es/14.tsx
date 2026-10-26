@@ -206,8 +206,21 @@ p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #
 			</div>
 			<CodeTabs
 				html={`<!-- El encabezado queda clavado arriba, aunque la página scrollee -->
-<header class="encabezado-fijo">Menú fijo (fixed, top: 0)</header>`}
-				css={`.encabezado-fijo {
+<header class="encabezado-fijo">Menú fijo (fixed, top: 0)</header>
+<p>Fila 1: haz scroll dentro de esta ventanita…</p>
+<p>Fila 2: el contenido se mueve…</p>
+<p>Fila 3: …pero el encabezado no…</p>
+<p>Fila 4</p>`}
+				css={`body {
+  margin: 0;
+  padding-top: 2.5rem; /* deja espacio para que la barra no tape la primera fila */
+}
+p {
+  margin: 0;
+  padding: 8px 12px;
+  border-bottom: 1px dashed #e5e7eb;
+}
+.encabezado-fijo {
   position: fixed; /* Respecto a la ventana, no al contenedor */
   top: 0;
   left: 0;

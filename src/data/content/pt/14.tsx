@@ -206,8 +206,21 @@ p { margin: 0; padding: 8px 12px; font-size: 0.9rem; border-bottom: 1px dashed #
 			</div>
 			<CodeTabs
 				html={`<!-- O cabeçalho fica pregado em cima, mesmo que a página deslize -->
-<header class="cabecalho-fixo">Menu fixo (fixed, top: 0)</header>`}
-				css={`.cabecalho-fixo {
+<header class="cabecalho-fixo">Menu fixo (fixed, top: 0)</header>
+<p>Linha 1: deslize dentro desta janelinha…</p>
+<p>Linha 2: o conteúdo se move…</p>
+<p>Linha 3: …mas o cabeçalho não…</p>
+<p>Linha 4</p>`}
+				css={`body {
+  margin: 0;
+  padding-top: 2.5rem; /* deixa espaço para a barra não tampar a primeira linha */
+}
+p {
+  margin: 0;
+  padding: 8px 12px;
+  border-bottom: 1px dashed #e5e7eb;
+}
+.cabecalho-fixo {
   position: fixed; /* Em relação à janela, não ao contêiner */
   top: 0;
   left: 0;
