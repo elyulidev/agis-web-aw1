@@ -917,11 +917,16 @@ export default function ExpectedPreview({
 						className="relative overflow-hidden rounded p-2"
 						style={{ minHeight: "110px", backgroundColor: "#f3f4f6" }}
 					>
-						<p className="text-xs font-bold">{t.theater}</p>
-						<p className="text-[10px]">{t.theaterIntro}</p>
+						<p className="text-xs font-bold" style={{ color: "#1f2937" }}>
+							{t.theater}
+						</p>
+						<p className="text-[10px]" style={{ color: "#1f2937" }}>
+							{t.theaterIntro}
+						</p>
 						<button
 							type="button"
-							className="mt-1 rounded bg-blue-600 px-2 py-1 text-[10px] text-white"
+							className="mt-1 rounded px-2 py-1 text-[10px] text-white"
+							style={{ backgroundColor: "#2e86c1" }}
 						>
 							{t.theaterButton}
 						</button>
@@ -933,12 +938,17 @@ export default function ExpectedPreview({
 							className="absolute top-1/2 right-1/2 w-3/5 translate-x-1/2 -translate-y-1/2 rounded p-2"
 							style={{ backgroundColor: "white" }}
 						>
-							<h2 className="text-xs font-bold">{t.modalTitle}</h2>
-							<p className="text-[10px]">{t.modalBody}</p>
+							<h2 className="text-xs font-bold" style={{ color: "#1f2937" }}>
+								{t.modalTitle}
+							</h2>
+							<p className="text-[10px]" style={{ color: "#1f2937" }}>
+								{t.modalBody}
+							</p>
 							<p className="text-[9px] text-gray-400">{t.modalInput}</p>
 							<button
 								type="button"
-								className="mt-1 rounded bg-emerald-600 px-2 py-0.5 text-[10px] text-white"
+								className="mt-1 rounded px-2 py-0.5 text-[10px] text-white"
+								style={{ backgroundColor: "#2e86c1" }}
 							>
 								{t.modalButton}
 							</button>

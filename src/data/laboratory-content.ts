@@ -2299,8 +2299,8 @@ p.primeiro {
 				pt: "Copia o código inicial abaixo para reservas.html. A ligação a reservas.css já está no head: cria esse ficheiro na mesma pasta.",
 			},
 			{
-				es: "Base: con body definí font-family: sans-serif, un background-color claro y padding. Con .pagina volvé a aplicar el centrado del módulo: max-width: 640px y margin: 0 auto. Todo lo aprendido se usa.",
-				pt: "Base: com body define font-family: sans-serif, um background-color claro e padding. Com .pagina volta a aplicar a centralização do módulo: max-width: 640px e margin: 0 auto. Tudo o que aprendeu dá-se uso.",
+				es: "Base: con body definí font-family: sans-serif, un background-color claro y padding. Con .pagina volvé a aplicar el centrado del módulo: max-width: 640px y margin: 0 auto. Y con button definí background-color: #2e86c1, color: white, border: none, padding: 8px 12px y border-radius: 4px. Todo lo aprendido se usa.",
+				pt: "Base: com body define font-family: sans-serif, um background-color claro e padding. Com .pagina volta a aplicar a centralização do módulo: max-width: 640px e margin: 0 auto. E com button define background-color: #2e86c1, color: white, border: none, padding: 8px 12px e border-radius: 4px. Tudo o que aprendeu dá-se uso.",
 			},
 			{
 				es: "El overlay: con .overlay definí position: fixed, top: 0, left: 0, width: 100%, height: 100%, background-color: rgba(0, 0, 0, 0.5) y z-index: 10.",
@@ -2384,6 +2384,15 @@ body {
   /* margin: 0 auto; */
 }
 
+/* Los botones con estilo propio */
+button {
+  /* background-color: #2e86c1; */
+  /* color: white; */
+  /* border: none; */
+  /* padding: 8px 12px; */
+  /* border-radius: 4px; */
+}
+
 /* 2) El overlay: cubre toda la pantalla */
 .overlay {
   /* position: fixed; */
@@ -2457,6 +2466,15 @@ body {
 .pagina {
   /* max-width: 640px; */
   /* margin: 0 auto; */
+}
+
+/* Os botões com estilo próprio */
+button {
+  /* background-color: #2e86c1; */
+  /* color: white; */
+  /* border: none; */
+  /* padding: 8px 12px; */
+  /* border-radius: 4px; */
 }
 
 /* 2) O overlay: cobre todo o ecrã */
