@@ -527,7 +527,7 @@ export const labModulo2: LabExercise[] = [
 			},
 			{
 				es: "Box-sizing: creá .fila con 400px de ancho y .caja con 200px, padding 20px y border 10px. Sin el reset las cajas se desbordan; con el reset entran lado a lado.",
-				pt: "Box-sizing: cria .fila com 400px de largura e .caja com 200px, padding 20px e border 10px. Sem o reset as caixas transbordam; com o reset entram lado a lado.",
+				pt: "Box-sizing: cria .linha com 400px de largura e .caixa com 200px, padding 20px e border 10px. Sem o reset as caixas transbordam; com o reset entram lado a lado.",
 			},
 		],
 		verify: [
@@ -541,7 +541,7 @@ export const labModulo2: LabExercise[] = [
 			},
 			{
 				es: "Las dos cajas de 200px con padding y borde entran lado a lado en los 400px de .fila.",
-				pt: "As duas caixas de 200px com padding e borda entram lado a lado nos 400px de .fila.",
+				pt: "As duas caixas de 200px com padding e borda entram lado a lado nos 400px de .linha.",
 			},
 			{
 				es: "El HTML no tiene atributos style: el CSS vive en carta.css.",
@@ -632,9 +632,9 @@ export const labModulo2: LabExercise[] = [
       </ul>
     </section>
 
-    <div class="fila">
-      <div class="caja">Caixa 1</div>
-      <div class="caja">Caixa 2</div>
+    <div class="linha">
+      <div class="caixa">Caixa 1</div>
+      <div class="caixa">Caixa 2</div>
     </div>
   </main>
 
@@ -673,7 +673,7 @@ export const labModulo2: LabExercise[] = [
 			},
 			{
 				es: "Selector de clase: con .bloque dale un border, un padding y un fondo a los dos bloques.",
-				pt: "Seletor de classe: com .bloque dá um border, um padding e um fundo aos dois blocos.",
+				pt: "Seletor de classe: com .bloco dá um border, um padding e um fundo aos dois blocos.",
 			},
 			{
 				es: "Agrupación: con h1, h2 les das a todos los encabezados el mismo color y revisá cada regla en DevTools.",
@@ -683,7 +683,7 @@ export const labModulo2: LabExercise[] = [
 		verify: [
 			{
 				es: "Cambiar .bloque afecta a los dos bloques a la vez; cambiar #titulo-festival solo al h1.",
-				pt: "Mudar .bloque afeta os dois blocos de uma vez; mudar #titulo-festival só o h1.",
+				pt: "Mudar .bloco afeta os dois blocos de uma vez; mudar #titulo-festival só o h1.",
 			},
 			{
 				es: "Cada regla usa el selector pedido: inspeccionalo en DevTools.",
@@ -759,12 +759,12 @@ export const labModulo2: LabExercise[] = [
   </header>
 
   <main>
-    <section class="bloque" id="programa">
+    <section class="bloco" id="programa">
       <h2>Programa</h2>
       <p>Concertos das 20:00 às 23:30 na sala principal.</p>
     </section>
 
-    <section class="bloque" id="entradas">
+    <section class="bloco" id="entradas">
       <h2>Entradas</h2>
       <p>Geral: 12 €. Meia: 8 €.</p>
     </section>
@@ -1404,7 +1404,7 @@ export const labModulo3: LabExercise[] = [
 			},
 			{
 				es: "El segundo párrafo no declara color: lo hereda del div .tarjeta. Comprobalo en DevTools, en la sección 'Heredado de .tarjeta'.",
-				pt: "O segundo parágrafo não declara cor: herda-a do div .tarjeta. Confirma-o nas DevTools, na secção 'Herdado de .tarjeta'.",
+				pt: "O segundo parágrafo não declara cor: herda-a do div .cartao. Confirma-o nas DevTools, na secção 'Herdado de .cartao'.",
 			},
 			{
 				es: "El tercer párrafo tiene dos reglas: .pares (0, 1, 0 = 10 puntos) y #clave (1, 0, 0 = 100 puntos). Sumá los puntos con DevTools y comprobá que el ID gana aunque se declare al final.",
@@ -1422,7 +1422,7 @@ export const labModulo3: LabExercise[] = [
 			},
 			{
 				es: "El segundo párrafo se ve del azul de .tarjeta por herencia, sin tener regla propia.",
-				pt: "O segundo parágrafo fica da cor azul de .tarjeta por herança, sem regra própria.",
+				pt: "O segundo parágrafo fica da cor azul de .cartao por herança, sem regra própria.",
 			},
 			{
 				es: "El tercer párrafo queda del color del ID y, mientras la regla !important esté activa, del ámbar: !important se impuso a todo.",
@@ -1516,8 +1516,8 @@ p.primero {
   <main>
     <p class="primeiro">1) Duas regras iguais apontam para mim: qual ganha?</p>
 
-    <div class="tarjeta">
-      <p class="una">2) Eu não declaro cor: de onde tiro?</p>
+    <div class="cartao">
+      <p class="uma">2) Eu não declaro cor: de onde tiro?</p>
     </div>
 
     <p id="chave" class="pares">3) Uma classe e um ID disputam a minha cor.</p>
@@ -1547,7 +1547,7 @@ p.primeiro {
 }
 
 /* O contentor declara: os filhos herdam */
-.tarjeta {
+.cartao {
   color: #2980b9;
   border: 1px solid #3b82f6;
   padding: 12px;
@@ -1584,7 +1584,7 @@ p.primeiro {
 			},
 			{
 				es: "En almacen.css escribí el reset universal (*, *::before y *::after con margin: 0 y padding: 0) y definí .fila con width: 440px.",
-				pt: "Em armazem.css escreve o reset universal (*, *::before e *::after com margin: 0 e padding: 0) e define .fila com width: 440px.",
+				pt: "Em armazem.css escreve o reset universal (*, *::before e *::after com margin: 0 e padding: 0) e define .linha com width: 440px.",
 			},
 			{
 				es: "Con .ficha definí width: 200px, padding: 20px, border: 6px solid #94a3b8, background-color: #fde68a y display: inline-block para que las fichas compartan línea.",
@@ -1592,11 +1592,11 @@ p.primeiro {
 			},
 			{
 				es: "En DevTools abrí la pestaña 'Layout' (o 'Computed' con el diagrama de caja) y medí una ficha: 200px de contenido + 40px de padding + 12px de borde = 252px. ¡Dos fichas ya no entran en la fila de 440px!",
-				pt: "Nas DevTools abre o separador 'Layout' (ou 'Computed' com o diagrama da caixa) e mede uma ficha: 200px de conteúdo + 40px de padding + 12px de borda = 252px. Duas fichas já não cabem na fila de 440px!",
+				pt: "Nas DevTools abre o separador 'Layout' (ou 'Computed' com o diagrama da caixa) e mede uma ficha: 200px de conteúdo + 40px de padding + 12px de borda = 252px. Duas fichas já não cabem na linha de 440px!",
 			},
 			{
 				es: "Agregá box-sizing: border-box al reset, recargá y medí de nuevo: ahora cada ficha completa mide 200px exactos y las dos caben en la fila.",
-				pt: "Adiciona box-sizing: border-box ao reset, recarrega e mede outra vez: agora cada ficha completa mede 200px exatos e as duas cabem na fila.",
+				pt: "Adiciona box-sizing: border-box ao reset, recarrega e mede outra vez: agora cada ficha completa mede 200px exatos e as duas cabem na linha.",
 			},
 		],
 		verify: [
@@ -1610,12 +1610,12 @@ p.primeiro {
 			},
 			{
 				es: "La fila mide 440px y las fichas usan exactamente los selectores pedidos.",
-				pt: "A fila mede 440px e as fichas usam exatamente os seletores pedidos.",
+				pt: "A linha mede 440px e as fichas usam exatamente os seletores pedidos.",
 			},
 		],
 		expected: {
 			es: "Ves dos fichas amarillas lado a lado dentro de la fila, midiendo 200px cada una con su padding y su borde incluidos en el total.",
-			pt: "Vês duas fichas amarelas lado a lado dentro da fila, medindo 200px cada uma com o padding e a borda incluídos no total.",
+			pt: "Vês duas fichas amarelas lado a lado dentro da linha, medindo 200px cada uma com o padding e a borda incluídos no total.",
 		},
 		starter: {
 			es: [
@@ -1673,7 +1673,7 @@ p.primeiro {
   <link rel="stylesheet" href="armazem.css">
 </head>
 <body>
-  <div class="fila">
+  <div class="linha">
     <div class="ficha">Ficha A</div>
     <div class="ficha">Ficha B</div>
   </div>
@@ -1689,8 +1689,8 @@ p.primeiro {
   /* padding: 0; */
 }
 
-/* 2) A fila que contém as fichas */
-.fila {
+/* 2) A linha que contém as fichas */
+.linha {
   /* width: 440px; */
 }
 
@@ -1728,7 +1728,7 @@ p.primeiro {
 			},
 			{
 				es: "Con .tarjeta definí padding: 12px, border: 1px solid #86efac y background-color: #dcfce7. Para separar las tarjetas, dale margin-bottom: 30px a .tarjeta y margin-top: 20px a .tarjeta + .tarjeta.",
-				pt: "Com .tarjeta define padding: 12px, border: 1px solid #86efac e background-color: #dcfce7. Para separar os cartões, dá margin-bottom: 30px a .tarjeta e margin-top: 20px a .tarjeta + .tarjeta.",
+				pt: "Com .cartao define padding: 12px, border: 1px solid #86efac e background-color: #dcfce7. Para separar os cartões, dá margin-bottom: 30px a .cartao e margin-top: 20px a .cartao + .cartao.",
 			},
 			{
 				es: "Medí el hueco entre dos tarjetas con DevTools: es 30px, no 50px. El margen mayor gana: es el colapso de márgenes, y solo pasa en vertical.",
@@ -1839,17 +1839,17 @@ p.primeiro {
     <h1>Viveiro A Cortina</h1>
     <p class="intro">Plantas de interior para todos os meses do ano.</p>
 
-    <section class="tarjeta">
+    <section class="cartao">
       <h2>Costela-de-adão</h2>
       <p>Sombra leve e rega semanal.</p>
     </section>
 
-    <section class="tarjeta">
+    <section class="cartao">
       <h2>Cacto</h2>
       <p>Luz direta e rega escassa.</p>
     </section>
 
-    <section class="tarjeta">
+    <section class="cartao">
       <h2>Bonsai</h2>
       <p>Terra seca e paciência de anos.</p>
     </section>
@@ -1876,14 +1876,14 @@ p.primeiro {
 }
 
 /* 2) Cada cartão do catálogo */
-.tarjeta {
+.cartao {
   /* padding: 12px; */
   /* border: 1px solid #86efac; */
   /* background-color: #dcfce7; */
 }
 
 /* 3) A separação entre cartões (e o colapso, cabe-te a medi-lo!) */
-.tarjeta + .tarjeta {
+.cartao + .cartao {
   /* margin-top: 20px; */
 }`,
 				},
@@ -1916,7 +1916,7 @@ p.primeiro {
 			},
 			{
 				es: "El .boton-leer es un <a>: dotale display: inline-block, padding: 10px 20px, background-color: #2e86c1, color: white, border-radius: 4px y text-decoration: none para que parezca botón de verdad.",
-				pt: "O .boton-leer é um <a>: dá-lhe display: inline-block, padding: 10px 20px, background-color: #2e86c1, color: white, border-radius: 4px e text-decoration: none para que pareça um botão de verdade.",
+				pt: "O .botao-ler é um <a>: dá-lhe display: inline-block, padding: 10px 20px, background-color: #2e86c1, color: white, border-radius: 4px e text-decoration: none para que pareça um botão de verdade.",
 			},
 			{
 				es: "Comprobá en DevTools que cada <article> arranca en línea propia y ocupa todo el ancho: es block por defecto, como te dijo la conferencia. Con eso tienes los tres display del bloque a la vista.",
@@ -2026,7 +2026,7 @@ p.primeiro {
         A praça do bairro estreia assentos.
         <span class="etiqueta">cidade</span>
       </p>
-      <a class="boton-leer" href="#">Ler mais</a>
+      <a class="botao-ler" href="#">Ler mais</a>
     </article>
 
     <article>
@@ -2035,7 +2035,7 @@ p.primeiro {
         Os jornais ordenam-se sozinhos com display.
         <span class="etiqueta">dados</span>
       </p>
-      <a class="boton-leer" href="#">Ler mais</a>
+      <a class="botao-ler" href="#">Ler mais</a>
     </article>
   </main>
 </body>
@@ -2062,7 +2062,7 @@ p.primeiro {
 }
 
 /* 2) O botão 'Ler mais': é um <a>, também inline */
-.boton-leer {
+.botao-ler {
   /* display: inline-block; */
   /* padding: 10px 20px; */
   /* background-color: #2e86c1; */
@@ -2092,11 +2092,11 @@ p.primeiro {
 			},
 			{
 				es: "Con .tabla definí max-height: 240px y overflow-y: auto: ese div pequeño es el que hace scroll por su cuenta.",
-				pt: "Com .tabula define max-height: 240px e overflow-y: auto: esse div pequeno é quem faz scroll por conta própria.",
+				pt: "Com .tabela define max-height: 240px e overflow-y: auto: esse div pequeno é quem faz scroll por conta própria.",
 			},
 			{
 				es: "Con .cabecera-tabla, además del fondo azul y el color blanco, definí position: sticky y top: 0, y probá el scroll dentro del div: la cabecera se queda pegada arriba.",
-				pt: "Com .cabecera-tabla, além do fundo azul e da cor branca, define position: sticky e top: 0, e experimenta o scroll dentro do div: o cabeçalho fica colado em cima.",
+				pt: "Com .cabecera-tabela, além do fundo azul e da cor branca, define position: sticky e top: 0, e experimenta o scroll dentro do div: o cabeçalho fica colado em cima.",
 			},
 			{
 				es: "Con .numero (todas las posiciones) definí font-weight: bold. Para la insignia del primer puesto, con .pri definí position: relative y z-index: 2, y comprobá que se superpone a la fila sin salir del flujo.",
@@ -2110,7 +2110,7 @@ p.primeiro {
 		verify: [
 			{
 				es: "Al hacer el scroll dentro de .tabla, la cabecera azul se queda pegada arriba y las filas pasan por debajo.",
-				pt: "Ao fazer o scroll dentro de .tabula, o cabeçalho azul fica colado em cima e as linhas passam por baixo.",
+				pt: "Ao fazer o scroll dentro de .tabela, o cabeçalho azul fica colado em cima e as linhas passam por baixo.",
 			},
 			{
 				es: "La insignia del primer puesto se superpone a la fila: relative + z-index funcionando en la práctica.",
@@ -2210,8 +2210,8 @@ p.primeiro {
   <link rel="stylesheet" href="liga.css">
 </head>
 <body>
-  <div class="tabla">
-    <div class="cabecera-tabla">Classificação · Jornada 12</div>
+  <div class="tabela">
+    <div class="cabecera-tabela">Classificação · Jornada 12</div>
     <ul>
       <li><span class="numero pri">1</span> Atlético Norte</li>
       <li><span class="numero">2</span> Rio Verde</li>
@@ -2238,13 +2238,13 @@ p.primeiro {
 }
 
 /* 1) O contentor que faz scroll */
-.tabla {
+.tabela {
   /* max-height: 240px; */
   /* overflow-y: auto; */
 }
 
 /* 2) O cabeçalho que se cola ao scroll */
-.cabecera-tabla {
+.cabecera-tabela {
   /* background-color: #2980b9; */
   /* color: white; */
   /* padding: 8px 12px; */
@@ -2253,10 +2253,10 @@ p.primeiro {
 }
 
 /* 3) Arrumação da lista */
-.tabla ul {
+.tabela ul {
   /* margin: 0; padding: 0; list-style: none; */
 }
-.tabla li {
+.tabela li {
   /* padding: 8px 12px; border-top: 1px solid #e5e7eb; */
 }
 
