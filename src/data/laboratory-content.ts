@@ -2099,12 +2099,12 @@ p.primeiro {
 				pt: "Com .cabecalho-tabela, além do fundo azul e da cor branca, define position: sticky e top: 0, e experimenta o scroll dentro do div: o cabeçalho fica colado em cima.",
 			},
 			{
-				es: "Con .numero (todas las posiciones) definí font-weight: bold. Para la insignia del primer puesto, con .pri definí position: relative y z-index: 2, y probá el scroll: cuando la fila 1 entra en la zona de la cabecera, el número pasa por encima del azul — un posicionado con z-index positivo le gana a la cabecera, que no tiene z-index — sin salir de su lugar en el flujo.",
-				pt: "Com .numero (todas as posições) define font-weight: bold. Para a insígnia do primeiro lugar, com .pri define position: relative e z-index: 2, e experimenta o scroll: quando a fila 1 entra na zona do cabeçalho, o número passa por cima do azul — um posicionado com z-index positivo ganha da cabeçalho, que não tem z-index — sem sair do seu lugar no fluxo.",
+				es: "Con .numero (todas las posiciones) definí font-weight: bold. Para la insignia del primer puesto, con .pri definí position: relative, z-index: 2 y el look de insignia: background-color: #e67e22, color: white, padding: 2px 7px y border-radius: 999px — el número queda dentro de un circulito naranja. Al hacer scroll, cuando la fila 1 entra en la zona de la cabecera, el número pasa por encima del azul — un posicionado con z-index positivo le gana a la cabecera, que no tiene z-index — sin salir de su lugar en el flujo.",
+				pt: "Com .numero (todas as posições) define font-weight: bold. Para a insígnia do primeiro lugar, com .pri define position: relative, z-index: 2 e o visual de insígnia: background-color: #e67e22, color: white, padding: 2px 7px e border-radius: 999px — o número fica dentro de um círculo laranja. Ao fazer o scroll, quando a fila 1 entra na zona do cabeçalho, o número passa por cima do azul — um posicionado com z-index positivo ganha do cabeçalho, que não tem z-index — sem sair do seu lugar no fluxo.",
 			},
 			{
 				es: "Experimento final: cambiá el z-index de .pri a 2000 y recargá: no cambia nada. 2 o 2000, el positivo ya le ganaba a la cabecera sin z-index (auto vale 0): el z-index compara números dentro de la misma pila, no hay números mágicos. Para que la cabecera gane, dale a .cabecera-tabla z-index: 3: la insignia pasa por debajo, como las cabeceras fijas de la vida real. Dejá la cabecera con 3 y el .pri con 2.",
-				pt: "Experimento final: muda o z-index de .pri para 2000 e recarrega: não muda nada. 2 ou 2000, o positivo já ganhava da cabeçalho sem z-index (auto vale 0): o z-index compara números dentro da mesma pilha, não há números mágicos. Para o cabeçalho ganhar, dá à .cabecalho-tabela z-index: 3: a insígnia fica por baixo, como as cabeceras fixas da vida real. Deixa a cabeçalho com 3 e o .pri com 2.",
+				pt: "Experimento final: muda o z-index de .pri para 2000 e recarrega: não muda nada. 2 ou 2000, o positivo já ganhava do cabeçalho sem z-index (auto vale 0): o z-index compara números dentro da mesma pilha, não há números mágicos. Para o cabeçalho ganhar, dá ao .cabecalho-tabela z-index: 3: a insígnia fica por baixo, como os cabeçalhos fixos da vida real. Deixa o cabeçalho com 3 e o .pri com 2.",
 			},
 		],
 		verify: [
@@ -2196,6 +2196,10 @@ p.primeiro {
 .pri {
   /* position: relative; */
   /* z-index: 2; */
+  /* background-color: #e67e22; */
+  /* color: white; */
+  /* padding: 2px 7px; */
+  /* border-radius: 999px; */
 }`,
 				},
 			],
@@ -2269,6 +2273,10 @@ p.primeiro {
 .pri {
   /* position: relative; */
   /* z-index: 2; */
+  /* background-color: #e67e22; */
+  /* color: white; */
+  /* padding: 2px 7px; */
+  /* border-radius: 999px; */
 }`,
 				},
 			],
