@@ -1,22 +1,38 @@
 import CodeBlock from "@/components/ui/code-block";
+import CodeTabs from "@/components/ui/code-tabs";
+
+const Preview = ({
+	label,
+	children,
+}: {
+	label: string;
+	children: React.ReactNode;
+}) => (
+	<div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-5 dark:border-gray-600 dark:bg-gray-800/40">
+		<p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
+			{label}
+		</p>
+		<div className="text-gray-800 dark:text-gray-200">{children}</div>
+	</div>
+);
 
 const Lecture15Es = () => (
-	<div className='space-y-8'>
+	<div className="space-y-8">
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<h3 className="text-2xl font-semibold mb-3">
 				1. Pintando la Web: Formatos de Color
 			</h3>
-			<p className='mb-4'>
+			<p className="mb-4">
 				El color es una de las herramientas de diseño más poderosas. CSS nos
 				ofrece varias formas de definir colores, cada una con sus ventajas.
 			</p>
-			<ul className='list-disc list-inside space-y-4 pl-4 mb-4'>
+			<ul className="list-disc list-inside space-y-4 pl-4 mb-4">
 				<li>
 					<strong>Hexadecimal (`#RRGGBB`):</strong> El formato más común.
 					Representa los valores de Rojo, Verde y Azul en base 16. También
 					existe una sintaxis corta (`#RGB`).
 					<CodeBlock
-						language='css'
+						language="css"
 						codeString={`/* Rojo puro */
 color: #FF0000;
 /* Azul, forma corta */
@@ -29,7 +45,7 @@ color: #00F;`}
 					valor, el canal <strong>alfa (transparencia)</strong>, que va de 0
 					(totalmente transparente) a 1 (totalmente opaco).
 					<CodeBlock
-						language='css'
+						language="css"
 						codeString={`/* Verde puro */
 color: rgb(0, 255, 0);
 /* Negro semi-transparente */
@@ -44,7 +60,7 @@ background-color: rgba(0, 0, 0, 0.5);`}
 					<strong>Luminosidad (Lightness)</strong> (0-100%). `hsla` añade el
 					canal alfa.
 					<CodeBlock
-						language='css'
+						language="css"
 						codeString={`/* Un azul vibrante */
 color: hsl(240, 100%, 50%);
 /* Un magenta semi-transparente */
@@ -52,30 +68,88 @@ background-color: hsla(300, 100%, 50%, 0.75);`}
 					/>
 				</li>
 			</ul>
+
+			<div className="mb-4">
+				<Preview label="Vista previa · el mismo color en tres formatos y la alfa en acción">
+					<style>{`.d15-lienzo {
+  background-color: gold; padding: 12px; border-radius: 10px;
+  display: flex; flex-wrap: wrap; gap: 12px; color: #1f2937;
+}
+.d15-muestra {
+  display: inline-block; padding: 8px 12px; border-radius: 10px;
+  font-family: monospace; font-size: 0.85rem; color: white;
+}
+.d15-hex { background-color: #FF0000; }
+.d15-rgb { background-color: rgb(0, 255, 0); }
+.d15-hsl { background-color: hsl(240, 100%, 50%); }
+.d15-alfa { background-color: rgba(0, 0, 0, 0.5); color: white; }`}</style>
+					<div className="d15-lienzo">
+						<div className="d15-muestra d15-hex">#FF0000 (hex)</div>
+						<div className="d15-muestra d15-rgb">rgb(0, 255, 0)</div>
+						<div className="d15-muestra d15-hsl">hsl(240, 100%, 50%)</div>
+						<div className="d15-muestra d15-alfa">rgba(0, 0, 0, 0.5)</div>
+					</div>
+					<p className="mt-2 text-sm">
+						Las tres primeras fichas usan el mismo tono escrito en hex, rgb y
+						hsl. La ficha oscura es negro rgba con alfa 0.5: frente al lienzo
+						dorado se nota que deja ver el fondo detrás.
+					</p>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<!-- Cuatro fichas sobre un lienzo dorado para notar la transparencia -->
+<div class="lienzo">
+  <div class="muestra muestra-hex">#FF0000 (hex)</div>
+  <div class="muestra muestra-rgb">rgb(0, 255, 0)</div>
+  <div class="muestra muestra-hsl">hsl(240, 100%, 50%)</div>
+  <div class="muestra muestra-alfa">rgba(0, 0, 0, 0.5)</div>
+</div>`}
+				css={`.lienzo {
+  background-color: gold; /* dorado: deja ver la alfa detrás */
+  padding: 12px;
+  border-radius: 10px;
+  display: flex; /* pone las fichas en fila */
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #1f2937;
+}
+.muestra {
+  display: inline-block; /* scaffolding para que el ejemplo se vea */
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: white;
+}
+.muestra-hex { background-color: #FF0000; }
+.muestra-rgb { background-color: rgb(0, 255, 0); }
+.muestra-hsl { background-color: hsl(240, 100%, 50%); }
+.muestra-alfa { background-color: rgba(0, 0, 0, 0.5); color: white; }`}
+			/>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<h3 className="text-2xl font-semibold mb-3">
 				2. Unidades de Medida: Absolutas vs. Relativas
 			</h3>
-			<p className='mb-4'>
+			<p className="mb-4">
 				Elegir la unidad de medida correcta es fundamental para crear diseños
 				flexibles y accesibles.
 			</p>
 
-			<h4 className='text-xl font-semibold mt-6 mb-2'>Unidades Absolutas</h4>
-			<p className='mb-4'>
+			<h4 className="text-xl font-semibold mt-6 mb-2">Unidades Absolutas</h4>
+			<p className="mb-4">
 				Tienen un tamaño fijo y no cambian. La más común es el{" "}
 				<strong>píxel (`px`)</strong>. Son útiles para elementos que no deben
 				escalar, como un borde de `1px`.
 			</p>
 
-			<h4 className='text-xl font-semibold mt-6 mb-2'>Unidades Relativas</h4>
-			<p className='mb-4'>
+			<h4 className="text-xl font-semibold mt-6 mb-2">Unidades Relativas</h4>
+			<p className="mb-4">
 				Su tamaño se calcula en relación a otro valor, lo que las hace ideales
 				para diseños responsivos y accesibles.
 			</p>
-			<ul className='list-disc list-inside space-y-4 pl-4 mb-4'>
+			<ul className="list-disc list-inside space-y-4 pl-4 mb-4">
 				<li>
 					<strong>`%` (Porcentaje):</strong> Relativo al tamaño del elemento
 					padre. `width: 50%;` hará que un elemento ocupe la mitad del ancho de
@@ -95,7 +169,7 @@ background-color: hsla(300, 100%, 50%, 0.75);`}
 					cambia el tamaño de fuente en su navegador por accesibilidad, todos
 					los tamaños en `rem` escalarán proporcionalmente.
 					<CodeBlock
-						language='css'
+						language="css"
 						codeString={`html {
   font-size: 16px; /* 1rem = 16px */
 }
@@ -115,13 +189,66 @@ p {
 					pantalla (`height: 100vh;`).
 				</li>
 			</ul>
+
+			<div className="mb-4">
+				<Preview label="Vista previa · 50% depende del contenedor, rem depende de la raíz">
+					<style>{`.d15-contenedor {
+  border: 2px dashed #f59e0b; background-color: #fffbeb;
+  padding: 10px; color: #1f2937;
+}
+.d15-caja-porcentaje {
+  width: 50%; background-color: #dbeafe; border: 1px solid #3b82f6;
+  padding: 8px;
+}
+.d15-texto-rem {
+  font-size: 1.5rem; border: 1px solid #9ca3af; padding: 4px 8px;
+}`}</style>
+					<div className="d15-contenedor">
+						<div className="d15-caja-porcentaje">
+							Caja: width 50% de mi contenedor
+						</div>
+						<p className="d15-texto-rem mt-2">
+							Texto en 1.5rem con borde de 1px
+						</p>
+						<p className="mt-1 text-sm">
+							El 50% es la mitad de este contenedor (no de la pantalla). El
+							texto usa 1.5rem (escala si la raíz cambia) pero su borde de 1px
+							es absoluto: esa mezcla de unidades es común y útil.
+						</p>
+					</div>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<!-- El contenedor amarillo es el padre: el 50% se reparte sobre su ancho -->
+<div class="contenedor">
+  <div class="caja-porcentaje">Caja: width 50% de mi contenedor</div>
+  <p class="texto-rem">Texto en 1.5rem con borde de 1px</p>
+</div>`}
+				css={`.contenedor {
+  border: 2px dashed #f59e0b; /* la referencia visual del padre */
+  background-color: #fffbeb;
+  padding: 10px;
+  color: #1f2937;
+}
+.caja-porcentaje {
+  width: 50%; /* mitad del ancho del contenedor */
+  background-color: #dbeafe;
+  border: 1px solid #3b82f6;
+  padding: 8px;
+}
+.texto-rem {
+  font-size: 1.5rem; /* 24px con la raíz en 16px */
+  border: 1px solid #9ca3af; /* px: absoluto, no escala */
+  padding: 4px 8px;
+}`}
+			/>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<h3 className="text-2xl font-semibold mb-3">
 				3. Variables CSS (Propiedades Personalizadas)
 			</h3>
-			<p className='mb-4'>
+			<p className="mb-4">
 				Las variables CSS son una de las características más potentes y
 				modernas. Nos permiten definir valores reutilizables en un solo lugar,
 				lo que simplifica enormemente el mantenimiento y la creación de temas.
@@ -132,9 +259,49 @@ p {
 				`:root`, que representa el elemento `&lt;html&gt;`, para que estén
 				disponibles globalmente.
 			</p>
-			<CodeBlock
-				language='css'
-				codeString={`:root {
+
+			<div className="mb-4">
+				<Preview label="Vista previa · una tarjeta vestida con variables de :root">
+					<style>{`.d15-demo {
+  --color-primario: #3498db;
+  --color-texto: #333333;
+  --fuente-principal: Helvetica, sans-serif;
+  color: var(--color-texto);
+  font-family: var(--fuente-principal);
+}
+.d15-tarjeta {
+  background-color: white; border: 1px solid #d1d5db;
+  border-radius: 10px; padding: 1.5rem;
+}
+.d15-tarjeta-titulo { font-size: 1.25rem; font-weight: bold; margin-bottom: 8px; }
+.d15-tarjeta-texto { margin-bottom: 12px; }
+.d15-boton-principal {
+  background-color: var(--color-primario); color: white;
+  border: none; padding: 8px 14px; border-radius: 6px; font-size: 0.9rem;
+}`}</style>
+					<div className="d15-demo">
+						<div className="d15-tarjeta">
+							<p className="d15-tarjeta-titulo">Paleta de estilo</p>
+							<p className="d15-tarjeta-texto">
+								El título, el texto y el botón toman sus valores de las
+								variables de <code>:root</code>: cambiarlas ahí retoca todo a la
+								vez.
+							</p>
+							<button className="d15-boton-principal" type="button">
+								Botón principal
+							</button>
+						</div>
+					</div>
+				</Preview>
+			</div>
+			<CodeTabs
+				html={`<!-- El body hereda color y fuente de las variables; la tarjeta vestida -->
+<div class="tarjeta">
+  <p class="tarjeta-titulo">Paleta de estilo</p>
+  <p class="tarjeta-texto">El título, el texto y el botón toman sus valores de las variables de <code>:root</code>: cambiarlas ahí retoca todo a la vez.</p>
+  <button class="boton-principal" type="button">Botón principal</button>
+</div>`}
+				css={`:root {
   --color-primario: #3498db;
   --color-texto: #333;
   --fuente-principal: 'Helvetica', sans-serif;
@@ -145,25 +312,34 @@ body {
   font-family: var(--fuente-principal);
 }
 
+.tarjeta { /* scaffolding para que el ejemplo se vea */
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+.tarjeta-titulo { font-size: 1.25rem; font-weight: bold; margin-bottom: 8px; }
+.tarjeta-texto { margin-bottom: 12px; }
+
 .boton-principal {
   background-color: var(--color-primario);
   color: white;
-}
-
-/* Para cambiar el tema, solo necesitarías cambiar las variables en :root */
-`}
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+}`}
 			/>
 		</section>
 
 		<section>
-			<h3 className='text-2xl font-semibold mb-3'>
+			<h3 className="text-2xl font-semibold mb-3">
 				📝 Tarea: Creando una Paleta de Estilo
 			</h3>
-			<p className='mb-4'>
+			<p className="mb-4">
 				Vamos a aplicar estos conceptos para crear una pequeña guía de estilo
 				para una página.
 			</p>
-			<ol className='list-decimal list-inside space-y-2 pl-4 mb-4'>
+			<ol className="list-decimal list-inside space-y-2 pl-4 mb-4">
 				<li>
 					<strong>Define tus Variables:</strong> En tu archivo CSS, dentro del
 					selector `:root`, crea al menos 4 variables: `--color-primario`,
@@ -171,7 +347,7 @@ body {
 				</li>
 				<li>
 					<strong>Aplica las Variables:</strong>
-					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
+					<ul className="list-disc list-inside space-y-1 pl-6 my-2">
 						<li>
 							En el `body`, usa las variables para definir el
 							`background-color`, `color` y `font-family`.
@@ -184,7 +360,7 @@ body {
 				</li>
 				<li>
 					<strong>Usa Unidades Relativas:</strong>
-					<ul className='list-disc list-inside space-y-1 pl-6 my-2'>
+					<ul className="list-disc list-inside space-y-1 pl-6 my-2">
 						<li>
 							Establece el `font-size` del `&lt;html&gt;` a `100%` (o déjalo por
 							defecto).
