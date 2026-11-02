@@ -112,7 +112,8 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 					</ul>
 					{(module.module === 1 ||
 						module.module === 2 ||
-						module.module === 3) && (
+						module.module === 3 ||
+						module.module === 4) && (
 						<NavLink
 							to={`/laboratorio/modulo-${module.module}`}
 							onClick={() => onLinkClick()}

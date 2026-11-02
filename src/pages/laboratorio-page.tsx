@@ -5,7 +5,12 @@ import ExpectedPreview from "@/components/lab/expected-previews";
 import { Callout, SectionTitle } from "@/components/lecture/lecture-blocks";
 import CodeBlock from "@/components/ui/code-block";
 import type { LabExercise, LabStarterFile } from "@/data/laboratory-content";
-import { labModulo1, labModulo2, labModulo3 } from "@/data/laboratory-content";
+import {
+	labModulo1,
+	labModulo2,
+	labModulo3,
+	labModulo4,
+} from "@/data/laboratory-content";
 import { useI18n } from "@/hooks/use-I18n";
 
 const NumberedItem = ({
@@ -31,6 +36,20 @@ const STARTER_LANGUAGE: Record<string, string> = {
 	css: "css",
 	js: "javascript",
 };
+
+const MODULE_TITLE_KEY = {
+	1: "lab.module1",
+	2: "lab.module2",
+	3: "lab.module3",
+	4: "lab.module4",
+} as const;
+
+const MODULE_SUBTITLE_KEY = {
+	1: "lab.subtitle1",
+	2: "lab.subtitle2",
+	3: "lab.subtitle3",
+	4: "lab.subtitle4",
+} as const;
 
 function starterLanguage(fileName: string): string {
 	const ext = fileName.slice(fileName.lastIndexOf(".") + 1).toLowerCase();
@@ -78,10 +97,16 @@ const StartTabs = ({ files }: { files: LabStarterFile[] }) => {
 	);
 };
 
-export default function LaboratorioPage({ module }: { module: 1 | 2 | 3 }) {
+export default function LaboratorioPage({ module }: { module: 1 | 2 | 3 | 4 }) {
 	const { language, t } = useI18n();
 	const exercises =
-		module === 1 ? labModulo1 : module === 2 ? labModulo2 : labModulo3;
+		module === 1
+			? labModulo1
+			: module === 2
+				? labModulo2
+				: module === 3
+					? labModulo3
+					: labModulo4;
 
 	const renderExercise = (exercise: LabExercise, index: number) => (
 		<section
@@ -160,25 +185,13 @@ export default function LaboratorioPage({ module }: { module: 1 | 2 | 3 }) {
 		<div className="mx-auto max-w-4xl">
 			<p className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300">
 				<FlaskConical className="h-3.5 w-3.5" aria-hidden />
-				{t(
-					module === 1
-						? "lab.module1"
-						: module === 2
-							? "lab.module2"
-							: "lab.module3",
-				)}
+				{t(MODULE_TITLE_KEY[module])}
 			</p>
 			<h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
 				{t("lab.title", { module })}
 			</h1>
 			<p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-				{t(
-					module === 1
-						? "lab.subtitle1"
-						: module === 2
-							? "lab.subtitle2"
-							: "lab.subtitle3",
-				)}
+				{t(MODULE_SUBTITLE_KEY[module])}
 			</p>
 
 			<Callout variant="info" title={t("lab.requirementsTitle")}>

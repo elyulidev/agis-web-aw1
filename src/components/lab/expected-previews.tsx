@@ -125,6 +125,22 @@ const text = {
 		modalButton: "Confirmar",
 		modalNote:
 			"Overlay fijo (z-index 10) por debajo del modal (20), centrado con transform.",
+		labGallery: "Galería de campo",
+		labCard1: "Cuaderno de campo",
+		labCard1Body: "Notas, bocetos y fotos de cada salida.",
+		labCard2: "Mapa de rutas",
+		labCard2Body: "Los caminos que ya recorrimos, sin atajos.",
+		labCard3: "Bitácora",
+		labCard3Body: "Qué aprendimos en cada etapa del proyecto.",
+		labNav1: "Galería",
+		labNav2: "Resumen",
+		labNav3: "Contacto",
+		labFooter: "Taller de maquetación · 2026",
+		labBentoHero: "Hero",
+		labBentoAside2: "Aside 2",
+		labBentoAside3: "Aside 3",
+		labBentoAside4: "Aside 4",
+		labBentoAside5: "Aside 5",
 	},
 	pt: {
 		hello: "Olá, Mundo!",
@@ -251,8 +267,42 @@ const text = {
 		modalButton: "Confirmar",
 		modalNote:
 			"Overlay fixo (z-index 10) por baixo do modal (20), centrado com transform.",
+		labGallery: "Galeria de campo",
+		labCard1: "Caderno de campo",
+		labCard1Body: "Notas, esboços e fotos de cada saída.",
+		labCard2: "Mapa de rotas",
+		labCard2Body: "Os caminhos que já percorremos, sem atalhos.",
+		labCard3: "Diário de bordo",
+		labCard3Body: "O que aprendemos em cada etapa do projeto.",
+		labNav1: "Galeria",
+		labNav2: "Resumo",
+		labNav3: "Contacto",
+		labFooter: "Oficina de maquetação · 2026",
+		labBentoHero: "Hero",
+		labBentoAside2: "Aside 2",
+		labBentoAside3: "Aside 3",
+		labBentoAside4: "Aside 4",
+		labBentoAside5: "Aside 5",
 	},
 };
+
+const LabCard = ({
+	title,
+	body,
+	className,
+	img,
+}: {
+	title: string;
+	body: string;
+	className: string;
+	img?: string;
+}) => (
+	<article className={className}>
+		{img ? <img src={img} alt={title} loading="lazy" /> : null}
+		<h3>{title}</h3>
+		<p>{body}</p>
+	</article>
+);
 
 export default function ExpectedPreview({
 	id,
@@ -955,6 +1005,441 @@ export default function ExpectedPreview({
 						</div>
 					</div>
 					<p className="mt-1 text-[10px] text-gray-500">{t.modalNote}</p>
+				</div>
+			);
+		case 20:
+			return (
+				<div>
+					<style>{`.lab20-marco {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 12px;
+  background-color: #eef2f7;
+  border: 1px dashed #94a3b8;
+  border-radius: 12px;
+}
+.lab20-lista {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.lab20-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 14px;
+  color: #1f2937;
+}
+.lab20-card h3 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+.lab20-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}`}</style>
+					<p className="mb-2 text-center text-[10px] font-semibold uppercase tracking-wide text-gray-400">
+						320px
+					</p>
+					<div className="lab20-marco">
+						<div className="lab20-lista">
+							<LabCard
+								className="lab20-card"
+								title={t.labCard1}
+								body={t.labCard1Body}
+							/>
+							<LabCard
+								className="lab20-card"
+								title={t.labCard2}
+								body={t.labCard2Body}
+							/>
+							<LabCard
+								className="lab20-card"
+								title={t.labCard3}
+								body={t.labCard3Body}
+							/>
+						</div>
+					</div>
+				</div>
+			);
+		case 21:
+			return (
+				<div>
+					<style>{`.lab21-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.lab21-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 14px;
+  color: #1f2937;
+}
+.lab21-card h3 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+.lab21-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+  .lab21-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .lab21-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}`}</style>
+					<p className="mb-2 text-center text-[10px] font-semibold uppercase tracking-wide text-gray-400">
+						768px · 1024px
+					</p>
+					<div className="lab21-grid">
+						<LabCard
+							className="lab21-card"
+							title={t.labCard1}
+							body={t.labCard1Body}
+						/>
+						<LabCard
+							className="lab21-card"
+							title={t.labCard2}
+							body={t.labCard2Body}
+						/>
+						<LabCard
+							className="lab21-card"
+							title={t.labCard3}
+							body={t.labCard3Body}
+						/>
+					</div>
+				</div>
+			);
+		case 22:
+			return (
+				<div>
+					<style>{`.lab22-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.lab22-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 10px;
+  color: #1f2937;
+}
+.lab22-card img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.lab22-card h3 {
+  margin: 8px 0 4px;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+.lab22-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+  .lab22-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .lab22-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}`}</style>
+					<p className="mb-2 text-center text-[10px] font-semibold uppercase tracking-wide text-gray-400">
+						16/9 · clamp()
+					</p>
+					<div className="lab22-grid">
+						<LabCard
+							className="lab22-card"
+							title={t.labCard1}
+							body={t.labCard1Body}
+							img="https://picsum.photos/seed/lab22a/640/360"
+						/>
+						<LabCard
+							className="lab22-card"
+							title={t.labCard2}
+							body={t.labCard2Body}
+							img="https://picsum.photos/seed/lab22b/640/360"
+						/>
+						<LabCard
+							className="lab22-card"
+							title={t.labCard3}
+							body={t.labCard3Body}
+							img="https://picsum.photos/seed/lab22c/640/360"
+						/>
+					</div>
+				</div>
+			);
+		case 23:
+			return (
+				<div>
+					<style>{`.lab23-bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 10px;
+  background-color: #eef2f7;
+  border-radius: 10px;
+  grid-template-areas:
+    "hero"
+    "aside2"
+    "aside3"
+    "aside4"
+    "aside5";
+}
+.lab23-celda {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 12px;
+  background-color: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 6px;
+  color: #1f2937;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.lab23-celda:nth-child(1) { grid-area: hero; }
+.lab23-celda:nth-child(2) { grid-area: aside2; }
+.lab23-celda:nth-child(3) { grid-area: aside3; }
+.lab23-celda:nth-child(4) { grid-area: aside4; }
+.lab23-celda:nth-child(5) { grid-area: aside5; }`}</style>
+					<div className="lab23-bento">
+						<div className="lab23-celda">{t.labBentoHero}</div>
+						<div className="lab23-celda">{t.labBentoAside2}</div>
+						<div className="lab23-celda">{t.labBentoAside3}</div>
+						<div className="lab23-celda">{t.labBentoAside4}</div>
+						<div className="lab23-celda">{t.labBentoAside5}</div>
+					</div>
+				</div>
+			);
+		case 24:
+			return (
+				<div>
+					<style>{`.lab24-bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 10px;
+  background-color: #eef2f7;
+  border-radius: 10px;
+  grid-template-areas:
+    "hero"
+    "aside2"
+    "aside3"
+    "aside4"
+    "aside5";
+}
+.lab24-celda {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 12px;
+  background-color: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 6px;
+  color: #1f2937;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.lab24-celda:nth-child(1) { grid-area: hero; }
+.lab24-celda:nth-child(2) { grid-area: aside2; }
+.lab24-celda:nth-child(3) { grid-area: aside3; }
+.lab24-celda:nth-child(4) { grid-area: aside4; }
+.lab24-celda:nth-child(5) { grid-area: aside5; }
+@media screen and (min-width: 750px) {
+  .lab24-bento {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "hero   hero   hero   hero"
+      "hero   hero   hero   hero"
+      "aside2 aside2 aside2 aside3"
+      "aside4 aside4 aside5 aside5";
+  }
+}
+@media screen and (min-width: 1000px) {
+  .lab24-bento {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "hero   hero   aside2"
+      "hero   hero   aside2"
+      "hero   hero   aside2"
+      "hero   hero   aside2"
+      "aside3 aside4 aside5";
+  }
+}`}</style>
+					<div className="lab24-bento">
+						<div className="lab24-celda">{t.labBentoHero}</div>
+						<div className="lab24-celda">{t.labBentoAside2}</div>
+						<div className="lab24-celda">{t.labBentoAside3}</div>
+						<div className="lab24-celda">{t.labBentoAside4}</div>
+						<div className="lab24-celda">{t.labBentoAside5}</div>
+					</div>
+				</div>
+			);
+		case 25:
+			return (
+				<div>
+					<style>{`.lab25-page {
+  padding: 10px;
+  background-color: #eef2f7;
+  border-radius: 10px;
+  color: #1f2937;
+}
+.lab25-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.lab25-header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.lab25-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #2563eb;
+}
+.lab25-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.lab25-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 8px;
+}
+.lab25-card img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.lab25-card h3 {
+  margin: 6px 0 2px;
+  font-size: 0.8rem;
+}
+.lab25-card p {
+  margin: 0;
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+.lab25-bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 10px;
+  grid-template-areas:
+    "hero"
+    "aside2"
+    "aside3"
+    "aside4"
+    "aside5";
+}
+.lab25-celda {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 10px;
+  background-color: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.lab25-celda:nth-child(1) { grid-area: hero; }
+.lab25-celda:nth-child(2) { grid-area: aside2; }
+.lab25-celda:nth-child(3) { grid-area: aside3; }
+.lab25-celda:nth-child(4) { grid-area: aside4; }
+.lab25-celda:nth-child(5) { grid-area: aside5; }
+.lab25-footer {
+  margin: 10px 0 0;
+  font-size: 0.65rem;
+  color: #475569;
+}
+@media (min-width: 768px) {
+  .lab25-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .lab25-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .lab25-bento {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "hero   hero   aside2"
+      "hero   hero   aside2"
+      "hero   hero   aside2"
+      "hero   hero   aside2"
+      "aside3 aside4 aside5";
+  }
+}`}</style>
+					<div className="lab25-page">
+						<div className="lab25-header">
+							<h3>{t.labGallery}</h3>
+							<div className="lab25-nav">
+								<span>{t.labNav1}</span>
+								<span>{t.labNav2}</span>
+								<span>{t.labNav3}</span>
+							</div>
+						</div>
+						<div className="lab25-grid">
+							<LabCard
+								className="lab25-card"
+								title={t.labCard1}
+								body={t.labCard1Body}
+								img="https://picsum.photos/seed/lab25a/640/360"
+							/>
+							<LabCard
+								className="lab25-card"
+								title={t.labCard2}
+								body={t.labCard2Body}
+								img="https://picsum.photos/seed/lab25b/640/360"
+							/>
+							<LabCard
+								className="lab25-card"
+								title={t.labCard3}
+								body={t.labCard3Body}
+								img="https://picsum.photos/seed/lab25c/640/360"
+							/>
+						</div>
+						<div className="lab25-bento">
+							<div className="lab25-celda">{t.labBentoHero}</div>
+							<div className="lab25-celda">{t.labBentoAside2}</div>
+							<div className="lab25-celda">{t.labBentoAside3}</div>
+							<div className="lab25-celda">{t.labBentoAside4}</div>
+							<div className="lab25-celda">{t.labBentoAside5}</div>
+						</div>
+						<p className="lab25-footer">{t.labFooter}</p>
+					</div>
 				</div>
 			);
 		default:

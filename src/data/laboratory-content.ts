@@ -2505,3 +2505,1548 @@ button {
 		},
 	},
 ];
+
+export const labModulo4: LabExercise[] = [
+	{
+		id: 20,
+		lectureId: 18,
+		title: {
+			es: "Mobile-first: la base en una columna",
+			pt: "Mobile-first: a base numa coluna",
+		},
+		objective: {
+			es: "Armar la base mobile-first de una galería: una sola columna, anchos fluidos y sin scroll horizontal.",
+			pt: "Montar a base mobile-first de uma galeria: uma só coluna, larguras fluidas e sem scroll horizontal.",
+		},
+		steps: [
+			{
+				es: "Copiá los dos archivos (galeria.html y galeria.css) en una misma carpeta y abrí galeria.html con Live Server. El HTML ya trae las tres tarjetas: vos completás el CSS.",
+				pt: "Copia os dois ficheiros (galeria.html e galeria.css) para a mesma pasta e abre galeria.html com o Live Server. O HTML já traz os três cartões: tu completas o CSS.",
+			},
+			{
+				es: "En galeria.css, aplicá un reset mínimo: * { box-sizing: border-box; } y body { margin: 0; }.",
+				pt: "Em galeria.css, aplica um reset mínimo: * { box-sizing: border-box; } e body { margin: 0; }.",
+			},
+			{
+				es: "Dale al contenedor .galeria un ancho fluido: width: 100%, max-width: 1100px, margin: 0 auto y padding en rem. Nada de width fija en píxeles.",
+				pt: "Dá ao contentor .galeria uma largura fluida: width: 100%, max-width: 1100px, margin: 0 auto e padding em rem. Nada de width fixa em píxeis.",
+			},
+			{
+				es: "Convertí .galeria en una cuadrícula de una sola columna con display: grid, grid-template-columns: 1fr y gap: 1rem.",
+				pt: "Converte .galeria numa grelha de uma só coluna com display: grid, grid-template-columns: 1fr e gap: 1rem.",
+			},
+			{
+				es: "Estilá las .tarjeta con fondo, borde, border-radius y padding en rem, para que las medidas internas no dependan del ancho de la pantalla.",
+				pt: "Estiliza os .cartao com fundo, borda, border-radius e padding em rem, para que as medidas internas não dependam da largura do ecrã.",
+			},
+			{
+				es: "Abrí DevTools, activá el modo responsive y arrastrá el ancho desde 320px hasta pantalla completa: las tarjetas deben apilarse siempre y no debe aparecer scroll horizontal.",
+				pt: "Abre as DevTools, ativa o modo responsivo e arrasta a largura desde 320px até ecrã completo: os cartões devem empilhar-se sempre e não deve aparecer scroll horizontal.",
+			},
+		],
+		verify: [
+			{
+				es: "Las tres tarjetas se apilan una debajo de otra en cualquier ancho.",
+				pt: "Os três cartões empilham-se uns por baixo dos outros em qualquer largura.",
+			},
+			{
+				es: "No aparece scroll horizontal con la ventana a 320px.",
+				pt: "Não aparece scroll horizontal com a janela a 320px.",
+			},
+			{
+				es: ".galeria ocupa el 100% del ancho disponible y se detiene en 1100px en pantallas grandes.",
+				pt: ".galeria ocupa 100% da largura disponível e para nos 1100px em ecrãs grandes.",
+			},
+			{
+				es: "Paddings y gap están en rem, no en píxeles fijos.",
+				pt: "Paddings e gap estão em rem, não em píxeis fixos.",
+			},
+		],
+		expected: {
+			es: "Tres tarjetas apiladas a ancho completo, con márgenes internos fluidos y sin scroll horizontal en ningún tamaño.",
+			pt: "Três cartões empilhados a largura completa, com margens internas fluidas e sem scroll horizontal em nenhum tamanho.",
+		},
+		starter: {
+			es: [
+				{
+					file: "galeria.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería mobile-first</title>
+  <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+  <main class="galeria">
+    <article class="tarjeta">
+      <h2>Cuaderno de campo</h2>
+      <p>Notas, bocetos y fotos de cada salida.</p>
+    </article>
+    <article class="tarjeta">
+      <h2>Mapa de rutas</h2>
+      <p>Los caminos que ya recorrimos, sin atajos.</p>
+    </article>
+    <article class="tarjeta">
+      <h2>Bitácora</h2>
+      <p>Qué aprendimos en cada etapa del proyecto.</p>
+    </article>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "galeria.css",
+					code: `/* Reset mínimo: el padding y el border no agrandan las cajas */
+/* * { box-sizing: border-box; } */
+/* body { margin: 0; } */
+
+/* 1) Contenedor fluido: nunca más ancho que la pantalla */
+.galeria {
+  /* width: 100%; */
+  /* max-width: 1100px; */
+  /* margin: 0 auto; */
+  /* padding: 1rem; */
+  /* display: grid; */
+  /* grid-template-columns: 1fr; */
+  /* gap: 1rem; */
+}
+
+/* 2) Tarjetas: medidas internas en rem */
+.tarjeta {
+  /* background-color: #f8fafc; */
+  /* border: 1px solid #cbd5e1; */
+  /* border-radius: 0.75rem; */
+  /* padding: 1.25rem; */
+}
+
+.tarjeta h2 {
+  /* margin: 0 0 0.5rem; */
+  /* font-size: 1.25rem; */
+}
+
+.tarjeta p {
+  /* margin: 0; */
+  /* line-height: 1.6; */
+}`,
+				},
+			],
+			pt: [
+				{
+					file: "galeria.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria mobile-first</title>
+  <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+  <main class="galeria">
+    <article class="cartao">
+      <h2>Caderno de campo</h2>
+      <p>Notas, esboços e fotos de cada saída.</p>
+    </article>
+    <article class="cartao">
+      <h2>Mapa de rotas</h2>
+      <p>Os caminhos que já percorremos, sem atalhos.</p>
+    </article>
+    <article class="cartao">
+      <h2>Diário de bordo</h2>
+      <p>O que aprendemos em cada etapa do projeto.</p>
+    </article>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "galeria.css",
+					code: `/* Reset mínimo: o padding e a borda não aumentam as caixas */
+/* * { box-sizing: border-box; } */
+/* body { margin: 0; } */
+
+/* 1) Contentor fluido: nunca mais largo que o ecrã */
+.galeria {
+  /* width: 100%; */
+  /* max-width: 1100px; */
+  /* margin: 0 auto; */
+  /* padding: 1rem; */
+  /* display: grid; */
+  /* grid-template-columns: 1fr; */
+  /* gap: 1rem; */
+}
+
+/* 2) Cartões: medidas internas em rem */
+.cartao {
+  /* background-color: #f8fafc; */
+  /* border: 1px solid #cbd5e1; */
+  /* border-radius: 0.75rem; */
+  /* padding: 1.25rem; */
+}
+
+.cartao h2 {
+  /* margin: 0 0 0.5rem; */
+  /* font-size: 1.25rem; */
+}
+
+.cartao p {
+  /* margin: 0; */
+  /* line-height: 1.6; */
+}`,
+				},
+			],
+		},
+	},
+	{
+		id: 21,
+		lectureId: 18,
+		title: {
+			es: "Tu primer breakpoint: de una a tres columnas",
+			pt: "O teu primeiro breakpoint: de uma a três colunas",
+		},
+		objective: {
+			es: "Añadir dos media queries con min-width para que la galería pase de una a dos y de dos a tres columnas.",
+			pt: "Adicionar duas media queries com min-width para que a galeria passe de uma a duas e de duas a três colunas.",
+		},
+		steps: [
+			{
+				es: "Partí del ejercicio anterior: la misma galería de tres tarjetas con la base mobile-first en una columna.",
+				pt: "Parte do exercício anterior: a mesma galeria de três cartões com a base mobile-first numa coluna.",
+			},
+			{
+				es: "Agregá la primera media query: @media (min-width: 768px) { .galeria { grid-template-columns: repeat(2, 1fr); } }.",
+				pt: "Adiciona a primeira media query: @media (min-width: 768px) { .galeria { grid-template-columns: repeat(2, 1fr); } }.",
+			},
+			{
+				es: "Agregá la segunda: @media (min-width: 1024px) { .galeria { grid-template-columns: repeat(3, 1fr); } }.",
+				pt: "Adiciona a segunda: @media (min-width: 1024px) { .galeria { grid-template-columns: repeat(3, 1fr); } }.",
+			},
+			{
+				es: "Mantené la base fuera de las media queries: los estilos móviles se escriben primero y las queries sólo agregan.",
+				pt: "Mantém a base fora das media queries: os estilos móveis escrevem-se primeiro e as queries só acrescentam.",
+			},
+			{
+				es: "En DevTools, probá 767px, 768px, 1023px y 1024px, y observá cuántas columnas hay en cada ancho.",
+				pt: "Nas DevTools, testa 767px, 768px, 1023px e 1024px, e observa quantas colunas há em cada largura.",
+			},
+			{
+				es: "No mezcles max-width con min-width: si los dos enfoques conviven, el resultado deja de ser predecible.",
+				pt: "Não mistures max-width com min-width: se as duas abordagens convivem, o resultado deixa de ser previsível.",
+			},
+		],
+		verify: [
+			{
+				es: "En 767px o menos se ve una sola columna.",
+				pt: "Em 767px ou menos vê-se uma só coluna.",
+			},
+			{
+				es: "Entre 768px y 1023px se ven dos columnas.",
+				pt: "Entre 768px e 1023px vêem-se duas colunas.",
+			},
+			{
+				es: "En 1024px o más se ven tres columnas.",
+				pt: "Em 1024px ou mais vêem-se três colunas.",
+			},
+			{
+				es: "Al cambiar de ancho no hay saltos raros: cada query sólo reemplaza grid-template-columns.",
+				pt: "Ao mudar de largura não há saltos estranhos: cada query só substitui grid-template-columns.",
+			},
+		],
+		expected: {
+			es: "La galería pasa de una columna a dos desde 768px y a tres desde 1024px, sin tocar los estilos base.",
+			pt: "A galeria passa de uma coluna a duas desde 768px e a três desde 1024px, sem tocar nos estilos base.",
+		},
+		starter: {
+			es: [
+				{
+					file: "galeria.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería con breakpoints</title>
+  <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+  <main class="galeria">
+    <article class="tarjeta">
+      <h2>Cuaderno de campo</h2>
+      <p>Notas, bocetos y fotos de cada salida.</p>
+    </article>
+    <article class="tarjeta">
+      <h2>Mapa de rutas</h2>
+      <p>Los caminos que ya recorrimos, sin atajos.</p>
+    </article>
+    <article class="tarjeta">
+      <h2>Bitácora</h2>
+      <p>Qué aprendimos en cada etapa del proyecto.</p>
+    </article>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "galeria.css",
+					code: `*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+/* Base mobile-first: una sola columna */
+.galeria {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.tarjeta {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.tarjeta h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.tarjeta p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* 1) Desde 768px: dos columnas */
+/* @media (min-width: 768px) { */
+/*   .galeria { */
+/*     grid-template-columns: repeat(2, 1fr); */
+/*   } */
+/* } */
+
+/* 2) Desde 1024px: tres columnas */
+/* @media (min-width: 1024px) { */
+/*   .galeria { */
+/*     grid-template-columns: repeat(3, 1fr); */
+/*   } */
+/* } */`,
+				},
+			],
+			pt: [
+				{
+					file: "galeria.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria com breakpoints</title>
+  <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+  <main class="galeria">
+    <article class="cartao">
+      <h2>Caderno de campo</h2>
+      <p>Notas, esboços e fotos de cada saída.</p>
+    </article>
+    <article class="cartao">
+      <h2>Mapa de rotas</h2>
+      <p>Os caminhos que já percorremos, sem atalhos.</p>
+    </article>
+    <article class="cartao">
+      <h2>Diário de bordo</h2>
+      <p>O que aprendemos em cada etapa do projeto.</p>
+    </article>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "galeria.css",
+					code: `*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+/* Base mobile-first: uma só coluna */
+.galeria {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.cartao {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.cartao h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.cartao p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* 1) Desde 768px: duas colunas */
+/* @media (min-width: 768px) { */
+/*   .galeria { */
+/*     grid-template-columns: repeat(2, 1fr); */
+/*   } */
+/* } */
+
+/* 2) Desde 1024px: três colunas */
+/* @media (min-width: 1024px) { */
+/*   .galeria { */
+/*     grid-template-columns: repeat(3, 1fr); */
+/*   } */
+/* } */`,
+				},
+			],
+		},
+	},
+	{
+		id: 22,
+		lectureId: 18,
+		title: {
+			es: "Imágenes y texto que no se desbordan",
+			pt: "Imagens e texto que não transbordam",
+		},
+		objective: {
+			es: "Hacer que imágenes y tipografía se adapten al ancho de cada tarjeta sin romper la maquetación.",
+			pt: "Fazer com que imagens e tipografia se adaptem à largura de cada cartão sem quebrar a maquetação.",
+		},
+		steps: [
+			{
+				es: "Partí de la galería con breakpoints del ejercicio anterior y agregá una imagen dentro de cada tarjeta con su atributo alt.",
+				pt: "Parte da galeria com breakpoints do exercício anterior e acrescenta uma imagem dentro de cada cartão com o seu atributo alt.",
+			},
+			{
+				es: "Aplicá la regla de oro de las imágenes: img { display: block; max-width: 100%; height: auto; border-radius: 0.5rem; }.",
+				pt: "Aplica a regra de ouro das imagens: img { display: block; max-width: 100%; height: auto; border-radius: 0.5rem; }.",
+			},
+			{
+				es: "Fijá una proporción uniforme con aspect-ratio: 16 / 9 y object-fit: cover, para que las tres tarjetas midan lo mismo.",
+				pt: "Fixa uma proporção uniforme com aspect-ratio: 16 / 9 e object-fit: cover, para que os três cartões meçam o mesmo.",
+			},
+			{
+				es: "Escalá el título con clamp(): font-size: clamp(1.1rem, 2.5vw, 1.5rem).",
+				pt: "Escala o título com clamp(): font-size: clamp(1.1rem, 2.5vw, 1.5rem).",
+			},
+			{
+				es: "Dejá el cuerpo en 1rem con line-height: 1.6: nunca uses anchos fijos en píxeles para el texto.",
+				pt: "Deixa o corpo em 1rem com line-height: 1.6: nunca uses larguras fixas em píxeis para o texto.",
+			},
+			{
+				es: "Redimensioná la ventana y comprobá que la imagen encoge con la tarjeta y que el texto sigue legible.",
+				pt: "Redimensiona a janela e confirma que a imagem encolhe com o cartão e que o texto continua legível.",
+			},
+		],
+		verify: [
+			{
+				es: "La imagen nunca sobresale del borde de su tarjeta.",
+				pt: "A imagem nunca sobressai da borda do seu cartão.",
+			},
+			{
+				es: "Las tres imágenes conservan la proporción 16/9 sin deformarse.",
+				pt: "As três imagens mantêm a proporção 16/9 sem se deformarem.",
+			},
+			{
+				es: "El título escala entre 1.1rem y 1.5rem según el ancho de la ventana.",
+				pt: "O título escala entre 1.1rem e 1.5rem conforme a largura da janela.",
+			},
+			{
+				es: "No aparece scroll horizontal ni saltos de layout al cargar las imágenes.",
+				pt: "Não aparece scroll horizontal nem saltos de layout ao carregar as imagens.",
+			},
+		],
+		expected: {
+			es: "Cada tarjeta muestra su imagen recortada a 16/9 dentro de su ancho y un título que escala suavemente con la ventana.",
+			pt: "Cada cartão mostra a sua imagem recortada a 16/9 dentro da sua largura e um título que escala suavemente com a janela.",
+		},
+		starter: {
+			es: [
+				{
+					file: "galeria.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería con imágenes fluidas</title>
+  <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+  <main class="galeria">
+    <article class="tarjeta">
+      <img src="https://picsum.photos/seed/lab22a/640/360" alt="Sendero entre árboles" loading="lazy">
+      <h2>Cuaderno de campo</h2>
+      <p>Notas, bocetos y fotos de cada salida.</p>
+    </article>
+    <article class="tarjeta">
+      <img src="https://picsum.photos/seed/lab22b/640/360" alt="Mapa dibujado a mano" loading="lazy">
+      <h2>Mapa de rutas</h2>
+      <p>Los caminos que ya recorrimos, sin atajos.</p>
+    </article>
+    <article class="tarjeta">
+      <img src="https://picsum.photos/seed/lab22c/640/360" alt="Páginas de un cuaderno" loading="lazy">
+      <h2>Bitácora</h2>
+      <p>Qué aprendimos en cada etapa del proyecto.</p>
+    </article>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "galeria.css",
+					code: `*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+.galeria {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tarjeta {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+/* 1) Imagen fluida: nunca más ancha que su tarjeta */
+.tarjeta img {
+  /* display: block; */
+  /* max-width: 100%; */
+  /* height: auto; */
+  /* aspect-ratio: 16 / 9; */
+  /* object-fit: cover; */
+  /* border-radius: 0.5rem; */
+}
+
+/* 2) Título que escala entre un mínimo y un máximo */
+.tarjeta h2 {
+  /* margin: 1rem 0 0.5rem; */
+  /* font-size: clamp(1.1rem, 2.5vw, 1.5rem); */
+}
+
+.tarjeta p {
+  /* margin: 0; */
+  /* font-size: 1rem; */
+  /* line-height: 1.6; */
+}`,
+				},
+			],
+			pt: [
+				{
+					file: "galeria.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria com imagens fluidas</title>
+  <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+  <main class="galeria">
+    <article class="cartao">
+      <img src="https://picsum.photos/seed/lab22a/640/360" alt="Trilho entre árvores" loading="lazy">
+      <h2>Caderno de campo</h2>
+      <p>Notas, esboços e fotos de cada saída.</p>
+    </article>
+    <article class="cartao">
+      <img src="https://picsum.photos/seed/lab22b/640/360" alt="Mapa desenhado à mão" loading="lazy">
+      <h2>Mapa de rotas</h2>
+      <p>Os caminhos que já percorremos, sem atalhos.</p>
+    </article>
+    <article class="cartao">
+      <img src="https://picsum.photos/seed/lab22c/640/360" alt="Páginas de um caderno" loading="lazy">
+      <h2>Diário de bordo</h2>
+      <p>O que aprendemos em cada etapa do projeto.</p>
+    </article>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "galeria.css",
+					code: `*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+.galeria {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cartao {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+/* 1) Imagem fluida: nunca mais larga que o seu cartão */
+.cartao img {
+  /* display: block; */
+  /* max-width: 100%; */
+  /* height: auto; */
+  /* aspect-ratio: 16 / 9; */
+  /* object-fit: cover; */
+  /* border-radius: 0.5rem; */
+}
+
+/* 2) Título que escala entre um mínimo e um máximo */
+.cartao h2 {
+  /* margin: 1rem 0 0.5rem; */
+  /* font-size: clamp(1.1rem, 2.5vw, 1.5rem); */
+}
+
+.cartao p {
+  /* margin: 0; */
+  /* font-size: 1rem; */
+  /* line-height: 1.6; */
+}`,
+				},
+			],
+		},
+	},
+	{
+		id: 23,
+		lectureId: 18,
+		title: {
+			es: "Bento base: grid-template-areas en una columna",
+			pt: "Bento base: grid-template-areas numa coluna",
+		},
+		objective: {
+			es: "Nombrar cinco áreas con grid-template-areas y colocar cada celda con grid-area, empezando por la base de una columna.",
+			pt: "Nomear cinco áreas com grid-template-areas e colocar cada célula com grid-area, começando pela base de uma coluna.",
+		},
+		steps: [
+			{
+				es: "Copiá bento.html y bento.css y abrí el HTML. Las cinco celdas ya están en orden: hero, aside2, aside3, aside4 y aside5.",
+				pt: "Copia bento.html e bento.css e abre o HTML. As cinco células já estão na ordem: hero, aside2, aside3, aside4 e aside5.",
+			},
+			{
+				es: "En .bento, activá display: grid, gap: 0.75rem y grid-template-columns: 1fr.",
+				pt: "Em .bento, ativa display: grid, gap: 0.75rem e grid-template-columns: 1fr.",
+			},
+			{
+				es: 'Declará las áreas en una sola columna: grid-template-areas: "hero" "aside2" "aside3" "aside4" "aside5";.',
+				pt: 'Declara as áreas numa só coluna: grid-template-areas: "hero" "aside2" "aside3" "aside4" "aside5";.',
+			},
+			{
+				es: "Asigná cada celda con la pseudo-clase :nth-child: .bento .celda:nth-child(1) { grid-area: hero; } y así hasta la quinta.",
+				pt: "Atribui cada célula com a pseudo-classe :nth-child: .bento .celula:nth-child(1) { grid-area: hero; } e assim até à quinta.",
+			},
+			{
+				es: "Cada nombre del template debe tener su celda asignada: si falta uno, esa área queda vacía y el layout se desarma.",
+				pt: "Cada nome do template deve ter a sua célula atribuída: se falta um, essa área fica vazia e o layout desmancha-se.",
+			},
+			{
+				es: "Comprobalo en DevTools: al seleccionar cada celda, el panel de Grid debe mostrar el área con su nombre.",
+				pt: "Confirma-o nas DevTools: ao selecionar cada célula, o painel de Grid deve mostrar a área com o seu nome.",
+			},
+		],
+		verify: [
+			{
+				es: "Las cinco celdas se apilan en el orden hero, aside2, aside3, aside4 y aside5.",
+				pt: "As cinco células empilham-se na ordem hero, aside2, aside3, aside4 e aside5.",
+			},
+			{
+				es: "Cada celda declara un grid-area que existe en el template.",
+				pt: "Cada célula declara um grid-area que existe no template.",
+			},
+			{
+				es: "Al quitar un nombre del template, su celda pierde la posición: entendés por qué no puede faltar.",
+				pt: "Ao tirar um nome do template, a sua célula perde a posição: entendes porque não pode faltar.",
+			},
+			{
+				es: "El gap separa las celdas de forma uniforme.",
+				pt: "O gap separa as células de forma uniforme.",
+			},
+		],
+		expected: {
+			es: "Cinco celdas apiladas en el orden declarado, cada una colocada por su grid-area y separadas por el mismo gap.",
+			pt: "Cinco células empilhadas na ordem declarada, cada uma colocada pelo seu grid-area e separadas pelo mesmo gap.",
+		},
+		starter: {
+			es: [
+				{
+					file: "bento.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento en una columna</title>
+  <link rel="stylesheet" href="bento.css">
+</head>
+<body>
+  <main class="bento">
+    <div class="celda">Hero</div>
+    <div class="celda">Aside 2</div>
+    <div class="celda">Aside 3</div>
+    <div class="celda">Aside 4</div>
+    <div class="celda">Aside 5</div>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "bento.css",
+					code: `*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+/* 1) La cuadrícula base: una sola columna */
+.bento {
+  /* display: grid; */
+  /* grid-template-columns: 1fr; */
+  /* gap: 0.75rem; */
+  /* grid-template-areas: */
+  /*   "hero" */
+  /*   "aside2" */
+  /*   "aside3" */
+  /*   "aside4" */
+  /*   "aside5"; */
+}
+
+.celda {
+  background-color: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 0.5rem;
+  min-height: 80px;
+  padding: 1rem;
+  font-weight: 700;
+}
+
+/* 2) Cada celda ocupa el área con su nombre */
+/* .bento .celda:nth-child(1) { grid-area: hero; } */
+/* .bento .celda:nth-child(2) { grid-area: aside2; } */
+/* .bento .celda:nth-child(3) { grid-area: aside3; } */
+/* .bento .celda:nth-child(4) { grid-area: aside4; } */
+/* .bento .celda:nth-child(5) { grid-area: aside5; } */`,
+				},
+			],
+			pt: [
+				{
+					file: "bento.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento numa coluna</title>
+  <link rel="stylesheet" href="bento.css">
+</head>
+<body>
+  <main class="bento">
+    <div class="celula">Hero</div>
+    <div class="celula">Aside 2</div>
+    <div class="celula">Aside 3</div>
+    <div class="celula">Aside 4</div>
+    <div class="celula">Aside 5</div>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "bento.css",
+					code: `*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+/* 1) A grelha base: uma só coluna */
+.bento {
+  /* display: grid; */
+  /* grid-template-columns: 1fr; */
+  /* gap: 0.75rem; */
+  /* grid-template-areas: */
+  /*   "hero" */
+  /*   "aside2" */
+  /*   "aside3" */
+  /*   "aside4" */
+  /*   "aside5"; */
+}
+
+.celula {
+  background-color: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 0.5rem;
+  min-height: 80px;
+  padding: 1rem;
+  font-weight: 700;
+}
+
+/* 2) Cada célula ocupa a área com o seu nome */
+/* .bento .celula:nth-child(1) { grid-area: hero; } */
+/* .bento .celula:nth-child(2) { grid-area: aside2; } */
+/* .bento .celula:nth-child(3) { grid-area: aside3; } */
+/* .bento .celula:nth-child(4) { grid-area: aside4; } */
+/* .bento .celula:nth-child(5) { grid-area: aside5; } */`,
+				},
+			],
+		},
+	},
+	{
+		id: 24,
+		lectureId: 18,
+		title: {
+			es: "Bento responsivo: tableta en 750px y escritorio en 1000px",
+			pt: "Bento responsivo: tablet aos 750px e computador aos 1000px",
+		},
+		objective: {
+			es: "Reorganizar la misma cuadrícula Bento con dos media queries, redefiniendo sólo grid-template-columns y grid-template-areas.",
+			pt: "Reorganizar a mesma grelha Bento com duas media queries, redefinindo apenas grid-template-columns e grid-template-areas.",
+		},
+		steps: [
+			{
+				es: "Partí del bento de una columna del ejercicio anterior, con las cinco áreas ya asignadas a sus celdas.",
+				pt: "Parte do bento de uma coluna do exercício anterior, com as cinco áreas já atribuídas às suas células.",
+			},
+			{
+				es: 'Agregá la composición de tableta: @media screen and (min-width: 750px) con cuatro columnas y las áreas "hero hero hero hero" / "hero hero hero hero" / "aside2 aside2 aside2 aside3" / "aside4 aside4 aside5 aside5".',
+				pt: 'Acrescenta a composição de tablet: @media screen and (min-width: 750px) com quatro colunas e as áreas "hero hero hero hero" / "hero hero hero hero" / "aside2 aside2 aside2 aside3" / "aside4 aside4 aside5 aside5".',
+			},
+			{
+				es: 'Agregá la de escritorio: @media screen and (min-width: 1000px) con tres columnas y "hero hero aside2" repetido cuatro filas, más "aside3 aside4 aside5" al final.',
+				pt: 'Acrescenta a de computador: @media screen and (min-width: 1000px) com três colunas e "hero hero aside2" repetido quatro filas, mais "aside3 aside4 aside5" no fim.',
+			},
+			{
+				es: "No toques los grid-area de las celdas: en estas queries cambian las áreas, no las celdas.",
+				pt: "Não toques nos grid-area das células: nestas queries mudam as áreas, não as células.",
+			},
+			{
+				es: "Cuidado con las formas: cada área debe ser un rectángulo y todos los nombres de una fila deben existir en la definición.",
+				pt: "Cuidado com as formas: cada área deve ser um retângulo e todos os nomes de uma fila devem existir na definição.",
+			},
+			{
+				es: "Redimensioná la ventana y pasá por los tres estados: móvil, tableta desde 750px y escritorio desde 1000px.",
+				pt: "Redimensiona a janela e passa pelos três estados: móvel, tablet desde 750px e computador desde 1000px.",
+			},
+		],
+		verify: [
+			{
+				es: "Base: una columna con las cinco celdas apiladas.",
+				pt: "Base: uma coluna com as cinco células empilhadas.",
+			},
+			{
+				es: "Desde 750px: cuatro columnas con el hero ocupando la primera franja completa.",
+				pt: "Desde 750px: quatro colunas com o hero a ocupar a primeira faixa completa.",
+			},
+			{
+				es: "Desde 1000px: tres columnas con el hero a la izquierda y aside2 a la derecha.",
+				pt: "Desde 1000px: três colunas com o hero à esquerda e o aside2 à direita.",
+			},
+			{
+				es: "Las mismas cinco áreas aparecen en los tres estados; sólo cambia el template.",
+				pt: "As mesmas cinco áreas aparecem nos três estados; só muda o template.",
+			},
+		],
+		expected: {
+			es: "El bento se apila en móvil, arma la composición de tableta desde 750px y la de escritorio desde 1000px usando las mismas cinco áreas.",
+			pt: "O bento empilha-se em móvel, monta a composição de tablet desde 750px e a de computador desde 1000px usando as mesmas cinco áreas.",
+		},
+		starter: {
+			es: [
+				{
+					file: "bento.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento responsivo</title>
+  <link rel="stylesheet" href="bento.css">
+</head>
+<body>
+  <main class="bento">
+    <div class="celda">Hero</div>
+    <div class="celda">Aside 2</div>
+    <div class="celda">Aside 3</div>
+    <div class="celda">Aside 4</div>
+    <div class="celda">Aside 5</div>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "bento.css",
+					code: `*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+/* Base mobile-first: una sola columna */
+.bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  grid-template-areas:
+    "hero"
+    "aside2"
+    "aside3"
+    "aside4"
+    "aside5";
+}
+
+.celda {
+  background-color: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 0.5rem;
+  min-height: 80px;
+  padding: 1rem;
+  font-weight: 700;
+}
+
+.bento .celda:nth-child(1) { grid-area: hero; }
+.bento .celda:nth-child(2) { grid-area: aside2; }
+.bento .celda:nth-child(3) { grid-area: aside3; }
+.bento .celda:nth-child(4) { grid-area: aside4; }
+.bento .celda:nth-child(5) { grid-area: aside5; }
+
+/* 1) Tableta: desde 750px, cuatro columnas */
+/* @media screen and (min-width: 750px) { */
+/*   .bento { */
+/*     grid-template-columns: repeat(4, 1fr); */
+/*     grid-template-areas: */
+/*       "hero   hero   hero   hero" */
+/*       "hero   hero   hero   hero" */
+/*       "aside2 aside2 aside2 aside3" */
+/*       "aside4 aside4 aside5 aside5"; */
+/*   } */
+/* } */
+
+/* 2) Escritorio: desde 1000px, tres columnas */
+/* @media screen and (min-width: 1000px) { */
+/*   .bento { */
+/*     grid-template-columns: repeat(3, 1fr); */
+/*     grid-template-areas: */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "aside3 aside4 aside5"; */
+/*   } */
+/* } */`,
+				},
+			],
+			pt: [
+				{
+					file: "bento.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento responsivo</title>
+  <link rel="stylesheet" href="bento.css">
+</head>
+<body>
+  <main class="bento">
+    <div class="celula">Hero</div>
+    <div class="celula">Aside 2</div>
+    <div class="celula">Aside 3</div>
+    <div class="celula">Aside 4</div>
+    <div class="celula">Aside 5</div>
+  </main>
+</body>
+</html>`,
+				},
+				{
+					file: "bento.css",
+					code: `*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+/* Base mobile-first: uma só coluna */
+.bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  grid-template-areas:
+    "hero"
+    "aside2"
+    "aside3"
+    "aside4"
+    "aside5";
+}
+
+.celula {
+  background-color: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 0.5rem;
+  min-height: 80px;
+  padding: 1rem;
+  font-weight: 700;
+}
+
+.bento .celula:nth-child(1) { grid-area: hero; }
+.bento .celula:nth-child(2) { grid-area: aside2; }
+.bento .celula:nth-child(3) { grid-area: aside3; }
+.bento .celula:nth-child(4) { grid-area: aside4; }
+.bento .celula:nth-child(5) { grid-area: aside5; }
+
+/* 1) Tablet: desde 750px, quatro colunas */
+/* @media screen and (min-width: 750px) { */
+/*   .bento { */
+/*     grid-template-columns: repeat(4, 1fr); */
+/*     grid-template-areas: */
+/*       "hero   hero   hero   hero" */
+/*       "hero   hero   hero   hero" */
+/*       "aside2 aside2 aside2 aside3" */
+/*       "aside4 aside4 aside5 aside5"; */
+/*   } */
+/* } */
+
+/* 2) Computador: desde 1000px, três colunas */
+/* @media screen and (min-width: 1000px) { */
+/*   .bento { */
+/*     grid-template-columns: repeat(3, 1fr); */
+/*     grid-template-areas: */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "aside3 aside4 aside5"; */
+/*   } */
+/* } */`,
+				},
+			],
+		},
+	},
+	{
+		id: 25,
+		lectureId: 18,
+		title: {
+			es: "Integrador: una página responsive completa",
+			pt: "Integrador: uma página responsiva completa",
+		},
+		objective: {
+			es: "Combinar galería, imágenes fluidas y Bento en una sola página mobile-first con dos breakpoints.",
+			pt: "Combinar galeria, imagens fluidas e Bento numa única página mobile-first com dois breakpoints.",
+		},
+		steps: [
+			{
+				es: "Copiá pagina.html y pagina.css. La estructura ya trae cabecera con navegación, galería de tres tarjetas y un bloque Bento de cinco celdas.",
+				pt: "Copia pagina.html e pagina.css. A estrutura já traz cabeçalho com navegação, galeria de três cartões e um bloco Bento de cinco células.",
+			},
+			{
+				es: "Escribí primero la base móvil: una columna para la galería, una para el bento, paddings con clamp(1rem, 4vw, 2rem) y ninguna anchura fija.",
+				pt: "Escreve primeiro a base móvel: uma coluna para a galeria, uma para o bento, paddings com clamp(1rem, 4vw, 2rem) e nenhuma largura fixa.",
+			},
+			{
+				es: "Agregá la media query de 768px: la galería pasa a dos columnas.",
+				pt: "Acrescenta a media query de 768px: a galeria passa a duas colunas.",
+			},
+			{
+				es: "Agregá la de 1024px: galería en tres columnas y bento con la composición de escritorio (hero doble + aside2 lateral).",
+				pt: "Acrescenta a de 1024px: galeria em três colunas e bento com a composição de computador (hero duplo + aside2 lateral).",
+			},
+			{
+				es: "Aplicá las reglas de imágenes fluidas y asegurate de que la navegación no desborde: usá flex-wrap: wrap.",
+				pt: "Aplica as regras de imagens fluidas e garante que a navegação não transborda: usa flex-wrap: wrap.",
+			},
+			{
+				es: "Probá la página en 320px, 768px, 1024px y 1440px con el modo responsive de DevTools.",
+				pt: "Testa a página em 320px, 768px, 1024px e 1440px com o modo responsivo das DevTools.",
+			},
+		],
+		verify: [
+			{
+				es: "A 320px no hay scroll horizontal y todo se apila en una columna.",
+				pt: "A 320px não há scroll horizontal e tudo se empilha numa coluna.",
+			},
+			{
+				es: "A 768px la galería muestra dos columnas y el bento sigue en una.",
+				pt: "A 768px a galeria mostra duas colunas e o bento continua numa.",
+			},
+			{
+				es: "A 1024px la galería muestra tres columnas y el bento cambia a la composición de escritorio.",
+				pt: "A 1024px a galeria mostra três colunas e o bento muda para a composição de computador.",
+			},
+			{
+				es: "Las imágenes nunca superan el ancho de su tarjeta y la navegación envuelve sin desbordar.",
+				pt: "As imagens nunca superam a largura do seu cartão e a navegação envolve sem transbordar.",
+			},
+		],
+		expected: {
+			es: "Una página con cabecera, galería y bento que se reordena en los tres tamaños, sin scroll horizontal y con las imágenes contenidas.",
+			pt: "Uma página com cabeçalho, galeria e bento que se reorganiza nos três tamanhos, sem scroll horizontal e com as imagens contidas.",
+		},
+		starter: {
+			es: [
+				{
+					file: "pagina.html",
+					code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página responsive</title>
+  <link rel="stylesheet" href="pagina.css">
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Galería de campo</h1>
+    <nav class="menu">
+      <a href="#galeria">Galería</a>
+      <a href="#bento">Resumen</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="pagina">
+    <section id="galeria" class="galeria">
+      <article class="tarjeta">
+        <img src="https://picsum.photos/seed/lab25a/640/360" alt="Sendero entre árboles" loading="lazy">
+        <h2>Cuaderno de campo</h2>
+        <p>Notas, bocetos y fotos de cada salida.</p>
+      </article>
+      <article class="tarjeta">
+        <img src="https://picsum.photos/seed/lab25b/640/360" alt="Mapa dibujado a mano" loading="lazy">
+        <h2>Mapa de rutas</h2>
+        <p>Los caminos que ya recorrimos, sin atajos.</p>
+      </article>
+      <article class="tarjeta">
+        <img src="https://picsum.photos/seed/lab25c/640/360" alt="Páginas de un cuaderno" loading="lazy">
+        <h2>Bitácora</h2>
+        <p>Qué aprendimos en cada etapa del proyecto.</p>
+      </article>
+    </section>
+
+    <section id="bento" class="bento">
+      <div class="celda">Hero</div>
+      <div class="celda">Aside 2</div>
+      <div class="celda">Aside 3</div>
+      <div class="celda">Aside 4</div>
+      <div class="celda">Aside 5</div>
+    </section>
+  </main>
+
+  <footer id="contacto" class="pie">
+    <p>Taller de maquetación · 2026</p>
+  </footer>
+</body>
+</html>`,
+				},
+				{
+					file: "pagina.css",
+					code: `*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+/* 1) Base móvil: cabecera apilada y navegación que envuelve */
+.cabecera {
+  /* padding: clamp(1rem, 4vw, 2rem); */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 0.5rem; */
+}
+
+.menu {
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* gap: 0.75rem; */
+}
+
+.pagina {
+  /* padding: clamp(1rem, 4vw, 2rem); */
+}
+
+/* 2) Galería: una columna en móvil */
+.galeria {
+  /* display: grid; */
+  /* grid-template-columns: 1fr; */
+  /* gap: 1rem; */
+}
+
+.tarjeta {
+  /* background-color: #ffffff; */
+  /* border: 1px solid #cbd5e1; */
+  /* border-radius: 0.75rem; */
+  /* padding: 1rem; */
+}
+
+.tarjeta img {
+  /* display: block; */
+  /* max-width: 100%; */
+  /* height: auto; */
+  /* aspect-ratio: 16 / 9; */
+  /* object-fit: cover; */
+  /* border-radius: 0.5rem; */
+}
+
+.tarjeta h2 {
+  /* margin: 1rem 0 0.5rem; */
+  /* font-size: clamp(1.1rem, 2.5vw, 1.5rem); */
+}
+
+.tarjeta p {
+  /* margin: 0; */
+  /* line-height: 1.6; */
+}
+
+/* 3) Bento: base de una columna */
+.bento {
+  /* margin-top: 1.5rem; */
+  /* display: grid; */
+  /* grid-template-columns: 1fr; */
+  /* gap: 0.75rem; */
+  /* grid-template-areas: */
+  /*   "hero" */
+  /*   "aside2" */
+  /*   "aside3" */
+  /*   "aside4" */
+  /*   "aside5"; */
+}
+
+.celda {
+  /* background-color: #ffffff; */
+  /* border: 2px solid #94a3b8; */
+  /* border-radius: 0.5rem; */
+  /* min-height: 80px; */
+  /* padding: 1rem; */
+  /* font-weight: 700; */
+}
+
+.bento .celda:nth-child(1) { grid-area: hero; }
+.bento .celda:nth-child(2) { grid-area: aside2; }
+.bento .celda:nth-child(3) { grid-area: aside3; }
+.bento .celda:nth-child(4) { grid-area: aside4; }
+.bento .celda:nth-child(5) { grid-area: aside5; }
+
+/* 4) Desde 768px: galería en dos columnas */
+/* @media (min-width: 768px) { */
+/*   .galeria { */
+/*     grid-template-columns: repeat(2, 1fr); */
+/*   } */
+/* } */
+
+/* 5) Desde 1024px: galería en tres columnas y bento de escritorio */
+/* @media (min-width: 1024px) { */
+/*   .galeria { */
+/*     grid-template-columns: repeat(3, 1fr); */
+/*   } */
+/*   .bento { */
+/*     grid-template-columns: repeat(3, 1fr); */
+/*     grid-template-areas: */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "aside3 aside4 aside5"; */
+/*   } */
+/* } */`,
+				},
+			],
+			pt: [
+				{
+					file: "pagina.html",
+					code: `<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página responsiva</title>
+  <link rel="stylesheet" href="pagina.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <h1>Galeria de campo</h1>
+    <nav class="menu">
+      <a href="#galeria">Galeria</a>
+      <a href="#bento">Resumo</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="pagina">
+    <section id="galeria" class="galeria">
+      <article class="cartao">
+        <img src="https://picsum.photos/seed/lab25a/640/360" alt="Trilho entre árvores" loading="lazy">
+        <h2>Caderno de campo</h2>
+        <p>Notas, esboços e fotos de cada saída.</p>
+      </article>
+      <article class="cartao">
+        <img src="https://picsum.photos/seed/lab25b/640/360" alt="Mapa desenhado à mão" loading="lazy">
+        <h2>Mapa de rotas</h2>
+        <p>Os caminhos que já percorremos, sem atalhos.</p>
+      </article>
+      <article class="cartao">
+        <img src="https://picsum.photos/seed/lab25c/640/360" alt="Páginas de um caderno" loading="lazy">
+        <h2>Diário de bordo</h2>
+        <p>O que aprendemos em cada etapa do projeto.</p>
+      </article>
+    </section>
+
+    <section id="bento" class="bento">
+      <div class="celula">Hero</div>
+      <div class="celula">Aside 2</div>
+      <div class="celula">Aside 3</div>
+      <div class="celula">Aside 4</div>
+      <div class="celula">Aside 5</div>
+    </section>
+  </main>
+
+  <footer id="contacto" class="pie">
+    <p>Oficina de maquetação · 2026</p>
+  </footer>
+</body>
+</html>`,
+				},
+				{
+					file: "pagina.css",
+					code: `*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  color: #1f2937;
+}
+
+/* 1) Base móvel: cabeçalho empilhado e navegação que envolve */
+.cabecalho {
+  /* padding: clamp(1rem, 4vw, 2rem); */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 0.5rem; */
+}
+
+.menu {
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* gap: 0.75rem; */
+}
+
+.pagina {
+  /* padding: clamp(1rem, 4vw, 2rem); */
+}
+
+/* 2) Galeria: uma coluna em móvel */
+.galeria {
+  /* display: grid; */
+  /* grid-template-columns: 1fr; */
+  /* gap: 1rem; */
+}
+
+.cartao {
+  /* background-color: #ffffff; */
+  /* border: 1px solid #cbd5e1; */
+  /* border-radius: 0.75rem; */
+  /* padding: 1rem; */
+}
+
+.cartao img {
+  /* display: block; */
+  /* max-width: 100%; */
+  /* height: auto; */
+  /* aspect-ratio: 16 / 9; */
+  /* object-fit: cover; */
+  /* border-radius: 0.5rem; */
+}
+
+.cartao h2 {
+  /* margin: 1rem 0 0.5rem; */
+  /* font-size: clamp(1.1rem, 2.5vw, 1.5rem); */
+}
+
+.cartao p {
+  /* margin: 0; */
+  /* line-height: 1.6; */
+}
+
+/* 3) Bento: base de uma coluna */
+.bento {
+  /* margin-top: 1.5rem; */
+  /* display: grid; */
+  /* grid-template-columns: 1fr; */
+  /* gap: 0.75rem; */
+  /* grid-template-areas: */
+  /*   "hero" */
+  /*   "aside2" */
+  /*   "aside3" */
+  /*   "aside4" */
+  /*   "aside5"; */
+}
+
+.celula {
+  /* background-color: #ffffff; */
+  /* border: 2px solid #94a3b8; */
+  /* border-radius: 0.5rem; */
+  /* min-height: 80px; */
+  /* padding: 1rem; */
+  /* font-weight: 700; */
+}
+
+.bento .celula:nth-child(1) { grid-area: hero; }
+.bento .celula:nth-child(2) { grid-area: aside2; }
+.bento .celula:nth-child(3) { grid-area: aside3; }
+.bento .celula:nth-child(4) { grid-area: aside4; }
+.bento .celula:nth-child(5) { grid-area: aside5; }
+
+/* 4) Desde 768px: galeria em duas colunas */
+/* @media (min-width: 768px) { */
+/*   .galeria { */
+/*     grid-template-columns: repeat(2, 1fr); */
+/*   } */
+/* } */
+
+/* 5) Desde 1024px: galeria em três colunas e bento de computador */
+/* @media (min-width: 1024px) { */
+/*   .galeria { */
+/*     grid-template-columns: repeat(3, 1fr); */
+/*   } */
+/*   .bento { */
+/*     grid-template-columns: repeat(3, 1fr); */
+/*     grid-template-areas: */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "hero   hero   aside2" */
+/*       "aside3 aside4 aside5"; */
+/*   } */
+/* } */`,
+				},
+			],
+		},
+	},
+];

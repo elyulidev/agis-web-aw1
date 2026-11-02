@@ -59,9 +59,12 @@ export const translations = {
 			"Seis ejercicios para hacer en tu PC con VS Code y Live Server: uno por tema, más un integrador final.",
 		"lab.subtitle3":
 			"Seis ejercicios para hacer en tu PC con VS Code y Live Server: uno por tema, más un integrador final.",
+		"lab.subtitle4":
+			"Seis ejercicios de maquetación responsive: mobile-first, media queries, imágenes y texto fluidos, y Bento grid, más un integrador final.",
 		"lab.module1": "Módulo 1 · Fundamentos de HTML",
 		"lab.module2": "Módulo 2 · Fundamentos de CSS",
 		"lab.module3": "Módulo 3 · Box Model y Posicionamiento",
+		"lab.module4": "Módulo 4 · Estilos Visuales CSS y Responsive Básico",
 		"lab.requirementsTitle": "Antes de empezar",
 		"lab.requirementsBody":
 			"Necesitas Visual Studio Code con las extensiones Live Server y Prettier. Cada ejercicio se hace en tu computadora: crea los archivos, ábrelos con Live Server y verifica el resultado con la lista de control.",
@@ -134,9 +137,12 @@ export const translations = {
 			"Seis exercícios para fazer no teu PC com VS Code e Live Server: um por tema, mais um integrador final.",
 		"lab.subtitle3":
 			"Seis exercícios para fazer no teu PC com VS Code e Live Server: um por tema, mais um integrador final.",
+		"lab.subtitle4":
+			"Seis exercícios de maquetação responsiva: mobile-first, media queries, imagens e texto fluidos, e Bento grid, mais um integrador final.",
 		"lab.module1": "Módulo 1 · Fundamentos de HTML",
 		"lab.module2": "Módulo 2 · Fundamentos de CSS",
 		"lab.module3": "Módulo 3 · Modelo de Caixa e Posicionamento",
+		"lab.module4": "Módulo 4 · Estilos Visuais CSS e Design Responsivo Básico",
 		"lab.requirementsTitle": "Antes de começar",
 		"lab.requirementsBody":
 			"Precisas do Visual Studio Code com as extensões Live Server e Prettier. Cada exercício faz-se no teu computador: cria os ficheiros, abre-os com o Live Server e verifica o resultado com a lista de controlo.",
