@@ -16,7 +16,7 @@ Branch: main (estrategia elegida por usuario en módulo 3). Test runner: npm run
 ## Tasks
 
 - T1 (S1-S5) conf 15 ES+PT: con agentes previa cero demos → agregar Previews + CodeTabs funcionales (formato color, unidades, variables); bug PT cyrillico conference 15. Route: inline. Commit: 7bb6db1. Assess: medium, review_due=false (under_budget), base 0315e6a.
-- T2 (S1-S5) conf 16 ES+PT: demos de background (repeat/position/size), shorthand, linear/radial-gradient con Preview+CodeTabs. Route: inline. Commit: TBD.
+- T2 (S1-S5) conf 16 ES+PT: demos de background (repeat/position/size), shorthand, linear/radial-gradient con Preview+CodeTabs. Route: inline. Commit: 15b039f.
 - T3 (S1-S5) conf 17 ES+PT: demos hover/transición y transform con Preview real (hover activo en preview). Route: inline. Commit: TBD.
 - T4 (S1-S5) conf 18 ES+PT: fidelidad Bento (clases/breakpoints del Resultado Final != pasos enseñados), dark mode del demo, img externa; PT sin traducir (3 puntos). Route: inline. Commit: TBD.
 - T5 (S7) verificación global: build + format + paridad ES/PT 15-18.
