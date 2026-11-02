@@ -2,6 +2,12 @@ import { SectionTitle } from "@/components/lecture/lecture-blocks";
 import CodeBlock from "@/components/ui/code-block";
 import CodeTabs from "@/components/ui/code-tabs";
 
+const Code = ({ children }: { children: React.ReactNode }) => (
+	<code className="rounded-md bg-gray-200 px-1.5 py-1 font-mono text-sm text-pink-600 dark:bg-gray-700 dark:text-pink-400">
+		{children}
+	</code>
+);
+
 const Preview = ({
 	label,
 	children,
@@ -34,9 +40,11 @@ const Lecture15Pt = () => (
 			</p>
 			<ul className="list-none space-y-4 pl-0 mb-4 [&>li]:relative [&>li]:pl-7 [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:top-[0.5em] [&>li]:before:h-2.5 [&>li]:before:w-2.5 [&>li]:before:rounded-full [&>li]:before:bg-blue-500">
 				<li>
-					<strong>Hexadecimal (`#RRGGBB`):</strong> O formato mais comum.
-					Representa os valores de Vermelho, Verde e Azul em base 16. Também
-					existe uma sintaxe curta (`#RGB`).
+					<strong>
+						Hexadecimal (<Code>#RRGGBB</Code>):
+					</strong>{" "}
+					O formato mais comum. Representa os valores de Vermelho, Verde e Azul
+					em base 16. Também existe uma sintaxe curta (<Code>#RGB</Code>).
 					<CodeBlock
 						language="css"
 						codeString={`/* Vermelho puro */
@@ -46,10 +54,13 @@ color: #00F;`}
 					/>
 				</li>
 				<li>
-					<strong>RGB / RGBA (`rgb(r, g, b)`):</strong> Representa as cores
-					usando valores decimais de 0 a 255. A versão `rgba` adiciona um quarto
-					valor, o canal <strong>alfa (transparência)</strong>, que vai de 0
-					(totalmente transparente) a 1 (totalmente opaco).
+					<strong>
+						RGB / RGBA (<Code>rgb(r, g, b)</Code>):
+					</strong>{" "}
+					Representa as cores usando valores decimais de 0 a 255. A versão{" "}
+					<Code>rgba</Code> adiciona um quarto valor, o canal{" "}
+					<strong>alfa (transparência)</strong>, que vai de 0 (totalmente
+					transparente) a 1 (totalmente opaco).
 					<CodeBlock
 						language="css"
 						codeString={`/* Verde puro */
@@ -59,12 +70,14 @@ background-color: rgba(0, 0, 0, 0.5);`}
 					/>
 				</li>
 				<li>
-					<strong>HSL / HSLA (`hsl(h, s, l)`):</strong> Um formato mais
-					intuitivo para os humanos. Representa a cor pelo seu{" "}
+					<strong>
+						HSL / HSLA (<Code>hsl(h, s, l)</Code>):
+					</strong>{" "}
+					Um formato mais intuitivo para os humanos. Representa a cor pelo seu{" "}
 					<strong>Tom (Hue)</strong> (um ângulo de 0 a 360 no círculo
 					cromático), <strong>Saturação (Saturation)</strong> (0-100%) e{" "}
-					<strong>Luminosidade (Lightness)</strong> (0-100%). `hsla` adiciona o
-					canal alfa.
+					<strong>Luminosidade (Lightness)</strong> (0-100%). <Code>hsla</Code>{" "}
+					adiciona o canal alfa.
 					<CodeBlock
 						language="css"
 						codeString={`/* Um azul vibrante */
@@ -135,7 +148,9 @@ background-color: hsla(300, 100%, 50%, 0.75);`}
 		</section>
 
 		<section>
-			<SectionTitle index={2}>Unidades de Medida: Absolutas vs. Relativas</SectionTitle>
+			<SectionTitle index={2}>
+				Unidades de Medida: Absolutas vs. Relativas
+			</SectionTitle>
 			<p className="mb-4">
 				Escolher a unidade de medida correta é fundamental para criar designs
 				flexíveis e acessíveis.
@@ -144,8 +159,11 @@ background-color: hsla(300, 100%, 50%, 0.75);`}
 			<Subhead>Unidades Absolutas</Subhead>
 			<p className="mb-4">
 				Têm um tamanho fixo e não mudam. A mais comum é o{" "}
-				<strong>píxel (`px`)</strong>. São úteis para elementos que não devem
-				escalar, como uma borda de `1px`.
+				<strong>
+					píxel (<Code>px</Code>)
+				</strong>
+				. São úteis para elementos que não devem escalar, como uma borda de{" "}
+				<Code>1px</Code>.
 			</p>
 
 			<Subhead>Unidades Relativas</Subhead>
@@ -155,23 +173,34 @@ background-color: hsla(300, 100%, 50%, 0.75);`}
 			</p>
 			<ul className="list-none space-y-4 pl-0 mb-4 [&>li]:relative [&>li]:pl-7 [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:top-[0.5em] [&>li]:before:h-2.5 [&>li]:before:w-2.5 [&>li]:before:rounded-full [&>li]:before:bg-blue-500">
 				<li>
-					<strong>`%` (Percentagem):</strong> Relativo ao tamanho do elemento
-					pai. `width: 50%;` fará com que um elemento ocupe metade da largura do
-					seu contentor.
+					<strong>
+						<Code>%</Code> (Percentagem):
+					</strong>{" "}
+					Relativo ao tamanho do elemento pai. <Code>width: 50%;</Code> fará com
+					que um elemento ocupe metade da largura do seu contentor.
 				</li>
 				<li>
-					<strong>`em`</strong>: Relativo ao{" "}
-					<strong>tamanho de fonte do elemento pai</strong>. Se uma div tem
-					`font-size: 16px;`, um `p` dentro com `font-size: 1.2em;` terá 19.2px.
-					Pode ser complicado de gerir se houver muito aninhamento.
+					<strong>
+						<Code>em</Code>
+					</strong>
+					: Relativo ao <strong>tamanho de fonte do elemento pai</strong>. Se
+					uma div tem
+					<Code>font-size: 16px;</Code>, um <Code>p</Code> dentro com{" "}
+					<Code>font-size: 1.2em;</Code> terá 19.2px. Pode ser complicado de
+					gerir se houver muito aninhamento.
 				</li>
 				<li>
-					<strong>`rem` (Root EM):</strong> A melhor opção para a tipografia. É
-					relativo ao{" "}
-					<strong>tamanho de fonte do elemento raiz (`&lt;html&gt;`)</strong>.
-					Por defeito, na maioria dos navegadores é `16px`. Se um utilizador
-					alterar o tamanho da fonte no seu navegador por acessibilidade, todos
-					os tamanhos em `rem` escalarão proporcionalmente.
+					<strong>
+						<Code>rem</Code> (Root EM):
+					</strong>{" "}
+					A melhor opção para a tipografia. É relativo ao{" "}
+					<strong>
+						tamanho de fonte do elemento raiz (<Code>&lt;html&gt;</Code>)
+					</strong>
+					. Por defeito, na maioria dos navegadores é <Code>16px</Code>. Se um
+					utilizador alterar o tamanho da fonte no seu navegador por
+					acessibilidade, todos os tamanhos em <Code>rem</Code> escalarão
+					proporcionalmente.
 					<CodeBlock
 						language="css"
 						codeString={`html {
@@ -187,10 +216,12 @@ p {
 					/>
 				</li>
 				<li>
-					<strong>`vw` / `vh` (Viewport Width / Height):</strong> Relativas ao
-					tamanho da janela do navegador. `1vw` é 1% da largura da janela. São
-					perfeitas para criar secções que ocupem todo o ecrã (`height:
-					100vh;`).
+					<strong>
+						<Code>vw</Code> / <Code>vh</Code> (Viewport Width / Height):
+					</strong>{" "}
+					Relativas ao tamanho da janela do navegador. <Code>1vw</Code> é 1% da
+					largura da janela. São perfeitas para criar secções que ocupem todo o
+					ecrã (<Code>height: 100vh;</Code>).
 				</li>
 			</ul>
 
@@ -249,17 +280,20 @@ p {
 		</section>
 
 		<section>
-			<SectionTitle index={3}>Variáveis CSS (Propriedades Personalizadas)</SectionTitle>
+			<SectionTitle index={3}>
+				Variáveis CSS (Propriedades Personalizadas)
+			</SectionTitle>
 			<p className="mb-4">
 				As variáveis CSS são uma das características mais potentes e modernas.
 				Permitem-nos definir valores reutilizáveis num único local, o que
 				simplifica enormemente a manutenção e a criação de temas.
 			</p>
 			<p>
-				São declaradas com dois traços (`--nome-variavel`) e usadas com a função
-				`var()`. É uma boa prática declará-las no pseudo-seletor `:root`, que
-				representa o elemento `&lt;html&gt;`, para que estejam disponíveis
-				globalmente.
+				São declaradas com dois traços (<Code>--nome-variavel</Code>) e usadas
+				com a função
+				<Code>var()</Code>. É uma boa prática declará-las no pseudo-seletor{" "}
+				<Code>:root</Code>, que representa o elemento <Code>&lt;html&gt;</Code>,
+				para que estejam disponíveis globalmente.
 			</p>
 
 			<div className="mb-4">
@@ -286,7 +320,7 @@ p {
 							<p className="d15-cartao-titulo">Paleta de estilo</p>
 							<p className="d15-cartao-texto">
 								O título, o texto e o botão tomam os seus valores das variáveis
-								de <code>:root</code>: alterá-las aí retoca tudo em simultâneo.
+								de <Code>:root</Code>: alterá-las aí retoca tudo em simultâneo.
 							</p>
 							<button className="d15-botao-principal" type="button">
 								Botão principal
@@ -333,7 +367,9 @@ body {
 		</section>
 
 		<section>
-			<SectionTitle index={4}>📝 Tarefa: Criando uma Paleta de Estilo</SectionTitle>
+			<SectionTitle index={4}>
+				📝 Tarefa: Criando uma Paleta de Estilo
+			</SectionTitle>
 			<p className="mb-4">
 				Vamos aplicar estes conceitos para criar um pequeno guia de estilo para
 				uma página.
@@ -341,19 +377,23 @@ body {
 			<ol className="list-decimal list-outside space-y-2 pl-5 mb-4 marker:font-bold marker:text-blue-600 dark:marker:text-blue-400">
 				<li>
 					<strong>Defina as suas Variáveis:</strong> No seu ficheiro CSS, dentro
-					do seletor `:root`, crie pelo menos 4 variáveis: `--cor-primaria`,
-					`--cor-fundo`, `--cor-texto` e `--espacamento-base` (ex. `1rem`).
+					do seletor <Code>:root</Code>, crie pelo menos 4 variáveis:{" "}
+					<Code>--cor-primaria</Code>,<Code>--cor-fundo</Code>,{" "}
+					<Code>--cor-texto</Code> e <Code>--espacamento-base</Code> (ex.{" "}
+					<Code>1rem</Code>).
 				</li>
 				<li>
 					<strong>Aplique as Variáveis:</strong>
 					<ul className="list-none space-y-1.5 pl-6 my-2 [&>li]:relative [&>li]:pl-4 [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:content-['–'] [&>li]:before:text-blue-500">
 						<li>
-							No `body`, use as variáveis para definir o `background-color`,
-							`color` e `font-family`.
+							No <Code>body</Code>, use as variáveis para definir o{" "}
+							<Code>background-color</Code>,<Code>color</Code> e{" "}
+							<Code>font-family</Code>.
 						</li>
 						<li>
-							Crie um botão com a classe `.botao` e use `--cor-primaria` para o
-							seu fundo e `white` para o texto.
+							Crie um botão com a classe <Code>.botao</Code> e use{" "}
+							<Code>--cor-primaria</Code> para o seu fundo e <Code>white</Code>{" "}
+							para o texto.
 						</li>
 					</ul>
 				</li>
@@ -361,24 +401,28 @@ body {
 					<strong>Use Unidades Relativas:</strong>
 					<ul className="list-none space-y-1.5 pl-6 my-2 [&>li]:relative [&>li]:pl-4 [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:content-['–'] [&>li]:before:text-blue-500">
 						<li>
-							Defina o `font-size` do `&lt;html&gt;` para `100%` (ou deixe por
-							defeito).
+							Defina o <Code>font-size</Code> do <Code>&lt;html&gt;</Code> para{" "}
+							<Code>100%</Code> (ou deixe por defeito).
 						</li>
 						<li>
-							Defina o `font-size` dos seus cabeçalhos (`h1`) e parágrafos (`p`)
-							usando `rem`.
+							Defina o <Code>font-size</Code> dos seus cabeçalhos (
+							<Code>h1</Code>) e parágrafos (<Code>p</Code>) usando{" "}
+							<Code>rem</Code>.
 						</li>
 						<li>
-							Use a sua variável `--espacamento-base` para o `padding` do botão
-							e o `margin-bottom` dos parágrafos.
+							Use a sua variável <Code>--espacamento-base</Code> para o{" "}
+							<Code>padding</Code> do botão e o <Code>margin-bottom</Code> dos
+							parágrafos.
 						</li>
 					</ul>
 				</li>
 				<li>
 					<strong>Experimente:</strong> Abra as ferramentas de programador no
-					seu navegador, selecione o elemento `&lt;html&gt;` e altere o seu
-					`font-size`. Observe como todo o texto e os espaçamentos que usam
-					`rem` escalam juntos de forma fluida.
+					seu navegador, selecione o elemento <Code>&lt;html&gt;</Code> e altere
+					o seu
+					<Code>font-size</Code>. Observe como todo o texto e os espaçamentos
+					que usam
+					<Code>rem</Code> escalam juntos de forma fluida.
 				</li>
 			</ol>
 		</section>
