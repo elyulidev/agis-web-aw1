@@ -94,8 +94,8 @@ const Lecture16Pt = () => (
 						</div>
 					</div>
 					<p className="mt-2 text-sm">
-						<code>repeat</code> pinta o mosaico completo, <code>repeat-x</code>{" "}
-						só a fila horizontal; com <code>no-repeat</code>, a posição decide
+						<Code>repeat</Code> pinta o mosaico completo, <Code>repeat-x</Code>{" "}
+						só a fila horizontal; com <Code>no-repeat</Code>, a posição decide
 						onde o círculo aterrisa.
 					</p>
 				</Preview>
@@ -263,8 +263,8 @@ const Lecture16Pt = () => (
 					</div>
 					<p className="mt-2 text-sm">
 						Sem direção o degradê cai de cima para baixo; com{" "}
-						<code>to bottom right</code> cruza para o canto oposto e com{" "}
-						<code>45deg</code> aplica a inclinação exata que pedes.
+						<Code>to bottom right</Code> cruza para o canto oposto e com{" "}
+						<Code>45deg</Code> aplica a inclinação exata que pedes.
 					</p>
 				</Preview>
 			</div>
@@ -318,7 +318,7 @@ const Lecture16Pt = () => (
 }`}</style>
 					<div className="d16-radial" />
 					<p className="mt-2 text-sm">
-						O branco nasce no centro e esvaece até <code>steelblue</code> nos
+						O branco nasce no centro e esvaece até <Code>steelblue</Code> nos
 						bordos.
 					</p>
 				</Preview>

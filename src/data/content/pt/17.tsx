@@ -79,7 +79,7 @@ const Lecture17Pt = () => (
 					</div>
 					<p className="mt-2 text-sm">
 						Ambos mudam de azul para vermelho ao passar o cursor, mas o segundo
-						faz isso de forma gradual porque a mudança dura <code>0.6s</code>.
+						faz isso de forma gradual porque a mudança dura <Code>0.6s</Code>.
 					</p>
 				</Preview>
 			</div>
@@ -180,7 +180,7 @@ const Lecture17Pt = () => (
 .d17-etiqueta { font-size: 0.75rem; margin-top: 6px; color: #1f2937; }`}</style>
 					<p className="text-sm mb-2">
 						A caixa original está à esquerda; as restantes aplicam a sua{" "}
-						<code>transform</code> a partir da mesma posição sem deslocar o
+						<Code>transform</Code> a partir da mesma posição sem deslocar o
 						resto do conteúdo.
 					</p>
 					<div className="d17-fila">
@@ -337,7 +337,7 @@ const Lecture17Pt = () => (
 						</div>
 					</div>
 					<p className="mt-2 text-sm">
-						O mesmo <code>rotate(30deg)</code> nas duas agulhas, mas o pivô
+						O mesmo <Code>rotate(30deg)</Code> nas duas agulhas, mas o pivô
 						diferente muda todo o percurso: no centro gira no lugar; apoiada na
 						base, varre como o ponteiro dos minutos.
 					</p>

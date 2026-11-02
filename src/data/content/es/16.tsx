@@ -94,8 +94,8 @@ const Lecture16Es = () => (
 						</div>
 					</div>
 					<p className="mt-2 text-sm">
-						<code>repeat</code> pinta el mosaico completo, <code>repeat-x</code>{" "}
-						solo la fila horizontal; con <code>no-repeat</code>, la posición
+						<Code>repeat</Code> pinta el mosaico completo, <Code>repeat-x</Code>{" "}
+						solo la fila horizontal; con <Code>no-repeat</Code>, la posición
 						manda en dónde aterriza el círculo.
 					</p>
 				</Preview>
@@ -263,8 +263,8 @@ const Lecture16Es = () => (
 					</div>
 					<p className="mt-2 text-sm">
 						Sin dirección el degradado cae de arriba a abajo; con{" "}
-						<code>to bottom right</code> cruza a la esquina opuesta y con{" "}
-						<code>45deg</code> pega la inclinación exacta que pides.
+						<Code>to bottom right</Code> cruza a la esquina opuesta y con{" "}
+						<Code>45deg</Code> pega la inclinación exacta que pides.
 					</p>
 				</Preview>
 			</div>
@@ -319,7 +319,7 @@ const Lecture16Es = () => (
 					<div className="d16-radial" />
 					<p className="mt-2 text-sm">
 						El blanco nace en el centro y se apaga hasta el{" "}
-						<code>steelblue</code> hacia los bordes.
+						<Code>steelblue</Code> hacia los bordes.
 					</p>
 				</Preview>
 			</div>
