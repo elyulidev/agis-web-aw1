@@ -1,3 +1,4 @@
+import { SectionTitle } from "@/components/lecture/lecture-blocks";
 import CodeBlock from "@/components/ui/code-block";
 import CodeTabs from "@/components/ui/code-tabs";
 
@@ -16,17 +17,22 @@ const Preview = ({
 	</div>
 );
 
+const Subhead = ({ children }: { children: React.ReactNode }) => (
+	<p className="mt-8 mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+		<span className="h-2 w-2 rounded-full bg-blue-500" aria-hidden />
+		<span>{children}</span>
+	</p>
+);
+
 const Lecture15Es = () => (
 	<div className="space-y-8">
 		<section>
-			<h3 className="text-2xl font-semibold mb-3">
-				1. Pintando la Web: Formatos de Color
-			</h3>
+			<SectionTitle index={1}>Pintando la Web: Formatos de Color</SectionTitle>
 			<p className="mb-4">
 				El color es una de las herramientas de diseño más poderosas. CSS nos
 				ofrece varias formas de definir colores, cada una con sus ventajas.
 			</p>
-			<ul className="list-disc list-inside space-y-4 pl-4 mb-4">
+			<ul className="list-none space-y-4 pl-0 mb-4 [&>li]:relative [&>li]:pl-7 [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:top-[0.5em] [&>li]:before:h-2.5 [&>li]:before:w-2.5 [&>li]:before:rounded-full [&>li]:before:bg-blue-500">
 				<li>
 					<strong>Hexadecimal (`#RRGGBB`):</strong> El formato más común.
 					Representa los valores de Rojo, Verde y Azul en base 16. También
@@ -129,27 +135,25 @@ background-color: hsla(300, 100%, 50%, 0.75);`}
 		</section>
 
 		<section>
-			<h3 className="text-2xl font-semibold mb-3">
-				2. Unidades de Medida: Absolutas vs. Relativas
-			</h3>
+			<SectionTitle index={2}>Unidades de Medida: Absolutas vs. Relativas</SectionTitle>
 			<p className="mb-4">
 				Elegir la unidad de medida correcta es fundamental para crear diseños
 				flexibles y accesibles.
 			</p>
 
-			<h4 className="text-xl font-semibold mt-6 mb-2">Unidades Absolutas</h4>
+			<Subhead>Unidades Absolutas</Subhead>
 			<p className="mb-4">
 				Tienen un tamaño fijo y no cambian. La más común es el{" "}
 				<strong>píxel (`px`)</strong>. Son útiles para elementos que no deben
 				escalar, como un borde de `1px`.
 			</p>
 
-			<h4 className="text-xl font-semibold mt-6 mb-2">Unidades Relativas</h4>
+			<Subhead>Unidades Relativas</Subhead>
 			<p className="mb-4">
 				Su tamaño se calcula en relación a otro valor, lo que las hace ideales
 				para diseños responsivos y accesibles.
 			</p>
-			<ul className="list-disc list-inside space-y-4 pl-4 mb-4">
+			<ul className="list-none space-y-4 pl-0 mb-4 [&>li]:relative [&>li]:pl-7 [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:top-[0.5em] [&>li]:before:h-2.5 [&>li]:before:w-2.5 [&>li]:before:rounded-full [&>li]:before:bg-blue-500">
 				<li>
 					<strong>`%` (Porcentaje):</strong> Relativo al tamaño del elemento
 					padre. `width: 50%;` hará que un elemento ocupe la mitad del ancho de
@@ -245,9 +249,7 @@ p {
 		</section>
 
 		<section>
-			<h3 className="text-2xl font-semibold mb-3">
-				3. Variables CSS (Propiedades Personalizadas)
-			</h3>
+			<SectionTitle index={3}>Variables CSS (Propiedades Personalizadas)</SectionTitle>
 			<p className="mb-4">
 				Las variables CSS son una de las características más potentes y
 				modernas. Nos permiten definir valores reutilizables en un solo lugar,
@@ -332,14 +334,12 @@ body {
 		</section>
 
 		<section>
-			<h3 className="text-2xl font-semibold mb-3">
-				📝 Tarea: Creando una Paleta de Estilo
-			</h3>
+			<SectionTitle index={4}>📝 Tarea: Creando una Paleta de Estilo</SectionTitle>
 			<p className="mb-4">
 				Vamos a aplicar estos conceptos para crear una pequeña guía de estilo
 				para una página.
 			</p>
-			<ol className="list-decimal list-inside space-y-2 pl-4 mb-4">
+			<ol className="list-decimal list-outside space-y-2 pl-5 mb-4 marker:font-bold marker:text-blue-600 dark:marker:text-blue-400">
 				<li>
 					<strong>Define tus Variables:</strong> En tu archivo CSS, dentro del
 					selector `:root`, crea al menos 4 variables: `--color-primario`,
@@ -347,7 +347,7 @@ body {
 				</li>
 				<li>
 					<strong>Aplica las Variables:</strong>
-					<ul className="list-disc list-inside space-y-1 pl-6 my-2">
+					<ul className="list-none space-y-1.5 pl-6 my-2 [&>li]:relative [&>li]:pl-4 [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:content-['–'] [&>li]:before:text-blue-500">
 						<li>
 							En el `body`, usa las variables para definir el
 							`background-color`, `color` y `font-family`.
@@ -360,7 +360,7 @@ body {
 				</li>
 				<li>
 					<strong>Usa Unidades Relativas:</strong>
-					<ul className="list-disc list-inside space-y-1 pl-6 my-2">
+					<ul className="list-none space-y-1.5 pl-6 my-2 [&>li]:relative [&>li]:pl-4 [&>li]:before:absolute [&>li]:before:left-0 [&>li]:before:content-['–'] [&>li]:before:text-blue-500">
 						<li>
 							Establece el `font-size` del `&lt;html&gt;` a `100%` (o déjalo por
 							defecto).
