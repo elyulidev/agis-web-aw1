@@ -18,11 +18,12 @@ Branch: main (estrategia elegida por usuario en módulo 3). Test runner: npm run
 - T1 (S1-S5) conf 15 ES+PT: con agentes previa cero demos → agregar Previews + CodeTabs funcionales (formato color, unidades, variables); bug PT cyrillico conference 15. Route: inline. Commit: 7bb6db1. Assess: medium, review_due=false (under_budget), base 0315e6a.
 - T2 (S1-S5) conf 16 ES+PT: demos de background (repeat/position/size), shorthand, linear/radial-gradient con Preview+CodeTabs. Route: inline. Commit: 15b039f.
 - T3 (S1-S5) conf 17 ES+PT: demos hover/transición y transform con Preview real (hover activo en preview). Route: inline. Commit: 1c8f45b.
-- T4 (S1-S5) conf 18 ES+PT: fidelidad Bento (clases/breakpoints del Resultado Final != pasos enseñados), dark mode del demo, img externa; PT sin traducir (3 puntos). Route: inline. Commit: TBD.
-- T5 (S7) verificación global: build + format + paridad ES/PT 15-18.
+- T4 (S1-S5) conf 18 ES+PT: fidelidad Bento (clases/breakpoints del Resultado Final != pasos enseñados), dark mode del demo, img externa; PT sin traducir (3 puntos). Route: inline. Commit: cdae710.
+- T5 (S7) verificación global: build + format + paridad ES/PT 15-18. Route: inline. Commit: 742c758.
 
 ## Log
 
 - L1 (2026-11-02): "modulo 4. Analiza el contenido y diseño de cada conferencia y mejoremos una a una."
 - L2 (2026-11-02): análisis por subagente: 15-18 solo CodeBlock estáticos (0 Preview/CodeTabs/Callout); sin fidelidad posible con 15-17 demo de Bento único con desfasaje grave (clases `.bento-grid-final` max-width ≠ pasos `.grid` min-width; height 1000px; gaps distintos) y dark mode del propio demo sin contraste; bugs PT listados en S4. Demo de conf 18 usa `<img>` con URL externa Vercel blob (es:218).
 - L3 (2026-11-02): modus: una conferencia por ronda, inline como módulo 3, usuario revisa entre rondas; commit por conferencia; se asume mismo estándar duplicado: completar S2-S5 con demos de estilo idénticas en ES y PT.
+- L4 (2026-11-02): T4 — Bento reescrito con origen único: demo usa las MISMAS áreas y breakpoints min-width de los pasos (base 1 col, 750 tableta, 1000 escritorio), clases d18- namespaced + CodeTabs espejo; color #1f2937 en items (dark mode legible); img pasa a ruta absoluta /conf18/... (sin blob Vercel; el src relativo roto se debía a ruta anidada /conferencia/:id sin <base>); PT 387/396 traducidos. T5 — verificación global: build OK, biome OK, paridad ES/PT idéntica en Preview/CodeTabs/SectionTitle/Subhead/Code; único <code> crudo restante está dentro de una plantilla html de CodeTabs (15), correcto.
